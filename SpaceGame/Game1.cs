@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended;
+using SpaceGame.Sprites;
 
 namespace SpaceGame
 {
@@ -8,6 +10,7 @@ namespace SpaceGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        PlayerShip playerShip;
 
         public Game1()
         {
@@ -39,6 +42,8 @@ namespace SpaceGame
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Begin();
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
