@@ -23,12 +23,12 @@ namespace SpaceGame.Sprites
             rotation = 0f;
         }
 
-        public void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime)
         {
 
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, position, null, Color.White, rotation, Center, scale, SpriteEffects.None, 0f);
         }

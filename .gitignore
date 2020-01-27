@@ -2,3 +2,17 @@
 *.ide-wal
 
 *.cache
+
+SpaceGame/bin/Windows/x86/Debug/SpaceGame.exe
+
+*.ide
+
+.vs/SpaceGame/v16/.suo
+
+*.pdb
+
+SpaceGame/obj/x86/Debug/SpaceGame.csproj.FileListAbsolute.txt
+
+SpaceGame/obj/x86/Debug/SpaceGame.exe
+
+SpaceGame/SpaceGame.csproj
