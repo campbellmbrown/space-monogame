@@ -12,43 +12,49 @@ namespace SpaceGame.Sprites
 {
     public class PlayerShip : Spaceship
     {
-        public PlayerShip(Vector2 position, Texture2D texture, float maxAcceleration, float maxSpeed) : base(position, texture, maxAcceleration, maxSpeed)
+        public PlayerShip(Vector2 position, Texture2D texture, float maxAcceleration, float maxVelocity, float maxAngularVelocity, float maxAngularAcceleration) 
+            : base(position, texture, maxAcceleration, maxVelocity, maxAngularVelocity, maxAngularAcceleration)
         {
         }
 
-        public void DetectMovement()
+        public void SetAccelerations(float t)
         {
             KeyboardState keyboardState = Keyboard.GetState();
             
             if (keyboardState.IsKeyDown(Keys.A)) 
             {
-                velocity.X = -10f;
+                angularAcceleration = -maxAngularAcceleration;
             }
             else if (keyboardState.IsKeyDown(Keys.D))
             {
-                velocity.X = 10f;
+                angularAcceleration = maxAngularAcceleration;
             }
             else if (keyboardState.IsKeyDown(Keys.W))
             {
-                velocity.Y = 10f;
+                acceleration = maxAcceleration * Direction;
             }
             else if (keyboardState.IsKeyDown(Keys.S))
             {
-                velocity.Y = 10f;
+                acceleration = -maxAcceleration * Direction;
+            }
+            else
+            {
+                angularAcceleration = 0f;
+                acceleration = Vector2.Zero;
             }
         }
 
         public override void Update(GameTime gameTime)
         {
             float t = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            DetectMovement();
+            SetAccelerations(t);
             Move(t);
             base.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawRectangle(new Rectangle((int)position.X, (int)position.Y, 10, 10), Color.Red);
+            spriteBatch.DrawLine(position, position + Direction * 40, Color.Green);
             base.Draw(spriteBatch);
         }
     }

@@ -16,3 +16,5 @@ SpaceGame/obj/x86/Debug/SpaceGame.csproj.FileListAbsolute.txt
 SpaceGame/obj/x86/Debug/SpaceGame.exe
 
 SpaceGame/SpaceGame.csproj
+
+*.ide-shm

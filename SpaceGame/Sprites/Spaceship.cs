@@ -10,7 +10,8 @@ namespace SpaceGame.Sprites
 {
     public class Spaceship : MovingSprite
     {
-        public Spaceship(Vector2 position, Texture2D texture, float maxAcceleration, float maxSpeed) : base(position, texture, maxAcceleration, maxSpeed)
+        public Spaceship(Vector2 position, Texture2D texture, float maxAcceleration, float maxVelocity, float maxAngularVelocity, float maxAngularAcceleration) 
+            : base(position, texture, maxAcceleration, maxVelocity, maxAngularVelocity, maxAngularAcceleration)
         {
         }
     }
