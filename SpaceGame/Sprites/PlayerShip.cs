@@ -54,7 +54,7 @@ namespace SpaceGame.Sprites
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawLine(position, position + Direction * 40, Color.Green);
+            spriteBatch.DrawLine(position + Direction * 20, position + Direction * 40, Color.Green);
             base.Draw(spriteBatch);
         }
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>D:/Git Projects/space-monogame/SpaceGame/Content/Ships/PlayerShips/basic_ship_main.png</SourceFile>
-  <SourceTime>2020-01-28T18:40:18.7381532+13:00</SourceTime>
+  <SourceTime>2020-01-29T20:35:16.3117164+13:00</SourceTime>
   <DestFile>D:/Git Projects/space-monogame/SpaceGame/Content/bin/Windows/Ships/PlayerShips/basic_ship_main.xnb</DestFile>
-  <DestTime>2020-01-28T18:42:30.5195851+13:00</DestTime>
+  <DestTime>2020-01-29T20:42:55.0208427+13:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-09-24T09:55:52+12:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
