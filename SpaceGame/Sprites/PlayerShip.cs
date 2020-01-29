@@ -12,8 +12,9 @@ namespace SpaceGame.Sprites
 {
     public class PlayerShip : Spaceship
     {
-        public PlayerShip(Vector2 position, Texture2D texture, float maxAcceleration, float maxVelocity, float maxAngularVelocity, float maxAngularAcceleration) 
-            : base(position, texture, maxAcceleration, maxVelocity, maxAngularVelocity, maxAngularAcceleration)
+        public PlayerShip(Vector2 position, Texture2D texture, Texture2D wingTexture,
+            float maxAcceleration, float maxVelocity, float maxAngularVelocity, float maxAngularAcceleration) 
+            : base(position, texture, wingTexture, maxAcceleration, maxVelocity, maxAngularVelocity, maxAngularAcceleration)
         {
         }
 
@@ -31,16 +32,31 @@ namespace SpaceGame.Sprites
             }
             else if (keyboardState.IsKeyDown(Keys.W))
             {
+                RotateWings(t);
                 acceleration = maxAcceleration * Direction;
             }
             else if (keyboardState.IsKeyDown(Keys.S))
             {
+                RotateWings(t);
                 acceleration = -maxAcceleration * Direction;
             }
             else
             {
                 angularAcceleration = 0f;
                 acceleration = Vector2.Zero;
+            }
+        }
+
+        public void RotateWings(float t)
+        {
+            Console.WriteLine(wingRotation - rotation);
+            if (wingRotation - rotation < 0)
+            {
+                wingRotation -= maxAngularVelocity * t;
+            }
+            else
+            {
+                wingRotation += maxAngularVelocity * t;
             }
         }
 

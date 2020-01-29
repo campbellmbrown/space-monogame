@@ -52,6 +52,7 @@ namespace SpaceGame
             textures = new Dictionary<string, Texture2D>()
             {
                 { "basic_ship_main", Content.Load<Texture2D>("Ships/PlayerShips/basic_ship_main") },
+                { "basic_ship_wings", Content.Load<Texture2D>("Ships/PlayerShips/basic_ship_wings") },
             };
             
             _playerManager = new PlayerManager(camera);
