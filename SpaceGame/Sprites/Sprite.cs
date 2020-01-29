@@ -10,11 +10,13 @@ namespace SpaceGame.Sprites
 {
     public class Sprite
     {
-        protected Vector2 position;
+        public Vector2 position;
         protected Texture2D texture;
         protected readonly float scale = 1f;
         protected float rotation;
-        protected Vector2 Center { get { return new Vector2(texture.Width / 2f, texture.Height / 2f); } }
+        protected int Width { get { return texture.Width; } }
+        protected int Height { get { return texture.Height; } }
+        protected Vector2 Center { get { return new Vector2(Width / 2f, Height / 2f); } }
 
         public Sprite(Vector2 position, Texture2D texture)
         {

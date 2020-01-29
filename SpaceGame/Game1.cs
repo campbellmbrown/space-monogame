@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
@@ -14,6 +14,7 @@ namespace SpaceGame
         SpriteBatch spriteBatch;
         Camera2D camera;
 
+        public static float zoom = 3f;
         public static Dictionary<string, Texture2D> textures;
         public static Vector2 ScreenSize { get { return new Vector2(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height); } }
         public static Vector2 ScreenCenter { get { return ScreenSize / 2f; } }
@@ -34,7 +35,11 @@ namespace SpaceGame
 
         protected override void Initialize()
         {
-            camera = new Camera2D(GraphicsDevice);
+            camera = new Camera2D(GraphicsDevice)
+            {
+                Zoom = zoom,
+                Position = -ScreenSize / 2f
+            };
             IsMouseVisible = true;
             IsFixedTimeStep = true;
             graphics.SynchronizeWithVerticalRetrace = true;
@@ -49,7 +54,7 @@ namespace SpaceGame
                 { "basic_ship_main", Content.Load<Texture2D>("Ships/PlayerShips/basic_ship_main") },
             };
             
-            _playerManager = new PlayerManager();
+            _playerManager = new PlayerManager(camera);
         }
 
         protected override void UnloadContent()
@@ -67,8 +72,9 @@ namespace SpaceGame
         protected override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, transformMatrix: camera.GetViewMatrix()); 
-            _playerManager.Draw(spriteBatch);
             GraphicsDevice.Clear(Color.Black);
+            spriteBatch.DrawRectangle(new Rectangle(-10, -10, 20, 20), Color.Red);
+            _playerManager.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
