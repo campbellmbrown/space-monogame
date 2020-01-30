@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
 using SpaceGame.Sprites;
@@ -13,6 +13,8 @@ namespace SpaceGame.Managers
     public class PlayerManager
     {
         PlayerShip playerShip;
+        public Vector2 playerVelocity { get { return playerShip.direction * playerShip.linearVelocity; } }
+        public Vector2 playerPosition { get { return playerShip.position; } }
         Camera2D camera;
 
         public PlayerManager(Camera2D camera)
@@ -33,7 +35,7 @@ namespace SpaceGame.Managers
         public void Update(GameTime gameTime)
         {
             playerShip.Update(gameTime);
-            camera.Position = playerShip.position - Game1.ScreenSize / 2f;
+            camera.Position = playerShip.position - Game1.screenSize / 2f;
         }
 
         public void Draw(SpriteBatch spriteBatch)

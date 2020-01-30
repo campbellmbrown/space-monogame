@@ -11,13 +11,13 @@ namespace SpaceGame.Sprites
 {
     public class MovingSprite : Sprite
     {
-        protected Vector2 Direction { get { return new Vector2((float)Math.Cos(rotation - Math.PI / 2), (float)Math.Sin(rotation - Math.PI / 2f)); } }
         protected float linearAcceleration;
-        protected float linearVelocity;
         protected float angularVelocity;
         protected float angularAcceleration;
         protected float linearThrust = 0;
         protected float angularThrust = 0;
+        public Vector2 direction { get { return new Vector2((float)Math.Cos(rotation - Math.PI / 2), (float)Math.Sin(rotation - Math.PI / 2f)); } }
+        public float linearVelocity;
         public float linearDragCoefficient = 0;
         public float angularDragCoefficient = 0;
         public float maxLinearVelocity = 0;
@@ -38,7 +38,7 @@ namespace SpaceGame.Sprites
             angularVelocity += angularAcceleration * t;
             linearVelocity = Helper.Clamp(linearVelocity, -maxLinearVelocity, maxLinearVelocity);
             angularVelocity = Helper.Clamp(angularVelocity, -maxAngularVelocity, maxAngularVelocity);
-            position += linearVelocity * Direction * t;
+            position += linearVelocity * direction * t;
             rotation += angularVelocity * t;
         }
     }

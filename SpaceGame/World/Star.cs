@@ -13,23 +13,32 @@ namespace SpaceGame.World
     {
         Color color;
         Vector2 position;
+        int depth;
+        float transparency { get { return (10 - depth) / 10f; } }
+        float screenWidth { get { return Game1.zoomedScreenSize.X; } }
+        float screenHeight { get { return Game1.zoomedScreenSize.Y; } }
 
         public Star()
         {
-            int screenWidth = (int)Game1.ScreenSize.X;
-            int screenHeight = (int)Game1.ScreenSize.Y;
-            color = new Color(Game1.r.Next(0, 256), Game1.r.Next(0, 256), Game1.r.Next(0, 256));
-            position = new Vector2(Game1.r.Next(-screenWidth / 2, screenWidth / 2 + 1), Game1.r.Next(-screenHeight / 2, screenHeight / 2 + 1)) / Game1.zoom;
+            depth = Game1.r.Next(0, 11);
+            color = new Color(Game1.r.Next(150, 256), Game1.r.Next(150, 256), Game1.r.Next(150, 256));
+            position = new Vector2(Game1.r.Next((int)(-screenWidth / 2f), (int)(screenWidth / 2 + 1)), 
+                Game1.r.Next((int)(-screenHeight / 2), (int)(screenHeight / 2 + 1)));
         }
 
         public void Update(GameTime gameTime)
         {
-
+            float t = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            position += Game1.playerManager.playerVelocity * t * depth / 10f;
+            if (position.X > Game1.positionCenter.X + screenWidth / 2f) position.X -= screenWidth;
+            else if (position.X < Game1.positionCenter.X - screenWidth / 2f) position.X += screenWidth;
+            else if (position.Y > Game1.positionCenter.Y + screenHeight / 2f) position.Y -= screenHeight;
+            else if (position.Y < Game1.positionCenter.Y - screenHeight / 2f) position.Y += screenHeight;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawPoint(position, color);
+            spriteBatch.DrawPoint(position, color * transparency);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,11 @@ namespace SpaceGame.Managers
         public WorldManager()
         {
             starManager = new StarManager();
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            starManager.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
