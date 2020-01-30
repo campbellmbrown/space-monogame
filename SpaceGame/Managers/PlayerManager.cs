@@ -18,7 +18,7 @@ namespace SpaceGame.Managers
         public PlayerManager(Camera2D camera)
         {
             this.camera = camera;
-            playerShip = new PlayerShip(Vector2.Zero, Game1.textures["basic_ship_main"], Game1.textures["basic_ship_wings"], 30f, 10f, 10f, 5f);
+            playerShip = new PlayerShip(Vector2.Zero, Game1.textures["basic_ship_main"], Game1.textures["basic_ship_wings"], 50f, 10f, 10f, 1f);
         }
 
         public void Update(GameTime gameTime)

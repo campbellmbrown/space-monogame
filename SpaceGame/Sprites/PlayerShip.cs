@@ -30,7 +30,7 @@ namespace SpaceGame.Sprites
             {
                 angularAcceleration = maxAngularAcceleration;
             }
-            else if (keyboardState.IsKeyDown(Keys.W))
+            if (keyboardState.IsKeyDown(Keys.W))
             {
                 RotateWings(t);
                 acceleration = maxAcceleration * Direction;
@@ -49,15 +49,11 @@ namespace SpaceGame.Sprites
 
         public void RotateWings(float t)
         {
-            Console.WriteLine(wingRotation - rotation);
-            if (wingRotation - rotation < 0)
-            {
-                wingRotation -= maxAngularVelocity * t;
-            }
-            else
-            {
-                wingRotation += maxAngularVelocity * t;
-            }
+            var deltaAngle = wingRotation - rotation;
+            if (deltaAngle < 0) deltaAngle += 2 * (float)Math.PI;
+            if ((deltaAngle < 0.1 * Math.PI) || (deltaAngle > 1.9 * Math.PI)) return; 
+            if (deltaAngle >= Math.PI) wingRotation += 0.1f * maxAcceleration * t;
+            else wingRotation -= 0.1f * maxAcceleration * t;
         }
 
         public override void Update(GameTime gameTime)

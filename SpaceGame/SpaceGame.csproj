@@ -43,12 +43,15 @@
   <ItemGroup>
     <Compile Include="Game1.cs" />
     <Compile Include="Managers\PlayerManager.cs" />
+    <Compile Include="Managers\StarManager.cs" />
+    <Compile Include="Managers\WorldManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sprites\MovingSprite.cs" />
     <Compile Include="Sprites\PlayerShip.cs" />
     <Compile Include="Sprites\Spaceship.cs" />
     <Compile Include="Sprites\Sprite.cs" />
+    <Compile Include="World\Star.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Extended, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

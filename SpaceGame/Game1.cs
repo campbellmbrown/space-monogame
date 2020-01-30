@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
 using SpaceGame.Managers;
 using SpaceGame.Sprites;
+using System;
 using System.Collections.Generic;
 
 namespace SpaceGame
@@ -14,6 +15,7 @@ namespace SpaceGame
         SpriteBatch spriteBatch;
         Camera2D camera;
 
+        public static Random r;
         public static float zoom = 3f;
         public static Dictionary<string, Texture2D> textures;
         public static Vector2 ScreenSize { get { return new Vector2(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height); } }
@@ -23,6 +25,7 @@ namespace SpaceGame
         Vector2 WindowCenter { get { return WindowSize / 2f; } }
 
         private PlayerManager _playerManager;
+        private WorldManager _worldManager;
 
         public Game1()
         {
@@ -43,6 +46,7 @@ namespace SpaceGame
             IsMouseVisible = true;
             IsFixedTimeStep = true;
             graphics.SynchronizeWithVerticalRetrace = true;
+            r = new Random();
             base.Initialize();
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }
@@ -56,6 +60,7 @@ namespace SpaceGame
             };
             
             _playerManager = new PlayerManager(camera);
+            _worldManager = new WorldManager();
         }
 
         protected override void UnloadContent()
@@ -75,6 +80,7 @@ namespace SpaceGame
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, transformMatrix: camera.GetViewMatrix()); 
             GraphicsDevice.Clear(Color.Black);
             spriteBatch.DrawRectangle(new Rectangle(-10, -10, 20, 20), Color.Red);
+            _worldManager.Draw(spriteBatch);
             _playerManager.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
