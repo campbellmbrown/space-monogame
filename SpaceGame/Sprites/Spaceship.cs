@@ -16,9 +16,8 @@ namespace SpaceGame.Sprites
         protected int WingHeight { get { return wingTexture.Height; } }
         protected Vector2 WingCenter { get { return new Vector2(WingWidth / 2f, WingHeight / 2f); } }
 
-        public Spaceship(Vector2 position, Texture2D texture, Texture2D wingTexture, 
-            float maxAcceleration, float maxVelocity, float maxAngularVelocity, float maxAngularAcceleration) 
-            : base(position, texture, maxAcceleration, maxVelocity, maxAngularVelocity, maxAngularAcceleration)
+        public Spaceship(Vector2 position, Texture2D texture, Texture2D wingTexture) 
+            : base(position, texture)
         {
             this.wingTexture = wingTexture;
         }

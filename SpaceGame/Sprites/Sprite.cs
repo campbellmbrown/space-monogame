@@ -17,6 +17,7 @@ namespace SpaceGame.Sprites
         protected int Width { get { return texture.Width; } }
         protected int Height { get { return texture.Height; } }
         protected Vector2 Center { get { return new Vector2(Width / 2f, Height / 2f); } }
+        public float mass = 10f;
 
         public Sprite(Vector2 position, Texture2D texture)
         {

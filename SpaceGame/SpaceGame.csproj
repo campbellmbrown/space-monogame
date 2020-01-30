@@ -51,6 +51,7 @@
     <Compile Include="Sprites\PlayerShip.cs" />
     <Compile Include="Sprites\Spaceship.cs" />
     <Compile Include="Sprites\Sprite.cs" />
+    <Compile Include="Utilities\Helper.cs" />
     <Compile Include="World\Star.cs" />
   </ItemGroup>
   <ItemGroup>

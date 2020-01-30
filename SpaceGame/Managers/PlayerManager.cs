@@ -18,7 +18,16 @@ namespace SpaceGame.Managers
         public PlayerManager(Camera2D camera)
         {
             this.camera = camera;
-            playerShip = new PlayerShip(Vector2.Zero, Game1.textures["basic_ship_main"], Game1.textures["basic_ship_wings"], 50f, 10f, 10f, 1f);
+            playerShip = new PlayerShip(Vector2.Zero, Game1.textures["basic_ship_main"], Game1.textures["basic_ship_wings"])
+            {
+                maxLinearThrust = 50000f,
+                maxAngularThrust = 5000f,
+                maxLinearVelocity = 80f,
+                maxAngularVelocity = 3f,
+                mass = 1000f,
+                linearDragCoefficient = 0f,
+                angularDragCoefficient = 0f
+            };
         }
 
         public void Update(GameTime gameTime)

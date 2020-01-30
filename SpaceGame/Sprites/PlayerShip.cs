@@ -12,38 +12,42 @@ namespace SpaceGame.Sprites
 {
     public class PlayerShip : Spaceship
     {
-        public PlayerShip(Vector2 position, Texture2D texture, Texture2D wingTexture,
-            float maxAcceleration, float maxVelocity, float maxAngularVelocity, float maxAngularAcceleration) 
-            : base(position, texture, wingTexture, maxAcceleration, maxVelocity, maxAngularVelocity, maxAngularAcceleration)
+        public PlayerShip(Vector2 position, Texture2D texture, Texture2D wingTexture) 
+            : base(position, texture, wingTexture)
         {
         }
 
         public void SetAccelerations(float t)
         {
             KeyboardState keyboardState = Keyboard.GetState();
-            
+            bool holdingKey = false;
+
             if (keyboardState.IsKeyDown(Keys.A)) 
             {
-                angularAcceleration = -maxAngularAcceleration;
+                angularThrust = -maxAngularThrust;
+                holdingKey = true;
             }
             else if (keyboardState.IsKeyDown(Keys.D))
             {
-                angularAcceleration = maxAngularAcceleration;
+                angularThrust = maxAngularThrust;
+                holdingKey = true;
             }
             if (keyboardState.IsKeyDown(Keys.W))
             {
                 RotateWings(t);
-                acceleration = maxAcceleration * Direction;
+                linearThrust = maxLinearThrust;
+                holdingKey = true;
             }
             else if (keyboardState.IsKeyDown(Keys.S))
             {
                 RotateWings(t);
-                acceleration = -maxAcceleration * Direction;
+                linearThrust = -maxLinearThrust;
+                holdingKey = true;
             }
-            else
+            if (!holdingKey)
             {
-                angularAcceleration = 0f;
-                acceleration = Vector2.Zero;
+                angularThrust = 0f;
+                linearThrust = 0f;
             }
         }
 
@@ -51,9 +55,9 @@ namespace SpaceGame.Sprites
         {
             var deltaAngle = wingRotation - rotation;
             if (deltaAngle < 0) deltaAngle += 2 * (float)Math.PI;
-            if ((deltaAngle < 0.1 * Math.PI) || (deltaAngle > 1.9 * Math.PI)) return; 
-            if (deltaAngle >= Math.PI) wingRotation += 0.1f * maxAcceleration * t;
-            else wingRotation -= 0.1f * maxAcceleration * t;
+            //if ((deltaAngle < 0.1 * Math.PI) || (deltaAngle > 1.9 * Math.PI)) return; 
+            if (deltaAngle >= Math.PI) wingRotation += 0.01f * linearVelocity * t;
+            else wingRotation -= 0.01f * linearVelocity * t;
         }
 
         public override void Update(GameTime gameTime)
