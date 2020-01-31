@@ -23,7 +23,7 @@ namespace SpaceGame.Utilities
         {
             if (radians > 2 * Math.PI)
                 return radians - 2 * (float)Math.PI;
-            else if (radians < 2 * Math.PI)
+            else if (radians < 0)
                 return radians + 2 * (float)Math.PI;
             else
                 return radians;
