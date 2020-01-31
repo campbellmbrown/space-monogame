@@ -13,7 +13,7 @@ namespace SpaceGame.Managers
     public class PlayerManager
     {
         PlayerShip playerShip;
-        public Vector2 playerVelocity { get { return playerShip.direction * playerShip.linearVelocity; } }
+        public Vector2 playerVelocity { get { return playerShip.linearVelocity; } }
         public Vector2 playerPosition { get { return playerShip.position; } }
         Camera2D camera;
 
@@ -22,13 +22,14 @@ namespace SpaceGame.Managers
             this.camera = camera;
             playerShip = new PlayerShip(Vector2.Zero, Game1.textures["basic_ship_main"], Game1.textures["basic_ship_wings"])
             {
-                maxLinearThrust = 50000f,
+                maxLinearThrust = 100000f,
                 maxAngularThrust = 5000f,
-                maxLinearVelocity = 80f,
+                maxLinearVelocity = 200f,
                 maxAngularVelocity = 3f,
                 mass = 1000f,
-                linearDragCoefficient = 0f,
-                angularDragCoefficient = 0f
+                linearDragCoefficient = 10f,
+                angularDragCoefficient = 10f,
+                wingAngularSpeed = 3f
             };
         }
 

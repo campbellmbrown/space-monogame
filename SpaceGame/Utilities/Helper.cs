@@ -18,5 +18,15 @@ namespace SpaceGame.Utilities
         {
             return (value < min) ? min : (value > max) ? max : value;
         }
+
+        public static float SimplifyRadians(float radians)
+        {
+            if (radians > 2 * Math.PI)
+                return radians - 2 * (float)Math.PI;
+            else if (radians < 2 * Math.PI)
+                return radians + 2 * (float)Math.PI;
+            else
+                return radians;
+        }
     }
 }

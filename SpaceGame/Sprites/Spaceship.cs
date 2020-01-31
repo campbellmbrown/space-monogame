@@ -10,6 +10,7 @@ namespace SpaceGame.Sprites
 {
     public class Spaceship : MovingSprite
     {
+        public float wingAngularSpeed = 0f;
         protected Texture2D wingTexture;
         protected float wingRotation = 0f;
         protected int WingWidth { get { return wingTexture.Width; } }

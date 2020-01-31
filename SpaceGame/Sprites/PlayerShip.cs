@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
+using SpaceGame.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,11 +54,11 @@ namespace SpaceGame.Sprites
 
         public void RotateWings(float t)
         {
-            var deltaAngle = wingRotation - rotation;
-            if (deltaAngle < 0) deltaAngle += 2 * (float)Math.PI;
-            //if ((deltaAngle < 0.1 * Math.PI) || (deltaAngle > 1.9 * Math.PI)) return; 
-            if (deltaAngle >= Math.PI) wingRotation += 0.01f * linearVelocity * t;
-            else wingRotation -= 0.01f * linearVelocity * t;
+            var deltaAngle = Helper.SimplifyRadians(wingRotation - rotation);
+            //if (deltaAngle < 0.1f) return; 
+            if (deltaAngle >= Math.PI) wingRotation = Helper.SimplifyRadians(wingRotation + wingAngularSpeed * t);
+            else wingRotation = Helper.SimplifyRadians(wingRotation - wingAngularSpeed * t);
+            Console.WriteLine(deltaAngle);
         }
 
         public override void Update(GameTime gameTime)
@@ -70,7 +71,8 @@ namespace SpaceGame.Sprites
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawLine(position + direction * 20, position + direction * 40, Color.Green);
+            spriteBatch.DrawLine(position + facing * 20, position + facing * 40, Color.Green);
+            spriteBatch.DrawLine(position + direction * 20, position + direction * 40, Color.Blue);
             base.Draw(spriteBatch);
         }
     }

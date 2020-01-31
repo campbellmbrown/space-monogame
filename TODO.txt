@@ -6,11 +6,7 @@
 ================== MEDIUM PRIORITY (affects gameplay) ==================
 ========================================================================
  - Fix spinning wings
- - Tweak player default values
- - Fix spinning when not turning bug
- - parallax stars
 ========================================================================
 ================== LOW PRIORITY (nice to have) =========================
 ========================================================================
- - Fix colours of stars
- - Fix transparency of stars based on parallaxing
+ - Refine player default values
