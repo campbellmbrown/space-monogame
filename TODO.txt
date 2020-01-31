@@ -1,12 +1,37 @@
 ========================================================================
 ================== HIGH PRIORITY (prevents gameplay) ===================
 ========================================================================
- -
+ - Add Effects folder
+ - Add Particle class
+ - Add Smoke class
+ - Add smoke texture
+ - Add smoke to player
+ - Add a player health/max player health parameter
+ - Have an on-board view to manage the ship
+ - - This tasks needs to be designed before implemented
+ - - And possibly broken down into smaller tasks
 ========================================================================
 ================== MEDIUM PRIORITY (affects gameplay) ==================
 ========================================================================
- - Fix spinning wings
+ - Add toggle button to see info/headings/stats on screen
+ - Create a font
+ - Find a way to have on screen debug messages using the font
 ========================================================================
 ================== LOW PRIORITY (nice to have) =========================
 ========================================================================
  - Refine player default values
+ - Add a keypress manager class (?)
+ - Add a button class
+ - Rename Game1.cs*
+ - Comment files
+ - - *Game1.cs
+ - - Helper.cs
+ - - Star.cs
+ - - Program.cs (?)
+ - - PlayerManager.cs
+ - - StarManager.cs
+ - - WorldManager.cs
+ - - MovingSprite.cs
+ - - PlayerShip.cs
+ - - SpaceShip.cs
+ - - Sprite.cs
