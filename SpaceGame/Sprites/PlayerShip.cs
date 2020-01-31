@@ -13,6 +13,9 @@ namespace SpaceGame.Sprites
 {
     public class PlayerShip : Spaceship
     {
+        private bool _holdingInfoToggle = false;
+        private bool _showInfo = false;
+
         public PlayerShip(Vector2 position, Texture2D texture, Texture2D wingTexture) 
             : base(position, texture, wingTexture)
         {
@@ -21,35 +24,43 @@ namespace SpaceGame.Sprites
         public void SetAccelerations(float t)
         {
             KeyboardState keyboardState = Keyboard.GetState();
-            bool holdingKey = false;
+            bool moving = false;
 
             if (keyboardState.IsKeyDown(Keys.A)) 
             {
                 angularThrust = -maxAngularThrust;
-                holdingKey = true;
+                moving = true;
             }
             else if (keyboardState.IsKeyDown(Keys.D))
             {
                 angularThrust = maxAngularThrust;
-                holdingKey = true;
+                moving = true;
             }
             if (keyboardState.IsKeyDown(Keys.W))
             {
                 RotateWings(t);
                 linearThrust = maxLinearThrust;
-                holdingKey = true;
+                moving = true;
             }
             else if (keyboardState.IsKeyDown(Keys.S))
             {
                 RotateWings(t);
                 linearThrust = -maxLinearThrust;
-                holdingKey = true;
+                moving = true;
             }
-            if (!holdingKey)
+            if (!moving)
             {
                 angularThrust = 0f;
                 linearThrust = 0f;
             }
+            if (keyboardState.IsKeyDown(Keys.Tab))
+            {
+                if (!_holdingInfoToggle)
+                    _showInfo = !_showInfo;
+                _holdingInfoToggle = true;
+            }
+            else
+                _holdingInfoToggle = false;
         }
 
         public void RotateWings(float t)
@@ -70,8 +81,11 @@ namespace SpaceGame.Sprites
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawLine(position + facing * 20, position + facing * 40, Color.Green);
-            spriteBatch.DrawLine(position + direction * 20, position + direction * 40, Color.Blue);
+            if (_showInfo)
+            {
+                spriteBatch.DrawLine(position + facing * 20, position + facing * 40, Color.Green);
+                spriteBatch.DrawLine(position + direction * 20, position + direction * (20 + (linearVelocity.Length()) * 20 / maxLinearVelocity), Color.Blue);
+            }                                                   
             base.Draw(spriteBatch);
         }
     }
