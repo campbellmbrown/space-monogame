@@ -55,10 +55,9 @@ namespace SpaceGame.Sprites
         public void RotateWings(float t)
         {
             var deltaAngle = Helper.SimplifyRadians(wingRotation - rotation);
-            //if (deltaAngle < 0.1f) return; 
+            if (deltaAngle < 0.1f) return;
             if (deltaAngle >= Math.PI) wingRotation = Helper.SimplifyRadians(wingRotation + wingAngularSpeed * t);
             else wingRotation = Helper.SimplifyRadians(wingRotation - wingAngularSpeed * t);
-            Console.WriteLine(deltaAngle);
         }
 
         public override void Update(GameTime gameTime)

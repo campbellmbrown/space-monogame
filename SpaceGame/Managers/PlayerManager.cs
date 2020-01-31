@@ -29,7 +29,7 @@ namespace SpaceGame.Managers
                 mass = 1000f,
                 linearDragCoefficient = 10f,
                 angularDragCoefficient = 10f,
-                wingAngularSpeed = 3f
+                wingAngularSpeed = 2f
             };
         }
 
