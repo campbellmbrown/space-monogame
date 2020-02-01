@@ -24,11 +24,11 @@ namespace SpaceGame.Managers
             {
                 maxLinearThrust = 100000f,
                 maxAngularThrust = 5000f,
-                maxLinearVelocity = 200f,
+                maxLinearVelocity = 250f,
                 maxAngularVelocity = 3f,
                 mass = 1000f,
                 linearDragCoefficient = 10f,
-                angularDragCoefficient = 10f,
+                angularDragCoefficient = 600f,
                 wingAngularSpeed = 2f
             };
         }

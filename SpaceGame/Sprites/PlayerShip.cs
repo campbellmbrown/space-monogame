@@ -25,33 +25,30 @@ namespace SpaceGame.Sprites
         public void SetAccelerations(float t)
         {
             KeyboardState keyboardState = Keyboard.GetState();
-            bool moving = false;
 
             if (keyboardState.IsKeyDown(Keys.A)) 
             {
                 angularThrust = -maxAngularThrust;
-                moving = true;
             }
             else if (keyboardState.IsKeyDown(Keys.D))
             {
                 angularThrust = maxAngularThrust;
-                moving = true;
+            } else
+            {
+                angularThrust = 0f;
             }
             if (keyboardState.IsKeyDown(Keys.W))
             {
                 RotateWings(t);
                 linearThrust = maxLinearThrust;
-                moving = true;
             }
             else if (keyboardState.IsKeyDown(Keys.S))
             {
                 RotateWings(t);
                 linearThrust = -maxLinearThrust;
-                moving = true;
             }
-            if (!moving)
+            else
             {
-                angularThrust = 0f;
                 linearThrust = 0f;
             }
             if (keyboardState.IsKeyDown(Keys.Tab))

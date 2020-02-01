@@ -20,6 +20,7 @@ namespace SpaceGame.Sprites
         protected float angularThrust = 0;
         public Vector2 facing { get { return new Vector2((float)Math.Cos(rotation - Math.PI / 2), (float)Math.Sin(rotation - Math.PI / 2f)); } }
         public Vector2 direction { get { return (linearVelocity.Length() == 0) ? Vector2.Zero : Vector2.Normalize(linearVelocity); } }
+        protected int spinningDirection { get { return Math.Sign(angularVelocity); } }
         public Vector2 linearVelocity;
         public float linearDragCoefficient = 0;
         public float angularDragCoefficient = 0;
@@ -42,7 +43,7 @@ namespace SpaceGame.Sprites
 
             // Angular acceleration
             angularAcceleration = angularThrust / mass;
-            angularFrictionAcceleration = (angularThrust == 0) ? -angularDragCoefficient * (float)Math.Pow(Math.Abs(angularVelocity), 2) / mass : 0;
+            angularFrictionAcceleration = (angularThrust == 0) ? -angularDragCoefficient * (float)Math.Pow(Math.Abs(angularVelocity), 2) * spinningDirection / mass : 0;
             float totalAngularAcceleration = angularAcceleration + angularFrictionAcceleration;
 
             // Velocities
