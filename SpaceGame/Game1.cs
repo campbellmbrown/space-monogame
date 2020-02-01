@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
 using SpaceGame.Effects;
 using SpaceGame.Managers;
+using SpaceGame.Models;
 using SpaceGame.Sprites;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace SpaceGame
         public static Random r;
         public static float zoom = 3f;
         public static Dictionary<string, Texture2D> textures;
+        public static Dictionary<string, Animation> animations;
         public static Vector2 screenSize { get { return new Vector2(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height); } }
         public static Vector2 zoomedScreenSize { get { return screenSize / zoom; } }
         public static Vector2 positionCenter { get { return playerManager.playerPosition; } }
@@ -61,7 +63,11 @@ namespace SpaceGame
             {
                 { "basic_ship_main", Content.Load<Texture2D>("Ships/PlayerShips/basic_ship_main") },
                 { "basic_ship_wings", Content.Load<Texture2D>("Ships/PlayerShips/basic_ship_wings") },
-                { "smoke", Content.Load<Texture2D>("Effects/smoke") },
+            };
+
+            animations = new Dictionary<string, Animation>()
+            {
+                { "smoke", new Animation(Content.Load<Texture2D>("Effects/smoke"), 5,  0.1f) },
             };
 
             playerManager = new PlayerManager(camera);

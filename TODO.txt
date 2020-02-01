@@ -9,7 +9,6 @@
 ================== MEDIUM PRIORITY (affects gameplay) ==================
 ========================================================================
  - Add toggle button to see info/headings/stats on screen
- - Animation class
  - Player animation
  - Create a font
  - Find a way to have on screen debug messages using the font
@@ -17,8 +16,8 @@
  - Give particles a fade option (?)
  - Give particles a shrink option (?)
  - Give particles an animation option
- - Smoke animation
  - Fix smoke from sourcing at the wrong location
+ - Fix smoke/particle animation
 ========================================================================
 ================== LOW PRIORITY (nice to have) =========================
 ========================================================================

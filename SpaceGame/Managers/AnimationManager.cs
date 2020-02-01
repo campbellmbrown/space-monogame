@@ -12,9 +12,9 @@ namespace SpaceGame.Managers
     public class AnimationManager
     {
         public Vector2 position;
+        public int frameCount;
+        public float frameSpeed;
         private int _currentFrame;
-        private int _frameCount;
-        private float _frameSpeed;
         private bool _pause;
         private bool _reverse = false;
         private float _timer;
@@ -24,8 +24,8 @@ namespace SpaceGame.Managers
         public AnimationManager(Animation animation)
         {
             _animation = animation;
-            _frameCount = animation.frameCount;
-            _frameSpeed = animation.frameSpeed;
+            frameCount = animation.frameCount;
+            frameSpeed = animation.frameSpeed;
             _currentFrame = 0;
             _timer = 0;
         }
@@ -52,8 +52,8 @@ namespace SpaceGame.Managers
             if (this._animation != animation)
             {
                 this._animation = animation;
-                _frameCount = animation.frameCount;
-                _frameSpeed = animation.frameSpeed;
+                frameCount = animation.frameCount;
+                frameSpeed = animation.frameSpeed;
                 _currentFrame = 0;
                 _timer = 0;
             }
@@ -62,19 +62,19 @@ namespace SpaceGame.Managers
         public void Update(GameTime gameTime)
         {
             _timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (_timer > _frameSpeed)
+            if (_timer > frameSpeed)
             {
                 _timer = 0f;
                 if (!_reverse)
                 {
                     _currentFrame++;
-                    if (_currentFrame >= _frameCount) // Reached the end of the animation
+                    if (_currentFrame >= frameCount) // Reached the end of the animation
                     {
                         _currentFrame = 0; // Reset animation
                         if (!_animation.isLooping) // or stop looping
                         {
                             _pause = true;
-                            _currentFrame = _frameCount - 1;
+                            _currentFrame = frameCount - 1;
                         }
                     }
                 }
@@ -83,7 +83,7 @@ namespace SpaceGame.Managers
                     _currentFrame--;
                     if (_currentFrame <= 0)
                     {
-                        _currentFrame = _frameCount - 1;
+                        _currentFrame = frameCount - 1;
                         if (!_animation.isLooping) // or stop looping
                         {
                             _pause = true;
