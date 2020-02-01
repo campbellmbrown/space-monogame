@@ -1,11 +1,6 @@
 ========================================================================
 ================== HIGH PRIORITY (prevents gameplay) ===================
 ========================================================================
- - Add Effects folder
- - Add Particle class
- - Add Smoke class
- - Add smoke texture
- - Add smoke to player
  - Add a player health/max player health parameter
  - Have an on-board view to manage the ship
  - - This tasks needs to be designed before implemented
@@ -16,6 +11,7 @@
  - Add toggle button to see info/headings/stats on screen
  - Create a font
  - Find a way to have on screen debug messages using the font
+ - Fix Smoke
 ========================================================================
 ================== LOW PRIORITY (nice to have) =========================
 ========================================================================
