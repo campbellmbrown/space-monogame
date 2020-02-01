@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
+using SpaceGame.Effects;
 using SpaceGame.Managers;
 using SpaceGame.Sprites;
 using System;
@@ -28,6 +29,7 @@ namespace SpaceGame
         Vector2 windowCenter { get { return windowSize / 2f; } }
 
         private WorldManager _worldManager;
+        private ParticleManager _particleManager;
 
         public Game1()
         {
@@ -59,10 +61,12 @@ namespace SpaceGame
             {
                 { "basic_ship_main", Content.Load<Texture2D>("Ships/PlayerShips/basic_ship_main") },
                 { "basic_ship_wings", Content.Load<Texture2D>("Ships/PlayerShips/basic_ship_wings") },
+                { "smoke", Content.Load<Texture2D>("Effects/smoke") },
             };
 
             playerManager = new PlayerManager(camera);
             _worldManager = new WorldManager();
+            _particleManager = new ParticleManager();
         }
 
         protected override void UnloadContent()
@@ -75,6 +79,7 @@ namespace SpaceGame
                 Exit();
             playerManager.Update(gameTime);
             _worldManager.Update(gameTime);
+            _particleManager.AddParticle(new Smoke(playerManager.playerPosition));
             base.Update(gameTime);
         }
 
@@ -85,6 +90,7 @@ namespace SpaceGame
             spriteBatch.DrawRectangle(new Rectangle(-10, -10, 20, 20), Color.Red);
             _worldManager.Draw(spriteBatch);
             playerManager.Draw(spriteBatch);
+            _particleManager.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

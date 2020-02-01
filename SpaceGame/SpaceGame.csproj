@@ -41,7 +41,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Effects\Particle.cs" />
+    <Compile Include="Effects\Smoke.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Managers\ParticleManager.cs" />
     <Compile Include="Managers\PlayerManager.cs" />
     <Compile Include="Managers\StarManager.cs" />
     <Compile Include="Managers\WorldManager.cs" />
