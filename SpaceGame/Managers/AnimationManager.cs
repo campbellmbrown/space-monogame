@@ -64,7 +64,7 @@ namespace SpaceGame.Managers
             _timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (_timer > frameSpeed)
             {
-                _timer = 0f;
+                _timer -= frameSpeed;
                 if (!_reverse)
                 {
                     _currentFrame++;

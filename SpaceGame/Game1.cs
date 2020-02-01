@@ -67,7 +67,7 @@ namespace SpaceGame
 
             animations = new Dictionary<string, Animation>()
             {
-                { "smoke", new Animation(Content.Load<Texture2D>("Effects/smoke"), 5,  0.1f) },
+                { "smoke", new Animation(Content.Load<Texture2D>("Effects/smoke"), 5,  0.2f) },
             };
 
             playerManager = new PlayerManager(camera);
@@ -95,8 +95,8 @@ namespace SpaceGame
             GraphicsDevice.Clear(Color.Black);
             spriteBatch.DrawRectangle(new Rectangle(-10, -10, 20, 20), Color.Red);
             _worldManager.Draw(spriteBatch);
-            playerManager.Draw(spriteBatch);
             particleManager.Draw(spriteBatch);
+            playerManager.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

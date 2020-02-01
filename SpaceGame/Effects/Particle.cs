@@ -34,11 +34,11 @@ namespace SpaceGame.Effects
             linearVelocity = new Vector2(Game1.r.Next(-10, 11), Game1.r.Next(-10, 11));
         }
 
-        public Particle(Vector2 position, Animation animation, float lifeTime = 999f)
+        public Particle(Vector2 position, Animation animation)
         {
             animationManager = new AnimationManager(animation);
             this.position = position;
-            this.lifeTime = lifeTime;
+            this.lifeTime = animation.frameCount * animation.frameSpeed;
             angularVelocity = Game1.r.Next(-10, 11);
             linearVelocity = new Vector2(Game1.r.Next(-10, 11), Game1.r.Next(-10, 11));
         }

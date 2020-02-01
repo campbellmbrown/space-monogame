@@ -74,7 +74,7 @@ namespace SpaceGame.Sprites
             currentSmokeDelay += t;
             if (currentSmokeDelay >= smokeDelay)
             {
-                currentSmokeDelay = 0;
+                currentSmokeDelay -= smokeDelay;
                 Game1.particleManager.AddParticle(new Smoke(position));
             }
         }
