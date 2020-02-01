@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
+using SpaceGame.Effects;
 using SpaceGame.Utilities;
 using System;
 using System.Collections.Generic;
@@ -71,10 +72,21 @@ namespace SpaceGame.Sprites
             else wingRotation = Helper.SimplifyRadians(wingRotation - wingAngularSpeed * t);
         }
 
+        public void AddSmoke(float t)
+        {
+            currentSmokeDelay += t;
+            if (currentSmokeDelay >= smokeDelay)
+            {
+                currentSmokeDelay = 0;
+                Game1.particleManager.AddParticle(new Smoke(position));
+            }
+        }
+
         public override void Update(GameTime gameTime)
         {
             float t = (float)gameTime.ElapsedGameTime.TotalSeconds;
             SetAccelerations(t);
+            if (linearThrust != 0) AddSmoke(t);
             Move(t);
             base.Update(gameTime);
         }

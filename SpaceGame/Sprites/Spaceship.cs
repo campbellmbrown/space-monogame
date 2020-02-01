@@ -16,6 +16,8 @@ namespace SpaceGame.Sprites
         protected int WingWidth { get { return wingTexture.Width; } }
         protected int WingHeight { get { return wingTexture.Height; } }
         protected Vector2 WingCenter { get { return new Vector2(WingWidth / 2f, WingHeight / 2f); } }
+        protected float smokeDelay = 0.05f;
+        protected float currentSmokeDelay = 0f;
 
         public Spaceship(Vector2 position, Texture2D texture, Texture2D wingTexture) 
             : base(position, texture)

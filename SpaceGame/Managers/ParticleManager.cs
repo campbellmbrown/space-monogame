@@ -25,14 +25,25 @@ namespace SpaceGame.Managers
 
         public void Update(GameTime gameTime)
         {
-            foreach (var particle in _particleList)
-                particle.Update(gameTime);
+            for (int i = _particleList.Count - 1; i >= 0; i--)
+            {
+                _particleList[i].Update(gameTime);
+                if (_particleList[i].ExceedsLifeTime())
+                {
+                    _particleList.Remove(_particleList[i]);
+                }
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (var particle in _particleList)
                 particle.Draw(spriteBatch);
+        }
+
+        public void DeleteParticle(Particle particle)
+        {
+            _particleList.Remove(particle);
         }
     }
 }

@@ -11,7 +11,13 @@
  - Add toggle button to see info/headings/stats on screen
  - Create a font
  - Find a way to have on screen debug messages using the font
- - Fix Smoke
+ - Give particles rotation
+ - Give particles velocity
+ - Give particles a fade option (?)
+ - Give particles a shrink option (?)
+ - Give particles an animation option
+ - Smoke animation
+ - Fix smoke from sourcing at the wrong location
 ========================================================================
 ================== LOW PRIORITY (nice to have) =========================
 ========================================================================

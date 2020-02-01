@@ -10,7 +10,7 @@ namespace SpaceGame.Effects
 {
     public class Smoke : Particle
     {
-        public Smoke(Vector2 position) : base(position, Game1.textures["smoke"])
+        public Smoke(Vector2 position) : base(position, Game1.textures["smoke"], 5f)
         {
         }
     }
