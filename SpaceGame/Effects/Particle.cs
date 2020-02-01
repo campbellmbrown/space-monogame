@@ -17,6 +17,7 @@ namespace SpaceGame.Effects
         protected float rotation;
         protected float angularVelocity;
         protected Vector2 linearVelocity;
+        protected Vector2 center { get { return new Vector2(texture.Width / 2f, texture.Height / 2f); } }
 
         public Particle(Vector2 position, Texture2D texture, float lifeTime = 0f)
         {
@@ -37,7 +38,7 @@ namespace SpaceGame.Effects
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, position, null, Color.White, rotation, center, 1f, SpriteEffects.None, 0f);
         }
 
         public bool ExceedsLifeTime()
