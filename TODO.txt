@@ -9,9 +9,11 @@
 ================== MEDIUM PRIORITY (affects gameplay) ==================
 ========================================================================
  - Add toggle button to see info/headings/stats on screen
+ - Animation class
+ - Player animation
  - Create a font
  - Find a way to have on screen debug messages using the font
- - Remove random particle velocity and rotation to the child classes
+ - Move random particle velocity and rotation to the child classes
  - Give particles a fade option (?)
  - Give particles a shrink option (?)
  - Give particles an animation option
@@ -36,3 +38,4 @@
  - - PlayerShip.cs
  - - SpaceShip.cs
  - - Sprite.cs
+ - Remove uneccessary 'using'
