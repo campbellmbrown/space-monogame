@@ -65,6 +65,7 @@ namespace SpaceGame
                 { "basic_ship_wings", Content.Load<Texture2D>("Ships/PlayerShips/basic_ship_wings") },
                 { "plastic", Content.Load<Texture2D>("Items/plastic") },
                 { "metal", Content.Load<Texture2D>("Items/metal") },
+                { "plants", Content.Load<Texture2D>("Items/plants") },
             };
 
             animations = new Dictionary<string, Animation>()
