@@ -73,5 +73,4 @@ namespace SpaceGame.Items
             rotation += angularVelocity * t;
         }
     }
-
 }

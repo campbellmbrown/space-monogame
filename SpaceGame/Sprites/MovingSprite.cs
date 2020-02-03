@@ -24,14 +24,20 @@ namespace SpaceGame.Sprites
         public Vector2 linearVelocity;
         public float linearDragCoefficient = 0;
         public float angularDragCoefficient = 0;
-        public float maxLinearVelocity = 0;
-        public float maxAngularVelocity = 0;
+        public float maxLinearVelocity = 9999f;
+        public float maxAngularVelocity = 9999f;
         public float maxLinearThrust = 0;
         public float maxAngularThrust = 0;
 
         public MovingSprite(Vector2 position, Texture2D texture) 
             : base(position, texture)
         {
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            Move((float)gameTime.ElapsedGameTime.TotalSeconds);
+            base.Update(gameTime);
         }
 
         public virtual void Move(float t)

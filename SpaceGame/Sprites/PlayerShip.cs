@@ -84,7 +84,6 @@ namespace SpaceGame.Sprites
             float t = (float)gameTime.ElapsedGameTime.TotalSeconds;
             SetAccelerations(t);
             if (linearThrust != 0) AddSmoke(t);
-            Move(t);
             base.Update(gameTime);
         }
 
