@@ -31,7 +31,7 @@ namespace SpaceGame.Items
             this.count = count;
             if (randomize)
             {
-                linearVelocity = new Vector2(Game1.r.Next(-100, 101), Game1.r.Next(-100, 101));
+                linearVelocity = new Vector2(Game1.r.Next(-50, 51), Game1.r.Next(-50, 51));
                 angularVelocity = Game1.r.Next(-628, 629) / 100f;
             }
             else
