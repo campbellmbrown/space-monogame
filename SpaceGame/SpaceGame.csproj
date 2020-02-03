@@ -44,7 +44,9 @@
     <Compile Include="Effects\Particle.cs" />
     <Compile Include="Effects\Smoke.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Items\Item.cs" />
     <Compile Include="Managers\AnimationManager.cs" />
+    <Compile Include="Managers\ItemManager.cs" />
     <Compile Include="Managers\ParticleManager.cs" />
     <Compile Include="Managers\PlayerManager.cs" />
     <Compile Include="Managers\StarManager.cs" />
