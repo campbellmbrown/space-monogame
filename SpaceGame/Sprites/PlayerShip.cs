@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
 using SpaceGame.Effects;
+using SpaceGame.Projectiles;
 using SpaceGame.Utilities;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ namespace SpaceGame.Sprites
     {
         private bool _holdingInfoToggle = false;
         private bool _showInfo = false;
+        private float _timeSinceLastShot = 0f;
+        private float _shotDelay = 0.2f;
 
         public PlayerShip(Vector2 position, Texture2D texture, Texture2D wingTexture) 
             : base(position, texture, wingTexture)
@@ -79,10 +82,24 @@ namespace SpaceGame.Sprites
             }
         }
 
+        public void AddProjectles(float t)
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                _timeSinceLastShot += t;
+                if (_timeSinceLastShot >= _shotDelay)
+                {
+                    _timeSinceLastShot -= _shotDelay;
+                    Game1.projectileManager.AddProjectile(new Lazer(position, rotation, Color.Red, facing * 200));
+                }
+            }
+        }
+
         public override void Update(GameTime gameTime)
         {
             float t = (float)gameTime.ElapsedGameTime.TotalSeconds;
             SetAccelerations(t);
+            AddProjectles(t);
             if (linearThrust != 0) AddSmoke(t);
             base.Update(gameTime);
         }
