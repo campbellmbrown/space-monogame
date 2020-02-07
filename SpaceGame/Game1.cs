@@ -67,6 +67,7 @@ namespace SpaceGame
                 { "metal", Content.Load<Texture2D>("Items/metal") },
                 { "plants", Content.Load<Texture2D>("Items/plants") },
                 { "crate", Content.Load<Texture2D>("Sprites/crate") },
+                { "lazer", Content.Load<Texture2D>("Projectiles/lazer") },
             };
 
             animations = new Dictionary<string, Animation>()
