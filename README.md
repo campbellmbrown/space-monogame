@@ -18,6 +18,7 @@ Visual Studio 2019
 ## Authors
 
 * **Campbell Brown** - *Initial work* - [campbellmbrown](https://github.com/campbellmbrown)
+* **Luke Swanson** - *Lore master* - [swansonluke](https://github.com/swansonluke)
 
 See also the list of [contributors](https://github.com/campbellmbrown/space-monogame/contributors) who participated in this project.
 
