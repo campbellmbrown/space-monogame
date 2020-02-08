@@ -90,7 +90,7 @@ namespace SpaceGame.Sprites
                 if (_timeSinceLastShot >= _shotDelay)
                 {
                     _timeSinceLastShot -= _shotDelay;
-                    Game1.projectileManager.AddProjectile(new Lazer(position, rotation, Color.Red, facing * 200));
+                    Game1.projectileManager.AddProjectile(new Lazer(position, rotation, Color.Red, facing * 300));
                 }
             }
         }

@@ -28,11 +28,11 @@ namespace SpaceGame
         public static PlayerManager playerManager;
         public static ParticleManager particleManager;
         public static ProjectileManager projectileManager;
+        public static WorldManager worldManager;
 
         Vector2 windowSize { get { return new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height); } }
         Vector2 windowCenter { get { return windowSize / 2f; } }
 
-        private WorldManager _worldManager;
 
         public Game1()
         {
@@ -77,7 +77,7 @@ namespace SpaceGame
             };
 
             playerManager = new PlayerManager(camera);
-            _worldManager = new WorldManager();
+            worldManager = new WorldManager();
             particleManager = new ParticleManager();
             projectileManager = new ProjectileManager();
         }
@@ -91,7 +91,7 @@ namespace SpaceGame
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             playerManager.Update(gameTime);
-            _worldManager.Update(gameTime);
+            worldManager.Update(gameTime);
             particleManager.Update(gameTime);
             projectileManager.Update(gameTime);
             base.Update(gameTime);
@@ -102,7 +102,7 @@ namespace SpaceGame
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, transformMatrix: camera.GetViewMatrix()); 
             GraphicsDevice.Clear(Color.Black);
             spriteBatch.DrawRectangle(new Rectangle(-10, -10, 20, 20), Color.Red);
-            _worldManager.Draw(spriteBatch);
+            worldManager.Draw(spriteBatch);
             particleManager.Draw(spriteBatch);
             playerManager.Draw(spriteBatch);
             projectileManager.Draw(spriteBatch);

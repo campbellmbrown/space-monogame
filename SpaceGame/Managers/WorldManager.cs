@@ -12,9 +12,9 @@ namespace SpaceGame.Managers
 {
     public class WorldManager
     {
-        StarManager starManager;
-        ItemManager itemManager;
-        CrateManager crateManager;
+        public StarManager starManager;
+        public ItemManager itemManager;
+        public CrateManager crateManager;
 
         public WorldManager()
         {
