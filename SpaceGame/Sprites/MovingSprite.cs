@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpaceGame.Models;
 using SpaceGame.Utilities;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Sprites
 {
-    public class MovingSprite : Sprite
+    public class MovingSprite : CollidableObject
     {
         protected Vector2 linearAcceleration;
         protected Vector2 linearFrictionAcceleration;

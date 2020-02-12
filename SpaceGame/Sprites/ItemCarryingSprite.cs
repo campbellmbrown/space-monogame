@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpaceGame.Items;
+using SpaceGame.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,14 @@ namespace SpaceGame.Sprites
     public class ItemCarryingSprite : MovingSprite
     {
         private List<Item> _items;
+        protected WorldManager worldManager;
 
         public ItemCarryingSprite(Vector2 position, Texture2D texture, Vector2 linearVelocity, float angularVelocity) 
             : base(position, texture)
         {
             base.linearVelocity = linearVelocity;
             base.angularVelocity = angularVelocity;
+            this.worldManager = Game1.worldManager;
             _items = new List<Item>();
         }
 
@@ -26,7 +29,7 @@ namespace SpaceGame.Sprites
             if (randomize)
             {
                 linearVelocity = new Vector2(Game1.r.Next(-50, 51), Game1.r.Next(-50, 51));
-                angularVelocity = Game1.r.Next(-628, 629) / 100f;
+                angularVelocity = Game1.r.Next(-200, 201) / 100f;
             }
             else
             {
@@ -34,6 +37,7 @@ namespace SpaceGame.Sprites
                 angularVelocity = 0f;
             }
             _items = new List<Item>();
+            this.worldManager = Game1.worldManager;
         }
 
         public void AddItems(List<Item> items)
@@ -45,7 +49,7 @@ namespace SpaceGame.Sprites
         {
             foreach (var item in _items)
             {
-                Game1.worldManager.itemManager.AddItem(item);
+                worldManager.itemManager.AddItem(item);
             }
         }
     }

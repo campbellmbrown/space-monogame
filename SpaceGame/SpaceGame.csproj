@@ -57,6 +57,7 @@
     <Compile Include="Managers\StarManager.cs" />
     <Compile Include="Managers\WorldManager.cs" />
     <Compile Include="Models\Animation.cs" />
+    <Compile Include="Models\CollidableObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Projectiles\Lazer.cs" />
     <Compile Include="Projectiles\Projectile.cs" />

@@ -12,15 +12,25 @@ namespace SpaceGame.Managers
     public class ProjectileManager
     {
         private List<Projectile> _projectiles;
+        private WorldManager _worldManager;
 
-        public ProjectileManager()
+        public ProjectileManager(WorldManager worldManager)
         {
             _projectiles = new List<Projectile>();
+            _worldManager = worldManager;
         }
 
         public void Update(GameTime gameTime)
         {
-            foreach (var projectile in _projectiles) projectile.Update(gameTime);
+            for (int i = _projectiles.Count - 1; i >= 0; i--)
+            {
+                _projectiles[i].Update(gameTime);
+                bool collided = _worldManager.crateManager.CheckCollision(_projectiles[i].collisionRectangle);
+                if (collided)
+                {
+                    _projectiles.Remove(_projectiles[i]);
+                }
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

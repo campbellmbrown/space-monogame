@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpaceGame.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,14 @@ namespace SpaceGame.Sprites
         public Crate(Vector2 position, bool randomize) 
             : base(position, Game1.textures["crate"], randomize)
         {
+        }
+
+        public override void BreakAction()
+        {
+            for (int i = 0; i < 4; ++i) worldManager.itemManager.AddItem(new Metal(position, 1, true));
+            for (int i = 0; i < 4; ++i) worldManager.itemManager.AddItem(new Plants(position, 1, true));
+            for (int i = 0; i < 4; ++i) worldManager.itemManager.AddItem(new Plastic(position, 1, true));
+            base.BreakAction();
         }
     }
 }
