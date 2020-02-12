@@ -5,6 +5,13 @@
  - Have an on-board view to manage the ship
  - - This tasks needs to be designed before implemented
  - - And possibly broken down into smaller tasks
+ - Link managers appropriately
+ - - ** When a linking issue is found, write it here
+ - Meteor class
+ - Meteor chunk class
+ - Meteor texture
+ - Collision
+ - Sound manager ?
 ========================================================================
 ================== MEDIUM PRIORITY (affects gameplay) ==================
 ========================================================================
@@ -18,6 +25,16 @@
  - Give particles an animation option
  - Fix smoke from sourcing at the wrong location
  - Fix smoke/particle animation
+ - Crate health
+ - Crate deletion on health depletion
+ - Crate damage particles
+ - Crate damage texture stages
+ - Crate break particles
+ - Meteor chunk health
+ - Meteor chunk deletion on health depletion
+ - Meteor deletion when no chunks left
+ - Meteor chunk texture
+ - Meteor item drops
 ========================================================================
 ================== LOW PRIORITY (nice to have) =========================
 ========================================================================
