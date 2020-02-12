@@ -11,39 +11,39 @@ namespace SpaceGame.Managers
 {
     public class ParticleManager
     {
-        private List<Particle> _particleList;
+        private List<Particle> _particles;
 
         public ParticleManager()
         {
-            _particleList = new List<Particle>();
+            _particles = new List<Particle>();
         }
 
         public void AddParticle(Particle particle)
         {
-            _particleList.Add(particle);
+            _particles.Add(particle);
         }
 
         public void Update(GameTime gameTime)
         {
-            for (int i = _particleList.Count - 1; i >= 0; i--)
+            for (int i = _particles.Count - 1; i >= 0; i--)
             {
-                _particleList[i].Update(gameTime);
-                if (_particleList[i].ExceedsLifeTime())
+                _particles[i].Update(gameTime);
+                if (_particles[i].ExceedsLifeTime())
                 {
-                    _particleList.Remove(_particleList[i]);
+                    _particles.Remove(_particles[i]);
                 }
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var particle in _particleList)
+            foreach (var particle in _particles)
                 particle.Draw(spriteBatch);
         }
 
         public void DeleteParticle(Particle particle)
         {
-            _particleList.Remove(particle);
+            _particles.Remove(particle);
         }
     }
 }
