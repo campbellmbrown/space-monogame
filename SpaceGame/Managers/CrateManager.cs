@@ -16,7 +16,6 @@ namespace SpaceGame.Managers
         public CrateManager()
         {
             _crates = new List<Crate>();
-            _crates.Add(new Crate(Vector2.Zero, true));
         }
 
         public void Update(GameTime gameTime)
@@ -32,6 +31,19 @@ namespace SpaceGame.Managers
         public void AddCrate(Crate crate)
         {
             _crates.Add(crate);
+        }
+
+        public bool CheckCollision(Rectangle collisionRectangle)
+        {
+            foreach (var crate in _crates)
+            {
+                if (crate.CheckCollision(collisionRectangle))
+                {
+                    crate.BreakAction();
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

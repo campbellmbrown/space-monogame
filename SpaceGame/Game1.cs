@@ -79,7 +79,8 @@ namespace SpaceGame
             playerManager = new PlayerManager(camera);
             worldManager = new WorldManager();
             particleManager = new ParticleManager();
-            projectileManager = new ProjectileManager();
+            projectileManager = new ProjectileManager(worldManager);
+            worldManager.crateManager.AddCrate(new Crate(Vector2.Zero, true));
         }
 
         protected override void UnloadContent()
