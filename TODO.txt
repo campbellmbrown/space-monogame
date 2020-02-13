@@ -7,9 +7,6 @@
  - - And possibly broken down into smaller tasks
  - Link managers appropriately
  - - ** When a linking issue is found, write it here
- - Meteor class
- - Meteor chunk class
- - Meteor texture
  - Collision
  - Sound manager ?
 ========================================================================
@@ -30,11 +27,12 @@
  - Crate damage particles
  - Crate damage texture stages
  - Crate break particles
- - Meteor chunk health
- - Meteor chunk deletion on health depletion
- - Meteor deletion when no chunks left
- - Meteor chunk texture
- - Meteor item drops
+ - Asteroid chunk health
+ - Asteroid chunk deletion on health depletion
+ - Asteroid deletion when no chunks left
+ - Asteroid item drops
+ - Fix asteroid buggy position
+ - Asteroid rotation
 ========================================================================
 ================== LOW PRIORITY (nice to have) =========================
 ========================================================================

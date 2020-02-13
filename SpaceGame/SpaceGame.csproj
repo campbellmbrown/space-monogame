@@ -49,6 +49,7 @@
     <Compile Include="Items\Metal.cs" />
     <Compile Include="Items\Plastic.cs" />
     <Compile Include="Managers\AnimationManager.cs" />
+    <Compile Include="Managers\AsteroidManager.cs" />
     <Compile Include="Managers\CrateManager.cs" />
     <Compile Include="Managers\ItemManager.cs" />
     <Compile Include="Managers\ParticleManager.cs" />
@@ -69,6 +70,8 @@
     <Compile Include="Sprites\Spaceship.cs" />
     <Compile Include="Sprites\Sprite.cs" />
     <Compile Include="Utilities\Helper.cs" />
+    <Compile Include="World\Asteroid.cs" />
+    <Compile Include="World\AsteroidChunk.cs" />
     <Compile Include="World\Star.cs" />
   </ItemGroup>
   <ItemGroup>

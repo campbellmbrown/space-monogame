@@ -6,6 +6,7 @@ using SpaceGame.Effects;
 using SpaceGame.Managers;
 using SpaceGame.Models;
 using SpaceGame.Sprites;
+using SpaceGame.World;
 using System;
 using System.Collections.Generic;
 
@@ -69,6 +70,7 @@ namespace SpaceGame
                 { "plants", Content.Load<Texture2D>("Items/plants") },
                 { "crate", Content.Load<Texture2D>("Sprites/crate") },
                 { "lazer", Content.Load<Texture2D>("Projectiles/lazer") },
+                { "asteroid_chunk", Content.Load<Texture2D>("World/asteroid_chunk") },
             };
 
             animations = new Dictionary<string, Animation>()
@@ -81,6 +83,10 @@ namespace SpaceGame
             particleManager = new ParticleManager();
             projectileManager = new ProjectileManager(worldManager);
             worldManager.crateManager.AddCrate(new Crate(Vector2.Zero, true));
+            worldManager.asteroidManager.AddAsteroid(new Asteroid(Vector2.Zero, 10, 20));
+            worldManager.asteroidManager.AddAsteroid(new Asteroid(Vector2.Zero, 10, 20));
+            worldManager.asteroidManager.AddAsteroid(new Asteroid(Vector2.Zero, 10, 20));
+
         }
 
         protected override void UnloadContent()
