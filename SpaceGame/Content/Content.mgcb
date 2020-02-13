@@ -83,7 +83,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Ships/PlayerShips/basic_ship_main.png
+/build:Ships/basic_ship_main.png
 
 #begin Ships/PlayerShips/basic_ship_wings.png
 /importer:TextureImporter
@@ -95,7 +95,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Ships/PlayerShips/basic_ship_wings.png
+/build:Ships/basic_ship_wings.png
 
 #begin Sprites/crate.png
 /importer:TextureImporter
@@ -108,4 +108,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/crate.png
+
+#begin World/asteroid_chunk.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:World/asteroid_chunk.png
 
