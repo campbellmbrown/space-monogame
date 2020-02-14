@@ -10,8 +10,10 @@ namespace SpaceGame.World
 {
     public class AsteroidChunk
     {
+        protected Vector2 rotatedRelativePosition;
         public Vector2 relativePosition;
         protected Vector2 position;
+        protected float relativeRotation;
         protected float rotation;
         protected Texture2D texture;
         protected int width { get { return texture.Width; } }
@@ -21,7 +23,7 @@ namespace SpaceGame.World
         public AsteroidChunk(Vector2 relativePosition)
         {
             this.relativePosition = relativePosition;
-            this.rotation = Game1.r.Next(0, 4) * (float)Math.PI / 2f;
+            this.relativeRotation = Game1.r.Next(0, 4) * (float)Math.PI / 2f;
             texture = Game1.textures["asteroid_chunk"];
         }
 
@@ -32,13 +34,16 @@ namespace SpaceGame.World
 
         public void UpdatePosition(Vector2 position, float rotation)
         {
-            // Don't do anything with rotation at first
-            this.position = position + relativePosition;
+            rotatedRelativePosition = new Vector2(
+                relativePosition.X * (float)Math.Cos(rotation) - relativePosition.Y * (float)Math.Sin(rotation),
+                relativePosition.X * (float)Math.Sin(rotation) + relativePosition.Y * (float)Math.Cos(rotation));
+            this.position = position;
+            this.rotation = rotation;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, null, Color.White, rotation, center, 1f, SpriteEffects.None, 1f);
+            spriteBatch.Draw(texture, rotatedRelativePosition + position, null, Color.White, relativeRotation + rotation, center, 1f, SpriteEffects.None, 1f);
         }
     }
 }

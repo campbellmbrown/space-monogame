@@ -23,6 +23,7 @@ namespace SpaceGame.World
         {
             this.position = position;
             linearVelocity = new Vector2(Game1.r.Next(-50, 51), Game1.r.Next(-50, 51));
+            angularVelocity = Game1.r.Next(-400, 401) / 100f;
             meteorChunks = new List<AsteroidChunk>();
             this.minCount = minCount;
             this.maxCount = maxCount;

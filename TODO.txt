@@ -32,7 +32,6 @@
  - Asteroid deletion when no chunks left
  - Asteroid item drops
  - Fix asteroid buggy position
- - Asteroid rotation
 ========================================================================
 ================== LOW PRIORITY (nice to have) =========================
 ========================================================================
@@ -53,3 +52,4 @@
  - - SpaceShip.cs
  - - Sprite.cs
  - Remove uneccessary 'using'
+ - Review geomety with the meteor rotation
