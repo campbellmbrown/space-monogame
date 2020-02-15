@@ -5,6 +5,7 @@
   <Config />
   <SourceFiles>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Effects/smoke.png</File>
+    <File>D:/Git Projects/space-monogame/SpaceGame/Content/Fonts/File.spritefont</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Items/metal.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Items/plants.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Items/plastic.png</File>
@@ -16,6 +17,7 @@
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
+    <File>Fonts/courier_new.spritefont</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

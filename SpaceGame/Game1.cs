@@ -16,16 +16,18 @@ namespace SpaceGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Camera2D camera;
+        static Camera2D camera;
 
         public static Random r;
         public static float zoom = 3f;
         public static Dictionary<string, Texture2D> textures;
         public static Dictionary<string, Animation> animations;
+        public static Dictionary<string, SpriteFont> fonts;
         public static Vector2 screenSize { get { return new Vector2(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height); } }
         public static Vector2 zoomedScreenSize { get { return screenSize / zoom; } }
         public static Vector2 positionCenter { get { return playerManager.playerPosition; } }
         public static Vector2 screenCenter { get { return screenSize / 2f; } }
+        public static Vector2 topLeftCorner { get { return positionCenter - screenCenter / camera.Zoom; } }
         public static PlayerManager playerManager;
         public static ParticleManager particleManager;
         public static ProjectileManager projectileManager;
@@ -76,6 +78,11 @@ namespace SpaceGame
             animations = new Dictionary<string, Animation>()
             {
                 { "smoke", new Animation(Content.Load<Texture2D>("Effects/smoke"), 5,  0.2f) },
+            };
+
+            fonts = new Dictionary<string, SpriteFont>()
+            {
+                { "courier_new", Content.Load<SpriteFont>("Fonts/courier_new") },
             };
 
             playerManager = new PlayerManager(camera);
