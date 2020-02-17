@@ -30,7 +30,7 @@ namespace SpaceGame.Managers
                 _particles[i].Update(gameTime);
                 if (_particles[i].ExceedsLifeTime())
                 {
-                    _particles.Remove(_particles[i]);
+                    _particles.RemoveAt(i);
                 }
             }
         }

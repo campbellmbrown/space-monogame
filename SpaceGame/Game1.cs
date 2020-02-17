@@ -90,6 +90,9 @@ namespace SpaceGame
             particleManager = new ParticleManager();
             projectileManager = new ProjectileManager(worldManager);
             worldManager.crateManager.AddCrate(new Crate(Vector2.Zero, true));
+            worldManager.crateManager.AddCrate(new Crate(Vector2.Zero, true));
+            worldManager.crateManager.AddCrate(new Crate(Vector2.Zero, true));
+            worldManager.crateManager.AddCrate(new Crate(Vector2.Zero, true));
             worldManager.asteroidManager.AddAsteroid(new Asteroid(Vector2.Zero, 10, 20));
             worldManager.asteroidManager.AddAsteroid(new Asteroid(Vector2.Zero, 10, 20));
             worldManager.asteroidManager.AddAsteroid(new Asteroid(Vector2.Zero, 10, 20));

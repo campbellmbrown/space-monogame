@@ -10,7 +10,7 @@ namespace SpaceGame.Effects
 {
     public class Smoke : Particle
     {
-        public Smoke(Vector2 position) : base(position, Game1.animations["smoke"])
+        public Smoke(Vector2 position, bool randomize) : base(position, Game1.animations["smoke"], randomize)
         {
         }
     }

@@ -35,11 +35,12 @@ namespace SpaceGame.Managers
 
         public bool CheckCollision(Rectangle collisionRectangle)
         {
-            foreach (var crate in _crates)
+            for (int i = _crates.Count - 1; i >= 0; i--)
             {
-                if (crate.CheckCollision(collisionRectangle))
+                if (_crates[i].CheckCollision(collisionRectangle))
                 {
-                    crate.BreakAction();
+                    _crates[i].BreakAction();
+                    _crates.RemoveAt(i);
                     return true;
                 }
             }

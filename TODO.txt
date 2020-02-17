@@ -32,6 +32,9 @@
  - Asteroid deletion when no chunks left
  - Asteroid item drops
  - Fix asteroid buggy position
+ - Make crate destruction particles more dynamic (maybe some randomness)
+ - Make crate particles dissapear after some time
+ - Make crate breaking pieces be able to work with even numbers
 ========================================================================
 ================== LOW PRIORITY (nice to have) =========================
 ========================================================================
