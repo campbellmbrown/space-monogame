@@ -28,7 +28,7 @@ namespace SpaceGame.Managers
             for (int i = _particles.Count - 1; i >= 0; i--)
             {
                 _particles[i].Update(gameTime);
-                if (_particles[i].ExceedsLifeTime())
+                if (_particles[i].CheckToDestroy())
                 {
                     _particles.RemoveAt(i);
                 }

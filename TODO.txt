@@ -18,9 +18,6 @@
  - Create a font
  - Find a way to have on screen debug messages using the font
  - Move random particle velocity and rotation to the child classes
- - Give particles a fade option (?)
- - Give particles a shrink option (?)
- - Give particles an animation option
  - Fix smoke from sourcing at the wrong location
  - Fix smoke/particle animation
  - Crate health
@@ -33,8 +30,6 @@
  - Asteroid deletion when no chunks left
  - Asteroid item drops
  - Fix asteroid buggy position
- - Make crate particles dissapear after some time
- - Make crate breaking pieces be able to work with even numbers
 ========================================================================
 ================== LOW PRIORITY (nice to have) =========================
 ========================================================================
@@ -55,3 +50,4 @@
  - - SpaceShip.cs
  - - Sprite.cs
  - Remove uneccessary 'using'
+ - Fix public/private/protected
