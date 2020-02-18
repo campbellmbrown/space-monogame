@@ -4,6 +4,7 @@ using MonoGame.Extended;
 using SpaceGame.Effects;
 using SpaceGame.Items;
 using SpaceGame.Managers;
+using SpaceGame.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace SpaceGame.Sprites
     {
         private List<Item> _items;
         protected WorldManager worldManager;
-        protected int breakingPieces = 7;
+        protected int breakingPieces = 5;
 
         public ItemCarryingSprite(Vector2 position, Texture2D texture, Vector2 linearVelocity, float angularVelocity) 
             : base(position, texture)
@@ -56,7 +57,7 @@ namespace SpaceGame.Sprites
             }
         }
 
-        public virtual void AddParticles()
+        public virtual void AddBreakingParticles()
         {
             for (int i = (1 - breakingPieces) / 2; i < (breakingPieces + 1) / 2; ++i)
             {
@@ -77,7 +78,7 @@ namespace SpaceGame.Sprites
                             Height / breakingPieces),
                         rotation = this.rotation,
                         angularVelocity = this.angularVelocity,
-                        linearVelocity = this.linearVelocity + tangentialDirection * this.angularVelocity * relativePosition.Length()
+                        linearVelocity = this.linearVelocity + Helper.Vector2RandomDirecAndLength(5) + tangentialDirection * this.angularVelocity * relativePosition.Length()
                     };
                     Game1.particleManager.AddParticle(particle);
                 }

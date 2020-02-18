@@ -110,7 +110,7 @@ namespace SpaceGame.Sprites
             {
                 spriteBatch.DrawLine(position + facing * 20, position + facing * 40, Color.Green);
                 spriteBatch.DrawLine(position + direction * 20, position + direction * (20 + (linearVelocity.Length()) * 20 / maxLinearVelocity), Color.Blue);
-            }                                                   
+            }
             base.Draw(spriteBatch);
         }
     }

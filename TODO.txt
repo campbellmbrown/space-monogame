@@ -9,6 +9,7 @@
  - - ** When a linking issue is found, write it here
  - Collision
  - Sound manager ?
+ - Fullscreen
 ========================================================================
 ================== MEDIUM PRIORITY (affects gameplay) ==================
 ========================================================================
@@ -32,7 +33,6 @@
  - Asteroid deletion when no chunks left
  - Asteroid item drops
  - Fix asteroid buggy position
- - Make crate destruction particles more dynamic (maybe some randomness)
  - Make crate particles dissapear after some time
  - Make crate breaking pieces be able to work with even numbers
 ========================================================================
@@ -55,4 +55,3 @@
  - - SpaceShip.cs
  - - Sprite.cs
  - Remove uneccessary 'using'
- - Review geomety with the meteor rotation

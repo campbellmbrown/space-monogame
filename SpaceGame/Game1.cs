@@ -43,7 +43,7 @@ namespace SpaceGame
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = (int)screenSize.X;
             graphics.PreferredBackBufferHeight = (int)screenSize.Y;
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
         }
 
         protected override void Initialize()
