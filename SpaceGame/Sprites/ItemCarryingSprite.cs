@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
 using SpaceGame.Effects;
@@ -59,23 +59,20 @@ namespace SpaceGame.Sprites
 
         public virtual void AddBreakingParticles()
         {
-            for (int i = (1 - breakingPieces) / 2; i < (breakingPieces + 1) / 2; ++i)
+            if (breakingPieces <= 0) return;
+            for (int i = 1 - breakingPieces; i < breakingPieces + 1; i+=2)
             {
-                for (int j = (1 - breakingPieces) / 2; j < (breakingPieces + 1) / 2; ++j)
+                for (int j = 1 - breakingPieces; j < breakingPieces + 1; j+=2)
                 {
-                    var relativePosition = new Vector2(i * Width / breakingPieces, j * Height / breakingPieces);
+                    var relativePosition = new Vector2((i / 2f) * Width / breakingPieces, (j / 2f) * Height / breakingPieces);
                     var rotatedRelativePosition = new Vector2(
                         relativePosition.X * (float)Math.Cos(rotation) - relativePosition.Y * (float)Math.Sin(rotation),
                         relativePosition.X * (float)Math.Sin(rotation) + relativePosition.Y * (float)Math.Cos(rotation));
-                    var tangentialDirection = (i == 0 && j == 0) ? Vector2.Zero : Vector2.Normalize(new Vector2(-rotatedRelativePosition.Y, rotatedRelativePosition.X));
+                    var tangentialDirection = (rotatedRelativePosition == Vector2.Zero) ? Vector2.Zero : Vector2.Normalize(new Vector2(-rotatedRelativePosition.Y, rotatedRelativePosition.X));
 
                     Particle particle = new Particle(position + rotatedRelativePosition, texture, false)
                     {
-                        textureRectangle = new Rectangle(
-                            (i + (breakingPieces - 1) / 2) * Width / breakingPieces,
-                            (j + (breakingPieces - 1) / 2) * Height / breakingPieces,
-                            Width / breakingPieces,
-                            Height / breakingPieces),
+                        textureRectangle = new Rectangle((i + breakingPieces - 1) * Width / (2 * breakingPieces), (j + breakingPieces - 1) * Height / (2 * breakingPieces), Width / breakingPieces, Height / breakingPieces),
                         rotation = this.rotation,
                         angularVelocity = this.angularVelocity,
                         linearVelocity = this.linearVelocity + Helper.Vector2RandomDirecAndLength(5) + tangentialDirection * this.angularVelocity * relativePosition.Length()
@@ -85,4 +82,4 @@ namespace SpaceGame.Sprites
             }
         }
     }
-}
+}
