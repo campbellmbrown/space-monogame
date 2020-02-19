@@ -15,8 +15,6 @@ namespace SpaceGame.Sprites
 {
     public class PlayerShip : Spaceship
     {
-        private bool _holdingInfoToggle = false;
-        private bool _showInfo = false;
         private float _timeSinceLastShot = 0f;
         private float _shotDelay = 0.2f;
 
@@ -35,14 +33,6 @@ namespace SpaceGame.Sprites
             if (keyboardState.IsKeyDown(Keys.W)) MoveForward(t);
             else if (keyboardState.IsKeyDown(Keys.S)) MoveBackward(t);
             else linearThrust = 0f;
-            if (keyboardState.IsKeyDown(Keys.Tab))
-            {
-                if (!_holdingInfoToggle)
-                    _showInfo = !_showInfo;
-                _holdingInfoToggle = true;
-            }
-            else
-                _holdingInfoToggle = false;
         }
 
         public void MoveClockwise()
@@ -110,11 +100,6 @@ namespace SpaceGame.Sprites
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (_showInfo)
-            {
-                spriteBatch.DrawLine(position + facing * 20, position + facing * 40, Color.Green);
-                spriteBatch.DrawLine(position + direction * 20, position + direction * (20 + (linearVelocity.Length()) * 20 / maxLinearVelocity), Color.Blue);
-            }
             base.Draw(spriteBatch);
         }
     }

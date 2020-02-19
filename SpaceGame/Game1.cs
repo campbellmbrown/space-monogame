@@ -33,6 +33,7 @@ namespace SpaceGame
         public static ProjectileManager projectileManager;
         public static WorldManager worldManager;
         public static DebugManager debugManager;
+        public static EventManager eventManager;
 
         Vector2 windowSize { get { return new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height); } }
         Vector2 windowCenter { get { return windowSize / 2f; } }
@@ -93,6 +94,7 @@ namespace SpaceGame
             particleManager = new ParticleManager();
             projectileManager = new ProjectileManager(worldManager);
             debugManager = new DebugManager();
+            eventManager = new EventManager();
             worldManager.crateManager.AddCrate(new Crate(Vector2.Zero, true));
             worldManager.crateManager.AddCrate(new Crate(Vector2.Zero, true));
             worldManager.crateManager.AddCrate(new Crate(Vector2.Zero, true));
@@ -111,6 +113,7 @@ namespace SpaceGame
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            eventManager.Update(gameTime);
             playerManager.Update(gameTime);
             worldManager.Update(gameTime);
             particleManager.Update(gameTime);

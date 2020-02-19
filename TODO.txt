@@ -10,6 +10,9 @@
  - Collision
  - Sound manager ?
  - Fullscreen
+ - Move keypresses to keypress manager
+ - Move player keypresses to event/keypress manager
+ - Move shooting keypresses to event/keypress manager
 ========================================================================
 ================== MEDIUM PRIORITY (affects gameplay) ==================
 ========================================================================

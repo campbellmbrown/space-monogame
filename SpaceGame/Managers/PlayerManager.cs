@@ -17,6 +17,10 @@ namespace SpaceGame.Managers
         public Vector2 playerLinearVelocity { get { return playerShip.linearVelocity; } }
         public float playerAngularVelocity { get { return playerShip.angularVelocity; } }
         public float playerRotation { get { return playerShip.rotation; } }
+        public Vector2 playerDirection { get { return playerShip.direction; } }
+        public float maxLinearVelocity { get { return playerShip.maxLinearVelocity; } }
+        public Vector2 playerFacing { get { return playerShip.facing; } }
+
         Camera2D camera;
 
         public PlayerManager(Camera2D camera)

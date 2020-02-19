@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,12 +24,22 @@ namespace SpaceGame.Managers
         }
     }
 
+    public enum DebugLevel
+    {
+        Nothing,
+        Headings,
+        Messages
+    }
+
     public class DebugManager
     {
         protected Vector2 relativeStartingPosition = new Vector2(5, 5 - offsetAmount);
         protected Vector2 startingPosition { get { return Game1.topLeftCorner + relativeStartingPosition; } }
         protected List<DebugMessage> debugMessages;
         protected static float offsetAmount { get { return DebugMessage.height; } }
+        public DebugLevel debugLevel = DebugLevel.Headings;
+        protected PlayerManager playerManager = Game1.playerManager;
+        protected ParticleManager particleManager = Game1.particleManager;
 
         public DebugManager()
         {
@@ -44,23 +55,40 @@ namespace SpaceGame.Managers
 
         public void Update(GameTime gameTime)
         {
-            debugMessages[0].value = Game1.playerManager.playerPosition.ToString();
-            debugMessages[1].value = Game1.playerManager.playerLinearVelocity.ToString();
-            debugMessages[2].value = Game1.playerManager.playerAngularVelocity.ToString();
-            debugMessages[3].value = Game1.playerManager.playerRotation.ToString();
-            debugMessages[4].value = Game1.particleManager.particleCount.ToString();
-
-            Vector2 offsetPosition = startingPosition;
-            foreach (var debugMessage in debugMessages)
+            if (debugLevel == DebugLevel.Nothing) return;
+            else if (debugLevel == DebugLevel.Messages)
             {
-                offsetPosition.Y += offsetAmount;
-                debugMessage.position = offsetPosition;
+                debugMessages[0].value = playerManager.playerPosition.ToString();
+                debugMessages[1].value = playerManager.playerLinearVelocity.ToString();
+                debugMessages[2].value = playerManager.playerAngularVelocity.ToString();
+                debugMessages[3].value = playerManager.playerRotation.ToString();
+                debugMessages[4].value = particleManager.particleCount.ToString();
+
+                Vector2 offsetPosition = startingPosition;
+                foreach (var debugMessage in debugMessages)
+                {
+                    offsetPosition.Y += offsetAmount;
+                    debugMessage.position = offsetPosition;
+                }
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var debugMessage in debugMessages) debugMessage.Draw(spriteBatch);
+            if (debugLevel == DebugLevel.Nothing) return;
+            else if (debugLevel == DebugLevel.Messages) foreach (var debugMessage in debugMessages) debugMessage.Draw(spriteBatch);
+            else if (debugLevel == DebugLevel.Headings)
+            {
+                spriteBatch.DrawLine(playerManager.playerPosition + playerManager.playerFacing * 20, playerManager.playerPosition + playerManager.playerFacing * 40, Color.Green);
+                spriteBatch.DrawLine(playerManager.playerPosition + playerManager.playerDirection * 20, playerManager.playerPosition + playerManager.playerDirection * (20 + (playerManager.playerLinearVelocity.Length()) * 20 / playerManager.maxLinearVelocity), Color.Yellow);
+            }
+        }
+
+        public void ToggleDebugLevels()
+        {
+            if (debugLevel == DebugLevel.Nothing) debugLevel = DebugLevel.Headings;
+            else if (debugLevel == DebugLevel.Headings) debugLevel = DebugLevel.Messages;
+            else if (debugLevel == DebugLevel.Messages) debugLevel = DebugLevel.Nothing;
         }
     }
 }
