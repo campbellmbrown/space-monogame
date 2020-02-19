@@ -15,8 +15,8 @@
 ========================================================================
  - Add toggle button to see info/headings/stats on screen
  - Player animation
- - Create a font
- - Find a way to have on screen debug messages using the font
+ - Create a custom font
+ - Replace the debug font with the custom font
  - Move random particle velocity and rotation to the child classes
  - Fix smoke/particle animation
  - Crate health
@@ -29,6 +29,8 @@
  - Asteroid deletion when no chunks left
  - Asteroid item drops
  - Fix asteroid buggy position
+ - Add more to the debug messages
+ - Add a lookup to the debug update to make things more readable
 ========================================================================
 ================== LOW PRIORITY (nice to have) =========================
 ========================================================================

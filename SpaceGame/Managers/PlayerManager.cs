@@ -13,8 +13,10 @@ namespace SpaceGame.Managers
     public class PlayerManager
     {
         PlayerShip playerShip;
-        public Vector2 playerVelocity { get { return playerShip.linearVelocity; } }
         public Vector2 playerPosition { get { return playerShip.position; } }
+        public Vector2 playerLinearVelocity { get { return playerShip.linearVelocity; } }
+        public float playerAngularVelocity { get { return playerShip.angularVelocity; } }
+        public float playerRotation { get { return playerShip.rotation; } }
         Camera2D camera;
 
         public PlayerManager(Camera2D camera)

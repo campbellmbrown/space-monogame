@@ -13,7 +13,7 @@ namespace SpaceGame.Sprites
         public Vector2 position;
         protected Texture2D texture;
         protected readonly float scale = 1f;
-        protected float rotation = 0f;
+        public float rotation = 0f;
         protected int Width { get { return texture.Width; } }
         protected int Height { get { return texture.Height; } }
         protected Vector2 Center { get { return new Vector2(Width / 2f, Height / 2f); } }

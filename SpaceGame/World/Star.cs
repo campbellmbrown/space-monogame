@@ -29,7 +29,7 @@ namespace SpaceGame.World
         public void Update(GameTime gameTime)
         {
             float t = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            position += Game1.playerManager.playerVelocity * t * depth / 10f;
+            position += Game1.playerManager.playerLinearVelocity * t * depth / 10f;
             if (position.X > Game1.positionCenter.X + screenWidth / 2f) position.X -= screenWidth;
             else if (position.X < Game1.positionCenter.X - screenWidth / 2f) position.X += screenWidth;
             else if (position.Y > Game1.positionCenter.Y + screenHeight / 2f) position.Y -= screenHeight;

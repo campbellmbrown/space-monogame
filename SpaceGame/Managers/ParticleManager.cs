@@ -12,7 +12,7 @@ namespace SpaceGame.Managers
     public class ParticleManager
     {
         private List<Particle> _particles;
-
+        public int particleCount { get { return _particles.Count; } }
         public ParticleManager()
         {
             _particles = new List<Particle>();

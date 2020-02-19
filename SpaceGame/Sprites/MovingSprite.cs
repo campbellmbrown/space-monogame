@@ -14,7 +14,6 @@ namespace SpaceGame.Sprites
     {
         protected Vector2 linearAcceleration;
         protected Vector2 linearFrictionAcceleration;
-        protected float angularVelocity;
         protected float angularAcceleration;
         protected float angularFrictionAcceleration;
         protected float linearThrust = 0;
@@ -23,6 +22,7 @@ namespace SpaceGame.Sprites
         public Vector2 direction { get { return (linearVelocity.Length() == 0) ? Vector2.Zero : Vector2.Normalize(linearVelocity); } }
         protected int spinningDirection { get { return Math.Sign(angularVelocity); } }
         public Vector2 linearVelocity;
+        public float angularVelocity;
         public float linearDragCoefficient = 0;
         public float angularDragCoefficient = 0;
         public float maxLinearVelocity = 9999f;
