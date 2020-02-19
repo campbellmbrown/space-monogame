@@ -29,31 +29,12 @@ namespace SpaceGame.Sprites
         {
             KeyboardState keyboardState = Keyboard.GetState();
 
-            if (keyboardState.IsKeyDown(Keys.A)) 
-            {
-                angularThrust = -maxAngularThrust;
-            }
-            else if (keyboardState.IsKeyDown(Keys.D))
-            {
-                angularThrust = maxAngularThrust;
-            } else
-            {
-                angularThrust = 0f;
-            }
-            if (keyboardState.IsKeyDown(Keys.W))
-            {
-                RotateWings(t);
-                linearThrust = maxLinearThrust;
-            }
-            else if (keyboardState.IsKeyDown(Keys.S))
-            {
-                RotateWings(t);
-                linearThrust = -maxLinearThrust;
-            }
-            else
-            {
-                linearThrust = 0f;
-            }
+            if (keyboardState.IsKeyDown(Keys.A)) MoveAntiClockwise();
+            else if (keyboardState.IsKeyDown(Keys.D)) MoveClockwise();
+            else angularThrust = 0f;
+            if (keyboardState.IsKeyDown(Keys.W)) MoveForward(t);
+            else if (keyboardState.IsKeyDown(Keys.S)) MoveBackward(t);
+            else linearThrust = 0f;
             if (keyboardState.IsKeyDown(Keys.Tab))
             {
                 if (!_holdingInfoToggle)
@@ -62,6 +43,28 @@ namespace SpaceGame.Sprites
             }
             else
                 _holdingInfoToggle = false;
+        }
+
+        public void MoveClockwise()
+        { 
+            angularThrust = maxAngularThrust; 
+        }
+
+        public void MoveAntiClockwise()
+        { 
+            angularThrust = -maxAngularThrust;
+        }
+
+        public void MoveForward(float t)
+        {
+            RotateWings(t);
+            linearThrust = maxLinearThrust;
+        }
+
+        public void MoveBackward(float t)
+        {
+            RotateWings(t);
+            linearThrust = -maxLinearThrust;
         }
 
         public void RotateWings(float t)
