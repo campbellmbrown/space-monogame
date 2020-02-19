@@ -18,7 +18,6 @@
  - Create a font
  - Find a way to have on screen debug messages using the font
  - Move random particle velocity and rotation to the child classes
- - Fix smoke from sourcing at the wrong location
  - Fix smoke/particle animation
  - Crate health
  - Crate deletion on health depletion

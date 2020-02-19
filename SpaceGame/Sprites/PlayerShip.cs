@@ -78,7 +78,8 @@ namespace SpaceGame.Sprites
             if (currentSmokeDelay >= smokeDelay)
             {
                 currentSmokeDelay -= smokeDelay;
-                Game1.particleManager.AddParticle(new Smoke(position, true));
+                Vector2 smokePosition = position + Helper.RotateVector(new Vector2(0, Height / 2f), rotation);
+                Game1.particleManager.AddParticle(new Smoke(smokePosition, true));
             }
         }
 
