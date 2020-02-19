@@ -84,6 +84,8 @@ namespace SpaceGame
             fonts = new Dictionary<string, SpriteFont>()
             {
                 { "courier_new", Content.Load<SpriteFont>("Fonts/courier_new") },
+                { "courier_new_bold", Content.Load<SpriteFont>("Fonts/courier_new_bold") },
+                { "courier_new_italic", Content.Load<SpriteFont>("Fonts/courier_new_italic") }
             };
 
             playerManager = new PlayerManager(camera);

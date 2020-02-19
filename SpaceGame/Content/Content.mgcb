@@ -25,12 +25,26 @@
 /processorParam:TextureFormat=Color
 /build:Effects/smoke.png
 
+#begin Fonts/courier_new_bold.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/courier_new_bold.spritefont
+
+#begin Fonts/courier_new_italic.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/courier_new_italic.spritefont
+
 #begin Fonts/File.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
-/build:Fonts/File.spritefont;Fonts/courier_new.spritefont
+/build:Fonts/courier_new.spritefont
 
 #begin Items/metal.png
 /importer:TextureImporter

@@ -14,8 +14,8 @@ namespace SpaceGame.Managers
         public string value = "";
         public Vector2 position;
         protected string printableString { get { return name + ": " + value; } }
-        protected SpriteFont font = Game1.fonts["courier_new"];
-        public static float height = 9f;
+        protected SpriteFont font = Game1.fonts["courier_new_bold"];
+        public static float height = 8f;
 
         public void Draw(SpriteBatch spriteBatch)
         {
