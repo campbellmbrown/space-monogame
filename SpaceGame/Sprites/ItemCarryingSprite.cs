@@ -65,9 +65,7 @@ namespace SpaceGame.Sprites
                 for (int j = 1 - breakingPieces; j < breakingPieces + 1; j+=2)
                 {
                     var relativePosition = new Vector2((i / 2f) * Width / breakingPieces, (j / 2f) * Height / breakingPieces);
-                    var rotatedRelativePosition = new Vector2(
-                        relativePosition.X * (float)Math.Cos(rotation) - relativePosition.Y * (float)Math.Sin(rotation),
-                        relativePosition.X * (float)Math.Sin(rotation) + relativePosition.Y * (float)Math.Cos(rotation));
+                    var rotatedRelativePosition = Helper.RotateVector(relativePosition, rotation);
                     var tangentialDirection = (rotatedRelativePosition == Vector2.Zero) ? Vector2.Zero : Vector2.Normalize(new Vector2(-rotatedRelativePosition.Y, rotatedRelativePosition.X));
 
                     Particle particle = new Particle(position + rotatedRelativePosition, texture, false, ParticleDestroyType.Fade)

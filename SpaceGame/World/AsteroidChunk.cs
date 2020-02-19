@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpaceGame.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,9 +35,7 @@ namespace SpaceGame.World
 
         public void UpdatePosition(Vector2 position, float rotation)
         {
-            rotatedRelativePosition = new Vector2(
-                relativePosition.X * (float)Math.Cos(rotation) - relativePosition.Y * (float)Math.Sin(rotation),
-                relativePosition.X * (float)Math.Sin(rotation) + relativePosition.Y * (float)Math.Cos(rotation));
+            rotatedRelativePosition = Helper.RotateVector(relativePosition, rotation);
             this.position = position;
             this.rotation = rotation;
         }
