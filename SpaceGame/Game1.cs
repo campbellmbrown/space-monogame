@@ -34,6 +34,7 @@ namespace SpaceGame
         public static WorldManager worldManager;
         public static DebugManager debugManager;
         public static EventManager eventManager;
+        public static GuiManager guiManager;
 
         Vector2 windowSize { get { return new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height); } }
         Vector2 windowCenter { get { return windowSize / 2f; } }
@@ -95,6 +96,7 @@ namespace SpaceGame
             projectileManager = new ProjectileManager(worldManager);
             debugManager = new DebugManager();
             eventManager = new EventManager();
+            guiManager = new GuiManager();
             worldManager.crateManager.TopUpCrates();
             worldManager.asteroidManager.AddAsteroid(new Asteroid(Vector2.Zero, 10, 20));
             worldManager.asteroidManager.AddAsteroid(new Asteroid(Vector2.Zero, 10, 20));
@@ -116,6 +118,7 @@ namespace SpaceGame
             particleManager.Update(gameTime);
             projectileManager.Update(gameTime);
             debugManager.Update(gameTime);
+            guiManager.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -129,6 +132,7 @@ namespace SpaceGame
             playerManager.Draw(spriteBatch);
             projectileManager.Draw(spriteBatch);
             debugManager.Draw(spriteBatch);
+            guiManager.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
