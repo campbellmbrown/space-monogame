@@ -60,10 +60,10 @@ namespace SpaceGame.Managers
             if (debugLevel == DebugLevel.Nothing) return;
             else if (debugLevel == DebugLevel.Messages)
             {
-                debugMessages[0].value = playerManager.playerPosition.ToString();
-                debugMessages[1].value = playerManager.playerLinearVelocity.ToString();
-                debugMessages[2].value = playerManager.playerAngularVelocity.ToString();
-                debugMessages[3].value = playerManager.playerRotation.ToString();
+                debugMessages[0].value = playerManager.playerShip.position.ToString();
+                debugMessages[1].value = playerManager.playerShip.linearVelocity.ToString();
+                debugMessages[2].value = playerManager.playerShip.angularVelocity.ToString();
+                debugMessages[3].value = playerManager.playerShip.rotation.ToString();
                 debugMessages[4].value = particleManager.particleCount.ToString();
                 debugMessages[5].value = crateManager.CrateCount().ToString();
 
@@ -82,8 +82,8 @@ namespace SpaceGame.Managers
             else if (debugLevel == DebugLevel.Messages) foreach (var debugMessage in debugMessages) debugMessage.Draw(spriteBatch);
             else if (debugLevel == DebugLevel.Headings)
             {
-                spriteBatch.DrawLine(playerManager.playerPosition + playerManager.playerFacing * 20, playerManager.playerPosition + playerManager.playerFacing * 40, Color.Green);
-                spriteBatch.DrawLine(playerManager.playerPosition + playerManager.playerDirection * 20, playerManager.playerPosition + playerManager.playerDirection * (20 + (playerManager.playerLinearVelocity.Length()) * 20 / playerManager.maxLinearVelocity), Color.Yellow);
+                spriteBatch.DrawLine(playerManager.playerShip.position + playerManager.playerShip.facing * 20, playerManager.playerShip.position + playerManager.playerShip.facing * 40, Color.Green);
+                spriteBatch.DrawLine(playerManager.playerShip.position + playerManager.playerShip.direction * 20, playerManager.playerShip.position + playerManager.playerShip.direction * (20 + (playerManager.playerShip.linearVelocity.Length()) * 20 / playerManager.playerShip.maxLinearVelocity), Color.Yellow);
             }
         }
 

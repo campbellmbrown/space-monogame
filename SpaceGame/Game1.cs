@@ -25,7 +25,7 @@ namespace SpaceGame
         public static Dictionary<string, SpriteFont> fonts;
         public static Vector2 screenSize { get { return new Vector2(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height); } }
         public static Vector2 zoomedScreenSize { get { return screenSize / zoom; } }
-        public static Vector2 positionCenter { get { return playerManager.playerPosition; } }
+        public static Vector2 positionCenter { get { return playerManager.playerShip.position; } }
         public static Vector2 screenCenter { get { return screenSize / 2f; } }
         public static Vector2 topLeftCorner { get { return positionCenter - screenCenter / camera.Zoom; } }
         public static PlayerManager playerManager;

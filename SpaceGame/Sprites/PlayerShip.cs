@@ -15,8 +15,7 @@ namespace SpaceGame.Sprites
 {
     public class PlayerShip : Spaceship
     {
-        private float _timeSinceLastShot = 0f;
-        private float _shotDelay = 0.2f;
+        public float shotDelay = 0.2f;
 
         public PlayerShip(Vector2 position, Texture2D texture, Texture2D wingTexture) 
             : base(position, texture, wingTexture)
@@ -76,24 +75,15 @@ namespace SpaceGame.Sprites
             }
         }
 
-        public void AddProjectles(float t)
+        public void AddProjectiles()
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
-            {
-                _timeSinceLastShot += t;
-                if (_timeSinceLastShot >= _shotDelay)
-                {
-                    _timeSinceLastShot -= _shotDelay;
-                    Game1.projectileManager.AddProjectile(new Lazer(position, rotation, Color.Red, facing * 300));
-                }
-            }
+            Game1.projectileManager.AddProjectile(new Lazer(position, rotation, Color.Red, facing * 300));
         }
 
         public override void Update(GameTime gameTime)
         {
             float t = (float)gameTime.ElapsedGameTime.TotalSeconds;
             SetAccelerations(t);
-            AddProjectles(t);
             if (linearThrust != 0) AddSmoke(t);
             base.Update(gameTime);
         }
