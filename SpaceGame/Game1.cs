@@ -16,8 +16,8 @@ namespace SpaceGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        static Camera2D camera;
 
+        public static Camera2D camera;
         public static Random r;
         public static float zoom = 3f;
         public static Dictionary<string, Texture2D> textures;
@@ -95,10 +95,7 @@ namespace SpaceGame
             projectileManager = new ProjectileManager(worldManager);
             debugManager = new DebugManager();
             eventManager = new EventManager();
-            worldManager.crateManager.AddCrate(new Crate(Vector2.Zero, true));
-            worldManager.crateManager.AddCrate(new Crate(Vector2.Zero, true));
-            worldManager.crateManager.AddCrate(new Crate(Vector2.Zero, true));
-            worldManager.crateManager.AddCrate(new Crate(Vector2.Zero, true));
+            worldManager.crateManager.TopUpCrates();
             worldManager.asteroidManager.AddAsteroid(new Asteroid(Vector2.Zero, 10, 20));
             worldManager.asteroidManager.AddAsteroid(new Asteroid(Vector2.Zero, 10, 20));
             worldManager.asteroidManager.AddAsteroid(new Asteroid(Vector2.Zero, 10, 20));

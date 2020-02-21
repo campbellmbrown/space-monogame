@@ -12,15 +12,25 @@ namespace SpaceGame.Managers
     public class CrateManager
     {
         private List<Crate> _crates;
-
+        protected RespawnManager respawnManager;
+        protected int maxCrates = 5;
         public CrateManager()
         {
             _crates = new List<Crate>();
+            respawnManager = new RespawnManager(100, 100, 10);
         }
 
         public void Update(GameTime gameTime)
         {
-            foreach (var crate in _crates) crate.Update(gameTime);
+            for (int i = _crates.Count - 1; i >= 0; i--)
+            {
+                _crates[i].Update(gameTime);
+                if (respawnManager.OutOfBounds(_crates[i].position))
+                {
+                    _crates.RemoveAt(i);
+                }
+            }
+            TopUpCrates();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -31,6 +41,14 @@ namespace SpaceGame.Managers
         public void AddCrate(Crate crate)
         {
             _crates.Add(crate);
+        }
+
+        public void TopUpCrates()
+        {
+            for (int i = _crates.Count; i < maxCrates; ++i)
+            {
+                AddCrate(new Crate(respawnManager.GenerateNewPosition(), true));
+            }
         }
 
         public bool CheckCollision(Rectangle collisionRectangle)
@@ -45,6 +63,11 @@ namespace SpaceGame.Managers
                 }
             }
             return false;
+        }
+
+        public int CrateCount()
+        {
+            return _crates.Count();
         }
     }
 }

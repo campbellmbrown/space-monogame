@@ -40,6 +40,7 @@ namespace SpaceGame.Managers
         public DebugLevel debugLevel = DebugLevel.Headings;
         protected PlayerManager playerManager = Game1.playerManager;
         protected ParticleManager particleManager = Game1.particleManager;
+        protected CrateManager crateManager = Game1.worldManager.crateManager;
 
         public DebugManager()
         {
@@ -50,6 +51,7 @@ namespace SpaceGame.Managers
                 new DebugMessage { name = "Player angular velocity" },
                 new DebugMessage { name = "Player rotation" },
                 new DebugMessage { name = "Particle count" },
+                new DebugMessage { name = "Crate count" },
             };
         }
 
@@ -63,6 +65,7 @@ namespace SpaceGame.Managers
                 debugMessages[2].value = playerManager.playerAngularVelocity.ToString();
                 debugMessages[3].value = playerManager.playerRotation.ToString();
                 debugMessages[4].value = particleManager.particleCount.ToString();
+                debugMessages[5].value = crateManager.CrateCount().ToString();
 
                 Vector2 offsetPosition = startingPosition;
                 foreach (var debugMessage in debugMessages)

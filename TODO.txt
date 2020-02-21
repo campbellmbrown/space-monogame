@@ -26,7 +26,6 @@
  - Crate deletion on health depletion
  - Crate damage particles
  - Crate damage texture stages
- - Crate break particles
  - Asteroid chunk health
  - Asteroid chunk deletion on health depletion
  - Asteroid deletion when no chunks left
