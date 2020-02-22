@@ -11,6 +11,8 @@ namespace SpaceGame.Sprites
 {
     public class Crate : ItemCarryingSprite
     {
+        public Vector2 relativeToPlayer { get { return position - Game1.playerManager.playerShip.position; } }
+
         public Crate(Vector2 position, Vector2 linearVelocity, float angularVelocity) 
             : base(position, Game1.textures["crate"], linearVelocity, angularVelocity)
         {

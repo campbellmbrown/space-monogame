@@ -53,6 +53,7 @@
     <Compile Include="Managers\CrateManager.cs" />
     <Compile Include="Managers\DebugManager.cs" />
     <Compile Include="Managers\EventManager.cs" />
+    <Compile Include="Managers\GuiManager.cs" />
     <Compile Include="Managers\ItemManager.cs" />
     <Compile Include="Managers\ParticleManager.cs" />
     <Compile Include="Managers\PlayerManager.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Managers\WorldManager.cs" />
     <Compile Include="Models\Animation.cs" />
     <Compile Include="Models\CollidableObject.cs" />
+    <Compile Include="Models\Minimap.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Projectiles\Lazer.cs" />
     <Compile Include="Projectiles\Projectile.cs" />

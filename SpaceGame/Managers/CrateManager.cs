@@ -11,23 +11,23 @@ namespace SpaceGame.Managers
 {
     public class CrateManager
     {
-        private List<Crate> _crates;
+        public List<Crate> crates;
         protected RespawnManager respawnManager;
-        protected int maxCrates = 5;
+        protected int maxCrates = 2;
         public CrateManager()
         {
-            _crates = new List<Crate>();
+            crates = new List<Crate>();
             respawnManager = new RespawnManager(100, 100, 10);
         }
 
         public void Update(GameTime gameTime)
         {
-            for (int i = _crates.Count - 1; i >= 0; i--)
+            for (int i = crates.Count - 1; i >= 0; i--)
             {
-                _crates[i].Update(gameTime);
-                if (respawnManager.OutOfBounds(_crates[i].position))
+                crates[i].Update(gameTime);
+                if (respawnManager.OutOfBounds(crates[i].position))
                 {
-                    _crates.RemoveAt(i);
+                    crates.RemoveAt(i);
                 }
             }
             TopUpCrates();
@@ -35,39 +35,29 @@ namespace SpaceGame.Managers
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var crate in _crates) crate.Draw(spriteBatch);
-        }
-
-        public void AddCrate(Crate crate)
-        {
-            _crates.Add(crate);
+            foreach (var crate in crates) crate.Draw(spriteBatch);
         }
 
         public void TopUpCrates()
         {
-            for (int i = _crates.Count; i < maxCrates; ++i)
+            for (int i = crates.Count; i < maxCrates; ++i)
             {
-                AddCrate(new Crate(respawnManager.GenerateNewPosition(), true));
+                crates.Add(new Crate(respawnManager.GenerateNewPosition(), true));
             }
         }
 
         public bool CheckCollision(Rectangle collisionRectangle)
         {
-            for (int i = _crates.Count - 1; i >= 0; i--)
+            for (int i = crates.Count - 1; i >= 0; i--)
             {
-                if (_crates[i].CheckCollision(collisionRectangle))
+                if (crates[i].CheckCollision(collisionRectangle))
                 {
-                    _crates[i].BreakAction();
-                    _crates.RemoveAt(i);
+                    crates[i].BreakAction();
+                    crates.RemoveAt(i);
                     return true;
                 }
             }
             return false;
-        }
-
-        public int CrateCount()
-        {
-            return _crates.Count();
         }
     }
 }

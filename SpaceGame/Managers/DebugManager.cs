@@ -65,7 +65,7 @@ namespace SpaceGame.Managers
                 debugMessages[2].value = playerManager.playerShip.angularVelocity.ToString();
                 debugMessages[3].value = playerManager.playerShip.rotation.ToString();
                 debugMessages[4].value = particleManager.particleCount.ToString();
-                debugMessages[5].value = crateManager.CrateCount().ToString();
+                debugMessages[5].value = crateManager.crates.Count.ToString();
 
                 Vector2 offsetPosition = startingPosition;
                 foreach (var debugMessage in debugMessages)

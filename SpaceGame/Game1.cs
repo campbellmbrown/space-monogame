@@ -126,7 +126,6 @@ namespace SpaceGame
         {
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, transformMatrix: camera.GetViewMatrix()); 
             GraphicsDevice.Clear(Color.Black);
-            spriteBatch.DrawRectangle(new Rectangle(-10, -10, 20, 20), Color.Red);
             worldManager.Draw(spriteBatch);
             particleManager.Draw(spriteBatch);
             playerManager.Draw(spriteBatch);
