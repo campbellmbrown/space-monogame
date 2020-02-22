@@ -12,12 +12,11 @@ namespace SpaceGame.Managers
     public class ProjectileManager
     {
         private List<Projectile> _projectiles;
-        private WorldManager _worldManager;
+        private WorldManager _worldManager = Game1.worldManager;
 
         public ProjectileManager(WorldManager worldManager)
         {
             _projectiles = new List<Projectile>();
-            _worldManager = worldManager;
         }
 
         public void Update(GameTime gameTime)

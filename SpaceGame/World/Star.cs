@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
+using SpaceGame.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace SpaceGame.World
         float transparency { get { return (10 - depth) / 10f; } }
         float screenWidth { get { return Game1.zoomedScreenSize.X; } }
         float screenHeight { get { return Game1.zoomedScreenSize.Y; } }
+        PlayerManager playerManager = Game1.playerManager;
 
         public Star()
         {
@@ -29,7 +31,7 @@ namespace SpaceGame.World
         public void Update(GameTime gameTime)
         {
             float t = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            position += Game1.playerManager.playerShip.linearVelocity * t * depth / 10f;
+            position += playerManager.playerShip.linearVelocity * t * depth / 10f;
             if (position.X > Game1.positionCenter.X + screenWidth / 2f) position.X -= screenWidth;
             else if (position.X < Game1.positionCenter.X - screenWidth / 2f) position.X += screenWidth;
             else if (position.Y > Game1.positionCenter.Y + screenHeight / 2f) position.Y -= screenHeight;

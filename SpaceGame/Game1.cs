@@ -28,6 +28,7 @@ namespace SpaceGame
         public static Vector2 positionCenter { get { return playerManager.playerShip.position; } }
         public static Vector2 screenCenter { get { return screenSize / 2f; } }
         public static Vector2 topLeftCorner { get { return positionCenter - screenCenter / camera.Zoom; } }
+        
         public static PlayerManager playerManager;
         public static ParticleManager particleManager;
         public static ProjectileManager projectileManager;
