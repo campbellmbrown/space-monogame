@@ -46,6 +46,7 @@ namespace SpaceGame.Managers
         {
             debugMessages = new List<DebugMessage>()
             {
+                new DebugMessage { name = "FPS" },
                 new DebugMessage { name = "Player position" },
                 new DebugMessage { name = "Player linear velocity" },
                 new DebugMessage { name = "Player angular velocity" },
@@ -60,12 +61,13 @@ namespace SpaceGame.Managers
             if (debugLevel == DebugLevel.Nothing) return;
             else if (debugLevel == DebugLevel.Messages)
             {
-                debugMessages[0].value = playerManager.playerShip.position.ToString();
-                debugMessages[1].value = playerManager.playerShip.linearVelocity.ToString();
-                debugMessages[2].value = playerManager.playerShip.angularVelocity.ToString();
-                debugMessages[3].value = playerManager.playerShip.rotation.ToString();
-                debugMessages[4].value = particleManager.particleCount.ToString();
-                debugMessages[5].value = crateManager.crates.Count.ToString();
+                debugMessages[0].value = Math.Round(1 / gameTime.ElapsedGameTime.TotalSeconds).ToString();
+                debugMessages[1].value = playerManager.playerShip.position.ToString();
+                debugMessages[2].value = playerManager.playerShip.linearVelocity.ToString();
+                debugMessages[3].value = playerManager.playerShip.angularVelocity.ToString();
+                debugMessages[4].value = playerManager.playerShip.rotation.ToString();
+                debugMessages[5].value = particleManager.particleCount.ToString();
+                debugMessages[6].value = crateManager.crates.Count.ToString();
 
                 Vector2 offsetPosition = startingPosition;
                 foreach (var debugMessage in debugMessages)

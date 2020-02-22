@@ -26,9 +26,9 @@ namespace SpaceGame.Sprites
         public override void BreakAction()
         {
             AddBreakingParticles();
-            for (int i = 0; i < 4; ++i) worldManager.itemManager.AddItem(new Metal(position, 1, true));
-            for (int i = 0; i < 4; ++i) worldManager.itemManager.AddItem(new Plants(position, 1, true));
-            for (int i = 0; i < 4; ++i) worldManager.itemManager.AddItem(new Plastic(position, 1, true));
+            for (int i = 0; i < Game1.r.Next(0, 2); ++i) worldManager.itemManager.AddItem(new Metal(position, 1, true));
+            for (int i = 0; i < Game1.r.Next(0, 2); ++i) worldManager.itemManager.AddItem(new Plants(position, 1, true));
+            for (int i = 0; i < Game1.r.Next(0, 2); ++i) worldManager.itemManager.AddItem(new Plastic(position, 1, true));
             base.BreakAction();
         }
     }
