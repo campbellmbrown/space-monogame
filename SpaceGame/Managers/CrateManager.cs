@@ -9,17 +9,28 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Managers
 {
+    /// <summary>
+    /// Class to handle crates.
+    /// </summary>
     public class CrateManager
     {
         public List<Crate> crates;
         protected RespawnManager respawnManager;
         protected int maxCrates = 2;
+
+        /// <summary>
+        /// Creates an instance of the CrateManager class.
+        /// </summary>
         public CrateManager()
         {
             crates = new List<Crate>();
             respawnManager = new RespawnManager(100, 100, 10);
         }
 
+        /// <summary>
+        /// Updates the crates.
+        /// </summary>
+        /// <param name="gameTime">GameTime instance.</param>
         public void Update(GameTime gameTime)
         {
             for (int i = crates.Count - 1; i >= 0; i--)
@@ -33,11 +44,18 @@ namespace SpaceGame.Managers
             TopUpCrates();
         }
 
+        /// <summary>
+        /// Draws the crates.
+        /// </summary>
+        /// <param name="spriteBatch">SpriteBatch instance.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (var crate in crates) crate.Draw(spriteBatch);
         }
 
+        /// <summary>
+        /// Creates new crates until the maxCrates limit is reached.
+        /// </summary>
         public void TopUpCrates()
         {
             for (int i = crates.Count; i < maxCrates; ++i)
@@ -46,6 +64,10 @@ namespace SpaceGame.Managers
             }
         }
 
+        /// <summary>
+        /// Returns true if a collision is detected and damages the crates.
+        /// </summary>
+        /// <param name="collisionRectangle"></param>
         public bool CheckCollision(Rectangle collisionRectangle)
         {
             for (int i = crates.Count - 1; i >= 0; i--)

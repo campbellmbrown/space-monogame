@@ -9,41 +9,46 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Managers
 {
+    /// <summary>
+    /// Class to handle particles.
+    /// </summary>
     public class ParticleManager
     {
-        private List<Particle> _particles;
-        public int particleCount { get { return _particles.Count; } }
+        public List<Particle> particles;
+        public int particleCount { get { return particles.Count; } }
+        
+        /// <summary>
+        /// Creates an instance of the ParticleManager class.
+        /// </summary>
         public ParticleManager()
         {
-            _particles = new List<Particle>();
+            particles = new List<Particle>();
         }
 
-        public void AddParticle(Particle particle)
-        {
-            _particles.Add(particle);
-        }
-
+        /// <summary>
+        /// Updates the particles.
+        /// </summary>
+        /// <param name="gameTime">GameTime instance.</param>
         public void Update(GameTime gameTime)
         {
-            for (int i = _particles.Count - 1; i >= 0; i--)
+            for (int i = particles.Count - 1; i >= 0; i--)
             {
-                _particles[i].Update(gameTime);
-                if (_particles[i].CheckToDestroy())
+                particles[i].Update(gameTime);
+                if (particles[i].CheckToDestroy())
                 {
-                    _particles.RemoveAt(i);
+                    particles.RemoveAt(i);
                 }
             }
         }
 
+        /// <summary>
+        /// Draws the particles.
+        /// </summary>
+        /// <param name="spriteBatch">SpriteBatch instance.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var particle in _particles)
+            foreach (var particle in particles)
                 particle.Draw(spriteBatch);
-        }
-
-        public void DeleteParticle(Particle particle)
-        {
-            _particles.Remove(particle);
         }
     }
 }

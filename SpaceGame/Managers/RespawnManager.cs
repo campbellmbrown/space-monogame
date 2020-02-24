@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Managers
 {
+    /// <summary>
+    /// Class to handle respawns.
+    /// </summary>
     public class RespawnManager
     {
         protected int distanceFromScreenEdge;
@@ -16,6 +19,12 @@ namespace SpaceGame.Managers
         protected Vector2 zoomedScreenSize { get { return LimitsEdgeGame.zoomedScreenSize; } }
         protected float zoom { get { return LimitsEdgeGame.camera.Zoom; } }
 
+        /// <summary>
+        /// Creates an instance of the RespawnManager class.
+        /// </summary>
+        /// <param name="distanceFromScreenEdge">The distance that objects can spawn from the screen edge.</param>
+        /// <param name="spawningBand">The band that is spawnable, surrounding the screen.</param>
+        /// <param name="spawningToDespawningBuffer">A distance from the edge of the spawning band where things won't despawn.</param>
         public RespawnManager(int distanceFromScreenEdge, int spawningBand, int spawningToDespawningBuffer)
         {
             this.distanceFromScreenEdge = distanceFromScreenEdge;
@@ -23,6 +32,10 @@ namespace SpaceGame.Managers
             this.spawningToDespawningBuffer = spawningToDespawningBuffer;
         }
 
+        /// <summary>
+        /// Returns true if a position is outside of the allowable area.
+        /// </summary>
+        /// <param name="position">Position to check.</param>
         public bool OutOfBounds(Vector2 position)
         {
             float distanceToDespawn = distanceFromScreenEdge + spawningBand + spawningToDespawningBuffer;
@@ -34,6 +47,9 @@ namespace SpaceGame.Managers
             return false;
         }
 
+        /// <summary>
+        /// Generates a new position inside of the spawnable area.
+        /// </summary>
         public Vector2 GenerateNewPosition()
         {
             int choose = LimitsEdgeGame.r.Next(0, 4);

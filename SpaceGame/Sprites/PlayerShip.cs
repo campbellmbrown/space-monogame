@@ -71,7 +71,7 @@ namespace SpaceGame.Sprites
             {
                 currentSmokeDelay -= smokeDelay;
                 Vector2 smokePosition = position + Helper.RotateVector(new Vector2(0, Height / 2f), rotation);
-                LimitsEdgeGame.particleManager.AddParticle(new Smoke(smokePosition, true));
+                LimitsEdgeGame.particleManager.particles.Add(new Smoke(smokePosition, true));
             }
         }
 

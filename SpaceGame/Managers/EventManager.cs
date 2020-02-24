@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Managers
 {
+    /// <summary>
+    /// Class to handle events.
+    /// </summary>
     public class EventManager
     {
         protected DebugManager debugManager = LimitsEdgeGame.debugManager;
@@ -15,8 +18,15 @@ namespace SpaceGame.Managers
         protected float timeSinceLastShot = 0f;
         protected float shotDelay { get { return LimitsEdgeGame.playerManager.playerShip.shotDelay; } }
 
+        /// <summary>
+        /// Creates an instance of the EventManager class.
+        /// </summary>
         public EventManager() { }
 
+        /// <summary>
+        /// Updates and checks for events.
+        /// </summary>
+        /// <param name="gameTime">GameTime instance.</param>
         public void Update(GameTime gameTime)
         {
             float t = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -25,6 +35,10 @@ namespace SpaceGame.Managers
             CheckHeldKeyPress(keyboardState, t);
         }
 
+        /// <summary>
+        /// Checks for the event of single press keys.
+        /// </summary>
+        /// <param name="keyboardState">Current state of the keyboard.</param>
         public void CheckSinglePressKeys(KeyboardState keyboardState)
         {
             // Debugging toggle
@@ -36,6 +50,11 @@ namespace SpaceGame.Managers
             else holdingToggleDebug = false;
         }
 
+        /// <summary>
+        /// Checks for the event of held keys.
+        /// </summary>
+        /// <param name="keyboardState">Current state of the keyboard.</param>
+        /// <param name="t">Time since last tick.</param>
         public void CheckHeldKeyPress(KeyboardState keyboardState, float t)
         {
             // Shooting
@@ -50,6 +69,9 @@ namespace SpaceGame.Managers
             }
         }
 
+        /// <summary>
+        /// Changes the type of debug level.
+        /// </summary>
         public void ToggleDebugLevels()
         {
             debugManager.ToggleDebugLevels();

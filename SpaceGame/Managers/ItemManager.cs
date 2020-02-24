@@ -9,28 +9,37 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Managers
 {
+    /// <summary>
+    /// Class to handle items.
+    /// </summary>
     public class ItemManager
     {
-        private List<Item> _items;
+        public List<Item> items;
 
+        /// <summary>
+        /// Creates an instance of the ItemManager class.
+        /// </summary>
         public ItemManager()
         {
-            _items = new List<Item>();
+            items = new List<Item>();
         }
 
+        /// <summary>
+        /// Updates the items.
+        /// </summary>
+        /// <param name="gameTime">GameTime instance.</param>
         public void Update(GameTime gameTime)
         {
-            foreach (var item in _items) item.Update(gameTime);
+            foreach (var item in items) item.Update(gameTime);
         }
 
+        /// <summary>
+        /// Draws the items.
+        /// </summary>
+        /// <param name="spriteBatch">SpriteBatch instance.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var item in _items) item.Draw(spriteBatch);
-        }
-
-        public void AddItem(Item item)
-        {
-            _items.Add(item);
+            foreach (var item in items) item.Draw(spriteBatch);
         }
     }
 }

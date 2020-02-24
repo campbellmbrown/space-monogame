@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Managers
 {
+    /// <summary>
+    /// Class to handle the world.
+    /// </summary>
     public class WorldManager
     {
         public StarManager starManager;
@@ -17,6 +20,9 @@ namespace SpaceGame.Managers
         public CrateManager crateManager;
         public AsteroidManager asteroidManager;
 
+        /// <summary>
+        /// Creates an instance of the WorldManager class.
+        /// </summary>
         public WorldManager()
         {
             starManager = new StarManager();
@@ -25,6 +31,10 @@ namespace SpaceGame.Managers
             asteroidManager = new AsteroidManager();
         }
 
+        /// <summary>
+        /// Updates the world.
+        /// </summary>
+        /// <param name="gameTime">GameTime instance.</param>
         public void Update(GameTime gameTime)
         {
             starManager.Update(gameTime);
@@ -33,6 +43,10 @@ namespace SpaceGame.Managers
             asteroidManager.Update(gameTime);
         }
 
+        /// <summary>
+        /// Draws the world.
+        /// </summary>
+        /// <param name="spriteBatch">SpriteBatch instance.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
             starManager.Draw(spriteBatch);

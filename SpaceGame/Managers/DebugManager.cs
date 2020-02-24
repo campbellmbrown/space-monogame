@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Managers
 {
+    /// <summary>
+    /// Class for debug messages.
+    /// </summary>
     public class DebugMessage
     {
         public string name;
@@ -18,12 +21,19 @@ namespace SpaceGame.Managers
         protected SpriteFont font = LimitsEdgeGame.fonts["courier_new_bold"];
         public static float height = 8f;
 
+        /// <summary>
+        /// Draws the debug message.
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(font, printableString, position, Color.White, 0f, Vector2.Zero, height / font.LineSpacing, SpriteEffects.None, 0f);
         }
     }
 
+    /// <summary>
+    /// Determines the type of debug messages being shown.
+    /// </summary>
     public enum DebugLevel
     {
         Nothing,
@@ -31,6 +41,9 @@ namespace SpaceGame.Managers
         Messages
     }
 
+    /// <summary>
+    /// Class to handle debug messages.
+    /// </summary>
     public class DebugManager
     {
         protected Vector2 relativeStartingPosition = new Vector2(5, 5 - offsetAmount);
@@ -43,6 +56,9 @@ namespace SpaceGame.Managers
         protected CrateManager crateManager = LimitsEdgeGame.worldManager.crateManager;
         protected ProjectileManager projectileManager = LimitsEdgeGame.projectileManager;
 
+        /// <summary>
+        /// Creates an instance of the AsteroidManager class.
+        /// </summary>
         public DebugManager()
         {
             debugMessages = new List<DebugMessage>()
@@ -58,6 +74,10 @@ namespace SpaceGame.Managers
             };
         }
 
+        /// <summary>
+        /// Updates the debug messages.
+        /// </summary>
+        /// <param name="gameTime">GameTime instance.</param>
         public void Update(GameTime gameTime)
         {
             if (debugLevel == DebugLevel.Nothing) return;
@@ -81,6 +101,10 @@ namespace SpaceGame.Managers
             }
         }
 
+        /// <summary>
+        /// Draws the debug messages.
+        /// </summary>
+        /// <param name="spriteBatch">SpriteBatch instance.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
             if (debugLevel == DebugLevel.Nothing) return;
@@ -92,6 +116,9 @@ namespace SpaceGame.Managers
             }
         }
 
+        /// <summary>
+        /// Changes the debug levels to the next one in sequence.
+        /// </summary>
         public void ToggleDebugLevels()
         {
             if (debugLevel == DebugLevel.Nothing) debugLevel = DebugLevel.Headings;

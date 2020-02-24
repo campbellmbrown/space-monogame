@@ -53,7 +53,7 @@ namespace SpaceGame.Sprites
         {
             foreach (var item in _items)
             {
-                worldManager.itemManager.AddItem(item);
+                worldManager.itemManager.items.Add(item);
             }
         }
 
@@ -76,7 +76,7 @@ namespace SpaceGame.Sprites
                         angularVelocity = this.angularVelocity,
                         linearVelocity = this.linearVelocity + Helper.Vector2RandomDirecAndLength(5) + tangentialDirection * this.angularVelocity * relativePosition.Length()
                     };
-                    LimitsEdgeGame.particleManager.AddParticle(particle);
+                    LimitsEdgeGame.particleManager.particles.Add(particle);
                 }
             }
         }
