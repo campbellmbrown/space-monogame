@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Items
 {
+    /// <summary>
+    /// Base class for Items.
+    /// </summary>
     public class Item
     {
         protected Vector2 position;
@@ -24,6 +27,13 @@ namespace SpaceGame.Items
         public float linearDragCoefficient = 0f;
         public float angularDragCoefficient = 0f;
 
+        /// <summary>
+        /// Creates a new instance of the Item class, with specified parameters.
+        /// </summary>
+        /// <param name="texture">Texture of the item.</param>
+        /// <param name="position">X and Y starting coordinates.</param>
+        /// <param name="count">The number of that specified item in this 'stack'.</param>
+        /// <param name="randomize">Determines if the velocities are random.</param>
         public Item(Texture2D texture, Vector2 position, int count, bool randomize)
         {
             this.position = position;
@@ -41,6 +51,14 @@ namespace SpaceGame.Items
             }
         }
 
+        /// <summary>
+        /// Creates a new instance of the Item class, with specified parameters.
+        /// </summary>
+        /// <param name="texture">Texture of the item.</param>
+        /// <param name="position">X and Y starting coordinates.</param>
+        /// <param name="count">The number of that specified item in this 'stack'.</param>
+        /// <param name="linearVelocity">X and Y linear velocites of the item.</param>
+        /// <param name="angularVelocity">Angular velocity of the item.</param>
         public Item(Texture2D texture, Vector2 position, int count, Vector2 linearVelocity, float angularVelocity)
         {
             this.position = position;
@@ -50,17 +68,29 @@ namespace SpaceGame.Items
             this.angularVelocity = angularVelocity;
         }
 
+        /// <summary>
+        /// Updates the item.
+        /// </summary>
+        /// <param name="gameTime">GameTime instance.</param>
         public void Update(GameTime gameTime)
         {
             float t = (float)gameTime.ElapsedGameTime.TotalSeconds;
             Move(t);
         }
 
+        /// <summary>
+        /// Draws the item.
+        /// </summary>
+        /// <param name="spriteBatch">SpriteBatch instance.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, position, null, Color.White, rotation, center, 1f, SpriteEffects.None, 1f);
         }
 
+        /// <summary>
+        /// Moves the item, based on the item's accelerations and velocities.
+        /// </summary>
+        /// <param name="t">Time since the last tick.</param>
         public void Move(float t)
         {
             // Friction
