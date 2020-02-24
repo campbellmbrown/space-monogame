@@ -41,6 +41,7 @@ namespace SpaceGame.Managers
         protected PlayerManager playerManager = LimitsEdgeGame.playerManager;
         protected ParticleManager particleManager = LimitsEdgeGame.particleManager;
         protected CrateManager crateManager = LimitsEdgeGame.worldManager.crateManager;
+        protected ProjectileManager projectileManager = LimitsEdgeGame.projectileManager;
 
         public DebugManager()
         {
@@ -53,6 +54,7 @@ namespace SpaceGame.Managers
                 new DebugMessage { name = "Player rotation" },
                 new DebugMessage { name = "Particle count" },
                 new DebugMessage { name = "Crate count" },
+                new DebugMessage { name = "Projectile count" },
             };
         }
 
@@ -68,6 +70,7 @@ namespace SpaceGame.Managers
                 debugMessages[4].value = playerManager.playerShip.rotation.ToString();
                 debugMessages[5].value = particleManager.particleCount.ToString();
                 debugMessages[6].value = crateManager.crates.Count.ToString();
+                debugMessages[7].value = projectileManager.projectiles.Count.ToString();
 
                 Vector2 offsetPosition = startingPosition;
                 foreach (var debugMessage in debugMessages)
