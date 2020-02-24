@@ -66,8 +66,8 @@ namespace SpaceGame.Effects
 
         protected void RandomizeVelocities()
         {
-            angularVelocity = Game1.r.Next(-10, 11);
-            linearVelocity = new Vector2(Game1.r.Next(-10, 11), Game1.r.Next(-10, 11));
+            angularVelocity = LimitsEdgeGame.r.Next(-10, 11);
+            linearVelocity = new Vector2(LimitsEdgeGame.r.Next(-10, 11), LimitsEdgeGame.r.Next(-10, 11));
         }
 
         public void Update(GameTime gameTime)

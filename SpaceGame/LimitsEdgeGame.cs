@@ -12,7 +12,7 @@ using System.Collections.Generic;
 
 namespace SpaceGame
 {
-    public class Game1 : Game
+    public class LimitsEdgeGame : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -41,7 +41,7 @@ namespace SpaceGame
         Vector2 windowCenter { get { return windowSize / 2f; } }
 
 
-        public Game1()
+        public LimitsEdgeGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";

@@ -12,14 +12,14 @@ namespace SpaceGame.Models
     public class Minimap
     {
         protected float scale = 10f;
-        protected float zoom { get { return Game1.camera.Zoom; } }
+        protected float zoom { get { return LimitsEdgeGame.camera.Zoom; } }
         protected float objectSize = 2f;
 
         protected Vector2 distanceFromScreenEdge = new Vector2(10);
         protected Vector2 viewableOutsideRange = new Vector2(500); // How many pixels the player can see outside of the screen
         protected Vector2 scaledZoomedBuffer { get { return viewableOutsideRange / (zoom * scale); } }
-        protected Vector2 topLeft { get { return Game1.topLeftCorner; } }
-        protected Vector2 zoomedScreenSize { get { return Game1.zoomedScreenSize; } }
+        protected Vector2 topLeft { get { return LimitsEdgeGame.topLeftCorner; } }
+        protected Vector2 zoomedScreenSize { get { return LimitsEdgeGame.zoomedScreenSize; } }
         protected Vector2 scaledZoomedScreenSize { get { return zoomedScreenSize / scale; } }
         protected Vector2 dimensions { get { return (2 * scaledZoomedBuffer) + scaledZoomedScreenSize; } }
         protected Vector2 mapTopLeft { get { return topLeft + zoomedScreenSize - distanceFromScreenEdge - dimensions; } }
@@ -43,7 +43,7 @@ namespace SpaceGame.Models
             spriteBatch.DrawRectangle(outsideRectangle, outsideRectangleColor);
             spriteBatch.DrawRectangle(insideRectangle, insideRectangleColor);
             spriteBatch.DrawPoint(center, playerColor, objectSize);
-            foreach (var crate in Game1.worldManager.crateManager.crates)
+            foreach (var crate in LimitsEdgeGame.worldManager.crateManager.crates)
             {
                 Vector2 mapPosition = center + crate.relativeToPlayer / scale;
                 if (outsideRectangle.Contains(new Point2(mapPosition.X, mapPosition.Y))) 

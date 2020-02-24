@@ -12,7 +12,7 @@ namespace SpaceGame.Managers
     public class ProjectileManager
     {
         private List<Projectile> _projectiles;
-        private WorldManager _worldManager = Game1.worldManager;
+        private WorldManager _worldManager = LimitsEdgeGame.worldManager;
 
         public ProjectileManager(WorldManager worldManager)
         {

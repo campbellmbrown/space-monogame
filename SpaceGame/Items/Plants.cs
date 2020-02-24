@@ -10,12 +10,12 @@ namespace SpaceGame.Items
     public class Plants : Item
     {
         public Plants(Vector2 position, int count, bool randomize)
-            : base(Game1.textures["plants"], position, count, randomize)
+            : base(LimitsEdgeGame.textures["plants"], position, count, randomize)
         {
         }
 
         public Plants(Vector2 position, int count, Vector2 linearVelocity, float angularVelocity)
-            : base(Game1.textures["plants"], position, count, linearVelocity, angularVelocity)
+            : base(LimitsEdgeGame.textures["plants"], position, count, linearVelocity, angularVelocity)
         {
         }
     }

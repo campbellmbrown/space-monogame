@@ -24,7 +24,7 @@ namespace SpaceGame.Sprites
         {
             base.linearVelocity = linearVelocity;
             base.angularVelocity = angularVelocity;
-            this.worldManager = Game1.worldManager;
+            this.worldManager = LimitsEdgeGame.worldManager;
             _items = new List<Item>();
         }
 
@@ -32,8 +32,8 @@ namespace SpaceGame.Sprites
         {
             if (randomize)
             {
-                linearVelocity = new Vector2(Game1.r.Next(-50, 51), Game1.r.Next(-50, 51));
-                angularVelocity = Game1.r.Next(-200, 201) / 100f;
+                linearVelocity = new Vector2(LimitsEdgeGame.r.Next(-50, 51), LimitsEdgeGame.r.Next(-50, 51));
+                angularVelocity = LimitsEdgeGame.r.Next(-200, 201) / 100f;
             }
             else
             {
@@ -41,7 +41,7 @@ namespace SpaceGame.Sprites
                 angularVelocity = 0f;
             }
             _items = new List<Item>();
-            this.worldManager = Game1.worldManager;
+            this.worldManager = LimitsEdgeGame.worldManager;
         }
 
         public void AddItems(List<Item> items)
@@ -76,7 +76,7 @@ namespace SpaceGame.Sprites
                         angularVelocity = this.angularVelocity,
                         linearVelocity = this.linearVelocity + Helper.Vector2RandomDirecAndLength(5) + tangentialDirection * this.angularVelocity * relativePosition.Length()
                     };
-                    Game1.particleManager.AddParticle(particle);
+                    LimitsEdgeGame.particleManager.AddParticle(particle);
                 }
             }
         }

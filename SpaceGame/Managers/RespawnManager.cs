@@ -12,9 +12,9 @@ namespace SpaceGame.Managers
         protected int distanceFromScreenEdge;
         protected int spawningBand;
         protected int spawningToDespawningBuffer;
-        protected Vector2 topLeftCorner { get { return Game1.topLeftCorner; } }
-        protected Vector2 zoomedScreenSize { get { return Game1.zoomedScreenSize; } }
-        protected float zoom { get { return Game1.camera.Zoom; } }
+        protected Vector2 topLeftCorner { get { return LimitsEdgeGame.topLeftCorner; } }
+        protected Vector2 zoomedScreenSize { get { return LimitsEdgeGame.zoomedScreenSize; } }
+        protected float zoom { get { return LimitsEdgeGame.camera.Zoom; } }
 
         public RespawnManager(int distanceFromScreenEdge, int spawningBand, int spawningToDespawningBuffer)
         {
@@ -36,29 +36,29 @@ namespace SpaceGame.Managers
 
         public Vector2 GenerateNewPosition()
         {
-            int choose = Game1.r.Next(0, 4);
+            int choose = LimitsEdgeGame.r.Next(0, 4);
             Vector2 newPosition;
             switch (choose)
             {
                 case 0:
                     newPosition = topLeftCorner + new Vector2(
-                        -distanceFromScreenEdge + Game1.r.Next(-spawningBand, 1),
-                        Game1.r.Next(-distanceFromScreenEdge - spawningBand, (int)zoomedScreenSize.Y + distanceFromScreenEdge + spawningBand + 1));
+                        -distanceFromScreenEdge + LimitsEdgeGame.r.Next(-spawningBand, 1),
+                        LimitsEdgeGame.r.Next(-distanceFromScreenEdge - spawningBand, (int)zoomedScreenSize.Y + distanceFromScreenEdge + spawningBand + 1));
                     break;
                 case 1:
                     newPosition = topLeftCorner + new Vector2(
-                        zoomedScreenSize.X + distanceFromScreenEdge + Game1.r.Next(0, spawningBand + 1),
-                        Game1.r.Next(-distanceFromScreenEdge - spawningBand, (int)zoomedScreenSize.Y + distanceFromScreenEdge + spawningBand + 1));
+                        zoomedScreenSize.X + distanceFromScreenEdge + LimitsEdgeGame.r.Next(0, spawningBand + 1),
+                        LimitsEdgeGame.r.Next(-distanceFromScreenEdge - spawningBand, (int)zoomedScreenSize.Y + distanceFromScreenEdge + spawningBand + 1));
                     break;
                 case 2:
                     newPosition = topLeftCorner + new Vector2(
-                        Game1.r.Next(-distanceFromScreenEdge, (int)zoomedScreenSize.X + distanceFromScreenEdge + 1),
-                        -distanceFromScreenEdge + Game1.r.Next(-spawningBand, 1));
+                        LimitsEdgeGame.r.Next(-distanceFromScreenEdge, (int)zoomedScreenSize.X + distanceFromScreenEdge + 1),
+                        -distanceFromScreenEdge + LimitsEdgeGame.r.Next(-spawningBand, 1));
                     break;
                 case 3:
                     newPosition = topLeftCorner + new Vector2(
-                        Game1.r.Next(-distanceFromScreenEdge, (int)zoomedScreenSize.X + distanceFromScreenEdge + 1),
-                        zoomedScreenSize.X + distanceFromScreenEdge + Game1.r.Next(0, spawningBand + 1));
+                        LimitsEdgeGame.r.Next(-distanceFromScreenEdge, (int)zoomedScreenSize.X + distanceFromScreenEdge + 1),
+                        zoomedScreenSize.X + distanceFromScreenEdge + LimitsEdgeGame.r.Next(0, spawningBand + 1));
                     break;
                 default:
                     newPosition = Vector2.Zero;

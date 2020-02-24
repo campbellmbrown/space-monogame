@@ -32,13 +32,13 @@ namespace SpaceGame.Utilities
 
         public static Vector2 Vector2RandomDirecAndLength(int maxLength)
         {
-            float angle = Game1.r.Next(0, (int)(Math.PI * 200) + 1) / 100f;
-            return new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * Game1.r.Next(0, maxLength + 1);
+            float angle = LimitsEdgeGame.r.Next(0, (int)(Math.PI * 200) + 1) / 100f;
+            return new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * LimitsEdgeGame.r.Next(0, maxLength + 1);
         }
 
         public static Vector2 Vector2RandomDirection(int length)
         {
-            float angle = Game1.r.Next(0, (int)(Math.PI * 200) + 1) / 100f;
+            float angle = LimitsEdgeGame.r.Next(0, (int)(Math.PI * 200) + 1) / 100f;
             return new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * length;
         }
 

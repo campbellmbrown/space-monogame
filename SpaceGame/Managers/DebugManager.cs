@@ -15,7 +15,7 @@ namespace SpaceGame.Managers
         public string value = "";
         public Vector2 position;
         protected string printableString { get { return name + ": " + value; } }
-        protected SpriteFont font = Game1.fonts["courier_new_bold"];
+        protected SpriteFont font = LimitsEdgeGame.fonts["courier_new_bold"];
         public static float height = 8f;
 
         public void Draw(SpriteBatch spriteBatch)
@@ -34,13 +34,13 @@ namespace SpaceGame.Managers
     public class DebugManager
     {
         protected Vector2 relativeStartingPosition = new Vector2(5, 5 - offsetAmount);
-        protected Vector2 startingPosition { get { return Game1.topLeftCorner + relativeStartingPosition; } }
+        protected Vector2 startingPosition { get { return LimitsEdgeGame.topLeftCorner + relativeStartingPosition; } }
         protected List<DebugMessage> debugMessages;
         protected static float offsetAmount { get { return DebugMessage.height; } }
         public DebugLevel debugLevel = DebugLevel.Headings;
-        protected PlayerManager playerManager = Game1.playerManager;
-        protected ParticleManager particleManager = Game1.particleManager;
-        protected CrateManager crateManager = Game1.worldManager.crateManager;
+        protected PlayerManager playerManager = LimitsEdgeGame.playerManager;
+        protected ParticleManager particleManager = LimitsEdgeGame.particleManager;
+        protected CrateManager crateManager = LimitsEdgeGame.worldManager.crateManager;
 
         public DebugManager()
         {

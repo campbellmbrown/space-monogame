@@ -24,8 +24,8 @@ namespace SpaceGame.World
         public AsteroidChunk(Vector2 relativePosition)
         {
             this.relativePosition = relativePosition;
-            this.relativeRotation = Game1.r.Next(0, 4) * (float)Math.PI / 2f;
-            texture = Game1.textures["asteroid_chunk"];
+            this.relativeRotation = LimitsEdgeGame.r.Next(0, 4) * (float)Math.PI / 2f;
+            texture = LimitsEdgeGame.textures["asteroid_chunk"];
         }
 
         public void Update(GameTime gameTime)

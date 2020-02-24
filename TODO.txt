@@ -38,18 +38,42 @@
  - Refine player default values
  - Add a keypress manager class (?)
  - Add a button class
- - Rename Game1.cs*
  - Comment files
- - - *Game1.cs
- - - Helper.cs
- - - Star.cs
- - - Program.cs (?)
+ - - Particle.cs
+ - - Smoke.cs
+ - - Item.cs
+ - - Metal.cs
+ - - Plants.cs
+ - - Plastic.cs
+ - - AnimationManager.cs
+ - - AsteroidManager.cs
+ - - CrateManager.cs
+ - - DebugManager.cs
+ - - EventManager.cs
+ - - GuiManager.cs
+ - - ItemManager.cs
+ - - ParticleManager.cs
  - - PlayerManager.cs
+ - - ProjectileManager.cs
+ - - RespawnManager.cs
  - - StarManager.cs
  - - WorldManager.cs
+ - - Animation.cs
+ - - CollidableObject.cs
+ - - Minimap.cs
+ - - Lazer.cs
+ - - Projectile.cs
+ - - Crate.cs
+ - - ItemCarryingSprite.cs
  - - MovingSprite.cs
  - - PlayerShip.cs
  - - SpaceShip.cs
  - - Sprite.cs
+ - - Helper.cs
+ - - Asteroid.cs
+ - - AsteroidChunk.cs
+ - - Star.cs
+ - - LimitsEdgeGame.cs
+ - - Program.cs
  - Remove uneccessary 'using'
  - Fix public/private/protected

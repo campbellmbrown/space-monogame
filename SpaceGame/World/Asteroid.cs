@@ -22,8 +22,8 @@ namespace SpaceGame.World
         public Asteroid(Vector2 position, int minCount, int maxCount, int meteorChunkDistance = 6)
         {
             this.position = position;
-            linearVelocity = new Vector2(Game1.r.Next(-50, 51), Game1.r.Next(-50, 51));
-            angularVelocity = Game1.r.Next(-400, 401) / 100f;
+            linearVelocity = new Vector2(LimitsEdgeGame.r.Next(-50, 51), LimitsEdgeGame.r.Next(-50, 51));
+            angularVelocity = LimitsEdgeGame.r.Next(-400, 401) / 100f;
             meteorChunks = new List<AsteroidChunk>();
             this.minCount = minCount;
             this.maxCount = maxCount;
@@ -55,10 +55,10 @@ namespace SpaceGame.World
             if (minCount > 0)
             {
                 meteorChunks.Add(new AsteroidChunk(position));
-                for (int i = 0; i < Game1.r.Next(minCount, maxCount + 1); ++i)
+                for (int i = 0; i < LimitsEdgeGame.r.Next(minCount, maxCount + 1); ++i)
                 {
-                    var branchPosition = meteorChunks[Game1.r.Next(0, meteorChunks.Count)].relativePosition;
-                    float angle = Game1.r.Next(0, 629) / 100f;
+                    var branchPosition = meteorChunks[LimitsEdgeGame.r.Next(0, meteorChunks.Count)].relativePosition;
+                    float angle = LimitsEdgeGame.r.Next(0, 629) / 100f;
                     var direction = new Vector2((float)Math.Cos(angle), -(float)Math.Sin(angle));
                     var newPosition = branchPosition + direction * meteorChunkDistance;
                     meteorChunks.Add(new AsteroidChunk(newPosition));

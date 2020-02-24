@@ -18,7 +18,7 @@ namespace SpaceGame.Managers
         public PlayerManager(Camera2D camera)
         {
             this.camera = camera;
-            playerShip = new PlayerShip(Vector2.Zero, Game1.textures["basic_ship_main"], Game1.textures["basic_ship_wings"])
+            playerShip = new PlayerShip(Vector2.Zero, LimitsEdgeGame.textures["basic_ship_main"], LimitsEdgeGame.textures["basic_ship_wings"])
             {
                 maxLinearThrust = 100000f,
                 maxAngularThrust = 5000f,
@@ -34,7 +34,7 @@ namespace SpaceGame.Managers
         public void Update(GameTime gameTime)
         {
             playerShip.Update(gameTime);
-            camera.Position = playerShip.position - Game1.screenSize / 2f;
+            camera.Position = playerShip.position - LimitsEdgeGame.screenSize / 2f;
         }
 
         public void Draw(SpriteBatch spriteBatch)

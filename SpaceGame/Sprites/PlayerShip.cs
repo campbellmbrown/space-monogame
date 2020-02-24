@@ -71,13 +71,13 @@ namespace SpaceGame.Sprites
             {
                 currentSmokeDelay -= smokeDelay;
                 Vector2 smokePosition = position + Helper.RotateVector(new Vector2(0, Height / 2f), rotation);
-                Game1.particleManager.AddParticle(new Smoke(smokePosition, true));
+                LimitsEdgeGame.particleManager.AddParticle(new Smoke(smokePosition, true));
             }
         }
 
         public void AddProjectiles()
         {
-            Game1.projectileManager.AddProjectile(new Lazer(position, rotation, Color.Red, facing * 300));
+            LimitsEdgeGame.projectileManager.AddProjectile(new Lazer(position, rotation, Color.Red, facing * 300));
         }
 
         public override void Update(GameTime gameTime)

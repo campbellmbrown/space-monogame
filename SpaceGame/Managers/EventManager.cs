@@ -10,10 +10,10 @@ namespace SpaceGame.Managers
 {
     public class EventManager
     {
-        protected DebugManager debugManager = Game1.debugManager;
+        protected DebugManager debugManager = LimitsEdgeGame.debugManager;
         protected bool holdingToggleDebug = false;
         protected float timeSinceLastShot = 0f;
-        protected float shotDelay { get { return Game1.playerManager.playerShip.shotDelay; } }
+        protected float shotDelay { get { return LimitsEdgeGame.playerManager.playerShip.shotDelay; } }
 
         public EventManager() { }
 
@@ -45,7 +45,7 @@ namespace SpaceGame.Managers
                 if (timeSinceLastShot >= shotDelay)
                 {
                     timeSinceLastShot -= shotDelay;
-                    Game1.playerManager.playerShip.AddProjectiles();
+                    LimitsEdgeGame.playerManager.playerShip.AddProjectiles();
                 }
             }
         }
