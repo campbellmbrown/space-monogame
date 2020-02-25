@@ -11,7 +11,7 @@ namespace SpaceGame.Sprites
     /// <summary>
     /// Class that defines a spaceship. Inherits the MovingSprite class.
     /// </summary>
-    public class Spaceship : MovingSprite
+    public class Spaceship : ItemCarryingSprite
     {
         public float wingAngularSpeed = 0f;
         protected Texture2D wingTexture;

@@ -27,37 +27,10 @@ namespace SpaceGame.Sprites
         /// </summary>
         /// <param name="position">X and Y positions of the sprite.</param>
         /// <param name="texture">Texture of the sprite.</param>
-        /// <param name="linearVelocity">X and Y linear velocities of the sprite.</param>
-        /// <param name="angularVelocity">Angular velocity of the sprite.</param>
-        public ItemCarryingSprite(Vector2 position, Texture2D texture, Vector2 linearVelocity, float angularVelocity) 
-            : base(position, texture)
+        public ItemCarryingSprite(Vector2 position, Texture2D texture) : base(position, texture)
         {
-            base.linearVelocity = linearVelocity;
-            base.angularVelocity = angularVelocity;
-            this.worldManager = LimitsEdgeGame.worldManager;
             _items = new List<Item>();
-        }
-
-        /// <summary>
-        /// Creates an instance of the ItemCarryingSprite class.
-        /// </summary>
-        /// <param name="position">X and Y positions of the sprite.</param>
-        /// <param name="texture">Texture of the sprite.</param>
-        /// <param name="randomize">If the velocities of the sprite should be randomized.</param>
-        public ItemCarryingSprite(Vector2 position, Texture2D texture, bool randomize) : base(position, texture)
-        {
-            if (randomize)
-            {
-                linearVelocity = new Vector2(LimitsEdgeGame.r.Next(-50, 51), LimitsEdgeGame.r.Next(-50, 51));
-                angularVelocity = LimitsEdgeGame.r.Next(-200, 201) / 100f;
-            }
-            else
-            {
-                linearVelocity = Vector2.Zero;
-                angularVelocity = 0f;
-            }
-            _items = new List<Item>();
-            this.worldManager = LimitsEdgeGame.worldManager;
+            worldManager = LimitsEdgeGame.worldManager;
         }
 
         /// <summary>

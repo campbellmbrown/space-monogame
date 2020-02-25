@@ -19,19 +19,19 @@ namespace SpaceGame.Sprites
         protected Vector2 linearFrictionAcceleration;
         protected float angularAcceleration;
         protected float angularFrictionAcceleration;
-        protected float linearThrust = 0;
-        protected float angularThrust = 0;
+        protected float linearThrust = 0f;
+        protected float angularThrust = 0f;
         public Vector2 facing { get { return new Vector2((float)Math.Cos(rotation - Math.PI / 2), (float)Math.Sin(rotation - Math.PI / 2f)); } }
         public Vector2 direction { get { return (linearVelocity.Length() == 0) ? Vector2.Zero : Vector2.Normalize(linearVelocity); } }
         protected int spinningDirection { get { return Math.Sign(angularVelocity); } }
-        public Vector2 linearVelocity;
-        public float angularVelocity;
-        public float linearDragCoefficient = 0;
-        public float angularDragCoefficient = 0;
+        public Vector2 linearVelocity = Vector2.Zero;
+        public float angularVelocity = 0f;
+        public float linearDragCoefficient = 0f;
+        public float angularDragCoefficient = 0f;
         public float maxLinearVelocity = 9999f;
         public float maxAngularVelocity = 9999f;
-        public float maxLinearThrust = 0;
-        public float maxAngularThrust = 0;
+        public float maxLinearThrust = 0f;
+        public float maxAngularThrust = 0f;
 
         /// <summary>
         /// Creates an instance of the MovingSprite class.
@@ -78,6 +78,17 @@ namespace SpaceGame.Sprites
             // Position and rotation
             position += linearVelocity * t;
             rotation = Helper.SimplifyRadians(rotation + angularVelocity * t);
+        }
+
+        /// <summary>
+        /// Randomizes the velocities of the sprite.
+        /// </summary>
+        /// <param name="maxLinVel">Maximum linear velocity of the sprite.</param>
+        /// <param name="maxAngVel">Maximum angular velocity of the spite.</param>
+        public void RandomizeVelocities(int maxLinVel, int maxAngVel)
+        {
+            linearVelocity = Helper.Vector2RandomDirecAndLength(maxLinVel);
+            angularVelocity = LimitsEdgeGame.r.Next(-maxAngVel * 100, (maxAngVel * 100) + 1) / 100f;
         }
     }
 }
