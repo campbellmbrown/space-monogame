@@ -1,6 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpaceGame.Effects;
 using SpaceGame.Sprites;
+using SpaceGame.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,16 +77,28 @@ namespace SpaceGame.Managers
             {
                 if (crates[i].CheckCollision(collisionRectangle))
                 {
+                    Rectangle crateCollision = crates[i].collisionRectangle;
                     if (crates[i].DepleteHealth(damage))
                     {
                         crates[i].BreakAction();
                         crates.RemoveAt(i);
-
                     }
+                    AddSmallExplosion(crateCollision);
                     return true;
                 }
             }
             return false;
         }
+
+        /// <summary>
+        /// Adds a small explosion on the crate.
+        /// </summary>
+        /// <param name="rectangle">Rectangle to create explosion inside of.</param>
+        public void AddSmallExplosion(Rectangle rectangle)
+        {
+            Vector2 explosionPosition = Helper.RandomPosInRectangle(rectangle);
+            for (int i = 0; i < 3; ++i) LimitsEdgeGame.particleManager.particles.Add(new Smoke(explosionPosition, true));
+            LimitsEdgeGame.particleManager.particles.Add(new SmallExplosion(explosionPosition, false));
+        }
     }
-}
+}

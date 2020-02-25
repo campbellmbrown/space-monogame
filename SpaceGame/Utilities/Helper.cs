@@ -76,7 +76,20 @@ namespace SpaceGame.Utilities
         /// <returns></returns>
         public static Vector2 RotateVector(Vector2 vector, float angle)
         {
-            return new Vector2(vector.X * (float)Math.Cos(angle) - vector.Y * (float)Math.Sin(angle), vector.X * (float)Math.Sin(angle) + vector.Y * (float)Math.Cos(angle));
+            return new Vector2(
+                vector.X * (float)Math.Cos(angle) - vector.Y * (float)Math.Sin(angle), 
+                vector.X * (float)Math.Sin(angle) + vector.Y * (float)Math.Cos(angle));
+        }
+
+        /// <summary>
+        /// Generates a random 2-dimensional vector placed inside of a rectangle.
+        /// </summary>
+        /// <param name="rectangle">Rectangle to place vector inside of.</param>
+        public static Vector2 RandomPosInRectangle(Rectangle rectangle)
+        {
+            return new Vector2(
+                rectangle.X + LimitsEdgeGame.r.Next(0, rectangle.Width + 1),
+                rectangle.Y + LimitsEdgeGame.r.Next(rectangle.Height + 1));
         }
     }
 }

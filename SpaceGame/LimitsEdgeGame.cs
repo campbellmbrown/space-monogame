@@ -93,6 +93,7 @@ namespace SpaceGame
             animations = new Dictionary<string, Animation>()
             {
                 { "smoke", new Animation(Content.Load<Texture2D>("Effects/smoke"), 5,  0.2f) },
+                { "small_explosion", new Animation(Content.Load<Texture2D>("Effects/small_explosion"), 7,  0.1f) },
             };
 
             fonts = new Dictionary<string, SpriteFont>()

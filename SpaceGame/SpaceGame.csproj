@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Effects\Particle.cs" />
+    <Compile Include="Effects\SmallExplosion.cs" />
     <Compile Include="Effects\Smoke.cs" />
     <Compile Include="LimitsEdgeGame.cs" />
     <Compile Include="Items\Item.cs" />

@@ -21,7 +21,6 @@
  - Replace the debug font with the custom font
  - Move random particle velocity and rotation to the child classes
  - Fix smoke/particle animation
- - Crate damage particles
  - Crate damage texture stages
  - Asteroid chunk health
  - Asteroid chunk deletion on health depletion
