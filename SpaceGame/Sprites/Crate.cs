@@ -9,20 +9,37 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Sprites
 {
+    /// <summary>
+    /// Class that defines a crate. Inherits the ItemCarryingSprite class.
+    /// </summary>
     public class Crate : ItemCarryingSprite
     {
         public Vector2 relativeToPlayer { get { return position - LimitsEdgeGame.playerManager.playerShip.position; } }
 
+        /// <summary>
+        /// Creates an instance of the Crate class.
+        /// </summary>
+        /// <param name="position">X and Y position of the crate.</param>
+        /// <param name="linearVelocity">X and Y velocities of the crate.</param>
+        /// <param name="angularVelocity">Angular velocity of the crate.</param>
         public Crate(Vector2 position, Vector2 linearVelocity, float angularVelocity) 
             : base(position, LimitsEdgeGame.textures["crate"], linearVelocity, angularVelocity)
         {
         }
 
+        /// <summary>
+        /// Creates an instance of the crate class.
+        /// </summary>
+        /// <param name="position">X and Y position of the crate.</param>
+        /// <param name="randomize">If the velocities should be randomized.</param>
         public Crate(Vector2 position, bool randomize) 
             : base(position, LimitsEdgeGame.textures["crate"], randomize)
         {
         }
 
+        /// <summary>
+        /// Action to be taken when the crate is broken.
+        /// </summary>
         public override void BreakAction()
         {
             AddBreakingParticles();

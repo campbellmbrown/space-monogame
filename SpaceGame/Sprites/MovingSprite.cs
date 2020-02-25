@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Sprites
 {
+    /// <summary>
+    /// Class that defines a moving sprite. Inherits the CollidableObject class.
+    /// </summary>
     public class MovingSprite : CollidableObject
     {
         protected Vector2 linearAcceleration;
@@ -30,17 +33,30 @@ namespace SpaceGame.Sprites
         public float maxLinearThrust = 0;
         public float maxAngularThrust = 0;
 
+        /// <summary>
+        /// Creates an instance of the MovingSprite class.
+        /// </summary>
+        /// <param name="position">X and Y positions of the moving sprite.</param>
+        /// <param name="texture">Texture of the moving sprite.</param>
         public MovingSprite(Vector2 position, Texture2D texture) 
             : base(position, texture)
         {
         }
 
+        /// <summary>
+        /// Updates the moving sprite.
+        /// </summary>
+        /// <param name="gameTime">GameTime instance.</param>
         public override void Update(GameTime gameTime)
         {
             Move((float)gameTime.ElapsedGameTime.TotalSeconds);
             base.Update(gameTime);
         }
 
+        /// <summary>
+        /// Moves the moving sprite.
+        /// </summary>
+        /// <param name="t">Time since last tick.</param>
         public virtual void Move(float t)
         {
             // Linear acceleration

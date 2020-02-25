@@ -13,12 +13,22 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Sprites
 {
+    /// <summary>
+    /// Class that defines a sprite carrying items. Inherits the MovingSprite class.
+    /// </summary>
     public class ItemCarryingSprite : MovingSprite
     {
         private List<Item> _items;
         protected WorldManager worldManager;
         protected int breakingPieces = 5;
 
+        /// <summary>
+        /// Creates an instance of the ItemCarryingSprite class.
+        /// </summary>
+        /// <param name="position">X and Y positions of the sprite.</param>
+        /// <param name="texture">Texture of the sprite.</param>
+        /// <param name="linearVelocity">X and Y linear velocities of the sprite.</param>
+        /// <param name="angularVelocity">Angular velocity of the sprite.</param>
         public ItemCarryingSprite(Vector2 position, Texture2D texture, Vector2 linearVelocity, float angularVelocity) 
             : base(position, texture)
         {
@@ -28,6 +38,12 @@ namespace SpaceGame.Sprites
             _items = new List<Item>();
         }
 
+        /// <summary>
+        /// Creates an instance of the ItemCarryingSprite class.
+        /// </summary>
+        /// <param name="position">X and Y positions of the sprite.</param>
+        /// <param name="texture">Texture of the sprite.</param>
+        /// <param name="randomize">If the velocities of the sprite should be randomized.</param>
         public ItemCarryingSprite(Vector2 position, Texture2D texture, bool randomize) : base(position, texture)
         {
             if (randomize)
@@ -44,11 +60,18 @@ namespace SpaceGame.Sprites
             this.worldManager = LimitsEdgeGame.worldManager;
         }
 
+        /// <summary>
+        /// Add items to the sprite.
+        /// </summary>
+        /// <param name="items"></param>
         public void AddItems(List<Item> items)
         {
             _items.AddRange(items);
         }
 
+        /// <summary>
+        /// Drops the items into the world.
+        /// </summary>
         public void DropItems()
         {
             foreach (var item in _items)
@@ -57,6 +80,9 @@ namespace SpaceGame.Sprites
             }
         }
 
+        /// <summary>
+        /// Adds breaking particles to the sprite.
+        /// </summary>
         public virtual void AddBreakingParticles()
         {
             if (breakingPieces <= 0) return;

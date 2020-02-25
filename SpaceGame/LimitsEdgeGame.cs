@@ -12,6 +12,9 @@ using System.Collections.Generic;
 
 namespace SpaceGame
 {
+    /// <summary>
+    /// Class where the main game loop is occurring. Inherits the Game class.
+    /// </summary>
     public class LimitsEdgeGame : Game
     {
         GraphicsDeviceManager graphics;
@@ -40,7 +43,9 @@ namespace SpaceGame
         Vector2 windowSize { get { return new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height); } }
         Vector2 windowCenter { get { return windowSize / 2f; } }
 
-
+        /// <summary>
+        /// Creates an instance of the LimitsEdgeGame class.
+        /// </summary>
         public LimitsEdgeGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -50,6 +55,9 @@ namespace SpaceGame
             graphics.IsFullScreen = false;
         }
 
+        /// <summary>
+        /// Initializes the game.
+        /// </summary>
         protected override void Initialize()
         {
             camera = new Camera2D(GraphicsDevice)
@@ -65,6 +73,9 @@ namespace SpaceGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }
 
+        /// <summary>
+        /// Loads the content for the game.
+        /// </summary>
         protected override void LoadContent()
         {
             textures = new Dictionary<string, Texture2D>()
@@ -105,10 +116,17 @@ namespace SpaceGame
 
         }
 
+        /// <summary>
+        /// Unloads the content for the game.
+        /// </summary>
         protected override void UnloadContent()
         {
         }
 
+        /// <summary>
+        /// Updates the game.
+        /// </summary>
+        /// <param name="gameTime">GameTime instance.</param>
         protected override void Update(GameTime gameTime)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -123,6 +141,10 @@ namespace SpaceGame
             base.Update(gameTime);
         }
 
+        /// <summary>
+        /// Draws the game.
+        /// </summary>
+        /// <param name="gameTime">GameTime instance.</param>
         protected override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, transformMatrix: camera.GetViewMatrix()); 

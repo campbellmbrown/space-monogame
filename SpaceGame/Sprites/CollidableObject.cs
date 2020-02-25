@@ -10,14 +10,27 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Models
 {
+    /// <summary>
+    /// Class used for collidable objects. Inherits the sprite class.
+    /// </summary>
     public class CollidableObject : Sprite
     {
         public Rectangle collisionRectangle { get { return new Rectangle((int)(position.X - Width / 2f), (int)(position.Y - Height / 2f), Width, Height); } }
 
+        /// <summary>
+        /// Creates an instance of the CollidableObject class.
+        /// </summary>
+        /// <param name="position">Position of the object.</param>
+        /// <param name="texture">Texture of the object.</param>
         public CollidableObject(Vector2 position, Texture2D texture) : base(position, texture)
         {
         }
 
+        /// <summary>
+        /// Will return true if the object's collision box is intersecting a rectangle.
+        /// </summary>
+        /// <param name="collisionRectangle">The rectangle to check collision with.</param>
+        /// <returns></returns>
         public bool CheckCollision(Rectangle collisionRectangle)
         {
             if (this.collisionRectangle.Intersects(collisionRectangle))
@@ -26,6 +39,9 @@ namespace SpaceGame.Models
                 return false;
         }
 
+        /// <summary>
+        /// Action to be taken when the object is broken.
+        /// </summary>
         public virtual void BreakAction()
         {
 

@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Models
 {
+    /// <summary>
+    /// Class that defines a minimap.
+    /// </summary>
     public class Minimap
     {
         protected float scale = 10f;
@@ -33,11 +36,15 @@ namespace SpaceGame.Models
         protected Color insideRectangleColor = new Color(100, 100, 100);
         protected Color crateColor = new Color(100, 255, 255);
 
-        public Minimap()
-        {
+        /// <summary>
+        /// Creates an instance of the Minimap class.
+        /// </summary>
+        public Minimap() { }
 
-        }
-
+        /// <summary>
+        /// Draws the minimap.
+        /// </summary>
+        /// <param name="spriteBatch">SpriteBatch instance.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawRectangle(outsideRectangle, outsideRectangleColor);
