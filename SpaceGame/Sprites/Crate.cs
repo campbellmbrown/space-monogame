@@ -25,6 +25,8 @@ namespace SpaceGame.Sprites
             : base(position, LimitsEdgeGame.textures["crate"])
         {
             if (randomize) RandomizeVelocities(50, 2);
+            maxHealth = 20;
+            currentHealth = 20;
         }
 
         /// <summary>

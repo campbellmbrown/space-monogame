@@ -15,7 +15,7 @@ namespace SpaceGame.Managers
     public class ProjectileManager
     {
         public List<Projectile> projectiles;
-        private WorldManager worldManager = LimitsEdgeGame.worldManager;
+        protected WorldManager worldManager = LimitsEdgeGame.worldManager;
 
         /// <summary>
         /// Creates an instance of the ProjectileManager class.
@@ -35,7 +35,7 @@ namespace SpaceGame.Managers
             for (int i = projectiles.Count - 1; i >= 0; i--)
             {
                 projectiles[i].Update(gameTime);
-                bool collided = worldManager.crateManager.CheckCollision(projectiles[i].collisionRectangle);
+                bool collided = worldManager.crateManager.CheckCollision(projectiles[i].collisionRectangle, projectiles[i].damage);
                 if (collided)
                 {
                     projectiles.Remove(projectiles[i]);

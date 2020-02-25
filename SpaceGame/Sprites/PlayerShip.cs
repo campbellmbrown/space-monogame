@@ -115,7 +115,7 @@ namespace SpaceGame.Sprites
         /// </summary>
         public void AddProjectiles()
         {
-            LimitsEdgeGame.projectileManager.projectiles.Add(new Lazer(position, rotation, Color.Red, facing * 300));
+            LimitsEdgeGame.projectileManager.projectiles.Add(new Lazer(position, rotation, Color.Red, facing * 300, 5));
         }
 
         /// <summary>

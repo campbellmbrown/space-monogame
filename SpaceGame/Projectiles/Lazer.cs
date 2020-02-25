@@ -20,8 +20,8 @@ namespace SpaceGame.Projectiles
         /// <param name="rotation">Rotation of the lazer.</param>
         /// <param name="color">Color of the lazer.</param>
         /// <param name="linearVelocity">X and Y linear velocities of the lazer.</param>
-        public Lazer(Vector2 position, float rotation, Color color, Vector2 linearVelocity)
-            : base(position, LimitsEdgeGame.textures["lazer"], rotation, linearVelocity)
+        public Lazer(Vector2 position, float rotation, Color color, Vector2 linearVelocity, int damage)
+            : base(position, LimitsEdgeGame.textures["lazer"], rotation, linearVelocity, damage)
         {
             base.color = color;
         }

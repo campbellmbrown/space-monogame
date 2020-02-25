@@ -67,15 +67,20 @@ namespace SpaceGame.Managers
         /// <summary>
         /// Returns true if a collision is detected and damages the crates.
         /// </summary>
-        /// <param name="collisionRectangle"></param>
-        public bool CheckCollision(Rectangle collisionRectangle)
+        /// <param name="collisionRectangle">Collision area to check.</param>
+        /// <param name="damage">Amount of damage the crate will take.</param>
+        public bool CheckCollision(Rectangle collisionRectangle, int damage = 0)
         {
             for (int i = crates.Count - 1; i >= 0; i--)
             {
                 if (crates[i].CheckCollision(collisionRectangle))
                 {
-                    crates[i].BreakAction();
-                    crates.RemoveAt(i);
+                    if (crates[i].DepleteHealth(damage))
+                    {
+                        crates[i].BreakAction();
+                        crates.RemoveAt(i);
+
+                    }
                     return true;
                 }
             }

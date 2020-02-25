@@ -16,8 +16,10 @@ namespace SpaceGame.Projectiles
     public class Projectile
     {
         public Rectangle collisionRectangle { get { return new Rectangle((int)position.X, (int)position.Y, Width, Height); } }
+        public Vector2 position;
+        public int damage;
+        
         protected Texture2D texture;
-        protected Vector2 position;
         protected Vector2 linearVelocity;
         protected float rotation;
         protected int Width { get { return texture.Width; } }
@@ -32,12 +34,14 @@ namespace SpaceGame.Projectiles
         /// <param name="texture">Texture of the projectile.</param>
         /// <param name="rotation">Rotation of the projectile.</param>
         /// <param name="linearVelocity">X and Y linear velocities of the projectile.</param>
-        public Projectile(Vector2 position, Texture2D texture, float rotation, Vector2 linearVelocity)
+        /// <param name="damage">Damage of the projectile.</param>
+        public Projectile(Vector2 position, Texture2D texture, float rotation, Vector2 linearVelocity, int damage = 0)
         {
             this.position = position;
             this.texture = texture;
             this.rotation = rotation;
             this.linearVelocity = linearVelocity;
+            this.damage = damage;
         }
 
         /// <summary>

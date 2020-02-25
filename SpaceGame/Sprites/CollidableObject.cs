@@ -16,6 +16,8 @@ namespace SpaceGame.Models
     public class CollidableObject : Sprite
     {
         public Rectangle collisionRectangle { get { return new Rectangle((int)(position.X - Width / 2f), (int)(position.Y - Height / 2f), Width, Height); } }
+        public int currentHealth = 1;
+        public int maxHealth = 1;
 
         /// <summary>
         /// Creates an instance of the CollidableObject class.
@@ -37,6 +39,18 @@ namespace SpaceGame.Models
                 return true;
             else
                 return false;
+        }
+
+        /// <summary>
+        /// Depletes the sprite health by a certain amount of damange. Will return true when the health is fully depleted.
+        /// </summary>
+        /// <param name="damage"></param>
+        /// <returns></returns>
+        public bool DepleteHealth(int damage)
+        {
+            currentHealth -= damage;
+            if (currentHealth <= 0) return true;
+            return false;
         }
 
         /// <summary>
