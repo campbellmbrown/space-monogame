@@ -35,7 +35,7 @@ namespace SpaceGame.Managers
             for (int i = projectiles.Count - 1; i >= 0; i--)
             {
                 projectiles[i].Update(gameTime);
-                bool collided = worldManager.crateManager.CheckCollision(projectiles[i].collisionRectangle, projectiles[i].damage);
+                bool collided = worldManager.crateManager.CheckCollision(projectiles[i].collisionRectangle, projectiles[i].explosionVelocity, projectiles[i].damage);
                 if (collided)
                 {
                     projectiles.Remove(projectiles[i]);

@@ -18,7 +18,8 @@ namespace SpaceGame.Projectiles
         public Rectangle collisionRectangle { get { return new Rectangle((int)position.X, (int)position.Y, Width, Height); } }
         public Vector2 position;
         public int damage;
-        
+        public Vector2 explosionVelocity { get { return (linearVelocity.Length() != 0) ? Vector2.Normalize(linearVelocity) * 20f : Vector2.Zero; } }
+
         protected Texture2D texture;
         protected Vector2 linearVelocity;
         protected float rotation;

@@ -70,20 +70,23 @@ namespace SpaceGame.Managers
         /// Returns true if a collision is detected and damages the crates.
         /// </summary>
         /// <param name="collisionRectangle">Collision area to check.</param>
+        /// <param name="collisionObjectVelocity">Velocity of the object being collided with.</param>
         /// <param name="damage">Amount of damage the crate will take.</param>
-        public bool CheckCollision(Rectangle collisionRectangle, int damage = 0)
+        public bool CheckCollision(Rectangle collisionRectangle, Vector2 collisionObjectVelocity, int damage = 0)
         {
             for (int i = crates.Count - 1; i >= 0; i--)
             {
                 if (crates[i].CheckCollision(collisionRectangle))
                 {
                     Rectangle crateCollision = crates[i].collisionRectangle;
+                    crates[i].linearVelocity += collisionObjectVelocity;
+                    Vector2 crateLinearVelocity = crates[i].linearVelocity;
                     if (crates[i].DepleteHealth(damage))
                     {
                         crates[i].BreakAction();
                         crates.RemoveAt(i);
                     }
-                    AddSmallExplosion(crateCollision);
+                    AddSmallExplosion(crateCollision, crateLinearVelocity);
                     return true;
                 }
             }
@@ -94,11 +97,12 @@ namespace SpaceGame.Managers
         /// Adds a small explosion on the crate.
         /// </summary>
         /// <param name="rectangle">Rectangle to create explosion inside of.</param>
-        public void AddSmallExplosion(Rectangle rectangle)
+        /// <param name="linearVelocity">Linear velocity of the explosion.</param>
+        public void AddSmallExplosion(Rectangle rectangle, Vector2 linearVelocity)
         {
             Vector2 explosionPosition = Helper.RandomPosInRectangle(rectangle);
             for (int i = 0; i < 3; ++i) LimitsEdgeGame.particleManager.particles.Add(new Smoke(explosionPosition, true));
-            LimitsEdgeGame.particleManager.particles.Add(new SmallExplosion(explosionPosition, false));
+            LimitsEdgeGame.particleManager.particles.Add(new SmallExplosion(explosionPosition, false) { linearVelocity = linearVelocity });
         }
     }
 }
