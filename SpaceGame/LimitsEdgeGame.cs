@@ -111,10 +111,6 @@ namespace SpaceGame
             eventManager = new EventManager();
             guiManager = new GuiManager();
             worldManager.crateManager.TopUpCrates();
-            worldManager.asteroidManager.asteroids.Add(new Asteroid(Vector2.Zero, 10, 20));
-            worldManager.asteroidManager.asteroids.Add(new Asteroid(Vector2.Zero, 10, 20));
-            worldManager.asteroidManager.asteroids.Add(new Asteroid(Vector2.Zero, 10, 20));
-
         }
 
         /// <summary>

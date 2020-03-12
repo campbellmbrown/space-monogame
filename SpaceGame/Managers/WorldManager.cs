@@ -18,7 +18,6 @@ namespace SpaceGame.Managers
         public StarManager starManager;
         public ItemManager itemManager;
         public CrateManager crateManager;
-        public AsteroidManager asteroidManager;
 
         /// <summary>
         /// Creates an instance of the WorldManager class.
@@ -28,7 +27,6 @@ namespace SpaceGame.Managers
             starManager = new StarManager();
             itemManager = new ItemManager();
             crateManager = new CrateManager();
-            asteroidManager = new AsteroidManager();
         }
 
         /// <summary>
@@ -40,7 +38,6 @@ namespace SpaceGame.Managers
             starManager.Update(gameTime);
             itemManager.Update(gameTime);
             crateManager.Update(gameTime);
-            asteroidManager.Update(gameTime);
         }
 
         /// <summary>
@@ -52,7 +49,6 @@ namespace SpaceGame.Managers
             starManager.Draw(spriteBatch);
             itemManager.Draw(spriteBatch);
             crateManager.Draw(spriteBatch);
-            asteroidManager.Draw(spriteBatch);
         }
     }
 }
