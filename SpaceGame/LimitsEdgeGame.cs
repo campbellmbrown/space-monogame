@@ -15,7 +15,8 @@ namespace SpaceGame
     public enum GameState
     {
         World,
-        Spaceship
+        Spaceship,
+
     }
 
     public class LimitsEdgeGame : Game
@@ -42,9 +43,9 @@ namespace SpaceGame
         public static WorldStateManager worldStateManager;
         public static ShipStateManager shipStateManager;
 
+        // Other states
         public static DebugManager debugManager;
         public static EventManager eventManager;
-        public static GuiManager guiManager;
 
         Vector2 windowSize { get { return new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height); } }
         Vector2 windowCenter { get { return windowSize / 2f; } }
@@ -108,7 +109,6 @@ namespace SpaceGame
             shipStateManager = new ShipStateManager();
             // Other managers
             debugManager = new DebugManager();
-            guiManager = new GuiManager();
             worldStateManager.crateManager.TopUpCrates();
         }
 
@@ -132,7 +132,6 @@ namespace SpaceGame
                     break;
             }
             debugManager.Update(gameTime);
-            guiManager.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -152,7 +151,6 @@ namespace SpaceGame
             }
             playerManager.Draw(spriteBatch);
             debugManager.Draw(spriteBatch);
-            guiManager.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

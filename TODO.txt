@@ -34,3 +34,4 @@
  - Add a button class
  - Remove uneccessary 'using'
  - Fix public/private/protected
+ - Alphabetize things
