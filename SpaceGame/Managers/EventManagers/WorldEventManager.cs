@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Managers
 {
-    public class EventManager
+    public class WorldEventManager
     {
         protected bool holdingToggleDebug = false;
+        protected bool holdingInGameMenu = false;
         protected float timeSinceLastShot = 0f;
         protected float shotDelay { get { return LimitsEdgeGame.playerManager.playerShip.shotDelay; } }
 
-        public EventManager() { }
+        public WorldEventManager() { }
 
         public void Update(GameTime gameTime)
         {
@@ -26,10 +27,18 @@ namespace SpaceGame.Managers
 
         public void CheckSinglePressKeys(KeyboardState keyboardState)
         {
+            // In-game menu
+            if (keyboardState.IsKeyDown(Keys.Escape))
+            {
+                if (!holdingToggleDebug) LimitsEdgeGame.gameState = GameState.InGameMenu;
+                holdingInGameMenu = true;
+            }
+            else holdingInGameMenu = false;
+
             // Debugging toggle
             if (keyboardState.IsKeyDown(Keys.Tab))
             {
-                if (!holdingToggleDebug) ToggleDebugLevels();
+                if (!holdingToggleDebug) LimitsEdgeGame.debugManager.ToggleDebugLevels();
                 holdingToggleDebug = true;
             }
             else holdingToggleDebug = false;
@@ -47,14 +56,6 @@ namespace SpaceGame.Managers
                     LimitsEdgeGame.playerManager.playerShip.AddProjectiles();
                 }
             }
-        }
-
-        /// <summary>
-        /// Changes the type of debug level.
-        /// </summary>
-        public void ToggleDebugLevels()
-        {
-            LimitsEdgeGame.debugManager.ToggleDebugLevels();
         }
     }
 }

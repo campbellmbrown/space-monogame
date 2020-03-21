@@ -46,7 +46,7 @@ namespace SpaceGame
 
         // Other states
         public static DebugManager debugManager;
-        public static EventManager eventManager;
+        public static WorldEventManager eventManager;
 
         Vector2 windowSize { get { return new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height); } }
         Vector2 windowCenter { get { return windowSize / 2f; } }

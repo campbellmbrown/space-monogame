@@ -12,7 +12,7 @@ namespace SpaceGame.Managers
 {
     public class WorldStateManager
     {
-        public EventManager eventManager;
+        public WorldEventManager eventManager;
         public ProjectileManager projectileManager;
         public ParticleManager particleManager;
         public StarManager starManager;
@@ -24,7 +24,7 @@ namespace SpaceGame.Managers
         {
             projectileManager = new ProjectileManager();
             particleManager = new ParticleManager();
-            eventManager = new EventManager();
+            eventManager = new WorldEventManager();
             starManager = new StarManager();
             itemManager = new ItemManager();
             crateManager = new CrateManager();
