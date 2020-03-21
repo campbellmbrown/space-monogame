@@ -13,6 +13,8 @@ namespace SpaceGame.Managers
     public class ShipStateManager
     {
         public ShipEventManager eventManager;
+        protected Texture2D texture = LimitsEdgeGame.textures["ship_layout"];
+        protected Vector2 center { get { return new Vector2(texture.Width / 2f, texture.Height / 2f); } }
 
         public ShipStateManager()
         {
@@ -26,7 +28,7 @@ namespace SpaceGame.Managers
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawRectangle(new RectangleF(-50, -50, 100, 100), Color.DarkSalmon);
+            spriteBatch.Draw(texture, Vector2.Zero, null, Color.White, 0f, center, 1f, SpriteEffects.None, 0f);
         }
     }
 }
