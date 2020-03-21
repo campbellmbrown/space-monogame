@@ -41,7 +41,7 @@ namespace SpaceGame.Managers
         protected PlayerManager playerManager = LimitsEdgeGame.playerManager;
         protected ParticleManager particleManager = LimitsEdgeGame.worldStateManager.particleManager;
         protected CrateManager crateManager = LimitsEdgeGame.worldStateManager.crateManager;
-        protected ProjectileManager projectileManager = LimitsEdgeGame.projectileManager;
+        protected ProjectileManager projectileManager = LimitsEdgeGame.worldStateManager.projectileManager;
 
         public DebugManager()
         {
@@ -89,7 +89,7 @@ namespace SpaceGame.Managers
             {
                 spriteBatch.DrawLine(playerManager.playerShip.position + playerManager.playerShip.facing * 20, playerManager.playerShip.position + playerManager.playerShip.facing * 40, Color.Green);
                 spriteBatch.DrawLine(playerManager.playerShip.position + playerManager.playerShip.direction * 20, playerManager.playerShip.position + playerManager.playerShip.direction * (20 + (playerManager.playerShip.linearVelocity.Length()) * 20 / playerManager.playerShip.maxLinearVelocity), Color.Yellow);
-                foreach (var projectile in LimitsEdgeGame.projectileManager.projectiles) spriteBatch.DrawString(LimitsEdgeGame.fonts["courier_new_italic"], projectile.damage.ToString(), projectile.position + new Vector2(6), Color.White, 0f, Vector2.Zero, 0.2f, SpriteEffects.None, 0f);
+                foreach (var projectile in LimitsEdgeGame.worldStateManager.projectileManager.projectiles) spriteBatch.DrawString(LimitsEdgeGame.fonts["courier_new_italic"], projectile.damage.ToString(), projectile.position + new Vector2(6), Color.White, 0f, Vector2.Zero, 0.2f, SpriteEffects.None, 0f);
                 foreach (var crate in LimitsEdgeGame.worldStateManager.crateManager.crates) spriteBatch.DrawString(LimitsEdgeGame.fonts["courier_new_italic"], crate.currentHealth.ToString(), crate.position + new Vector2(14), Color.White, 0f, Vector2.Zero, 0.2f, SpriteEffects.None, 0f);
             }
         }
