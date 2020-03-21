@@ -77,7 +77,7 @@ namespace SpaceGame.Sprites
 
         public void AddProjectiles()
         {
-            LimitsEdgeGame.worldStateManager.projectileManager.projectiles.Add(new Lazer(position, rotation, Color.Red, facing * 300, 5));
+            LimitsEdgeGame.worldStateManager.projectileManager.projectiles.Add(new Lazer(position, rotation, Color.Red, facing * 300, 5) {maxLifeTime = 5});
         }
 
         public override void Update(GameTime gameTime)

@@ -24,6 +24,11 @@ namespace SpaceGame.Managers
             for (int i = projectiles.Count - 1; i >= 0; i--)
             {
                 projectiles[i].Update(gameTime);
+                if (projectiles[i].currentLifeTime >= projectiles[i].maxLifeTime)
+                {
+                    projectiles.Remove(projectiles[i]);
+                    continue;
+                }
                 bool collided = LimitsEdgeGame.worldStateManager.crateManager.CheckCollision(projectiles[i].collisionRectangle, projectiles[i].explosionVelocity, projectiles[i].damage);
                 if (collided)
                 {

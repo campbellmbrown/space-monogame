@@ -19,6 +19,8 @@ namespace SpaceGame.Projectiles
         public Vector2 position;
         public int damage;
         public Vector2 explosionVelocity { get { return (linearVelocity.Length() != 0) ? Vector2.Normalize(linearVelocity) * 20f : Vector2.Zero; } }
+        public float currentLifeTime = 0;
+        public float maxLifeTime = 9999;
 
         protected Texture2D texture;
         protected Vector2 linearVelocity;
@@ -52,6 +54,7 @@ namespace SpaceGame.Projectiles
         public void Update(GameTime gameTime)
         {
             float t = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            currentLifeTime += t;
             position += linearVelocity * t;
         }
 

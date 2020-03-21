@@ -10,18 +10,11 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Managers
 {
-    /// <summary>
-    /// Class to manager the player.
-    /// </summary>
     public class PlayerManager
     {
         public PlayerShip playerShip;
         Camera2D camera;
 
-        /// <summary>
-        /// Creates an instance of the PlayerManager class.
-        /// </summary>
-        /// <param name="camera">The camera that follows the player.</param>
         public PlayerManager(Camera2D camera)
         {
             this.camera = camera;
@@ -38,20 +31,12 @@ namespace SpaceGame.Managers
             };
         }
 
-        /// <summary>
-        /// Updates the player.
-        /// </summary>
-        /// <param name="gameTime">GameTime instance.</param>
         public void Update(GameTime gameTime)
         {
             playerShip.Update(gameTime);
             camera.Position = playerShip.position - LimitsEdgeGame.screenSize / 2f;
         }
 
-        /// <summary>
-        /// Draws the player.
-        /// </summary>
-        /// <param name="spriteBatch">SpriteBatch instance.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
             playerShip.Draw(spriteBatch);
