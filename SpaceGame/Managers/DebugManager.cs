@@ -57,7 +57,7 @@ namespace SpaceGame.Managers
         protected ProjectileManager projectileManager = LimitsEdgeGame.projectileManager;
 
         /// <summary>
-        /// Creates an instance of the AsteroidManager class.
+        /// Creates an instance of the DebugManager class.
         /// </summary>
         public DebugManager()
         {
