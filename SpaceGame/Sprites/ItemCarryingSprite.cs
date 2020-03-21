@@ -13,38 +13,23 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Sprites
 {
-    /// <summary>
-    /// Class that defines a sprite carrying items. Inherits the MovingSprite class.
-    /// </summary>
     public class ItemCarryingSprite : MovingSprite
     {
         private List<Item> _items;
         protected WorldStateManager worldManager;
         protected int breakingPieces = 5;
 
-        /// <summary>
-        /// Creates an instance of the ItemCarryingSprite class.
-        /// </summary>
-        /// <param name="position">X and Y positions of the sprite.</param>
-        /// <param name="texture">Texture of the sprite.</param>
         public ItemCarryingSprite(Vector2 position, Texture2D texture) : base(position, texture)
         {
             _items = new List<Item>();
             worldManager = LimitsEdgeGame.worldStateManager;
         }
 
-        /// <summary>
-        /// Add items to the sprite.
-        /// </summary>
-        /// <param name="items"></param>
         public void AddItems(List<Item> items)
         {
             _items.AddRange(items);
         }
 
-        /// <summary>
-        /// Drops the items into the world.
-        /// </summary>
         public void DropItems()
         {
             foreach (var item in _items)
@@ -53,9 +38,6 @@ namespace SpaceGame.Sprites
             }
         }
 
-        /// <summary>
-        /// Adds breaking particles to the sprite.
-        /// </summary>
         public virtual void AddBreakingParticles()
         {
             if (breakingPieces <= 0) return;
@@ -75,7 +57,7 @@ namespace SpaceGame.Sprites
                         angularVelocity = this.angularVelocity,
                         linearVelocity = this.linearVelocity + Helper.Vector2RandomDirecAndLength(5) + tangentialDirection * this.angularVelocity * relativePosition.Length()
                     };
-                    LimitsEdgeGame.particleManager.particles.Add(particle);
+                    LimitsEdgeGame.worldStateManager.particleManager.particles.Add(particle);
                 }
             }
         }

@@ -13,13 +13,15 @@ namespace SpaceGame.Managers
     public class WorldStateManager
     {
         public EventManager eventManager;
-        
+
+        public ParticleManager particleManager;
         public StarManager starManager;
         public ItemManager itemManager;
         public CrateManager crateManager;
 
         public WorldStateManager()
         {
+            particleManager = new ParticleManager();
             eventManager = new EventManager();
             starManager = new StarManager();
             itemManager = new ItemManager();
@@ -32,6 +34,7 @@ namespace SpaceGame.Managers
             starManager.Update(gameTime);
             itemManager.Update(gameTime);
             crateManager.Update(gameTime);
+            particleManager.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -39,6 +42,7 @@ namespace SpaceGame.Managers
             starManager.Draw(spriteBatch);
             itemManager.Draw(spriteBatch);
             crateManager.Draw(spriteBatch);
+            particleManager.Draw(spriteBatch);
         }
     }
 }

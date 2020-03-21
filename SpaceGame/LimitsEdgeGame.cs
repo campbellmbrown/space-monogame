@@ -36,7 +36,6 @@ namespace SpaceGame
         public static Vector2 topLeftCorner { get { return positionCenter - screenCenter / camera.Zoom; } }
         
         public static PlayerManager playerManager;
-        public static ParticleManager particleManager;
         public static ProjectileManager projectileManager;
 
         // States
@@ -109,7 +108,6 @@ namespace SpaceGame
             worldStateManager = new WorldStateManager();
             shipStateManager = new ShipStateManager();
             // Other managers
-            particleManager = new ParticleManager();
             projectileManager = new ProjectileManager(worldStateManager);
             debugManager = new DebugManager();
             guiManager = new GuiManager();
@@ -135,7 +133,6 @@ namespace SpaceGame
                     shipStateManager.Update(gameTime);
                     break;
             }
-            particleManager.Update(gameTime);
             projectileManager.Update(gameTime);
             debugManager.Update(gameTime);
             guiManager.Update(gameTime);
@@ -156,7 +153,6 @@ namespace SpaceGame
                     shipStateManager.Draw(spriteBatch);
                     break;
             }
-            particleManager.Draw(spriteBatch);
             playerManager.Draw(spriteBatch);
             projectileManager.Draw(spriteBatch);
             debugManager.Draw(spriteBatch);
