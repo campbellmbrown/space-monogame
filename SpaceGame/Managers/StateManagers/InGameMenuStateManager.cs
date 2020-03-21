@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
+using SpaceGame.Managers.EventManagers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +12,16 @@ namespace SpaceGame.Managers
 {
     public class InGameMenuStateManager
     {
+        public InGameMenuEventManager eventManager;
+
         public InGameMenuStateManager()
         {
-
+            eventManager = new InGameMenuEventManager();
         }
 
         public void Update(GameTime gameTime)
         {
-
+            eventManager.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)

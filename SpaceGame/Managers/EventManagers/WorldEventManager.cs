@@ -11,7 +11,7 @@ namespace SpaceGame.Managers
     public class WorldEventManager
     {
         protected bool holdingToggleDebug = false;
-        protected bool holdingInGameMenu = false;
+        public bool holdingInGameMenu = false;
         protected float timeSinceLastShot = 0f;
         protected float shotDelay { get { return LimitsEdgeGame.playerManager.playerShip.shotDelay; } }
 
@@ -30,7 +30,7 @@ namespace SpaceGame.Managers
             // In-game menu
             if (keyboardState.IsKeyDown(Keys.Escape))
             {
-                if (!holdingToggleDebug) LimitsEdgeGame.gameState = GameState.InGameMenu;
+                if (!holdingInGameMenu) LimitsEdgeGame.gameState = GameState.InGameMenu;
                 holdingInGameMenu = true;
             }
             else holdingInGameMenu = false;
