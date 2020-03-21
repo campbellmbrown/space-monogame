@@ -12,9 +12,12 @@ using System.Collections.Generic;
 
 namespace SpaceGame
 {
-    /// <summary>
-    /// Class where the main game loop is occurring. Inherits the Game class.
-    /// </summary>
+    public enum GameState
+    {
+        World,
+        Spaceship
+    }
+
     public class LimitsEdgeGame : Game
     {
         GraphicsDeviceManager graphics;
@@ -35,7 +38,12 @@ namespace SpaceGame
         public static PlayerManager playerManager;
         public static ParticleManager particleManager;
         public static ProjectileManager projectileManager;
-        public static WorldManager worldManager;
+
+        // States
+        public static GameState gameState;
+        public static WorldStateManager worldStateManager;
+        public static ShipStateManager shipStateManager;
+
         public static DebugManager debugManager;
         public static EventManager eventManager;
         public static GuiManager guiManager;
@@ -43,9 +51,6 @@ namespace SpaceGame
         Vector2 windowSize { get { return new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height); } }
         Vector2 windowCenter { get { return windowSize / 2f; } }
 
-        /// <summary>
-        /// Creates an instance of the LimitsEdgeGame class.
-        /// </summary>
         public LimitsEdgeGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -55,11 +60,9 @@ namespace SpaceGame
             graphics.IsFullScreen = false;
         }
 
-        /// <summary>
-        /// Initializes the game.
-        /// </summary>
         protected override void Initialize()
         {
+            gameState = GameState.World;
             camera = new Camera2D(GraphicsDevice)
             {
                 Zoom = zoom,
@@ -73,9 +76,6 @@ namespace SpaceGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }
 
-        /// <summary>
-        /// Loads the content for the game.
-        /// </summary>
         protected override void LoadContent()
         {
             textures = new Dictionary<string, Texture2D>()
@@ -103,34 +103,40 @@ namespace SpaceGame
                 { "courier_new_italic", Content.Load<SpriteFont>("Fonts/courier_new_italic") }
             };
 
+            // Creating the player manager
             playerManager = new PlayerManager(camera);
-            worldManager = new WorldManager();
+            // Creating state managers
+            worldStateManager = new WorldStateManager();
+            shipStateManager = new ShipStateManager();
+            // Other managers
             particleManager = new ParticleManager();
-            projectileManager = new ProjectileManager(worldManager);
+            projectileManager = new ProjectileManager(worldStateManager);
             debugManager = new DebugManager();
             eventManager = new EventManager();
             guiManager = new GuiManager();
-            worldManager.crateManager.TopUpCrates();
+            worldStateManager.crateManager.TopUpCrates();
         }
 
-        /// <summary>
-        /// Unloads the content for the game.
-        /// </summary>
         protected override void UnloadContent()
         {
         }
 
-        /// <summary>
-        /// Updates the game.
-        /// </summary>
-        /// <param name="gameTime">GameTime instance.</param>
         protected override void Update(GameTime gameTime)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
             eventManager.Update(gameTime);
             playerManager.Update(gameTime);
-            worldManager.Update(gameTime);
+            switch (gameState)
+            {
+                case GameState.World:
+                    worldStateManager.Update(gameTime);
+                    break;
+                case GameState.Spaceship:
+                    shipStateManager.Update(gameTime);
+                    break;
+            }
             particleManager.Update(gameTime);
             projectileManager.Update(gameTime);
             debugManager.Update(gameTime);
@@ -138,15 +144,20 @@ namespace SpaceGame
             base.Update(gameTime);
         }
 
-        /// <summary>
-        /// Draws the game.
-        /// </summary>
-        /// <param name="gameTime">GameTime instance.</param>
         protected override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, transformMatrix: camera.GetViewMatrix()); 
             GraphicsDevice.Clear(Color.Black);
-            worldManager.Draw(spriteBatch);
+            
+            switch (gameState)
+            {
+                case GameState.World:
+                    worldStateManager.Draw(spriteBatch);
+                    break;
+                case GameState.Spaceship:
+                    shipStateManager.Draw(spriteBatch);
+                    break;
+            }
             particleManager.Draw(spriteBatch);
             playerManager.Draw(spriteBatch);
             projectileManager.Draw(spriteBatch);

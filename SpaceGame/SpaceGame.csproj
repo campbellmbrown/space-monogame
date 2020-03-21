@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
   <PropertyGroup>
@@ -57,10 +57,11 @@
     <Compile Include="Managers\ItemManager.cs" />
     <Compile Include="Managers\ParticleManager.cs" />
     <Compile Include="Managers\PlayerManager.cs" />
+    <Compile Include="Managers\ShipStateManager.cs" />
     <Compile Include="Managers\ProjectileManager.cs" />
     <Compile Include="Managers\RespawnManager.cs" />
     <Compile Include="Managers\StarManager.cs" />
-    <Compile Include="Managers\WorldManager.cs" />
+    <Compile Include="Managers\WorldStateManager.cs" />
     <Compile Include="Models\Animation.cs" />
     <Compile Include="Sprites\CollidableObject.cs" />
     <Compile Include="Models\Minimap.cs" />

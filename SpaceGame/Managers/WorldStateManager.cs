@@ -13,7 +13,7 @@ namespace SpaceGame.Managers
     /// <summary>
     /// Class to handle the world.
     /// </summary>
-    public class WorldManager
+    public class WorldStateManager
     {
         public StarManager starManager;
         public ItemManager itemManager;
@@ -22,7 +22,7 @@ namespace SpaceGame.Managers
         /// <summary>
         /// Creates an instance of the WorldManager class.
         /// </summary>
-        public WorldManager()
+        public WorldStateManager()
         {
             starManager = new StarManager();
             itemManager = new ItemManager();

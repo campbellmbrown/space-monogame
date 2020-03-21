@@ -19,7 +19,7 @@ namespace SpaceGame.Sprites
     public class ItemCarryingSprite : MovingSprite
     {
         private List<Item> _items;
-        protected WorldManager worldManager;
+        protected WorldStateManager worldManager;
         protected int breakingPieces = 5;
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace SpaceGame.Sprites
         public ItemCarryingSprite(Vector2 position, Texture2D texture) : base(position, texture)
         {
             _items = new List<Item>();
-            worldManager = LimitsEdgeGame.worldManager;
+            worldManager = LimitsEdgeGame.worldStateManager;
         }
 
         /// <summary>

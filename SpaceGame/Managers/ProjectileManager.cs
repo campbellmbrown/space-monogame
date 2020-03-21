@@ -15,13 +15,13 @@ namespace SpaceGame.Managers
     public class ProjectileManager
     {
         public List<Projectile> projectiles;
-        protected WorldManager worldManager = LimitsEdgeGame.worldManager;
+        protected WorldStateManager worldManager = LimitsEdgeGame.worldStateManager;
 
         /// <summary>
         /// Creates an instance of the ProjectileManager class.
         /// </summary>
         /// <param name="worldManager"></param>
-        public ProjectileManager(WorldManager worldManager)
+        public ProjectileManager(WorldStateManager worldManager)
         {
             projectiles = new List<Projectile>();
         }

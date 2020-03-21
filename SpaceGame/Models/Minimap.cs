@@ -50,7 +50,7 @@ namespace SpaceGame.Models
             spriteBatch.DrawRectangle(outsideRectangle, outsideRectangleColor);
             spriteBatch.DrawRectangle(insideRectangle, insideRectangleColor);
             spriteBatch.DrawPoint(center, playerColor, objectSize);
-            foreach (var crate in LimitsEdgeGame.worldManager.crateManager.crates)
+            foreach (var crate in LimitsEdgeGame.worldStateManager.crateManager.crates)
             {
                 Vector2 mapPosition = center + crate.relativeToPlayer / scale;
                 if (outsideRectangle.Contains(new Point2(mapPosition.X, mapPosition.Y))) 
