@@ -44,10 +44,6 @@ namespace SpaceGame
         public static ShipStateManager shipStateManager;
         public static InGameMenuStateManager inGameMenuStateManager;
 
-        // Other states
-        public static DebugManager debugManager;
-        public static WorldEventManager eventManager;
-
         Vector2 windowSize { get { return new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height); } }
         Vector2 windowCenter { get { return windowSize / 2f; } }
 
@@ -109,8 +105,6 @@ namespace SpaceGame
             worldStateManager = new WorldStateManager();
             shipStateManager = new ShipStateManager();
             inGameMenuStateManager = new InGameMenuStateManager();
-            // Other managers
-            debugManager = new DebugManager();
         }
 
         protected override void UnloadContent()
@@ -132,7 +126,6 @@ namespace SpaceGame
                     inGameMenuStateManager.Update(gameTime);
                     break;
             }
-            debugManager.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -154,7 +147,6 @@ namespace SpaceGame
                     inGameMenuStateManager.Draw(spriteBatch);
                     break;
             }
-            debugManager.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

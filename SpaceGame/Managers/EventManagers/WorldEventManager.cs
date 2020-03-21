@@ -38,7 +38,7 @@ namespace SpaceGame.Managers
             // Debugging toggle
             if (keyboardState.IsKeyDown(Keys.Tab))
             {
-                if (!holdingToggleDebug) LimitsEdgeGame.debugManager.ToggleDebugLevels();
+                if (!holdingToggleDebug) LimitsEdgeGame.worldStateManager.debugManager.ToggleDebugLevels();
                 holdingToggleDebug = true;
             }
             else holdingToggleDebug = false;
