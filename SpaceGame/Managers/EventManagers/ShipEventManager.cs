@@ -27,7 +27,11 @@ namespace SpaceGame.Managers.EventManagers
             // Exit ship
             if (keyboardState.IsKeyDown(Keys.E))
             {
-                if (!holdingExitShip) LimitsEdgeGame.gameState = GameState.World;
+                if (!holdingExitShip)
+                {
+                    LimitsEdgeGame.gameState = GameState.World;
+                    LimitsEdgeGame.currentCamera = LimitsEdgeGame.worldCamera;
+                }
                 holdingExitShip = true;
             }
             else holdingExitShip = false;

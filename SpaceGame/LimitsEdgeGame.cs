@@ -24,7 +24,11 @@ namespace SpaceGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        public static Camera2D camera;
+        public static Camera2D currentCamera;
+        public static Camera2D worldCamera;
+        public static Camera2D inGameMenuCamera;
+        public static Camera2D shipCamera;
+
         public static Random r;
         public static float zoom = 3f;
         public static Dictionary<string, Texture2D> textures;
@@ -34,7 +38,7 @@ namespace SpaceGame
         public static Vector2 zoomedScreenSize { get { return screenSize / zoom; } }
         public static Vector2 positionCenter { get { return playerManager.playerShip.position; } }
         public static Vector2 screenCenter { get { return screenSize / 2f; } }
-        public static Vector2 topLeftCorner { get { return positionCenter - screenCenter / camera.Zoom; } }
+        public static Vector2 topLeftCorner { get { return positionCenter - screenCenter / worldCamera.Zoom; } }
         
         public static PlayerManager playerManager;
 
@@ -59,11 +63,10 @@ namespace SpaceGame
         protected override void Initialize()
         {
             gameState = GameState.World;
-            camera = new Camera2D(GraphicsDevice)
-            {
-                Zoom = zoom,
-                Position = -screenSize / 2f
-            };
+            worldCamera = new Camera2D(GraphicsDevice) { Zoom = zoom, Position = -screenSize / 2f };
+            inGameMenuCamera = new Camera2D(GraphicsDevice) { Zoom = zoom, Position = -screenSize / 2f };
+            shipCamera = new Camera2D(GraphicsDevice) { Zoom = zoom, Position = -screenSize / 2f };
+            currentCamera = worldCamera;
             IsMouseVisible = true;
             IsFixedTimeStep = true;
             graphics.SynchronizeWithVerticalRetrace = true;
@@ -100,7 +103,7 @@ namespace SpaceGame
             };
 
             // Creating the player manager
-            playerManager = new PlayerManager(camera);
+            playerManager = new PlayerManager(worldCamera);
             // Creating state managers
             worldStateManager = new WorldStateManager();
             shipStateManager = new ShipStateManager();
@@ -131,7 +134,7 @@ namespace SpaceGame
 
         protected override void Draw(GameTime gameTime)
         {
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, transformMatrix: camera.GetViewMatrix()); 
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, transformMatrix: currentCamera.GetViewMatrix()); 
             GraphicsDevice.Clear(Color.Black);
             
             switch (gameState)

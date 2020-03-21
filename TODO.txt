@@ -26,8 +26,7 @@
  - Add asteroids
  - Add more to the debug messages
  - Add a lookup to the debug update to make things more readable
- - Change state function somewhere
- - Different cameras for different states
+ - Change state function somewhere - changes camera and state
 ========================================================================
 ================== LOW PRIORITY (nice to have) =========================
 ========================================================================

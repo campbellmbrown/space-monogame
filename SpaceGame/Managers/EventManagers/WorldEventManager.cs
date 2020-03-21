@@ -32,7 +32,11 @@ namespace SpaceGame.Managers
             // In-game menu
             if (keyboardState.IsKeyDown(Keys.Escape))
             {
-                if (!holdingInGameMenu) LimitsEdgeGame.gameState = GameState.InGameMenu;
+                if (!holdingInGameMenu)
+                {
+                    LimitsEdgeGame.gameState = GameState.InGameMenu;
+                    LimitsEdgeGame.currentCamera = LimitsEdgeGame.inGameMenuCamera;
+                }
                 holdingInGameMenu = true;
             }
             else holdingInGameMenu = false;
@@ -40,7 +44,11 @@ namespace SpaceGame.Managers
             // Ship inventory
             if (keyboardState.IsKeyDown(Keys.E))
             {
-                if (!holdingShipInv) LimitsEdgeGame.gameState = GameState.Spaceship;
+                if (!holdingShipInv)
+                {
+                    LimitsEdgeGame.gameState = GameState.Spaceship;
+                    LimitsEdgeGame.currentCamera = LimitsEdgeGame.shipCamera;
+                }
                 holdingShipInv = true;
             }
             else holdingShipInv = false;

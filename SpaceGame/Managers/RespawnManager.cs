@@ -17,7 +17,7 @@ namespace SpaceGame.Managers
         protected int spawningToDespawningBuffer;
         protected Vector2 topLeftCorner { get { return LimitsEdgeGame.topLeftCorner; } }
         protected Vector2 zoomedScreenSize { get { return LimitsEdgeGame.zoomedScreenSize; } }
-        protected float zoom { get { return LimitsEdgeGame.camera.Zoom; } }
+        protected float zoom { get { return LimitsEdgeGame.worldCamera.Zoom; } }
 
         /// <summary>
         /// Creates an instance of the RespawnManager class.

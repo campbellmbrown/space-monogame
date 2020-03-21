@@ -15,7 +15,7 @@ namespace SpaceGame.Models
     public class Minimap
     {
         protected float scale = 10f;
-        protected float zoom { get { return LimitsEdgeGame.camera.Zoom; } }
+        protected float zoom { get { return LimitsEdgeGame.worldCamera.Zoom; } }
         protected float objectSize = 2f;
 
         protected Vector2 distanceFromScreenEdge = new Vector2(10);

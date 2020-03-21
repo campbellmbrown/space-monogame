@@ -27,7 +27,11 @@ namespace SpaceGame.Managers.EventManagers
             // Exit in-game menu
             if (keyboardState.IsKeyDown(Keys.Escape))
             {
-                if (!holdingExitMenu) LimitsEdgeGame.gameState = GameState.World;
+                if (!holdingExitMenu)
+                {
+                    LimitsEdgeGame.gameState = GameState.World;
+                    LimitsEdgeGame.currentCamera = LimitsEdgeGame.worldCamera;
+                }
                 holdingExitMenu = true;
             }
             else holdingExitMenu = false;
