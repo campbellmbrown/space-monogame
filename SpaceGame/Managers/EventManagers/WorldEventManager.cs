@@ -10,8 +10,10 @@ namespace SpaceGame.Managers
 {
     public class WorldEventManager
     {
-        protected bool holdingToggleDebug = false;
-        public bool holdingInGameMenu = false;
+        protected bool holdingToggleDebug = true;
+        protected bool holdingInGameMenu = true;
+        protected bool holdingShipInv = true;
+
         protected float timeSinceLastShot = 0f;
         protected float shotDelay { get { return LimitsEdgeGame.playerManager.playerShip.shotDelay; } }
 
@@ -34,6 +36,14 @@ namespace SpaceGame.Managers
                 holdingInGameMenu = true;
             }
             else holdingInGameMenu = false;
+
+            // Ship inventory
+            if (keyboardState.IsKeyDown(Keys.E))
+            {
+                if (!holdingShipInv) LimitsEdgeGame.gameState = GameState.Spaceship;
+                holdingShipInv = true;
+            }
+            else holdingShipInv = false;
 
             // Debugging toggle
             if (keyboardState.IsKeyDown(Keys.Tab))

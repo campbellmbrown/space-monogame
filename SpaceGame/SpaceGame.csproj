@@ -53,6 +53,7 @@
     <Compile Include="Managers\CrateManager.cs" />
     <Compile Include="Managers\DebugManager.cs" />
     <Compile Include="Managers\EventManagers\InGameMenuEventManager.cs" />
+    <Compile Include="Managers\EventManagers\ShipEventManager.cs" />
     <Compile Include="Managers\EventManagers\WorldEventManager.cs" />
     <Compile Include="Managers\GuiManager.cs" />
     <Compile Include="Managers\StateManagers\InGameMenuStateManager.cs" />

@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Managers.EventManagers
 {
-    public class InGameMenuEventManager
+    public class ShipEventManager
     {
-        protected bool holdingExitMenu = true;
+        protected bool holdingExitShip = true;
 
-        public InGameMenuEventManager() { }
+        public ShipEventManager() { }
 
         public void Update(GameTime gameTime)
         {
@@ -24,13 +24,13 @@ namespace SpaceGame.Managers.EventManagers
 
         public void CheckSinglePressKeys(KeyboardState keyboardState)
         {
-            // Exit in-game menu
-            if (keyboardState.IsKeyDown(Keys.Escape))
+            // Exit ship
+            if (keyboardState.IsKeyDown(Keys.E))
             {
-                if (!holdingExitMenu) LimitsEdgeGame.gameState = GameState.World;
-                holdingExitMenu = true;
+                if (!holdingExitShip) LimitsEdgeGame.gameState = GameState.World;
+                holdingExitShip = true;
             }
-            else holdingExitMenu = false;
+            else holdingExitShip = false;
         }
 
         public void CheckHeldKeyPress(KeyboardState keyboardState, float t)
