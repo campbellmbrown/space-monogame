@@ -29,6 +29,7 @@ namespace SpaceGame.Managers
             itemManager = new ItemManager();
             crateManager = new CrateManager();
             guiManager = new GuiManager();
+            crateManager.TopUpCrates();
         }
 
         public void Update(GameTime gameTime)

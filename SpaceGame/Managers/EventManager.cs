@@ -10,7 +10,6 @@ namespace SpaceGame.Managers
 {
     public class EventManager
     {
-        protected DebugManager debugManager = LimitsEdgeGame.debugManager;
         protected bool holdingToggleDebug = false;
         protected float timeSinceLastShot = 0f;
         protected float shotDelay { get { return LimitsEdgeGame.playerManager.playerShip.shotDelay; } }
@@ -55,7 +54,7 @@ namespace SpaceGame.Managers
         /// </summary>
         public void ToggleDebugLevels()
         {
-            debugManager.ToggleDebugLevels();
+            LimitsEdgeGame.debugManager.ToggleDebugLevels();
         }
     }
 }

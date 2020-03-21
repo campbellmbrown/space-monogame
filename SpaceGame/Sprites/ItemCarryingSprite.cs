@@ -16,13 +16,11 @@ namespace SpaceGame.Sprites
     public class ItemCarryingSprite : MovingSprite
     {
         private List<Item> _items;
-        protected WorldStateManager worldManager;
         protected int breakingPieces = 5;
 
         public ItemCarryingSprite(Vector2 position, Texture2D texture) : base(position, texture)
         {
             _items = new List<Item>();
-            worldManager = LimitsEdgeGame.worldStateManager;
         }
 
         public void AddItems(List<Item> items)
@@ -34,7 +32,7 @@ namespace SpaceGame.Sprites
         {
             foreach (var item in _items)
             {
-                worldManager.itemManager.items.Add(item);
+                LimitsEdgeGame.worldStateManager.itemManager.items.Add(item);
             }
         }
 

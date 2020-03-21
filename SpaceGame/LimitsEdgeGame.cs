@@ -16,7 +16,7 @@ namespace SpaceGame
     {
         World,
         Spaceship,
-
+        InGameMenu
     }
 
     public class LimitsEdgeGame : Game
@@ -42,6 +42,7 @@ namespace SpaceGame
         public static GameState gameState;
         public static WorldStateManager worldStateManager;
         public static ShipStateManager shipStateManager;
+        public static InGameMenuStateManager inGameMenuStateManager;
 
         // Other states
         public static DebugManager debugManager;
@@ -107,9 +108,9 @@ namespace SpaceGame
             // Creating state managers
             worldStateManager = new WorldStateManager();
             shipStateManager = new ShipStateManager();
+            inGameMenuStateManager = new InGameMenuStateManager();
             // Other managers
             debugManager = new DebugManager();
-            worldStateManager.crateManager.TopUpCrates();
         }
 
         protected override void UnloadContent()
@@ -118,17 +119,17 @@ namespace SpaceGame
 
         protected override void Update(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            playerManager.Update(gameTime);
             switch (gameState)
             {
                 case GameState.World:
+                    playerManager.Update(gameTime);
                     worldStateManager.Update(gameTime);
                     break;
                 case GameState.Spaceship:
                     shipStateManager.Update(gameTime);
+                    break;
+                case GameState.InGameMenu:
+                    inGameMenuStateManager.Update(gameTime);
                     break;
             }
             debugManager.Update(gameTime);
@@ -144,12 +145,15 @@ namespace SpaceGame
             {
                 case GameState.World:
                     worldStateManager.Draw(spriteBatch);
+                    playerManager.Draw(spriteBatch);
                     break;
                 case GameState.Spaceship:
                     shipStateManager.Draw(spriteBatch);
                     break;
+                case GameState.InGameMenu:
+                    inGameMenuStateManager.Draw(spriteBatch);
+                    break;
             }
-            playerManager.Draw(spriteBatch);
             debugManager.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
