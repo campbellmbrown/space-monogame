@@ -112,7 +112,6 @@ namespace SpaceGame
             particleManager = new ParticleManager();
             projectileManager = new ProjectileManager(worldStateManager);
             debugManager = new DebugManager();
-            eventManager = new EventManager();
             guiManager = new GuiManager();
             worldStateManager.crateManager.TopUpCrates();
         }
@@ -126,7 +125,6 @@ namespace SpaceGame
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            eventManager.Update(gameTime);
             playerManager.Update(gameTime);
             switch (gameState)
             {

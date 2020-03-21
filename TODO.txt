@@ -12,6 +12,7 @@
  - Fullscreen
  - Move keypresses to keypress manager
  - Move player keypresses to event/keypress manager
+ - Link keypress events to functions
 ========================================================================
 ================== MEDIUM PRIORITY (affects gameplay) ==================
 ========================================================================
