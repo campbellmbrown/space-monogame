@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
 using SpaceGame.Managers.EventManagers;
+using SpaceGame.Tiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,14 @@ namespace SpaceGame.Managers
     public class ShipStateManager
     {
         public ShipEventManager eventManager;
-        protected Texture2D texture = LimitsEdgeGame.textures["ship_layout"];
-        protected Vector2 center { get { return new Vector2(texture.Width / 2f, texture.Height / 2f); } }
+        public ShipTileManager tileManager;
 
         public ShipStateManager()
         {
+            tileManager = new ShipTileManager(LimitsEdgeGame.textures["ship_layout"]);
             eventManager = new ShipEventManager();
+
+            LimitsEdgeGame.shipCamera.Position += (tileManager.GetShipSize() + new Vector2(Tile.tileSize)) / 2f;
         }
 
         public void Update(GameTime gameTime)
@@ -28,7 +31,7 @@ namespace SpaceGame.Managers
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, Vector2.Zero, null, Color.White, 0f, center, 1f, SpriteEffects.None, 0f);
+            tileManager.Draw(spriteBatch);
         }
     }
 }

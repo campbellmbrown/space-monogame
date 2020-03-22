@@ -64,6 +64,7 @@
     <Compile Include="Managers\ProjectileManager.cs" />
     <Compile Include="Managers\RespawnManager.cs" />
     <Compile Include="Managers\StarManager.cs" />
+    <Compile Include="Managers\ShipTileManager.cs" />
     <Compile Include="Managers\StateManagers\WorldStateManager.cs" />
     <Compile Include="Models\Animation.cs" />
     <Compile Include="Sprites\CollidableObject.cs" />
@@ -78,6 +79,10 @@
     <Compile Include="Sprites\PlayerShip.cs" />
     <Compile Include="Sprites\Spaceship.cs" />
     <Compile Include="Sprites\Sprite.cs" />
+    <Compile Include="Tiles\CollidableWall.cs" />
+    <Compile Include="Tiles\NonCollidableWall.cs" />
+    <Compile Include="Tiles\ShipFloor.cs" />
+    <Compile Include="Tiles\Tile.cs" />
     <Compile Include="Utilities\Helper.cs" />
     <Compile Include="World\Star.cs" />
   </ItemGroup>
