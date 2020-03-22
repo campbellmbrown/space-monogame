@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Tiles
 {
-    public class CollidableWall : Tile
+    public class ShipWall : Tile
     {
-        public CollidableWall(Texture2D texture, Vector2 position, SpecificTileType specificTileType) : base(texture, position, specificTileType)
+        public ShipWall(Texture2D texture, Vector2 position, SpecificTileType specificTileType) : base(texture, position, specificTileType)
         {
         }
     }

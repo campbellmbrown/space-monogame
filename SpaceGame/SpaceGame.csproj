@@ -79,8 +79,7 @@
     <Compile Include="Sprites\PlayerShip.cs" />
     <Compile Include="Sprites\Spaceship.cs" />
     <Compile Include="Sprites\Sprite.cs" />
-    <Compile Include="Tiles\CollidableWall.cs" />
-    <Compile Include="Tiles\NonCollidableWall.cs" />
+    <Compile Include="Tiles\ShipWall.cs" />
     <Compile Include="Tiles\ShipFloor.cs" />
     <Compile Include="Tiles\Tile.cs" />
     <Compile Include="Utilities\Helper.cs" />
