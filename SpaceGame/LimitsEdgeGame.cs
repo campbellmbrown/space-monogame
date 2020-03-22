@@ -6,6 +6,7 @@ using SpaceGame.Effects;
 using SpaceGame.Managers;
 using SpaceGame.Models;
 using SpaceGame.Sprites;
+using SpaceGame.Utilities;
 using SpaceGame.World;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,9 @@ namespace SpaceGame
         public static Vector2 positionCenter { get { return playerManager.playerShip.position; } }
         public static Vector2 screenCenter { get { return screenSize / 2f; } }
         public static Vector2 topLeftCorner { get { return positionCenter - screenCenter / worldCamera.Zoom; } }
-        
+        public static Vector2 mousePosition { get { return Vector2.Transform(Helper.PointToVector2(Mouse.GetState().Position), currentCamera.GetInverseViewMatrix()); } }
+
+        public static CursorManager cursorManager;
         public static PlayerManager playerManager;
 
         // States
@@ -57,7 +60,7 @@ namespace SpaceGame
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = (int)screenSize.X;
             graphics.PreferredBackBufferHeight = (int)screenSize.Y;
-            graphics.IsFullScreen = false;
+            graphics.IsFullScreen = true;
         }
 
         protected override void Initialize()
@@ -67,7 +70,7 @@ namespace SpaceGame
             inGameMenuCamera = new Camera2D(GraphicsDevice) { Zoom = zoom, Position = -screenSize / 2f };
             shipCamera = new Camera2D(GraphicsDevice) { Zoom = zoom, Position = -screenSize / 2f };
             currentCamera = worldCamera;
-            IsMouseVisible = true;
+            IsMouseVisible = false;
             IsFixedTimeStep = true;
             graphics.SynchronizeWithVerticalRetrace = true;
             r = new Random();
@@ -88,6 +91,7 @@ namespace SpaceGame
                 { "lazer", Content.Load<Texture2D>("Projectiles/lazer") },
                 { "asteroid_chunk", Content.Load<Texture2D>("World/asteroid_chunk") },
                 { "ship_layout", Content.Load<Texture2D>("ShipInterior/ship_layout") },
+                { "arrow_cursor", Content.Load<Texture2D>("Effects/arrow_cursor") },
             };
 
             animations = new Dictionary<string, Animation>()
@@ -109,6 +113,8 @@ namespace SpaceGame
             worldStateManager = new WorldStateManager();
             shipStateManager = new ShipStateManager();
             inGameMenuStateManager = new InGameMenuStateManager();
+            // Other managers
+            cursorManager = new CursorManager();
         }
 
         protected override void UnloadContent()
@@ -151,6 +157,7 @@ namespace SpaceGame
                     inGameMenuStateManager.Draw(spriteBatch);
                     break;
             }
+            cursorManager.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

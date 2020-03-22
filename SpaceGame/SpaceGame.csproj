@@ -41,6 +41,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Effects\Cursor.cs" />
     <Compile Include="Effects\Particle.cs" />
     <Compile Include="Effects\SmallExplosion.cs" />
     <Compile Include="Effects\Smoke.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Managers\EventManagers\ShipEventManager.cs" />
     <Compile Include="Managers\EventManagers\WorldEventManager.cs" />
     <Compile Include="Managers\GuiManager.cs" />
+    <Compile Include="Managers\CursorManager.cs" />
     <Compile Include="Managers\StateManagers\InGameMenuStateManager.cs" />
     <Compile Include="Managers\ItemManager.cs" />
     <Compile Include="Managers\ParticleManager.cs" />
