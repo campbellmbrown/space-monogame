@@ -35,11 +35,11 @@ namespace SpaceGame
         public static Dictionary<string, Texture2D> textures;
         public static Dictionary<string, Animation> animations;
         public static Dictionary<string, SpriteFont> fonts;
+
         public static Vector2 screenSize { get { return new Vector2(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height); } }
         public static Vector2 zoomedScreenSize { get { return screenSize / zoom; } }
         public static Vector2 positionCenter { get { return playerManager.playerShip.position; } }
-        public static Vector2 screenCenter { get { return screenSize / 2f; } }
-        public static Vector2 topLeftCorner { get { return positionCenter - screenCenter / worldCamera.Zoom; } }
+        public static Vector2 topLeftCorner { get { return currentCamera.Position + (screenSize - zoomedScreenSize) / 2f; } }
         public static Vector2 mousePosition { get { return Vector2.Transform(Helper.PointToVector2(Mouse.GetState().Position), currentCamera.GetInverseViewMatrix()); } }
 
         public static CursorManager cursorManager;
@@ -51,16 +51,13 @@ namespace SpaceGame
         public static ShipStateManager shipStateManager;
         public static InGameMenuStateManager inGameMenuStateManager;
 
-        Vector2 windowSize { get { return new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height); } }
-        Vector2 windowCenter { get { return windowSize / 2f; } }
-
         public LimitsEdgeGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = (int)screenSize.X;
             graphics.PreferredBackBufferHeight = (int)screenSize.Y;
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
         }
 
         protected override void Initialize()
