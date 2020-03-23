@@ -50,7 +50,9 @@ namespace SpaceGame.Tiles
 
     public class Tile
     {
-        public Vector2 position;
+        public int X;
+        public int Y;
+        protected Vector2 position { get { return new Vector2(X, Y); } }
         protected Texture2D texture;
         protected bool collidable;
         protected Rectangle textureRectangle;
@@ -95,10 +97,11 @@ namespace SpaceGame.Tiles
             { SpecificTileType.CrossSectIntersectBottom,    new Rectangle(6 * tileSize, 4 * tileSize, tileSize, tileSize ) }
         };
         
-        public Tile(Texture2D texture, Vector2 position, SpecificTileType specificTileType)
+        public Tile(Texture2D texture, int X, int Y, SpecificTileType specificTileType)
         {
             this.texture = texture;
-            this.position = position;
+            this.X = X * tileSize;
+            this.Y = Y * tileSize;
             this.textureRectangle = tileRectangleLookup[specificTileType];
         }
 

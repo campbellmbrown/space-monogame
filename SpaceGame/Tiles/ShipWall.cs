@@ -10,7 +10,7 @@ namespace SpaceGame.Tiles
 {
     public class ShipWall : Tile
     {
-        public ShipWall(Texture2D texture, Vector2 position, SpecificTileType specificTileType) : base(texture, position, specificTileType)
+        public ShipWall(Texture2D texture, int X, int Y, SpecificTileType specificTileType) : base(texture, X, Y, specificTileType)
         {
         }
     }
