@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpaceGame.Managers.EventManagers
+namespace SpaceGame.Managers
 {
     public class ShipEventManager
     {

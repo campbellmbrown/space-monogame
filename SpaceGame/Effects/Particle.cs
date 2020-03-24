@@ -77,7 +77,7 @@ namespace SpaceGame.Effects
         /// <param name="randomize">Determines if the velocities are random.</param>
         public Particle(Vector2 position, Animation animation, bool randomize)
         {
-            animationManager = new AnimationManager(animation);
+            animationManager = new AnimationManager(animation, AnimationManager.RotationOrigin.Center);
             this.position = position;
             this.lifeTime = animation.frameCount * animation.frameSpeed;
             if (randomize) RandomizeVelocities(10, 10);

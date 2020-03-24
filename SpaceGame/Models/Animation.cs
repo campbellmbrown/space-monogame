@@ -7,9 +7,6 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Models
 {
-    /// <summary>
-    /// Class used for animation.
-    /// </summary>
     public class Animation
     {
         public int frameCount;
@@ -19,12 +16,6 @@ namespace SpaceGame.Models
         public bool isLooping;
         public Texture2D texture;
 
-        /// <summary>
-        /// Creates an instance of an animation.
-        /// </summary>
-        /// <param name="texture">The texture frames.</param>
-        /// <param name="frameCount">How many frames are in the animation.</param>
-        /// <param name="frameSpeed">The time between each frame.</param>
         public Animation(Texture2D texture, int frameCount, float frameSpeed)
         {
             this.texture = texture;

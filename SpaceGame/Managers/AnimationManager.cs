@@ -9,27 +9,32 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Managers
 {
-    /// <summary>
-    /// Class to handle animation.
-    /// </summary>
     public class AnimationManager
     {
+        public enum RotationOrigin
+        {
+            Center,
+            BottomMiddle,
+            TopLeft
+        }
+
         public Vector2 position;
         public int frameCount;
+        protected float scale;
         public float frameSpeed;
         private int _currentFrame;
         private bool _pause;
         private bool _reverse = false;
         private float _timer;
         private Animation _animation;
-        private Vector2 _center { get { return new Vector2(_animation.frameWidth / 2f, _animation.frameHeight / 2f); } }
-        
-        /// <summary>
-        /// Creates a new instance of the AnimationManager class.
-        /// </summary>
-        /// <param name="animation">The animation to manage.</param>
-        public AnimationManager(Animation animation)
+        protected Vector2 center { get { return new Vector2(_animation.frameWidth / 2f, _animation.frameHeight / 2f); } }
+        protected Vector2 bottomMiddle { get { return new Vector2(_animation.frameWidth / 2f, _animation.frameHeight); } }
+        RotationOrigin rotationOrigin;
+
+        public AnimationManager(Animation animation, RotationOrigin rotationOrigin, float scale = 1f)
         {
+            this.rotationOrigin = rotationOrigin;
+            this.scale = scale;
             _animation = animation;
             frameCount = animation.frameCount;
             frameSpeed = animation.frameSpeed;
@@ -37,39 +42,31 @@ namespace SpaceGame.Managers
             _timer = 0;
         }
 
-        /// <summary>
-        /// Draws the animation.
-        /// </summary>
-        /// <param name="spriteBatch">SpriteBatch instance.</param>  
         public void Draw(SpriteBatch spriteBatch)
         {
             Rectangle rectangle = new Rectangle(_currentFrame * _animation.frameWidth, 0, _animation.frameWidth, _animation.frameHeight);
-            spriteBatch.Draw(_animation.texture, position, rectangle, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(_animation.texture, position, rectangle, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
         }
 
-        /// <summary>
-        /// Draws the animation.
-        /// </summary>
-        /// <param name="spriteBatch">SpriteBatch instance.</param>
-        /// <param name="rotation">Rotation of the animation.</param>
         public void Draw(SpriteBatch spriteBatch, float rotation)
         {
             Rectangle rectangle = new Rectangle(_currentFrame * _animation.frameWidth, 0, _animation.frameWidth, _animation.frameHeight);
-            spriteBatch.Draw(_animation.texture, position, rectangle, Color.White, rotation, _center, 1f, SpriteEffects.None, 0f);
+            switch (rotationOrigin)
+            {
+                case RotationOrigin.Center:
+                    spriteBatch.Draw(_animation.texture, position, rectangle, Color.White, rotation, center, 1f, SpriteEffects.None, 0f); break;
+                case RotationOrigin.BottomMiddle:
+                    spriteBatch.Draw(_animation.texture, position, rectangle, Color.White, rotation, bottomMiddle, 1f, SpriteEffects.None, 0f); break;
+                case RotationOrigin.TopLeft:
+                    spriteBatch.Draw(_animation.texture, position, rectangle, Color.White, rotation, Vector2.Zero, 1f, SpriteEffects.None, 0f); break;
+            }
         }
 
-        /// <summary>
-        /// Resets the current animation to it's first frame.
-        /// </summary>
         public void Reset()
         {
             _currentFrame = 0;
         }
 
-        /// <summary>
-        /// Changes the animation.
-        /// </summary>
-        /// <param name="animation">Animation to switch to.</param>
         public void Play(Animation animation)
         {
             if (this._animation != animation)
@@ -82,10 +79,6 @@ namespace SpaceGame.Managers
             }
         }
 
-        /// <summary>
-        /// Updates the animation.
-        /// </summary>
-        /// <param name="gameTime">GameTime instance.</param>
         public void Update(GameTime gameTime)
         {
             _timer += (float)gameTime.ElapsedGameTime.TotalSeconds;

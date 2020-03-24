@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
-using SpaceGame.Managers.EventManagers;
+using SpaceGame.Managers.ShipStateManagers;
 using SpaceGame.Tiles;
 using System;
 using System.Collections.Generic;
@@ -15,11 +15,13 @@ namespace SpaceGame.Managers
     {
         public ShipEventManager eventManager;
         public ShipTileManager tileManager;
+        public PeopleManager peopleManager;
 
         public ShipStateManager()
         {
             tileManager = new ShipTileManager(LimitsEdgeGame.textures["ship_layout"]);
             eventManager = new ShipEventManager();
+            peopleManager = new PeopleManager();
 
             LimitsEdgeGame.shipCamera.Position += (tileManager.GetShipSize() + new Vector2(Tile.tileSize)) / 2f;
         }
@@ -27,11 +29,13 @@ namespace SpaceGame.Managers
         public void Update(GameTime gameTime)
         {
             eventManager.Update(gameTime);
+            peopleManager.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             tileManager.Draw(spriteBatch);
+            peopleManager.Draw(spriteBatch);
         }
     }
 }
