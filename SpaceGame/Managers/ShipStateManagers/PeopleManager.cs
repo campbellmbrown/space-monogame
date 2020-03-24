@@ -12,12 +12,12 @@ namespace SpaceGame.Managers.ShipStateManagers
 {
     public class PeopleManager
     {
-        public List<SSSprite> people;
+        public List<Person> people;
 
         public PeopleManager()
         {
-            people = new List<SSSprite>();
-            people.Add(new SSSprite(Vector2.Zero, LimitsEdgeGame.animations["basic_person_walk_down"]));
+            people = new List<Person>();
+            people.Add(new Person(Vector2.Zero, LimitsEdgeGame.animations["basic_person_walk_down"]));
         }
 
         public void Update(GameTime gameTime)

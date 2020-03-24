@@ -46,12 +46,12 @@ namespace SpaceGame.Sprites.ShipStateSprites
             animationManager = new AnimationManager(animation, AnimationManager.RotationOrigin.BottomMiddle, 0.5f);
         }
 
-        public void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime)
         {
             if (hasAnimation) animationManager.Update(gameTime);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             if (hasAnimation) animationManager.Draw(spriteBatch);
             else if (hasTexture) spriteBatch.Draw(texture, position, null, Color.White, 0f, bottomMiddle, 0.5f, SpriteEffects.None, 0f);
