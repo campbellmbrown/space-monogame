@@ -21,7 +21,7 @@ namespace SpaceGame.Managers
         {
             tileManager = new ShipTileManager(LimitsEdgeGame.textures["ship_layout"]);
             eventManager = new ShipEventManager();
-            peopleManager = new PeopleManager();
+            peopleManager = new PeopleManager(tileManager);
 
             LimitsEdgeGame.shipCamera.Position += (tileManager.GetShipSize() + new Vector2(Tile.tileSize)) / 2f;
         }

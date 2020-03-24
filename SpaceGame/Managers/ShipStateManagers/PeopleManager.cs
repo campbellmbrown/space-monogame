@@ -14,10 +14,21 @@ namespace SpaceGame.Managers.ShipStateManagers
     {
         public List<Person> people;
 
-        public PeopleManager()
+        public PeopleManager(ShipTileManager tileManager)
         {
             people = new List<Person>();
-            people.Add(new Person(Vector2.Zero, LimitsEdgeGame.animations["basic_person_walk_down"]));
+            people.Add(new Person(new Vector2(100, 324), LimitsEdgeGame.animations["basic_person_walk_down"], tileManager.walkableTiles));
+            people.Add(new Person(new Vector2(108, 324), LimitsEdgeGame.animations["basic_person_walk_down"], tileManager.walkableTiles));
+            people.Add(new Person(new Vector2(116, 324), LimitsEdgeGame.animations["basic_person_walk_down"], tileManager.walkableTiles));
+            people.Add(new Person(new Vector2(100, 316), LimitsEdgeGame.animations["basic_person_walk_down"], tileManager.walkableTiles));
+            people.Add(new Person(new Vector2(100, 308), LimitsEdgeGame.animations["basic_person_walk_down"], tileManager.walkableTiles));
+            people.Add(new Person(new Vector2(100, 300), LimitsEdgeGame.animations["basic_person_walk_down"], tileManager.walkableTiles));
+            people.Add(new Person(new Vector2(100, 324), LimitsEdgeGame.animations["basic_person_walk_down"], tileManager.walkableTiles));
+            people.Add(new Person(new Vector2(108, 324), LimitsEdgeGame.animations["basic_person_walk_down"], tileManager.walkableTiles));
+            people.Add(new Person(new Vector2(116, 324), LimitsEdgeGame.animations["basic_person_walk_down"], tileManager.walkableTiles));
+            people.Add(new Person(new Vector2(100, 316), LimitsEdgeGame.animations["basic_person_walk_down"], tileManager.walkableTiles));
+            people.Add(new Person(new Vector2(100, 308), LimitsEdgeGame.animations["basic_person_walk_down"], tileManager.walkableTiles));
+            people.Add(new Person(new Vector2(100, 300), LimitsEdgeGame.animations["basic_person_walk_down"], tileManager.walkableTiles));
         }
 
         public void Update(GameTime gameTime)

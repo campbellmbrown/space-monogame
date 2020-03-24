@@ -42,23 +42,20 @@ namespace SpaceGame.Managers
             _timer = 0;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            Rectangle rectangle = new Rectangle(_currentFrame * _animation.frameWidth, 0, _animation.frameWidth, _animation.frameHeight);
-            spriteBatch.Draw(_animation.texture, position, rectangle, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, float rotation)
+        public void Draw(SpriteBatch spriteBatch, float rotation = 0f)
         {
             Rectangle rectangle = new Rectangle(_currentFrame * _animation.frameWidth, 0, _animation.frameWidth, _animation.frameHeight);
             switch (rotationOrigin)
             {
                 case RotationOrigin.Center:
-                    spriteBatch.Draw(_animation.texture, position, rectangle, Color.White, rotation, center, 1f, SpriteEffects.None, 0f); break;
+                    spriteBatch.Draw(_animation.texture, position, rectangle, Color.White, rotation, center, scale, SpriteEffects.None, 0f); 
+                    break;
                 case RotationOrigin.BottomMiddle:
-                    spriteBatch.Draw(_animation.texture, position, rectangle, Color.White, rotation, bottomMiddle, 1f, SpriteEffects.None, 0f); break;
+                    spriteBatch.Draw(_animation.texture, position, rectangle, Color.White, rotation, bottomMiddle, scale, SpriteEffects.None, 0f); 
+                    break;
                 case RotationOrigin.TopLeft:
-                    spriteBatch.Draw(_animation.texture, position, rectangle, Color.White, rotation, Vector2.Zero, 1f, SpriteEffects.None, 0f); break;
+                    spriteBatch.Draw(_animation.texture, position, rectangle, Color.White, rotation, Vector2.Zero, scale, SpriteEffects.None, 0f); 
+                    break;
             }
         }
 
