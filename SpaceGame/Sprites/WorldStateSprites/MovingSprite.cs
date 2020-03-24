@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpaceGame.Models;
+using SpaceGame.Models.WorldStateSprites;
 using SpaceGame.Utilities;
 using System;
 using System.Collections.Generic;
@@ -8,11 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpaceGame.Sprites
+namespace SpaceGame.Sprites.WorldStateSprites
 {
-    /// <summary>
-    /// Class that defines a moving sprite. Inherits the CollidableObject class.
-    /// </summary>
     public class MovingSprite : CollidableObject
     {
         protected Vector2 linearAcceleration;
@@ -33,30 +30,17 @@ namespace SpaceGame.Sprites
         public float maxLinearThrust = 0f;
         public float maxAngularThrust = 0f;
 
-        /// <summary>
-        /// Creates an instance of the MovingSprite class.
-        /// </summary>
-        /// <param name="position">X and Y positions of the moving sprite.</param>
-        /// <param name="texture">Texture of the moving sprite.</param>
         public MovingSprite(Vector2 position, Texture2D texture) 
             : base(position, texture)
         {
         }
 
-        /// <summary>
-        /// Updates the moving sprite.
-        /// </summary>
-        /// <param name="gameTime">GameTime instance.</param>
         public override void Update(GameTime gameTime)
         {
             Move((float)gameTime.ElapsedGameTime.TotalSeconds);
             base.Update(gameTime);
         }
 
-        /// <summary>
-        /// Moves the moving sprite.
-        /// </summary>
-        /// <param name="t">Time since last tick.</param>
         public virtual void Move(float t)
         {
             // Linear acceleration
@@ -80,11 +64,6 @@ namespace SpaceGame.Sprites
             rotation = Helper.SimplifyRadians(rotation + angularVelocity * t);
         }
 
-        /// <summary>
-        /// Randomizes the velocities of the sprite.
-        /// </summary>
-        /// <param name="maxLinVel">Maximum linear velocity of the sprite.</param>
-        /// <param name="maxAngVel">Maximum angular velocity of the spite.</param>
         public void RandomizeVelocities(int maxLinVel, int maxAngVel)
         {
             linearVelocity = Helper.Vector2RandomDirecAndLength(maxLinVel);

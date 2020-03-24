@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpaceGame.Effects;
 using SpaceGame.Sprites;
+using SpaceGame.Sprites.WorldStateSprites;
 using SpaceGame.Utilities;
 using System;
 using System.Collections.Generic;

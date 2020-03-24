@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
 using SpaceGame.Effects;
 using SpaceGame.Items;
-using SpaceGame.Managers;
 using SpaceGame.Utilities;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpaceGame.Sprites
+namespace SpaceGame.Sprites.WorldStateSprites
 {
     public class ItemCarryingSprite : MovingSprite
     {
