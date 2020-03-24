@@ -55,6 +55,7 @@ namespace SpaceGame.Sprites.ShipStateSprites
                     pathToTake.Remove(currentObjective);
                     if (pathToTake.Count == 0)
                     {
+                        animationManager.Play(LimitsEdgeGame.animations["basic_person_idle"]);
                         idleDelay = LimitsEdgeGame.r.Next(0, 31);
                         currentIdleDelay = 0;
                         CreateNodes(walkableTiles);
@@ -64,6 +65,7 @@ namespace SpaceGame.Sprites.ShipStateSprites
                 }
                 else
                 {
+                    animationManager.Play(LimitsEdgeGame.animations["basic_person_walk_down"]);
                     Vector2 direction = Vector2.Normalize(difference);
                     position += direction * 15f * t;
               }
