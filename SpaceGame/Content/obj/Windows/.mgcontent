@@ -19,10 +19,16 @@
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Ships/basic_ship_wings.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Sprites/basic_person_idle.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Sprites/basic_person_walk_down.png</File>
+    <File>D:/Git Projects/space-monogame/SpaceGame/Content/Sprites/basic_person_walk_left.png</File>
+    <File>D:/Git Projects/space-monogame/SpaceGame/Content/Sprites/basic_person_walk_right.png</File>
+    <File>D:/Git Projects/space-monogame/SpaceGame/Content/Sprites/basic_person_walk_up.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Sprites/crate.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/World/asteroid_chunk.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

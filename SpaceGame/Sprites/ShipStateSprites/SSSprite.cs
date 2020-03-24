@@ -43,7 +43,7 @@ namespace SpaceGame.Sprites.ShipStateSprites
         {
             this.position = position;
             this.animation = animation;
-            animationManager = new AnimationManager(animation, AnimationManager.RotationOrigin.BottomMiddle, 1f);
+            animationManager = new AnimationManager(animation, AnimationManager.RotationOrigin.BottomMiddle, 0.5f);
         }
 
         public virtual void Update(GameTime gameTime)

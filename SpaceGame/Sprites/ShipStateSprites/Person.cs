@@ -65,8 +65,11 @@ namespace SpaceGame.Sprites.ShipStateSprites
                 }
                 else
                 {
-                    animationManager.Play(LimitsEdgeGame.animations["basic_person_walk_down"]);
                     Vector2 direction = Vector2.Normalize(difference);
+                    if (direction.Y > 0.7) animationManager.Play(LimitsEdgeGame.animations["basic_person_walk_down"]);
+                    else if (direction.Y < -0.7) animationManager.Play(LimitsEdgeGame.animations["basic_person_walk_up"]);
+                    else if (direction.X > 0.7) animationManager.Play(LimitsEdgeGame.animations["basic_person_walk_right"]);
+                    else if (direction.X < -0.7) animationManager.Play(LimitsEdgeGame.animations["basic_person_walk_left"]);
                     position += direction * 15f * t;
               }
             } else currentIdleDelay += t;

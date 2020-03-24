@@ -96,7 +96,10 @@ namespace SpaceGame
                 { "smoke", new Animation(Content.Load<Texture2D>("Effects/smoke"), 5,  0.2f) },
                 { "small_explosion", new Animation(Content.Load<Texture2D>("Effects/small_explosion"), 7,  0.1f) },
                 { "basic_person_idle", new Animation(Content.Load<Texture2D>("Sprites/basic_person_idle"), 4, 1f) },
-                { "basic_person_walk_down", new Animation(Content.Load<Texture2D>("Sprites/basic_person_walk_down"), 4, 0.2f) }
+                { "basic_person_walk_down", new Animation(Content.Load<Texture2D>("Sprites/basic_person_walk_down"), 4, 0.2f) },
+                { "basic_person_walk_up", new Animation(Content.Load<Texture2D>("Sprites/basic_person_walk_up"), 4, 0.2f) },
+                { "basic_person_walk_right", new Animation(Content.Load<Texture2D>("Sprites/basic_person_walk_right"), 4, 0.2f) },
+                { "basic_person_walk_left", new Animation(Content.Load<Texture2D>("Sprites/basic_person_walk_left"), 4, 0.2f) }
             };
 
             fonts = new Dictionary<string, SpriteFont>()
