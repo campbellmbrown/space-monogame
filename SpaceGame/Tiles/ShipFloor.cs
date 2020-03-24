@@ -10,11 +10,11 @@ namespace SpaceGame.Tiles
 {
     public class ShipFloor : Tile
     {
-        List<Vector2> connectedTilePositions;
+        public int floorID;
 
-        public ShipFloor(Texture2D texture, int X, int Y, SpecificTileType specificTileType) : base(texture, X, Y, specificTileType)
+        public ShipFloor(Texture2D texture, int X, int Y, SpecificTileType specificTileType, int floorID) : base(texture, X, Y, specificTileType)
         {
-            connectedTilePositions = new List<Vector2>();
+            this.floorID = floorID;
         }
     }
 }

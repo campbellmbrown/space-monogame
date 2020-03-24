@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
+using SpaceGame.Models;
 using SpaceGame.Tiles;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,9 @@ namespace SpaceGame.Managers
         protected List<ShipWall> wallTiles;
         protected List<Tile> otherTiles;
         protected Texture2D texture;
+        protected List<ShipFloor> walkableTiles;
+
+        protected int floorID;
 
         public ShipTileManager(Texture2D texture)
         {
@@ -23,7 +27,106 @@ namespace SpaceGame.Managers
             floorTiles = new List<ShipFloor>();
             otherTiles = new List<Tile>();
             wallTiles = new List<ShipWall>();
+            walkableTiles = new List<ShipFloor>();
             BuildShip();
+            CreateWalkableTiles();
+
+            unvisitedNodes = new List<PathNode>();
+            visitedNodes = new List<PathNode>();
+
+            CreatePath();
+        }
+
+        protected List<PathNode> unvisitedNodes;
+        protected List<PathNode> visitedNodes;
+        protected PathNode currentNode;
+        protected PathNode endNode;
+
+        public void CreatePath()
+        {
+            // Create all nodes and put them in the list of unvisited nodes
+            CreateNodes();
+
+            // Generate the starting nodes and end nodes
+            int startingNodeIndex = LimitsEdgeGame.r.Next(0, unvisitedNodes.Count);
+            int endNodeIndex = LimitsEdgeGame.r.Next(0, unvisitedNodes.Count);
+            unvisitedNodes[startingNodeIndex].cost = 0;
+            currentNode = unvisitedNodes.ElementAt(startingNodeIndex);
+            endNode = unvisitedNodes.ElementAt(endNodeIndex);
+
+            // Assign the initial node to be zero
+            currentNode.cost = 0;
+
+            // Add current node to the visited list and remove from the unvisted list
+            var selected = unvisitedNodes.Where(node => node.nodeID == currentNode.nodeID).ToList();
+            unvisitedNodes = unvisitedNodes.Except(selected).ToList();
+            visitedNodes.AddRange(selected);
+
+            bool finishedRoute = false;
+            while (!finishedRoute)
+            {
+                // look at the current node neighbors.
+                foreach (var neighborNodeID in currentNode.connectedNodes)
+                {
+                    // Take the cost of the current node plus the distance to each of the neighbors.
+                    int neighborCost = currentNode.cost + 1;
+
+                    // Update the costs at the neighbors if the cost is less than the neighbors current tentative distance
+                    int neighborNodeIndex = unvisitedNodes.FindIndex(node => node.nodeID == neighborNodeID);
+                    if (neighborNodeIndex >= 0)
+                    {
+                        if (neighborCost < unvisitedNodes[neighborNodeIndex].cost)
+                        {
+                            unvisitedNodes[neighborNodeIndex].cost = neighborCost;
+                            unvisitedNodes[neighborNodeIndex].stepsTo = new List<Vector2>(currentNode.stepsTo);
+                            unvisitedNodes[neighborNodeIndex].stepsTo.Add(new Vector2(unvisitedNodes[neighborNodeIndex].X, unvisitedNodes[neighborNodeIndex].Y));
+                        }
+                    }
+                }
+
+                // Go to the unvisited node with the lowest tentative distance and set this as the current node
+                int lowestCost = unvisitedNodes[0].cost;
+                int nextNodeID = unvisitedNodes[0].nodeID;
+                foreach (var unvisitedNode in unvisitedNodes)
+                {
+                    if (unvisitedNode.cost < lowestCost)
+                    {
+                        nextNodeID = unvisitedNode.nodeID;
+                        lowestCost = unvisitedNode.cost;
+                    }
+                }
+
+                // Add the new current node to the list of visited nodes and remove from the list of unvisited nodes
+                currentNode = unvisitedNodes[unvisitedNodes.FindIndex(node => node.nodeID == nextNodeID)];
+                var nextNode = unvisitedNodes.Where(node => node.nodeID == currentNode.nodeID).ToList();
+                unvisitedNodes = unvisitedNodes.Except(nextNode).ToList();
+                visitedNodes.AddRange(nextNode);
+
+                // If the final one is in the list of visited nodes, finish
+                if (visitedNodes.Exists(node => node.nodeID == endNode.nodeID)) finishedRoute = true;
+            }
+        }
+
+        protected void CreateNodes()
+        {
+            foreach (var walkableTile in walkableTiles)
+            {
+                PathNode pathNode = new PathNode(walkableTile.X, walkableTile.Y, walkableTile.floorID);
+
+                List<Point> coordsToCheck = new List<Point>();
+                coordsToCheck.Add(new Point(walkableTile.X - Tile.tileSize, walkableTile.Y));
+                coordsToCheck.Add(new Point(walkableTile.X, walkableTile.Y + Tile.tileSize));
+                coordsToCheck.Add(new Point(walkableTile.X + Tile.tileSize, walkableTile.Y));
+                coordsToCheck.Add(new Point(walkableTile.X, walkableTile.Y - Tile.tileSize));
+
+                foreach (var p in coordsToCheck)
+                {
+                    Predicate<ShipFloor> offsetPosition = (ShipFloor pos) => { return pos.X == p.X && pos.Y == p.Y; };
+                    ShipFloor foundNeighbor = walkableTiles.Find((ShipFloor pos) => { return pos.X == p.X && pos.Y == p.Y; });
+                    if (foundNeighbor != null) pathNode.connectedNodes.Add(foundNeighbor.floorID);
+                }
+                unvisitedNodes.Add(pathNode);
+            }
         }
 
         public Vector2 GetShipSize()
@@ -54,11 +157,28 @@ namespace SpaceGame.Managers
             foreach (var floorTile in floorTiles) floorTile.Draw(spriteBatch);
             foreach (var otherTile in otherTiles) otherTile.Draw(spriteBatch);
             foreach (var collidableWall in wallTiles) collidableWall.Draw(spriteBatch);
+
+            foreach (var node in visitedNodes)
+            {
+                spriteBatch.DrawRectangle(new Rectangle(node.X, node.Y, 8, 8), Color.Green);
+                Rectangle rect = new Rectangle(node.X, node.Y, 8, 8);
+                if (rect.Contains(new Point((int)LimitsEdgeGame.mousePosition.X, (int)LimitsEdgeGame.mousePosition.Y)))
+                {
+                    Vector2 pos = LimitsEdgeGame.mousePosition + new Vector2(0, 10);
+                    foreach (var path in node.stepsTo)
+                    {
+                        spriteBatch.DrawRectangle(new Rectangle((int)path.X, (int)path.Y, 8, 8), Color.Red);
+                    }
+                }
+            }
         }
 
-        protected void ConnectWalkableTiles()
+        protected void CreateWalkableTiles()
         {
-
+            foreach (var floorTile in floorTiles)
+            {
+                walkableTiles.Add(floorTile);
+            }
         }
 
         protected void BuildShip()
@@ -253,7 +373,8 @@ namespace SpaceGame.Managers
             {
                 for (int j = startY; j <= finishY; ++j)
                 {
-                    floorTiles.Add(new ShipFloor(texture, i, j, (i + j) % 2 == 0 ? SpecificTileType.FloorLight : SpecificTileType.FloorDark));
+                    floorTiles.Add(new ShipFloor(texture, i, j, (i + j) % 2 == 0 ? SpecificTileType.FloorLight : SpecificTileType.FloorDark, floorID));
+                    floorID++;
                 }
             }
         }

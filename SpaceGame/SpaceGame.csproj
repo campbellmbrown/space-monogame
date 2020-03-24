@@ -69,6 +69,7 @@
     <Compile Include="Managers\ShipTileManager.cs" />
     <Compile Include="Managers\StateManagers\WorldStateManager.cs" />
     <Compile Include="Models\Animation.cs" />
+    <Compile Include="Models\PathNode.cs" />
     <Compile Include="Sprites\CollidableObject.cs" />
     <Compile Include="Models\Minimap.cs" />
     <Compile Include="Program.cs" />
