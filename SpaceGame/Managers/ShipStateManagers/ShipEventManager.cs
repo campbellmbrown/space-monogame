@@ -18,7 +18,7 @@ namespace SpaceGame.Managers
         public int previousScrollValue;
         protected float maxZoom = 20f;
         protected float minZoom = 0.6f;
-        protected float zoomIncrement = 0.2f;
+        protected float zoomIncrement = 0.1f;
 
         public ShipEventManager() 
         { 
@@ -59,10 +59,10 @@ namespace SpaceGame.Managers
                 switch (Math.Sign(difference))
                 {
                     case 1:
-                        if (camera.Zoom < maxZoom) camera.Zoom += zoomIncrement;
+                        if (camera.Zoom < maxZoom) camera.Zoom = (float)Math.Round(camera.Zoom * (1 + zoomIncrement), 1);
                         break;
                     case -1:
-                        if (camera.Zoom > minZoom) camera.Zoom -= zoomIncrement;
+                        if (camera.Zoom > minZoom) camera.Zoom = (float)Math.Round(camera.Zoom * (1 - zoomIncrement), 1);
                         break;
                 }
                 previousScrollValue = mouseState.ScrollWheelValue;
