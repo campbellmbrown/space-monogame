@@ -29,8 +29,7 @@ namespace SpaceGame.Managers.EventManagers
             {
                 if (!holdingExitMenu)
                 {
-                    LimitsEdgeGame.gameState = GameState.World;
-                    LimitsEdgeGame.currentCamera = LimitsEdgeGame.worldCamera;
+                    LimitsEdgeGame.SwitchState(GameState.InGameMenu, GameState.World);
                 }
                 holdingExitMenu = true;
             }

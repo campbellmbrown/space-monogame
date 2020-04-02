@@ -34,8 +34,7 @@ namespace SpaceGame.Managers
             {
                 if (!holdingInGameMenu)
                 {
-                    LimitsEdgeGame.gameState = GameState.InGameMenu;
-                    LimitsEdgeGame.currentCamera = LimitsEdgeGame.inGameMenuCamera;
+                    LimitsEdgeGame.SwitchState(GameState.World, GameState.InGameMenu);
                 }
                 holdingInGameMenu = true;
             }
@@ -46,8 +45,7 @@ namespace SpaceGame.Managers
             {
                 if (!holdingShipInv)
                 {
-                    LimitsEdgeGame.gameState = GameState.Spaceship;
-                    LimitsEdgeGame.currentCamera = LimitsEdgeGame.shipCamera;
+                    LimitsEdgeGame.SwitchState(GameState.World, GameState.Spaceship);
                 }
                 holdingShipInv = true;
             }

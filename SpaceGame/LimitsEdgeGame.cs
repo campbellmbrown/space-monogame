@@ -127,6 +127,25 @@ namespace SpaceGame
         {
         }
 
+        public static void SwitchState(GameState currentGameState, GameState nextGameState)
+        {
+            switch (nextGameState) {
+                case GameState.World:
+                    currentCamera = worldCamera;
+                    break;
+                case GameState.InGameMenu:
+                    currentCamera = inGameMenuCamera;
+                    break;
+                case GameState.Spaceship:
+                    currentCamera = shipCamera;
+                    shipStateManager.eventManager.previousScrollValue = Mouse.GetState().ScrollWheelValue;
+                    break;
+            }
+
+
+            gameState = nextGameState;
+        }
+
         protected override void Update(GameTime gameTime)
         {
             switch (gameState)
