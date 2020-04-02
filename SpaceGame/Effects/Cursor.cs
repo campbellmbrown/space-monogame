@@ -12,7 +12,7 @@ namespace SpaceGame.Effects
     {
         protected Texture2D texture;
         protected Vector2 position { get { return LimitsEdgeGame.mousePosition; } }
-        protected float zoom { get { return 3f / LimitsEdgeGame.currentCamera.Zoom; } }
+        protected float zoom { get { return 3f / LimitsEdgeGame.currentZoom; } }
 
         public Cursor(Texture2D texture)
         {

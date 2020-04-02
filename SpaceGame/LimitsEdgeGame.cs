@@ -31,16 +31,17 @@ namespace SpaceGame
         public static Camera2D shipCamera;
 
         public static Random r;
-        public static float zoom = 3f;
+        public static float initialZoom = 3f;
         public static Dictionary<string, Texture2D> textures;
         public static Dictionary<string, Animation> animations;
         public static Dictionary<string, SpriteFont> fonts;
 
         public static Vector2 screenSize { get { return new Vector2(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height); } }
-        public static Vector2 zoomedScreenSize { get { return screenSize / zoom; } }
-        public static Vector2 positionCenter { get { return playerManager.playerShip.position; } }
-        public static Vector2 topLeftCorner { get { return currentCamera.Position + (screenSize - zoomedScreenSize) / 2f; } }
+        public static Vector2 zoomedScreenSize { get { return screenSize / currentZoom; } }
+        public static Vector2 topLeft { get { return Vector2.Transform(Vector2.Zero, currentCamera.GetInverseViewMatrix()); } }
+        //public static Vector2 topLeft { get { return currentCamera.Position + (screenSize - zoomedScreenSize) / 2f; } }
         public static Vector2 mousePosition { get { return Vector2.Transform(Helper.PointToVector2(Mouse.GetState().Position), currentCamera.GetInverseViewMatrix()); } }
+        public static float currentZoom { get { return currentCamera.Zoom; } }
 
         public static CursorManager cursorManager;
         public static PlayerManager playerManager;
@@ -63,9 +64,9 @@ namespace SpaceGame
         protected override void Initialize()
         {
             gameState = GameState.World;
-            worldCamera = new Camera2D(GraphicsDevice) { Zoom = zoom, Position = -screenSize / 2f };
-            inGameMenuCamera = new Camera2D(GraphicsDevice) { Zoom = zoom, Position = -screenSize / 2f };
-            shipCamera = new Camera2D(GraphicsDevice) { Zoom = zoom, Position = -screenSize / 2f };
+            worldCamera = new Camera2D(GraphicsDevice) { Zoom = initialZoom, Position = -screenSize / 2f };
+            inGameMenuCamera = new Camera2D(GraphicsDevice) { Zoom = initialZoom, Position = -screenSize / 2f };
+            shipCamera = new Camera2D(GraphicsDevice) { Zoom = initialZoom, Position = -screenSize / 2f };
             currentCamera = worldCamera;
             IsMouseVisible = false;
             IsFixedTimeStep = true;

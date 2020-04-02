@@ -36,7 +36,7 @@ namespace SpaceGame.Managers
     public class DebugManager
     {
         protected Vector2 relativeStartingPosition = new Vector2(5, 5 - offsetAmount);
-        protected Vector2 startingPosition { get { return LimitsEdgeGame.topLeftCorner + relativeStartingPosition; } }
+        protected Vector2 startingPosition { get { return LimitsEdgeGame.topLeft + relativeStartingPosition; } }
         protected List<DebugMessage> debugMessages;
         protected static float offsetAmount { get { return DebugMessage.height; } }
         public DebugLevel debugLevel = DebugLevel.Nothing;

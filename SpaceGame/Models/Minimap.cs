@@ -9,9 +9,6 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Models
 {
-    /// <summary>
-    /// Class that defines a minimap.
-    /// </summary>
     public class Minimap
     {
         protected float scale = 10f;
@@ -21,7 +18,7 @@ namespace SpaceGame.Models
         protected Vector2 distanceFromScreenEdge = new Vector2(10);
         protected Vector2 viewableOutsideRange = new Vector2(500); // How many pixels the player can see outside of the screen
         protected Vector2 scaledZoomedBuffer { get { return viewableOutsideRange / (zoom * scale); } }
-        protected Vector2 topLeft { get { return LimitsEdgeGame.topLeftCorner; } }
+        protected Vector2 topLeft { get { return LimitsEdgeGame.topLeft; } }
         protected Vector2 zoomedScreenSize { get { return LimitsEdgeGame.zoomedScreenSize; } }
         protected Vector2 scaledZoomedScreenSize { get { return zoomedScreenSize / scale; } }
         protected Vector2 dimensions { get { return (2 * scaledZoomedBuffer) + scaledZoomedScreenSize; } }
@@ -36,15 +33,8 @@ namespace SpaceGame.Models
         protected Color insideRectangleColor = new Color(100, 100, 100);
         protected Color crateColor = new Color(100, 255, 255);
 
-        /// <summary>
-        /// Creates an instance of the Minimap class.
-        /// </summary>
         public Minimap() { }
 
-        /// <summary>
-        /// Draws the minimap.
-        /// </summary>
-        /// <param name="spriteBatch">SpriteBatch instance.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawRectangle(outsideRectangle, outsideRectangleColor);
