@@ -16,6 +16,7 @@ namespace SpaceGame.Managers
         protected List<ShipFloor> floorTiles;
         protected List<ShipWall> wallTiles;
         protected List<Tile> otherTiles;
+        protected List<PlaceableTile> placeableTiles;
         protected Texture2D texture;
         public List<ShipFloor> walkableTiles;
 
@@ -27,6 +28,7 @@ namespace SpaceGame.Managers
             floorTiles = new List<ShipFloor>();
             otherTiles = new List<Tile>();
             wallTiles = new List<ShipWall>();
+            placeableTiles = new List<PlaceableTile>();
             walkableTiles = new List<ShipFloor>();
             BuildShip();
             CreateWalkableTiles();
@@ -58,8 +60,15 @@ namespace SpaceGame.Managers
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (var floorTile in floorTiles) floorTile.Draw(spriteBatch);
+            foreach (var placeableTile in placeableTiles) placeableTile.Draw(spriteBatch);
             foreach (var otherTile in otherTiles) otherTile.Draw(spriteBatch);
             foreach (var collidableWall in wallTiles) collidableWall.Draw(spriteBatch);
+            foreach (var walkableTile in walkableTiles) spriteBatch.DrawRectangle(new Rectangle(walkableTile.X, walkableTile.Y, 8, 8), Color.Orange);
+            foreach (var placeableTile in placeableTiles)
+            {
+                Rectangle rect = new Rectangle(placeableTile.X, placeableTile.Y, 8, 8);
+                if (rect.Contains(LimitsEdgeGame.mousePosition)) spriteBatch.DrawRectangle(rect, Color.Red);
+            }
         }
 
         protected void CreateWalkableTiles()
@@ -82,8 +91,9 @@ namespace SpaceGame.Managers
             AddVerticalCrossSection(4, 7, 6);
             AddVerticalCrossSection(4, 7, 22);
             // Room 1
-            AddFloorTileRow(2, 11, 10);
-            AddFloorTileArea(1, 11, 11, 15);
+            AddPlaceableTileArea(2, 11, 10, 10);
+            AddFloorTileArea(1, 11, 11, 14);
+            AddPlaceableTileArea(1, 11, 15, 15);
             AddFloorTileColumn(12, 13, 12);
             AddHorizontalCrossSection(2, 5, 8);
             wallTiles.Add(new ShipWall(texture, 6, 8, SpecificTileType.CrossSectIntersectUp));
@@ -289,6 +299,17 @@ namespace SpaceGame.Managers
             for (int i = startX; i <= finishX; ++i)
             {
                 wallTiles.Add(new ShipWall(texture, i, rowY, SpecificTileType.Wall));
+            }
+        }
+
+        protected void AddPlaceableTileArea(int startX, int finishX, int startY, int finishY)
+        {
+            for (int i = startX; i <= finishX; ++i)
+            {
+                for (int j = startY; j <= finishY; ++j)
+                {
+                    placeableTiles.Add(new PlaceableTile(i, j));
+                }
             }
         }
     }
