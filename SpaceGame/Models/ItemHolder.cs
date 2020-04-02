@@ -47,7 +47,7 @@ namespace SpaceGame.Models
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-            if (item != null) item.DrawPreview(spriteBatch, center + positionOffset, Tile.tileSize, true);
+            if (item != null) item.DrawPreview(spriteBatch, position + center + positionOffset, Tile.tileSize, true);
         }
     }
 }
