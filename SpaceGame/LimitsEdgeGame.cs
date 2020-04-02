@@ -79,6 +79,7 @@ namespace SpaceGame
         {
             textures = new Dictionary<string, Texture2D>()
             {
+                // World
                 { "basic_ship_main", Content.Load<Texture2D>("Ships/PlayerShips/basic_ship_main") },
                 { "basic_ship_wings", Content.Load<Texture2D>("Ships/PlayerShips/basic_ship_wings") },
                 { "plastic", Content.Load<Texture2D>("Items/plastic") },
@@ -87,7 +88,10 @@ namespace SpaceGame
                 { "crate", Content.Load<Texture2D>("Sprites/crate") },
                 { "lazer", Content.Load<Texture2D>("Projectiles/lazer") },
                 { "asteroid_chunk", Content.Load<Texture2D>("World/asteroid_chunk") },
+                // Spaceship
                 { "ship_layout", Content.Load<Texture2D>("ShipInterior/ship_layout") },
+                { "item_holder", Content.Load<Texture2D>("ShipInterior/item_holder") },
+                // General
                 { "arrow_cursor", Content.Load<Texture2D>("Effects/arrow_cursor") },
             };
 

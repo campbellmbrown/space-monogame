@@ -16,12 +16,14 @@ namespace SpaceGame.Managers
         public ShipEventManager eventManager;
         public ShipTileManager tileManager;
         public PeopleManager peopleManager;
+        protected ItemHolderManager itemHolderManager;
 
         public ShipStateManager()
         {
             tileManager = new ShipTileManager(LimitsEdgeGame.textures["ship_layout"]);
             eventManager = new ShipEventManager();
             peopleManager = new PeopleManager(tileManager);
+            itemHolderManager = new ItemHolderManager();
 
             LimitsEdgeGame.shipCamera.Position += (tileManager.GetShipSize() + new Vector2(Tile.tileSize)) / 2f;
         }
@@ -30,12 +32,14 @@ namespace SpaceGame.Managers
         {
             eventManager.Update(gameTime);
             peopleManager.Update(gameTime);
+            itemHolderManager.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             tileManager.Draw(spriteBatch);
             peopleManager.Draw(spriteBatch);
+            itemHolderManager.Draw(spriteBatch);
         }
     }
 }
