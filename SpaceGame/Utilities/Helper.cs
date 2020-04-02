@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +58,11 @@ namespace SpaceGame.Utilities
         public static Vector2 PointToVector2(Point point)
         {
             return new Vector2(point.X, point.Y);
+        }
+
+        public static Point2 Vector2ToPoint2(Vector2 vector2)
+        {
+            return new Point2(vector2.X, vector2.Y);
         }
     }
 }
