@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using MonoGame.Extended;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,6 +64,11 @@ namespace SpaceGame.Utilities
         public static Point2 Vector2ToPoint2(Vector2 vector2)
         {
             return new Point2(vector2.X, vector2.Y);
+        }
+
+        public static Vector2 RoundVector2(Vector2 vector2, int decimals)
+        {
+            return new Vector2((float)Math.Round(vector2.X, decimals), (float)Math.Round(vector2.Y, decimals));
         }
     }
 }

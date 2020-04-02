@@ -31,7 +31,7 @@ namespace SpaceGame
         public static Camera2D shipCamera;
 
         public static Random r;
-        public static float initialZoom = 3f;
+        public static float initialZoom = 4f;
         public static Dictionary<string, Texture2D> textures;
         public static Dictionary<string, Animation> animations;
         public static Dictionary<string, SpriteFont> fonts;
@@ -184,6 +184,7 @@ namespace SpaceGame
                     break;
             }
             cursorManager.Draw(spriteBatch);
+            spriteBatch.DrawString(fonts["courier_new"], String.Concat(currentCamera.Position.ToString(), " ", currentCamera.Zoom.ToString()), topLeft, Color.White, 0f, Vector2.Zero, 1 / currentCamera.Zoom, SpriteEffects.None, 0f);
             spriteBatch.End();
             base.Draw(gameTime);
         }

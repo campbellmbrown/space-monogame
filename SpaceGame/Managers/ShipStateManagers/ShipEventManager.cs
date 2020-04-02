@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
@@ -17,19 +17,18 @@ namespace SpaceGame.Managers
         protected bool holdingZoomIn = true;
         protected bool holdingZoomOut = true;
 
-        protected float movementBandWidth { get { return 200f / LimitsEdgeGame.currentZoom; } }
+        protected float movementBandWidth { get { return 100f / LimitsEdgeGame.currentZoom; } }
         protected Vector2 topLeft { get { return LimitsEdgeGame.topLeft; } }
         protected Vector2 screenSize { get { return LimitsEdgeGame.zoomedScreenSize; } }
         protected RectangleF topRectangle { get { return new RectangleF(topLeft.X, topLeft.Y, screenSize.X, movementBandWidth); } }
         protected RectangleF bottomRectangle { get { return new RectangleF(topLeft.X, topLeft.Y + screenSize.Y - movementBandWidth, screenSize.X, movementBandWidth); } }
         protected RectangleF leftRectangle { get { return new RectangleF(topLeft.X, topLeft.Y, movementBandWidth, screenSize.Y); } }
         protected RectangleF rightRectangle { get { return new RectangleF(topLeft.X + screenSize.X - movementBandWidth, topLeft.Y, movementBandWidth, screenSize.Y); } }
-        protected float movementSpeed { get { return 200f / LimitsEdgeGame.currentZoom; } }
+        protected float movementSpeed { get { return 400f / LimitsEdgeGame.currentZoom; } }
 
         public int previousScrollValue;
-        protected float maxZoom = 20f;
-        protected float minZoom = 0.6f;
-        protected float zoomIncrement = 0.1f;
+        protected float maxZoom = 32f;
+        protected float minZoom = 1f;
 
         public ShipEventManager() 
         { 
@@ -71,10 +70,10 @@ namespace SpaceGame.Managers
                 switch (Math.Sign(difference))
                 {
                     case 1:
-                        if (camera.Zoom < maxZoom) camera.Zoom = (float)Math.Round(camera.Zoom * (1 + zoomIncrement), 1);
+                        if (camera.Zoom < maxZoom) camera.Zoom += 1;
                         break;
                     case -1:
-                        if (camera.Zoom > minZoom) camera.Zoom = (float)Math.Round(camera.Zoom * (1 - zoomIncrement), 1);
+                        if (camera.Zoom > minZoom) camera.Zoom -= 1;
                         break;
                 }
                 previousScrollValue = mouseState.ScrollWheelValue;
@@ -85,7 +84,7 @@ namespace SpaceGame.Managers
         {
 
         }
-        
+
         public void CheckMovement(float t)
         {
             Camera2D camera = LimitsEdgeGame.shipCamera;

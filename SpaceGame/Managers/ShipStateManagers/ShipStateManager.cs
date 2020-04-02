@@ -34,6 +34,9 @@ namespace SpaceGame.Managers
             eventManager.Update(gameTime);
             peopleManager.Update(gameTime);
             itemHolderManager.Update(gameTime);
+
+            // Prevent flickering by rounding camera position
+            LimitsEdgeGame.shipCamera.Position = Helper.RoundVector2(LimitsEdgeGame.shipCamera.Position, 1);
         }
 
         public void Draw(SpriteBatch spriteBatch)
