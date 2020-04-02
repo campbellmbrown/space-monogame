@@ -12,6 +12,7 @@ namespace SpaceGame.Effects
     {
         protected Texture2D texture;
         protected Vector2 position { get { return LimitsEdgeGame.mousePosition; } }
+        protected float zoom { get { return 3f / LimitsEdgeGame.currentCamera.Zoom; } }
 
         public Cursor(Texture2D texture)
         {
@@ -20,7 +21,7 @@ namespace SpaceGame.Effects
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, position, null, Color.White, 0f, Vector2.Zero, zoom, SpriteEffects.None, 0f);
         }
     }
 }
