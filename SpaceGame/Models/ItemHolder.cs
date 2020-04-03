@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpaceGame.Items;
 using SpaceGame.Tiles;
@@ -16,7 +16,7 @@ namespace SpaceGame.Models
         protected Texture2D texture;
         protected Vector2 position;
         
-        protected float lifeTimeRadians;
+        public float lifeTime;
         protected float heightOffset;
         protected float bounceHeight = 1f;
         protected float timePerBounceCycle = 1f;
@@ -40,8 +40,8 @@ namespace SpaceGame.Models
         public void Update(GameTime gameTime)
         {
             float t = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            lifeTimeRadians += t;
-            heightOffset = bounceHeight * (float)Math.Cos(lifeTimeRadians * 2 * Math.PI / timePerBounceCycle);
+            lifeTime += t;
+            heightOffset = bounceHeight * (float)Math.Cos(lifeTime * 2 * Math.PI / timePerBounceCycle);
         }
 
         public void Draw(SpriteBatch spriteBatch)

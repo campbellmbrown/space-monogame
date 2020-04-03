@@ -29,5 +29,15 @@ namespace SpaceGame.Managers.ShipStateManagers
         {
             foreach (var itemHolder in itemHolders) itemHolder.Draw(spriteBatch);
         }
+
+        public void AddItemHolder(int X, int Y)
+        {
+            itemHolders.Add(new ItemHolder(LimitsEdgeGame.textures["item_holder"], new Vector2(X, Y)) { item = new Metal(Vector2.Zero, 1, true) });
+        }
+
+        public void ResetItemBouncing()
+        {
+            foreach (var itemHolder in itemHolders) itemHolder.lifeTime = 0;
+        }
     }
 }

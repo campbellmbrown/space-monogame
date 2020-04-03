@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
 using SpaceGame.Models;
 using SpaceGame.Tiles;
@@ -63,11 +64,21 @@ namespace SpaceGame.Managers
             foreach (var placeableTile in placeableTiles) placeableTile.Draw(spriteBatch);
             foreach (var otherTile in otherTiles) otherTile.Draw(spriteBatch);
             foreach (var collidableWall in wallTiles) collidableWall.Draw(spriteBatch);
-            foreach (var walkableTile in walkableTiles) spriteBatch.DrawRectangle(new Rectangle(walkableTile.X, walkableTile.Y, 8, 8), Color.Orange);
-            foreach (var placeableTile in placeableTiles)
+            
+            // TEMP
+            for (int g = 0; g < placeableTiles.Count; ++g)
             {
-                Rectangle rect = new Rectangle(placeableTile.X, placeableTile.Y, 8, 8);
-                if (rect.Contains(LimitsEdgeGame.mousePosition)) spriteBatch.DrawRectangle(rect, Color.Red);
+                Rectangle rect = new Rectangle(placeableTiles[g].X, placeableTiles[g].Y, 8, 8);
+                if (rect.Contains(LimitsEdgeGame.mousePosition))
+                {
+                    spriteBatch.DrawRectangle(rect, Color.Red);
+                    if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+                    {
+                        LimitsEdgeGame.shipStateManager.itemHolderManager.AddItemHolder(placeableTiles[g].X, placeableTiles[g].Y);
+                        placeableTiles.Remove(placeableTiles[g]);
+                        break;
+                    }
+                }
             }
         }
 

@@ -17,7 +17,7 @@ namespace SpaceGame.Managers
         public ShipEventManager eventManager;
         public ShipTileManager tileManager;
         public PeopleManager peopleManager;
-        protected ItemHolderManager itemHolderManager;
+        public ItemHolderManager itemHolderManager;
 
         public ShipStateManager()
         {
