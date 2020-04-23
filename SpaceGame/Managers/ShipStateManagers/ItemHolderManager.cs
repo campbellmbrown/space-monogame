@@ -17,7 +17,6 @@ namespace SpaceGame.Managers.ShipStateManagers
         public ItemHolderManager()
         {
             itemHolders = new List<ItemHolder>();
-            itemHolders.Add(new ItemHolder(LimitsEdgeGame.textures["item_holder"], Vector2.Zero) { item = new Metal(Vector2.Zero, 1, true) });
         }
 
         public void Update(GameTime gameTime)

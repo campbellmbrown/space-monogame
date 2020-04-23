@@ -107,9 +107,14 @@ namespace SpaceGame.Tiles
             this.textureRectangle = tileRectangleLookup[specificTileType];
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, position, textureRectangle, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+        }
+
+        public virtual void Update(GameTime gameTime)
+        {
+
         }
     }
 }

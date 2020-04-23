@@ -90,7 +90,7 @@
     <Compile Include="Tiles\ShipWall.cs" />
     <Compile Include="Tiles\ShipFloor.cs" />
     <Compile Include="Tiles\Tile.cs" />
-    <Compile Include="Tiles\PlaceableTile.cs"/>
+    <Compile Include="Tiles\PlaceableTile.cs" />
     <Compile Include="Utilities\Helper.cs" />
     <Compile Include="World\Star.cs" />
   </ItemGroup>
