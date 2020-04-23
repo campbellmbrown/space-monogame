@@ -70,8 +70,9 @@
     <Compile Include="Managers\ShipStateManagers\ShipTileManager.cs" />
     <Compile Include="Managers\WorldStateManagers\WorldStateManager.cs" />
     <Compile Include="Models\Animation.cs" />
-    <Compile Include="Models\ItemHolder.cs" />
     <Compile Include="Models\PathNode.cs" />
+    <Compile Include="Models\SmallMenu.cs" />
+    <Compile Include="Models\SmallMenuOption.cs" />
     <Compile Include="Sprites\ShipStateSprites\Person.cs" />
     <Compile Include="Sprites\WorldStateSprites\CollidableObject.cs" />
     <Compile Include="Models\Minimap.cs" />
