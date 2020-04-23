@@ -16,6 +16,7 @@ namespace SpaceGame.Managers
         protected bool holdingExitShip = true;
         protected bool holdingZoomIn = true;
         protected bool holdingZoomOut = true;
+        protected bool holdingLeftClick = true;
 
         protected float movementBandWidth { get { return 100f / LimitsEdgeGame.currentZoom; } }
         protected Vector2 topLeft { get { return LimitsEdgeGame.topLeft; } }
@@ -42,8 +43,9 @@ namespace SpaceGame.Managers
             MouseState mouseState = Mouse.GetState();
             CheckSinglePressKeys(keyboardState);
             CheckHeldKeyPress(keyboardState, t);
-            CheckMovement(t);
+            CheckSingleLeftClick(mouseState);
             CheckScroll(mouseState);
+            CheckMovement(t);
         }
 
         public void CheckSinglePressKeys(KeyboardState keyboardState)
@@ -94,6 +96,26 @@ namespace SpaceGame.Managers
             else if (bottomRectangle.Contains(mousePosition)) camera.Position = cameraPosition += new Vector2(0, movementSpeed * t);
             if (leftRectangle.Contains(mousePosition)) camera.Position = cameraPosition -= new Vector2(movementSpeed * t, 0);
             else if (rightRectangle.Contains(mousePosition)) camera.Position = cameraPosition += new Vector2(movementSpeed * t, 0);
+        }
+
+        public void CheckSingleLeftClick(MouseState mouseState)
+        {
+            if (mouseState.LeftButton == ButtonState.Pressed)
+            {
+                if (!holdingLeftClick)
+                {
+                    foreach (var holdingTile in LimitsEdgeGame.shipStateManager.tileManager.holdingTiles)
+                    {
+                        if (holdingTile.interactionRectangle.Contains(LimitsEdgeGame.mousePosition))
+                        {
+                            LimitsEdgeGame.shipStateManager.TurnOffAllMenus();
+                            holdingTile.SetMenuStatus(true);
+                        }
+                    }
+                }
+                holdingLeftClick = true;
+            }
+            else holdingLeftClick = false;
         }
     }
 }

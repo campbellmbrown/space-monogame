@@ -41,5 +41,13 @@ namespace SpaceGame.Managers
             tileManager.Draw(spriteBatch);
             peopleManager.Draw(spriteBatch);
         }
+
+        public void TurnOffAllMenus()
+        {
+            foreach (var holdingTile in tileManager.holdingTiles) 
+            {
+                holdingTile.SetMenuStatus(false);
+            }
+        }
     }
 }

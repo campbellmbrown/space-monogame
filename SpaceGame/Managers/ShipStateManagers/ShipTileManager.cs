@@ -17,7 +17,7 @@ namespace SpaceGame.Managers
         public List<ShipFloorTile> floorTiles;          // Tiles used for pathfinding for entities
         protected List<Tile> bottomLayerTiles;          // Tiles to be rendered first
         protected List<Tile> topLayerTiles;             // Tiles to be rendered second
-        protected List<HoldingTile> holdingTiles;       // Tiles that can hold interior objects
+        public List<HoldingTile> holdingTiles;          // Tiles that can hold interior objects
         protected Texture2D texture;                    // Texture of all themeable tiles
 
         protected int floorID;
