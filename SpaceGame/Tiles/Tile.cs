@@ -45,8 +45,7 @@ namespace SpaceGame.Tiles
         AngleBottomLeft,
         AngleBottomRight,
         FloorLight,
-        FloorDark,
-        PlaceableTile
+        FloorDark
     }
 
     public class Tile
@@ -68,7 +67,6 @@ namespace SpaceGame.Tiles
             { SpecificTileType.AngleCrossSectBottomRight,   new Rectangle(4 * tileSize, 0 * tileSize, tileSize, tileSize ) },
             { SpecificTileType.AngleCrossSectBottomLeft,    new Rectangle(5 * tileSize, 0 * tileSize, tileSize, tileSize ) },
             { SpecificTileType.Wall,                        new Rectangle(6 * tileSize, 0 * tileSize, tileSize, tileSize ) },
-            { SpecificTileType.PlaceableTile,               new Rectangle(7 * tileSize, 0 * tileSize, tileSize, tileSize ) },
             { SpecificTileType.CurveCrossSectTopRight1,     new Rectangle(0 * tileSize, 1 * tileSize, tileSize, tileSize ) },
             { SpecificTileType.CurveCrossSectTopLeft1,      new Rectangle(1 * tileSize, 1 * tileSize, tileSize, tileSize ) },
             { SpecificTileType.CurveCrossSectTopRight2,     new Rectangle(2 * tileSize, 1 * tileSize, tileSize, tileSize ) },

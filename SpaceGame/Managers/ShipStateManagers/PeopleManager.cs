@@ -37,9 +37,9 @@ namespace SpaceGame.Managers.ShipStateManagers
             }
         }
 
-        public void SpawnPerson(List<ShipFloor> walkableTiles)
+        public void SpawnPerson(List<ShipFloorTile> walkableTiles)
         {
-            ShipFloor spawningTile = walkableTiles.ElementAt(LimitsEdgeGame.r.Next(0, walkableTiles.Count()));
+            ShipFloorTile spawningTile = walkableTiles.ElementAt(LimitsEdgeGame.r.Next(0, walkableTiles.Count()));
             Vector2 spawningPosition = new Vector2(spawningTile.X + Tile.tileSize / 2f, spawningTile.Y + Tile.tileSize / 2f);
             people.Add(new Person(spawningPosition, LimitsEdgeGame.animations["basic_person_walk_down"], walkableTiles));
         }

@@ -130,7 +130,7 @@
 /processorParam:TextureFormat=Color
 /build:ShipInterior/item_holder.png
 
-#begin ShipInterior/ship_layout.png
+#begin ShipInterior/ship_display_tiles.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -140,7 +140,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:ShipInterior/ship_layout.png
+/build:ShipInterior/ship_display_tiles.png
 
 #begin Ships/basic_ship_main.png
 /importer:TextureImporter

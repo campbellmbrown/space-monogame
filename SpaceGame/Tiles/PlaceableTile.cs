@@ -9,7 +9,7 @@ namespace SpaceGame.Tiles
 {
     public class PlaceableTile : Tile
     {
-        public PlaceableTile(int X, int Y) : base(LimitsEdgeGame.textures["ship_layout"], X, Y, SpecificTileType.PlaceableTile)
+        public PlaceableTile(int X, int Y) : base(LimitsEdgeGame.textures["ship_display_tiles"], X, Y, SpecificTileType.AngleCrossSectTopLeft)
         {
         }
     }

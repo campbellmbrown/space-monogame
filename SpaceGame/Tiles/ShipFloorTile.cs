@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Tiles
 {
-    public class ShipFloor : Tile
+    public class ShipFloorTile : Tile
     {
         public int floorID;
 
-        public ShipFloor(Texture2D texture, int X, int Y, SpecificTileType specificTileType, int floorID) : base(texture, X, Y, specificTileType)
+        public ShipFloorTile(Texture2D texture, int X, int Y, SpecificTileType specificTileType, int floorID) : base(texture, X, Y, specificTileType)
         {
             this.floorID = floorID;
         }

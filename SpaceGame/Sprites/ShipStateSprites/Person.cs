@@ -16,11 +16,11 @@ namespace SpaceGame.Sprites.ShipStateSprites
         protected List<Vector2> pathToTake;
         protected List<PathNode> nodes;
         protected Vector2 currentObjective;
-        protected List<ShipFloor> walkableTiles;
+        protected List<ShipFloorTile> walkableTiles;
         protected float currentIdleDelay = 0;
         protected float idleDelay = 0;
 
-        public Person(Vector2 position, Texture2D texture, List<ShipFloor> walkableTiles) : base(position, texture)
+        public Person(Vector2 position, Texture2D texture, List<ShipFloorTile> walkableTiles) : base(position, texture)
         {
             this.walkableTiles = walkableTiles;
             pathToTake = new List<Vector2>();
@@ -29,7 +29,7 @@ namespace SpaceGame.Sprites.ShipStateSprites
             CreatePath();
         }
 
-        public Person(Vector2 position, Animation animation, List<ShipFloor> walkableTiles) : base(position, animation)
+        public Person(Vector2 position, Animation animation, List<ShipFloorTile> walkableTiles) : base(position, animation)
         {
             this.walkableTiles = walkableTiles;
             pathToTake = new List<Vector2>();
@@ -139,7 +139,7 @@ namespace SpaceGame.Sprites.ShipStateSprites
             }
         }
 
-        protected void CreateNodes(List<ShipFloor> walkableTiles)
+        protected void CreateNodes(List<ShipFloorTile> walkableTiles)
         {
             nodes.Clear();
             foreach (var walkableTile in walkableTiles)
@@ -152,8 +152,8 @@ namespace SpaceGame.Sprites.ShipStateSprites
                 coordsToCheck.Add(new Point(walkableTile.X, walkableTile.Y - Tile.tileSize));
                 foreach (var p in coordsToCheck)
                 {
-                    Predicate<ShipFloor> offsetPosition = (ShipFloor pos) => { return pos.X == p.X && pos.Y == p.Y; };
-                    ShipFloor foundNeighbor = walkableTiles.Find((ShipFloor pos) => { return pos.X == p.X && pos.Y == p.Y; });
+                    Predicate<ShipFloorTile> offsetPosition = (ShipFloorTile pos) => { return pos.X == p.X && pos.Y == p.Y; };
+                    ShipFloorTile foundNeighbor = walkableTiles.Find((ShipFloorTile pos) => { return pos.X == p.X && pos.Y == p.Y; });
                     if (foundNeighbor != null) pathNode.connectedNodes.Add(foundNeighbor.floorID);
                 }
                 nodes.Add(pathNode);

@@ -21,7 +21,7 @@ namespace SpaceGame.Managers
 
         public ShipStateManager()
         {
-            tileManager = new ShipTileManager(LimitsEdgeGame.textures["ship_layout"]);
+            tileManager = new ShipTileManager(LimitsEdgeGame.textures["ship_display_tiles"]);
             eventManager = new ShipEventManager();
             peopleManager = new PeopleManager(tileManager);
             itemHolderManager = new ItemHolderManager();

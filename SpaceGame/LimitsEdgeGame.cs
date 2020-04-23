@@ -90,7 +90,7 @@ namespace SpaceGame
                 { "lazer", Content.Load<Texture2D>("Projectiles/lazer") },
                 { "asteroid_chunk", Content.Load<Texture2D>("World/asteroid_chunk") },
                 // Spaceship
-                { "ship_layout", Content.Load<Texture2D>("ShipInterior/ship_layout") },
+                { "ship_display_tiles", Content.Load<Texture2D>("ShipInterior/ship_display_tiles") },
                 { "item_holder", Content.Load<Texture2D>("ShipInterior/item_holder") },
                 // General
                 { "arrow_cursor", Content.Load<Texture2D>("Effects/arrow_cursor") },
