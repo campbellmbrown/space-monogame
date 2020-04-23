@@ -26,9 +26,9 @@ namespace SpaceGame.Models
             foreach (var menuOption in menuOptions) menuOption.Draw(spriteBatch);
         }
 
-        public void AddMenuOption(int optionListOrder, Vector2 position)
+        public void AddMenuOption(int optionListOrder, Vector2 position, string text, Color textColor)
         {
-            menuOptions.Add(new SmallMenuOption(optionListOrder, position, width, height));
+            menuOptions.Add(new SmallMenuOption(optionListOrder, position, width, height, text, textColor));
         }
     }
 }

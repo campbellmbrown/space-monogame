@@ -108,8 +108,12 @@ namespace SpaceGame.Managers
                     {
                         if (holdingTile.interactionRectangle.Contains(LimitsEdgeGame.mousePosition))
                         {
-                            LimitsEdgeGame.shipStateManager.TurnOffAllMenus();
-                            holdingTile.SetMenuStatus(true);
+                            if (LimitsEdgeGame.shipStateManager.activeMenu == holdingTile.menu)
+                            {
+                                LimitsEdgeGame.shipStateManager.activeMenu = null;
+                                continue;
+                            }
+                            LimitsEdgeGame.shipStateManager.activeMenu = holdingTile.menu;
                         }
                     }
                 }

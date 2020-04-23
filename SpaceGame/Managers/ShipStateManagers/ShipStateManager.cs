@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
 using SpaceGame.Managers.ShipStateManagers;
+using SpaceGame.Models;
 using SpaceGame.Tiles;
 using SpaceGame.Utilities;
 using System;
@@ -17,6 +18,7 @@ namespace SpaceGame.Managers
         public ShipEventManager eventManager;
         public ShipTileManager tileManager;
         public PeopleManager peopleManager;
+        public SmallMenu activeMenu;
 
         public ShipStateManager()
         {
@@ -40,14 +42,7 @@ namespace SpaceGame.Managers
         {
             tileManager.Draw(spriteBatch);
             peopleManager.Draw(spriteBatch);
-        }
-
-        public void TurnOffAllMenus()
-        {
-            foreach (var holdingTile in tileManager.holdingTiles) 
-            {
-                holdingTile.SetMenuStatus(false);
-            }
+            if (activeMenu != null) activeMenu.Draw(spriteBatch);
         }
     }
 }

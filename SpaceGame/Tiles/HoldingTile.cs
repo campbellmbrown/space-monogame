@@ -11,27 +11,16 @@ namespace SpaceGame.Tiles
 {
     public class HoldingTile : Tile
     {
-        protected SmallMenu menu;
-        protected bool showMenu = false;
+        public SmallMenu menu;
         public Rectangle interactionRectangle { get { return new Rectangle(X, Y, tileSize, tileSize); } }
+        protected Vector2 menuPositon { get { return position + new Vector2(tileSize / 2f, 0); } }
 
         public HoldingTile(int X, int Y) : base(LimitsEdgeGame.textures["ship_display_tiles"], X, Y, SpecificTileType.AngleCrossSectTopLeft)
         {
-            menu = new SmallMenu(8, 40);
-            menu.AddMenuOption(3, position);
-            menu.AddMenuOption(2, position);
-            menu.AddMenuOption(1, position);
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            base.Draw(spriteBatch);
-            if (showMenu) menu.Draw(spriteBatch);
-        }
-
-        public void SetMenuStatus(bool status)
-        {
-            showMenu = status;
+            menu = new SmallMenu(6, 40);
+            menu.AddMenuOption(1, menuPositon, "Option 1", Color.DarkGreen);
+            menu.AddMenuOption(2, menuPositon, "Option 2", Color.DarkMagenta);
+            menu.AddMenuOption(3, menuPositon, "Option 3", Color.DarkSlateBlue);
         }
     }
 }

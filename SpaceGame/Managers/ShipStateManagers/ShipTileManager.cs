@@ -61,16 +61,6 @@ namespace SpaceGame.Managers
             foreach (var bottomLayerTile in bottomLayerTiles) bottomLayerTile.Draw(spriteBatch);
             foreach (var topLayerTile in topLayerTiles) topLayerTile.Draw(spriteBatch);
             foreach (var placeableTile in holdingTiles) placeableTile.Draw(spriteBatch);
-            
-            // TEMP
-            for (int g = 0; g < holdingTiles.Count; ++g)
-            {
-                Rectangle rect = new Rectangle(holdingTiles[g].X, holdingTiles[g].Y, 8, 8);
-                if (rect.Contains(LimitsEdgeGame.mousePosition))
-                {
-                    spriteBatch.DrawRectangle(rect, Color.Red);
-                }
-            }
         }
 
         protected void BuildShip()
