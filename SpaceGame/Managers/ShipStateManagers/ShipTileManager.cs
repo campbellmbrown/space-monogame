@@ -14,12 +14,11 @@ namespace SpaceGame.Managers
 {
     public class ShipTileManager
     {
-        protected List<ShipFloorTile> floorTiles;
-        protected List<Tile> bottomLayerTiles;
-        protected List<Tile> topLayerTiles;
-        protected List<PlaceableTile> placeableTiles;
-        protected Texture2D texture;
-        public List<ShipFloorTile> walkableTiles;
+        public List<ShipFloorTile> floorTiles;          // Tiles used for pathfinding for entities
+        protected List<Tile> bottomLayerTiles;          // Tiles to be rendered first
+        protected List<Tile> topLayerTiles;             // Tiles to be rendered second
+        protected List<HoldingTile> holdingTiles;       // Tiles that can hold interior objects
+        protected Texture2D texture;                    // Texture of all themeable tiles
 
         protected int floorID;
 
@@ -29,10 +28,8 @@ namespace SpaceGame.Managers
             floorTiles = new List<ShipFloorTile>();
             topLayerTiles = new List<Tile>();
             bottomLayerTiles = new List<Tile>();
-            placeableTiles = new List<PlaceableTile>();
-            walkableTiles = new List<ShipFloorTile>();
+            holdingTiles = new List<HoldingTile>();
             BuildShip();
-            CreateWalkableTiles();
         }
 
         public Vector2 GetShipSize()
@@ -63,30 +60,22 @@ namespace SpaceGame.Managers
             foreach (var floorTile in floorTiles) floorTile.Draw(spriteBatch);
             foreach (var bottomLayerTile in bottomLayerTiles) bottomLayerTile.Draw(spriteBatch);
             foreach (var topLayerTile in topLayerTiles) topLayerTile.Draw(spriteBatch);
-            foreach (var placeableTile in placeableTiles) placeableTile.Draw(spriteBatch);
+            foreach (var placeableTile in holdingTiles) placeableTile.Draw(spriteBatch);
             
             // TEMP
-            for (int g = 0; g < placeableTiles.Count; ++g)
+            for (int g = 0; g < holdingTiles.Count; ++g)
             {
-                Rectangle rect = new Rectangle(placeableTiles[g].X, placeableTiles[g].Y, 8, 8);
+                Rectangle rect = new Rectangle(holdingTiles[g].X, holdingTiles[g].Y, 8, 8);
                 if (rect.Contains(LimitsEdgeGame.mousePosition))
                 {
                     spriteBatch.DrawRectangle(rect, Color.Red);
                     if (Mouse.GetState().LeftButton == ButtonState.Pressed)
                     {
-                        LimitsEdgeGame.shipStateManager.itemHolderManager.AddItemHolder(placeableTiles[g].X, placeableTiles[g].Y);
-                        placeableTiles.Remove(placeableTiles[g]);
+                        LimitsEdgeGame.shipStateManager.itemHolderManager.AddItemHolder(holdingTiles[g].X, holdingTiles[g].Y);
+                        holdingTiles.Remove(holdingTiles[g]);
                         break;
                     }
                 }
-            }
-        }
-
-        protected void CreateWalkableTiles()
-        {
-            foreach (var floorTile in floorTiles)
-            {
-                walkableTiles.Add(floorTile);
             }
         }
 
@@ -319,7 +308,7 @@ namespace SpaceGame.Managers
             {
                 for (int j = startY; j <= finishY; ++j)
                 {
-                    placeableTiles.Add(new PlaceableTile(i, j));
+                    holdingTiles.Add(new HoldingTile(i, j));
                 }
             }
         }

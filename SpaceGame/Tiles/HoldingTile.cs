@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Tiles
 {
-    public class PlaceableTile : Tile
+    public class HoldingTile : Tile
     {
-        public PlaceableTile(int X, int Y) : base(LimitsEdgeGame.textures["ship_display_tiles"], X, Y, SpecificTileType.AngleCrossSectTopLeft)
+        public HoldingTile(int X, int Y) : base(LimitsEdgeGame.textures["ship_display_tiles"], X, Y, SpecificTileType.AngleCrossSectTopLeft)
         {
         }
     }

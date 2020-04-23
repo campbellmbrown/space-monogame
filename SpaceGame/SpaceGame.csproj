@@ -89,7 +89,7 @@
     <Compile Include="Sprites\WorldStateSprites\WSSprite.cs" />
     <Compile Include="Tiles\ShipFloorTile.cs" />
     <Compile Include="Tiles\Tile.cs" />
-    <Compile Include="Tiles\PlaceableTile.cs" />
+    <Compile Include="Tiles\HoldingTile.cs" />
     <Compile Include="Utilities\Helper.cs" />
     <Compile Include="World\Star.cs" />
   </ItemGroup>

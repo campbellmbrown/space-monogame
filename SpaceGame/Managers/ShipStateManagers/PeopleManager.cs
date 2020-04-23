@@ -18,7 +18,7 @@ namespace SpaceGame.Managers.ShipStateManagers
         public PeopleManager(ShipTileManager tileManager)
         {
             people = new List<Person>();
-            for (int i = 0; i < 20; ++i) SpawnPerson(tileManager.walkableTiles);
+            for (int i = 0; i < 20; ++i) SpawnPerson(tileManager.floorTiles);
         }
 
         public void Update(GameTime gameTime)
