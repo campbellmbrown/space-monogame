@@ -140,7 +140,7 @@ namespace SpaceGame
                 case GameState.Spaceship:
                     currentCamera = shipCamera;
                     shipStateManager.eventManager.previousScrollValue = Mouse.GetState().ScrollWheelValue;
-                    shipStateManager.itemHolderManager.ResetItemBouncing();
+                    // shipStateManager.itemHolderManager.ResetItemBouncing();
                     break;
             }
 

@@ -17,14 +17,12 @@ namespace SpaceGame.Managers
         public ShipEventManager eventManager;
         public ShipTileManager tileManager;
         public PeopleManager peopleManager;
-        public ItemHolderManager itemHolderManager;
 
         public ShipStateManager()
         {
             tileManager = new ShipTileManager(LimitsEdgeGame.textures["ship_display_tiles"]);
             eventManager = new ShipEventManager();
             peopleManager = new PeopleManager(tileManager);
-            itemHolderManager = new ItemHolderManager();
 
             LimitsEdgeGame.shipCamera.Position += (tileManager.GetShipSize() + new Vector2(Tile.tileSize)) / 2f;
         }
@@ -33,7 +31,6 @@ namespace SpaceGame.Managers
         {
             eventManager.Update(gameTime);
             peopleManager.Update(gameTime);
-            itemHolderManager.Update(gameTime);
 
             // Prevent flickering by rounding camera position
             LimitsEdgeGame.shipCamera.Position = Helper.RoundVector2(LimitsEdgeGame.shipCamera.Position, 1);
@@ -43,7 +40,6 @@ namespace SpaceGame.Managers
         {
             tileManager.Draw(spriteBatch);
             peopleManager.Draw(spriteBatch);
-            itemHolderManager.Draw(spriteBatch);
         }
     }
 }

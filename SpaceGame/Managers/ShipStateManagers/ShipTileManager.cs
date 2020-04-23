@@ -69,12 +69,6 @@ namespace SpaceGame.Managers
                 if (rect.Contains(LimitsEdgeGame.mousePosition))
                 {
                     spriteBatch.DrawRectangle(rect, Color.Red);
-                    if (Mouse.GetState().LeftButton == ButtonState.Pressed)
-                    {
-                        LimitsEdgeGame.shipStateManager.itemHolderManager.AddItemHolder(holdingTiles[g].X, holdingTiles[g].Y);
-                        holdingTiles.Remove(holdingTiles[g]);
-                        break;
-                    }
                 }
             }
         }

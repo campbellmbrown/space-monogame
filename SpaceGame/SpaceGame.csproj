@@ -51,7 +51,6 @@
     <Compile Include="Items\Metal.cs" />
     <Compile Include="Items\Plastic.cs" />
     <Compile Include="Managers\AnimationManager.cs" />
-    <Compile Include="Managers\ShipStateManagers\ItemHolderManager.cs" />
     <Compile Include="Managers\ShipStateManagers\PeopleManager.cs" />
     <Compile Include="Managers\WorldStateManagers\CrateManager.cs" />
     <Compile Include="Managers\WorldStateManagers\DebugManager.cs" />
