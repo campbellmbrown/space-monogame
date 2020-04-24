@@ -116,6 +116,14 @@ namespace SpaceGame.Managers
                             LimitsEdgeGame.shipStateManager.activeMenu = holdingTile.menu;
                         }
                     }
+                    if (LimitsEdgeGame.shipStateManager.activeMenu != null)
+                    {
+                        foreach (var menuOption in LimitsEdgeGame.shipStateManager.activeMenu.menuOptions)
+                        {
+                            if (menuOption.interactionRectangle.Contains(LimitsEdgeGame.mousePosition))
+                                menuOption.ClickAction();
+                        }
+                    }
                 }
                 holdingLeftClick = true;
             }
