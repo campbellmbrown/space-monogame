@@ -17,10 +17,10 @@ namespace SpaceGame.Tiles
 
         public HoldingTile(int X, int Y) : base(LimitsEdgeGame.textures["ship_display_tiles"], X, Y, SpecificTileType.AngleCrossSectTopLeft)
         {
-            menu = new SmallMenu(6, 40);
+            menu = new SmallMenu(48, 480);
             menu.AddMenuOption(1, menuPositon, "Option 1", Color.DarkGreen, Func1);
-            menu.AddMenuOption(2, menuPositon, "Option 2", Color.DarkMagenta, Func2);
-            menu.AddMenuOption(3, menuPositon, "Option 3", Color.DarkSlateBlue, Func3);
+            menu.AddMenuOption(2, menuPositon, "Option 2 blah blah blah", Color.DarkMagenta, Func2);
+            menu.AddMenuOption(3, menuPositon, "Option 3 :o", Color.DarkSlateBlue, Func3);
         }
 
         public void Func1()

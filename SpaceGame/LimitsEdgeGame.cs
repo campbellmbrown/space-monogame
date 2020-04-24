@@ -94,6 +94,8 @@ namespace SpaceGame
                 { "item_holder", Content.Load<Texture2D>("ShipInterior/item_holder") },
                 // General
                 { "arrow_cursor", Content.Load<Texture2D>("Effects/arrow_cursor") },
+                // GUI
+                { "small_menu", Content.Load<Texture2D>("GUI/small_menu") },
             };
 
             animations = new Dictionary<string, Animation>()
