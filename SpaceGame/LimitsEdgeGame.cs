@@ -31,7 +31,6 @@ namespace SpaceGame
         public static Camera2D shipCamera;
 
         public static Random r;
-        public static float initialZoom = 4f;
         public static Dictionary<string, Texture2D> textures;
         public static Dictionary<string, Animation> animations;
         public static Dictionary<string, SpriteFont> fonts;
@@ -64,9 +63,9 @@ namespace SpaceGame
         protected override void Initialize()
         {
             gameState = GameState.World;
-            worldCamera = new Camera2D(GraphicsDevice) { Zoom = initialZoom, Position = -screenSize / 2f };
-            inGameMenuCamera = new Camera2D(GraphicsDevice) { Zoom = initialZoom, Position = -screenSize / 2f };
-            shipCamera = new Camera2D(GraphicsDevice) { Zoom = initialZoom, Position = -screenSize / 2f };
+            worldCamera = new Camera2D(GraphicsDevice) { Zoom = 2, Position = -screenSize / 2f };
+            inGameMenuCamera = new Camera2D(GraphicsDevice) { Zoom = 2, Position = -screenSize / 2f };
+            shipCamera = new Camera2D(GraphicsDevice) { Zoom = 3, Position = -screenSize / 2f };
             currentCamera = worldCamera;
             IsMouseVisible = false;
             IsFixedTimeStep = true;

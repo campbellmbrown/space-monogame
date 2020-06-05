@@ -63,12 +63,12 @@ namespace SpaceGame.Managers
         public void CheckHeldKeyPress(KeyboardState keyboardState, float t)
         {
             // Shooting
+            timeSinceLastShot += t;
             if (keyboardState.IsKeyDown(Keys.Space))
             {
-                timeSinceLastShot += t;
                 if (timeSinceLastShot >= shotDelay)
                 {
-                    timeSinceLastShot -= shotDelay;
+                    timeSinceLastShot = 0;
                     LimitsEdgeGame.playerManager.playerShip.AddProjectiles();
                 }
             }
