@@ -5,6 +5,7 @@
   <Config />
   <SourceFiles>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Effects/arrow_cursor.png</File>
+    <File>D:/Git Projects/space-monogame/SpaceGame/Content/Effects/shadow_1.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Effects/small_explosion.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Effects/smoke.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Fonts/courier_new.spritefont</File>
@@ -30,6 +31,7 @@
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/World/asteroid_chunk.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

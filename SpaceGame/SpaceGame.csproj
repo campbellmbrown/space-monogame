@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Effects\Cursor.cs" />
     <Compile Include="Effects\Particle.cs" />
+    <Compile Include="Effects\Shadow.cs" />
     <Compile Include="Effects\SmallExplosion.cs" />
     <Compile Include="Effects\Smoke.cs" />
     <Compile Include="LimitsEdgeGame.cs" />

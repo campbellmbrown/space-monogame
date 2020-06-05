@@ -32,6 +32,7 @@ namespace SpaceGame.Sprites.ShipStateSprites
         protected bool hasAnimation { get { return animationManager != null; } }
         protected bool hasTexture { get { return texture != null; } }
         private Vector2 bottomMiddle { get { return new Vector2(texture.Width / 2f, texture.Height); } }
+        protected float scale = 1;
 
         public SSSprite(Vector2 position, Texture2D texture)
         {
@@ -39,11 +40,12 @@ namespace SpaceGame.Sprites.ShipStateSprites
             this.texture = texture;
         }
 
-        public SSSprite(Vector2 position, Animation animation)
+        public SSSprite(Vector2 position, Animation animation, float scale)
         {
             this.position = position;
             this.animation = animation;
-            animationManager = new AnimationManager(animation, AnimationManager.RotationOrigin.BottomMiddle, 0.5f);
+            this.scale = scale;
+            animationManager = new AnimationManager(animation, AnimationManager.RotationOrigin.BottomMiddle, scale);
         }
 
         public virtual void Update(GameTime gameTime)
@@ -54,7 +56,7 @@ namespace SpaceGame.Sprites.ShipStateSprites
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             if (hasAnimation) animationManager.Draw(spriteBatch);
-            else if (hasTexture) spriteBatch.Draw(texture, position, null, Color.White, 0f, bottomMiddle, 0.5f, SpriteEffects.None, 0f);
+            else if (hasTexture) spriteBatch.Draw(texture, position, null, Color.White, 0f, bottomMiddle, scale, SpriteEffects.None, 0f);
         }
     }
 }

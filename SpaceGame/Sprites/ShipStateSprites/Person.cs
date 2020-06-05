@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
+using SpaceGame.Effects;
 using SpaceGame.Models;
 using SpaceGame.Tiles;
 using System;
@@ -19,28 +20,22 @@ namespace SpaceGame.Sprites.ShipStateSprites
         protected List<ShipFloorTile> walkableTiles;
         protected float currentIdleDelay = 0;
         protected float idleDelay = 0;
+        protected Shadow shadow;
 
-        public Person(Vector2 position, Texture2D texture, List<ShipFloorTile> walkableTiles) : base(position, texture)
+        public Person(Vector2 position, Animation animation, List<ShipFloorTile> walkableTiles) : base(position, animation, 0.5f)
         {
             this.walkableTiles = walkableTiles;
             pathToTake = new List<Vector2>();
             nodes = new List<PathNode>();
             CreateNodes(walkableTiles);
             CreatePath();
-        }
-
-        public Person(Vector2 position, Animation animation, List<ShipFloorTile> walkableTiles) : base(position, animation)
-        {
-            this.walkableTiles = walkableTiles;
-            pathToTake = new List<Vector2>();
-            nodes = new List<PathNode>();
-            CreateNodes(walkableTiles);
-            CreatePath();
+            shadow = new Shadow(LimitsEdgeGame.textures["shadow_1"], 0.2f);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
+            shadow.Draw(spriteBatch);
         }
 
         public override void Update(GameTime gameTime)
@@ -73,6 +68,7 @@ namespace SpaceGame.Sprites.ShipStateSprites
                     position += direction * 15f * t;
               }
             } else currentIdleDelay += t;
+            shadow.Update(position, animation.frameWidth * scale);
         }
 
         public void CreatePath()

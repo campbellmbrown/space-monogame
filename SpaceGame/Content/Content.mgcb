@@ -26,6 +26,18 @@
 /processorParam:TextureFormat=Color
 /build:Effects/arrow_cursor.png
 
+#begin Effects/shadow_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Effects/shadow_1.png
+
 #begin Effects/small_explosion.png
 /importer:TextureImporter
 /processor:TextureProcessor
