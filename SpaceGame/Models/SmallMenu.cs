@@ -31,21 +31,5 @@ namespace SpaceGame.Models
         {
             menuOptions.Add(new SmallMenuOption(optionListOrder, position, width, height, text, textColor, clickAction));
         }
-
-        /*
-         * public void ErrorDBConcurrency(DBConcurrencyException e, Action method)
-         * {
-         *     if (MessageBox.Show("You must refresh the datasource") == DialogResult.OK)
-         *         method();
-         * }
-         * void MyAction()
-         * {
-         * 
-         * }
-         * 
-         * ErrorDBConcurrency(e, MyAction); 
-         * // OR
-         * ErrorDBConcurrency(e, () => MyAction(1, 2, "Test")); 
-         */
     }
 }

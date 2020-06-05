@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
+using MonoGame.Extended.BitmapFonts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace SpaceGame.Models
         protected Color textColor;
         protected string text;
         protected Vector2 menuPosition;
-        protected Vector2 textSize { get { return LimitsEdgeGame.fonts["courier_new_bold"].MeasureString(text); } }
+        protected Vector2 textSize { get { return LimitsEdgeGame.bitmapFonts["game_font_16"].MeasureString(text); } }
         
         // Background texture variables
         protected float textScale { get { return height / textSize.Y; } }
@@ -52,7 +53,7 @@ namespace SpaceGame.Models
             for (int i = 1; i <= middleSections; ++i)
                 DrawSegment(spriteBatch, 1, i);
             DrawSegment(spriteBatch, 2, middleSections + 1);
-            spriteBatch.DrawString(LimitsEdgeGame.fonts["courier_new_bold"], text, position, textColor, 0f, Vector2.Zero, textScale, SpriteEffects.None, 0f);
+            spriteBatch.DrawString(LimitsEdgeGame.bitmapFonts["game_font_16"], text, position, textColor, 0f, Vector2.Zero, textScale, SpriteEffects.None, 0f);
         }
         
         public void DrawSegment(SpriteBatch spriteBatch, int segment, int offsetIndex)

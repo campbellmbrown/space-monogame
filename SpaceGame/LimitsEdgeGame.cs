@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
+using MonoGame.Extended.BitmapFonts;
 using SpaceGame.Effects;
 using SpaceGame.Managers;
 using SpaceGame.Models;
@@ -34,6 +35,7 @@ namespace SpaceGame
         public static Dictionary<string, Texture2D> textures;
         public static Dictionary<string, Animation> animations;
         public static Dictionary<string, SpriteFont> fonts;
+        public static Dictionary<string, BitmapFont> bitmapFonts;
 
         public static Vector2 screenSize { get { return new Vector2(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height); } }
         public static Vector2 zoomedScreenSize { get { return screenSize / currentZoom; } }
@@ -115,6 +117,11 @@ namespace SpaceGame
                 { "courier_new_italic", Content.Load<SpriteFont>("Fonts/courier_new_italic") }
             };
 
+            bitmapFonts = new Dictionary<string, BitmapFont>()
+            {
+                { "game_font_16", Content.Load<BitmapFont>("Fonts/gameFont") }
+            };
+
             // Creating the player manager
             playerManager = new PlayerManager(worldCamera);
             // Creating state managers
@@ -186,7 +193,7 @@ namespace SpaceGame
                     break;
             }
             cursorManager.Draw(spriteBatch);
-            spriteBatch.DrawString(fonts["courier_new"], String.Concat(currentCamera.Position.ToString(), " ", currentCamera.Zoom.ToString()), topLeft, Color.White, 0f, Vector2.Zero, 1 / currentCamera.Zoom, SpriteEffects.None, 0f);
+            spriteBatch.DrawString(bitmapFonts["game_font_16"], String.Concat(currentCamera.Position.ToString(), " ", currentCamera.Zoom.ToString()), topLeft, Color.White, 0f, Vector2.Zero, 1 / currentCamera.Zoom, SpriteEffects.None, 0f);
             spriteBatch.End();
             base.Draw(gameTime);
         }
