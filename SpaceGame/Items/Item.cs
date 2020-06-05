@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended;
+using MonoGame.Extended.BitmapFonts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,15 +21,15 @@ namespace SpaceGame.Items
         protected float rotation = 0f;
         public Vector2 linearDirection { get { return (linearVelocity.Length() == 0) ? Vector2.Zero : Vector2.Normalize(linearVelocity); } }
         protected float angularDirection { get { return Math.Sign(angularVelocity); } }
-
+        protected Vector2 distanceToPlayer { get { return LimitsEdgeGame.playerManager.playerShip.position - position; } }
         protected Texture2D texture;
         protected float width { get { return texture.Width; } }
         protected float height { get { return texture.Height; } }
         protected Vector2 center { get { return new Vector2(width / 2f, height / 2f); } }
         protected Vector2 bottomMiddle { get { return new Vector2(width / 2f, height); } }
-
-        public float linearDragCoefficient = 0f;
-        public float angularDragCoefficient = 0f;
+        protected float collectionThreshold = 120;
+        protected float maxCollectionSpeed = 350;
+        public float linearDragCoefficient = 0.01f;
 
         public Item(Texture2D texture, Vector2 position, int count, bool randomize)
         {
@@ -78,7 +80,12 @@ namespace SpaceGame.Items
         {
             // Friction
             linearAcceleration = -linearDragCoefficient * (float)Math.Pow(linearVelocity.Length(), 2f) * linearDirection;
-            angularAcceleration = -linearDragCoefficient * (float)Math.Pow(angularVelocity, 2f) * angularDirection;
+            // Collection
+            if (distanceToPlayer.Length() < collectionThreshold)
+            {
+                Vector2 temp = linearAcceleration;
+                linearAcceleration += (collectionThreshold - distanceToPlayer.Length()) / collectionThreshold * maxCollectionSpeed * Vector2.Normalize(distanceToPlayer);
+            }
             // Velocities and positions
             linearVelocity += linearAcceleration * t;
             angularVelocity += angularAcceleration * t;
