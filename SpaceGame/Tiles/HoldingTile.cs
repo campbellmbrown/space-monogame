@@ -15,7 +15,7 @@ namespace SpaceGame.Tiles
         public Rectangle interactionRectangle { get { return new Rectangle(X, Y, tileSize, tileSize); } }
         protected Vector2 menuPositon { get { return position + new Vector2(tileSize / 2f, 0); } }
 
-        public HoldingTile(int X, int Y) : base(LimitsEdgeGame.textures["ship_display_tiles"], X, Y, SpecificTileType.AngleCrossSectTopLeft)
+        public HoldingTile(int X, int Y) : base(LimitsEdgeGame.textures["ship_display_tiles"], X, Y, SpecificTileType.HoldingTile)
         {
             menu = new SmallMenu(48, 480);
             menu.AddMenuOption(1, menuPositon, "Option 1", Color.DarkGreen, Func1);
