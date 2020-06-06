@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended;
 using SpaceGame.Effects;
+using SpaceGame.Items;
 using SpaceGame.Projectiles;
 using SpaceGame.Utilities;
 using System;
@@ -15,6 +17,8 @@ namespace SpaceGame.Sprites.WorldStateSprites
     public class PlayerShip : Spaceship
     {
         public float shotDelay = 0.2f;
+        protected int pickupDistance = 5;
+        protected Rectangle pickupRange { get { return new Rectangle((int)position.X - pickupDistance, (int)position.Y - pickupDistance, 2 * pickupDistance, 2 * pickupDistance); } }
 
         public PlayerShip(Vector2 position, Texture2D texture, Texture2D wingTexture) 
             : base(position, texture, wingTexture)
@@ -84,11 +88,23 @@ namespace SpaceGame.Sprites.WorldStateSprites
             float t = (float)gameTime.ElapsedGameTime.TotalSeconds;
             SetAccelerations(t);
             if (linearThrust != 0) AddSmoke(t);
+            PickupItems();
             base.Update(gameTime);
+        }
+
+        protected void PickupItems()
+        {
+            List<Item> itemsInRange = LimitsEdgeGame.worldStateManager.itemManager.GetItemsInRange(pickupRange);
+            for (int i = itemsInRange.Count - 1; i >= 0; i--)
+            {
+                // do something
+                LimitsEdgeGame.worldStateManager.itemManager.items.Remove(itemsInRange[i]);
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.DrawRectangle(pickupRange, Color.White);
             base.Draw(spriteBatch);
         }
     }

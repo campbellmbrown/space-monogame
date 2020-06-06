@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
+using MonoGame.Extended.BitmapFonts;
 using SpaceGame.Sprites;
 using SpaceGame.Sprites.WorldStateSprites;
 using System;
@@ -17,12 +18,12 @@ namespace SpaceGame.Managers
         public string value = "";
         public Vector2 position;
         protected string printableString { get { return name + ": " + value; } }
-        protected SpriteFont font = LimitsEdgeGame.fonts["courier_new_bold"];
-        public static float height = 8f;
+        protected BitmapFont font = LimitsEdgeGame.bitmapFonts["game_font_16"];
+        public static float height = 16f;
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(font, printableString, position, Color.White, 0f, Vector2.Zero, height / font.LineSpacing, SpriteEffects.None, 0f);
+            spriteBatch.DrawString(font, printableString, position, Color.White, 0f, Vector2.Zero, height / font.LineHeight, SpriteEffects.None, 0f);
         }
     }
 
@@ -53,6 +54,7 @@ namespace SpaceGame.Managers
                 new DebugMessage { name = "Particle count" },
                 new DebugMessage { name = "Crate count" },
                 new DebugMessage { name = "Projectile count" },
+                new DebugMessage { name = "Item count" }
             };
         }
 
@@ -70,6 +72,7 @@ namespace SpaceGame.Managers
                 debugMessages[5].value = LimitsEdgeGame.worldStateManager.particleManager.particleCount.ToString();
                 debugMessages[6].value = LimitsEdgeGame.worldStateManager.crateManager.crates.Count.ToString();
                 debugMessages[7].value = LimitsEdgeGame.worldStateManager.projectileManager.projectiles.Count.ToString();
+                debugMessages[8].value = LimitsEdgeGame.worldStateManager.itemManager.items.Count.ToString();
 
                 Vector2 offsetPosition = startingPosition;
                 foreach (var debugMessage in debugMessages)

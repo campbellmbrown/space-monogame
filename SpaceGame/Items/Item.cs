@@ -12,7 +12,7 @@ namespace SpaceGame.Items
 {
     public class Item
     {
-        protected Vector2 position;
+        public Vector2 position;
         protected int count;
         protected Vector2 linearAcceleration = Vector2.Zero;
         protected Vector2 linearVelocity = Vector2.Zero;
@@ -25,7 +25,7 @@ namespace SpaceGame.Items
         protected Texture2D texture;
         protected float width { get { return texture.Width; } }
         protected float height { get { return texture.Height; } }
-        protected Vector2 center { get { return new Vector2(width / 2f, height / 2f); } }
+        public Vector2 center { get { return new Vector2(width / 2f, height / 2f); } }
         protected Vector2 bottomMiddle { get { return new Vector2(width / 2f, height); } }
         protected float collectionThreshold = 120;
         protected float maxCollectionSpeed = 350;

@@ -194,7 +194,6 @@ namespace SpaceGame
                     break;
             }
             cursorManager.Draw(spriteBatch);
-            spriteBatch.DrawString(bitmapFonts["game_font_16"], String.Concat(currentCamera.Position.ToString(), " ", currentCamera.Zoom.ToString()), topLeft, Color.White, 0f, Vector2.Zero, 1 / currentCamera.Zoom, SpriteEffects.None, 0f);
             spriteBatch.End();
             base.Draw(gameTime);
         }
