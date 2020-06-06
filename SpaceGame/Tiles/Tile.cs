@@ -46,7 +46,7 @@ namespace SpaceGame.Tiles
         AngleBottomRight,
         FloorLight,
         FloorDark,
-        HoldingTile
+        LargerTile
     }
 
     public class Tile
@@ -57,6 +57,8 @@ namespace SpaceGame.Tiles
         protected Texture2D texture;
         protected bool collidable;
         protected Rectangle textureRectangle;
+        protected SpecificTileType specificTileType;
+        protected Vector2 offset { get { return new Vector2(0, tileSize - texture.Height); } }
 
         public static int tileSize = 16;
         public static Dictionary<SpecificTileType, Rectangle> tileRectangleLookup = new Dictionary<SpecificTileType, Rectangle>()
@@ -68,7 +70,6 @@ namespace SpaceGame.Tiles
             { SpecificTileType.AngleCrossSectBottomRight,   new Rectangle(4 * tileSize, 0 * tileSize, tileSize, tileSize ) },
             { SpecificTileType.AngleCrossSectBottomLeft,    new Rectangle(5 * tileSize, 0 * tileSize, tileSize, tileSize ) },
             { SpecificTileType.Wall,                        new Rectangle(6 * tileSize, 0 * tileSize, tileSize, tileSize ) },
-            { SpecificTileType.HoldingTile,                 new Rectangle(7 * tileSize, 0 * tileSize, tileSize, tileSize ) },
             { SpecificTileType.CurveCrossSectTopRight1,     new Rectangle(0 * tileSize, 1 * tileSize, tileSize, tileSize ) },
             { SpecificTileType.CurveCrossSectTopLeft1,      new Rectangle(1 * tileSize, 1 * tileSize, tileSize, tileSize ) },
             { SpecificTileType.CurveCrossSectTopRight2,     new Rectangle(2 * tileSize, 1 * tileSize, tileSize, tileSize ) },
@@ -104,12 +105,23 @@ namespace SpaceGame.Tiles
             this.texture = texture;
             this.X = X * tileSize;
             this.Y = Y * tileSize;
-            this.textureRectangle = tileRectangleLookup[specificTileType];
+            this.specificTileType = specificTileType;
+            if (specificTileType != SpecificTileType.LargerTile)
+            {
+                textureRectangle = tileRectangleLookup[specificTileType];
+            }
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, textureRectangle, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+            if (specificTileType == SpecificTileType.LargerTile)
+            {
+                spriteBatch.Draw(texture, position + offset, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+            }
+            else
+            {
+                spriteBatch.Draw(texture, position, textureRectangle, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+            }
         }
 
         public virtual void Update(GameTime gameTime)

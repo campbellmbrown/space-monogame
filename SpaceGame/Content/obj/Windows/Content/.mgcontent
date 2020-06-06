@@ -18,6 +18,7 @@
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Items/plants.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Items/plastic.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Projectiles/lazer.png</File>
+    <File>D:/Git Projects/space-monogame/SpaceGame/Content/ShipInterior/item_holder.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/ShipInterior/ship_display_tiles.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Ships/basic_ship_main.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Ships/basic_ship_wings.png</File>
@@ -30,6 +31,7 @@
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/World/asteroid_chunk.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
