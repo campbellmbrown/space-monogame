@@ -57,7 +57,7 @@ namespace SpaceGame.Tiles
         protected bool collidable;
         protected Rectangle textureRectangle;
 
-        public static int tileSize = 8;
+        public static int tileSize = 16;
         public static Dictionary<SpecificTileType, Rectangle> tileRectangleLookup = new Dictionary<SpecificTileType, Rectangle>()
         {
             { SpecificTileType.CurveCrossSectBottomRight1,  new Rectangle(0 * tileSize, 0 * tileSize, tileSize, tileSize ) },

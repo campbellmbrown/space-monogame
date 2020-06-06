@@ -21,8 +21,9 @@ namespace SpaceGame.Sprites.ShipStateSprites
         protected float currentIdleDelay = 0;
         protected float idleDelay = 0;
         protected Shadow shadow;
+        protected float linearSpeed = 30f;
 
-        public Person(Vector2 position, Animation animation, List<ShipFloorTile> walkableTiles) : base(position, animation, 0.5f)
+        public Person(Vector2 position, Animation animation, List<ShipFloorTile> walkableTiles) : base(position, animation, 1f)
         {
             this.walkableTiles = walkableTiles;
             pathToTake = new List<Vector2>();
@@ -65,7 +66,7 @@ namespace SpaceGame.Sprites.ShipStateSprites
                     else if (direction.Y < -0.7) animationManager.Play(LimitsEdgeGame.animations["basic_person_walk_up"]);
                     else if (direction.X > 0.7) animationManager.Play(LimitsEdgeGame.animations["basic_person_walk_right"]);
                     else if (direction.X < -0.7) animationManager.Play(LimitsEdgeGame.animations["basic_person_walk_left"]);
-                    position += direction * 15f * t;
+                    position += direction * linearSpeed * t;
               }
             } else currentIdleDelay += t;
             shadow.Update(position, animation.frameWidth * scale);

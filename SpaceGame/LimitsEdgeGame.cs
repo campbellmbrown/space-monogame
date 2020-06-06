@@ -67,7 +67,7 @@ namespace SpaceGame
             gameState = GameState.World;
             worldCamera = new Camera2D(GraphicsDevice) { Zoom = 2, Position = -screenSize / 2f };
             inGameMenuCamera = new Camera2D(GraphicsDevice) { Zoom = 2, Position = -screenSize / 2f };
-            shipCamera = new Camera2D(GraphicsDevice) { Zoom = 3, Position = -screenSize / 2f };
+            shipCamera = new Camera2D(GraphicsDevice) { Zoom = 2, Position = -screenSize / 2f };
             currentCamera = worldCamera;
             IsMouseVisible = false;
             IsFixedTimeStep = true;
@@ -82,8 +82,8 @@ namespace SpaceGame
             textures = new Dictionary<string, Texture2D>()
             {
                 // World
-                { "basic_ship_main", Content.Load<Texture2D>("Ships/PlayerShips/basic_ship_main") },
-                { "basic_ship_wings", Content.Load<Texture2D>("Ships/PlayerShips/basic_ship_wings") },
+                { "basic_ship_main", Content.Load<Texture2D>("Ships/basic_ship_main") },
+                { "basic_ship_wings", Content.Load<Texture2D>("Ships/basic_ship_wings") },
                 { "plastic", Content.Load<Texture2D>("Items/plastic") },
                 { "metal", Content.Load<Texture2D>("Items/metal") },
                 { "plants", Content.Load<Texture2D>("Items/plants") },
