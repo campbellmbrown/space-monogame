@@ -18,7 +18,6 @@ namespace SpaceGame.World
         float transparency { get { return (10 - depth) / 10f; } }
         float screenWidth { get { return LimitsEdgeGame.zoomedScreenSize.X; } }
         float screenHeight { get { return LimitsEdgeGame.zoomedScreenSize.Y; } }
-        PlayerManager playerManager = LimitsEdgeGame.playerManager;
 
         public Star()
         {
@@ -31,8 +30,8 @@ namespace SpaceGame.World
         public void Update(GameTime gameTime)
         {
             float t = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            position += playerManager.playerShip.linearVelocity * t * depth / 10f;
-            Vector2 playerPosition = LimitsEdgeGame.playerManager.playerShip.position;
+            position += LimitsEdgeGame.worldStateManager.playerManager.playerShip.linearVelocity * t * depth / 10f;
+            Vector2 playerPosition = LimitsEdgeGame.worldStateManager.playerManager.playerShip.position;
             if (position.X > playerPosition.X + screenWidth / 2f) position.X -= screenWidth;
             else if (position.X < playerPosition.X - screenWidth / 2f) position.X += screenWidth;
             else if (position.Y > playerPosition.Y + screenHeight / 2f) position.Y -= screenHeight;

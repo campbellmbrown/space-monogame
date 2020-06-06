@@ -20,6 +20,7 @@ namespace SpaceGame.Managers
         public CrateManager crateManager;
         public GuiManager guiManager;
         public DebugManager debugManager;
+        public PlayerManager playerManager;
 
         public WorldStateManager()
         {
@@ -31,11 +32,13 @@ namespace SpaceGame.Managers
             crateManager = new CrateManager();
             guiManager = new GuiManager();
             debugManager = new DebugManager();
+            playerManager = new PlayerManager(LimitsEdgeGame.worldCamera);
             crateManager.TopUpCrates();
         }
 
         public void Update(GameTime gameTime)
         {
+            playerManager.Update(gameTime);
             eventManager.Update(gameTime);
             starManager.Update(gameTime);
             itemManager.Update(gameTime);
@@ -53,6 +56,7 @@ namespace SpaceGame.Managers
             crateManager.Draw(spriteBatch);
             particleManager.Draw(spriteBatch);
             projectileManager.Draw(spriteBatch);
+            playerManager.Draw(spriteBatch);
             guiManager.Draw(spriteBatch);
             debugManager.Draw(spriteBatch);
         }

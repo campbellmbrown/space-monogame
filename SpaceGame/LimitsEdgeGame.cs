@@ -45,7 +45,6 @@ namespace SpaceGame
         public static float currentZoom { get { return currentCamera.Zoom; } }
 
         public static CursorManager cursorManager;
-        public static PlayerManager playerManager;
 
         // States
         public static GameState gameState;
@@ -124,8 +123,7 @@ namespace SpaceGame
                 { "game_font_16", Content.Load<BitmapFont>("Fonts/gameFont") }
             };
 
-            // Creating the player manager
-            playerManager = new PlayerManager(worldCamera);
+
             // Creating state managers
             worldStateManager = new WorldStateManager();
             shipStateManager = new ShipStateManager();
@@ -163,7 +161,6 @@ namespace SpaceGame
             switch (gameState)
             {
                 case GameState.World:
-                    playerManager.Update(gameTime);
                     worldStateManager.Update(gameTime);
                     break;
                 case GameState.Spaceship:
@@ -185,7 +182,6 @@ namespace SpaceGame
             {
                 case GameState.World:
                     worldStateManager.Draw(spriteBatch);
-                    playerManager.Draw(spriteBatch);
                     break;
                 case GameState.Spaceship:
                     shipStateManager.Draw(spriteBatch);

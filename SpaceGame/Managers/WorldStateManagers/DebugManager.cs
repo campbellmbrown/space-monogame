@@ -54,7 +54,8 @@ namespace SpaceGame.Managers
                 new DebugMessage { name = "Particle count" },
                 new DebugMessage { name = "Crate count" },
                 new DebugMessage { name = "Projectile count" },
-                new DebugMessage { name = "Item count" }
+                new DebugMessage { name = "Item count" },
+                new DebugMessage { name = "Held items" }
             };
         }
 
@@ -63,7 +64,7 @@ namespace SpaceGame.Managers
             if (debugLevel == DebugLevel.Nothing) return;
             else if (debugLevel == DebugLevel.Messages)
             {
-                PlayerShip playerShip = LimitsEdgeGame.playerManager.playerShip;
+                PlayerShip playerShip = LimitsEdgeGame.worldStateManager.playerManager.playerShip;
                 debugMessages[0].value = Math.Round(1 / gameTime.ElapsedGameTime.TotalSeconds).ToString();
                 debugMessages[1].value = playerShip.position.ToString();
                 debugMessages[2].value = playerShip.linearVelocity.ToString();
@@ -73,6 +74,7 @@ namespace SpaceGame.Managers
                 debugMessages[6].value = LimitsEdgeGame.worldStateManager.crateManager.crates.Count.ToString();
                 debugMessages[7].value = LimitsEdgeGame.worldStateManager.projectileManager.projectiles.Count.ToString();
                 debugMessages[8].value = LimitsEdgeGame.worldStateManager.itemManager.items.Count.ToString();
+                debugMessages[9].value = LimitsEdgeGame.worldStateManager.playerManager.playerShip.heldItems.Count.ToString();
 
                 Vector2 offsetPosition = startingPosition;
                 foreach (var debugMessage in debugMessages)
@@ -89,7 +91,7 @@ namespace SpaceGame.Managers
             else if (debugLevel == DebugLevel.Messages) foreach (var debugMessage in debugMessages) debugMessage.Draw(spriteBatch);
             else if (debugLevel == DebugLevel.Headings)
             {
-                PlayerShip playerShip = LimitsEdgeGame.playerManager.playerShip;
+                PlayerShip playerShip = LimitsEdgeGame.worldStateManager.playerManager.playerShip;
                 spriteBatch.DrawLine(playerShip.position + playerShip.facing * 20, playerShip.position + playerShip.facing * 40, Color.Green);
                 spriteBatch.DrawLine(playerShip.position + playerShip.direction * 20, playerShip.position + playerShip.direction * (20 + (playerShip.linearVelocity.Length()) * 20 / playerShip.maxLinearVelocity), Color.Yellow);
                 foreach (var projectile in LimitsEdgeGame.worldStateManager.projectileManager.projectiles) spriteBatch.DrawString(LimitsEdgeGame.fonts["courier_new_italic"], projectile.damage.ToString(), projectile.position + new Vector2(6), Color.White, 0f, Vector2.Zero, 0.2f, SpriteEffects.None, 0f);

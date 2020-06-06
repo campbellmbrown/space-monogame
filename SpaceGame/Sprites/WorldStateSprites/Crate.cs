@@ -10,7 +10,7 @@ namespace SpaceGame.Sprites.WorldStateSprites
 {
     public class Crate : ItemCarryingSprite
     {
-        public Vector2 relativeToPlayer { get { return position - LimitsEdgeGame.playerManager.playerShip.position; } }
+        public Vector2 relativeToPlayer { get { return position - LimitsEdgeGame.worldStateManager.playerManager.playerShip.position; } }
 
         public Crate(Vector2 position, bool randomize) 
             : base(position, LimitsEdgeGame.textures["crate"])

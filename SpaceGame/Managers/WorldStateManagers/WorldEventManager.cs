@@ -15,7 +15,7 @@ namespace SpaceGame.Managers
         protected bool holdingShipInv = true;
 
         protected float timeSinceLastShot = 0f;
-        protected float shotDelay { get { return LimitsEdgeGame.playerManager.playerShip.shotDelay; } }
+        protected float shotDelay { get { return LimitsEdgeGame.worldStateManager.playerManager.playerShip.shotDelay; } }
 
         public WorldEventManager() { }
 
@@ -69,7 +69,7 @@ namespace SpaceGame.Managers
                 if (timeSinceLastShot >= shotDelay)
                 {
                     timeSinceLastShot = 0;
-                    LimitsEdgeGame.playerManager.playerShip.AddProjectiles();
+                    LimitsEdgeGame.worldStateManager.playerManager.playerShip.AddProjectiles();
                 }
             }
         }
