@@ -44,17 +44,22 @@ namespace SpaceGame.Managers
 
         public void Draw(SpriteBatch spriteBatch, float rotation = 0f)
         {
+            Draw(spriteBatch, Color.White, rotation);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Color color, float rotation = 0f)
+        {
             Rectangle rectangle = new Rectangle(_currentFrame * _animation.frameWidth, 0, _animation.frameWidth, _animation.frameHeight);
             switch (rotationOrigin)
             {
                 case RotationOrigin.Center:
-                    spriteBatch.Draw(_animation.texture, position, rectangle, Color.White, rotation, center, scale, SpriteEffects.None, 0f); 
+                    spriteBatch.Draw(_animation.texture, position, rectangle, color, rotation, center, scale, SpriteEffects.None, 0f);
                     break;
                 case RotationOrigin.BottomMiddle:
-                    spriteBatch.Draw(_animation.texture, position, rectangle, Color.White, rotation, bottomMiddle, scale, SpriteEffects.None, 0f); 
+                    spriteBatch.Draw(_animation.texture, position, rectangle, color, rotation, bottomMiddle, scale, SpriteEffects.None, 0f);
                     break;
                 case RotationOrigin.TopLeft:
-                    spriteBatch.Draw(_animation.texture, position, rectangle, Color.White, rotation, Vector2.Zero, scale, SpriteEffects.None, 0f); 
+                    spriteBatch.Draw(_animation.texture, position, rectangle, color, rotation, Vector2.Zero, scale, SpriteEffects.None, 0f);
                     break;
             }
         }

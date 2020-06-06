@@ -10,9 +10,6 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Projectiles
 {
-    /// <summary>
-    /// Base class for projectiles.
-    /// </summary>
     public class Projectile
     {
         public Rectangle collisionRectangle { get { return new Rectangle((int)position.X, (int)position.Y, Width, Height); } }
@@ -30,14 +27,6 @@ namespace SpaceGame.Projectiles
         protected Vector2 center { get { return new Vector2(texture.Width / 2f, texture.Height / 2f); } }
         protected Color color = Color.White;
 
-        /// <summary>
-        /// Creates an instance of the Projectile class.
-        /// </summary>
-        /// <param name="position">X and Y position of the projectile.</param>
-        /// <param name="texture">Texture of the projectile.</param>
-        /// <param name="rotation">Rotation of the projectile.</param>
-        /// <param name="linearVelocity">X and Y linear velocities of the projectile.</param>
-        /// <param name="damage">Damage of the projectile.</param>
         public Projectile(Vector2 position, Texture2D texture, float rotation, Vector2 linearVelocity, int damage = 0)
         {
             this.position = position;
@@ -47,21 +36,13 @@ namespace SpaceGame.Projectiles
             this.damage = damage;
         }
 
-        /// <summary>
-        /// Updates the projectile.
-        /// </summary>
-        /// <param name="gameTime">GameTime instance.</param>
-        public void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime)
         {
             float t = (float)gameTime.ElapsedGameTime.TotalSeconds;
             currentLifeTime += t;
             position += linearVelocity * t;
         }
 
-        /// <summary>
-        /// Draws the projectile.
-        /// </summary>
-        /// <param name="spriteBatch">SpriteBatch instance.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, position, null, color, rotation, center, 1f, SpriteEffects.None, 1f);
