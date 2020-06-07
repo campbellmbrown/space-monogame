@@ -96,7 +96,8 @@ namespace SpaceGame
                 { "arrow_cursor", Content.Load<Texture2D>("Effects/arrow_cursor") },
                 { "shadow_1", Content.Load<Texture2D>("Effects/shadow_1") },
                 // GUI
-                { "small_menu", Content.Load<Texture2D>("GUI/small_menu") },
+                { "selection_bar", Content.Load<Texture2D>("GUI/selection_bar") },
+                { "item_slot", Content.Load<Texture2D>("GUI/item_slot") },
             };
 
             animations = new Dictionary<string, Animation>()

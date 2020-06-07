@@ -14,6 +14,8 @@
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Fonts/courier_new_italic.spritefont</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Fonts/gameFont.fnt</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Fonts/gameFont_0.png</File>
+    <File>D:/Git Projects/space-monogame/SpaceGame/Content/GUI/item_slot.png</File>
+    <File>D:/Git Projects/space-monogame/SpaceGame/Content/GUI/selection_bar.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Items/metal.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Items/plants.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Items/plastic.png</File>
@@ -24,6 +26,8 @@
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/World/asteroid_chunk.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
