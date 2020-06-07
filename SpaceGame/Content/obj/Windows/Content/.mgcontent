@@ -14,32 +14,16 @@
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Fonts/courier_new_italic.spritefont</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Fonts/gameFont.fnt</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Fonts/gameFont_0.png</File>
-    <File>D:/Git Projects/space-monogame/SpaceGame/Content/GUI/small_menu.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Items/metal.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Items/plants.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Items/plastic.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Projectiles/lazer.png</File>
-    <File>D:/Git Projects/space-monogame/SpaceGame/Content/ShipInterior/item_holder.png</File>
-    <File>D:/Git Projects/space-monogame/SpaceGame/Content/ShipInterior/ship_display_tiles.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Ships/basic_ship_main.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Ships/basic_ship_wings.png</File>
-    <File>D:/Git Projects/space-monogame/SpaceGame/Content/Sprites/basic_person_idle.png</File>
-    <File>D:/Git Projects/space-monogame/SpaceGame/Content/Sprites/basic_person_walk_down.png</File>
-    <File>D:/Git Projects/space-monogame/SpaceGame/Content/Sprites/basic_person_walk_left.png</File>
-    <File>D:/Git Projects/space-monogame/SpaceGame/Content/Sprites/basic_person_walk_right.png</File>
-    <File>D:/Git Projects/space-monogame/SpaceGame/Content/Sprites/basic_person_walk_up.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Sprites/crate.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/World/asteroid_chunk.png</File>
   </SourceFiles>
   <DestFiles>
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

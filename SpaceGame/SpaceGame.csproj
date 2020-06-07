@@ -53,7 +53,6 @@
     <Compile Include="Items\Metal.cs" />
     <Compile Include="Items\Plastic.cs" />
     <Compile Include="Managers\AnimationManager.cs" />
-    <Compile Include="Managers\ShipStateManagers\PeopleManager.cs" />
     <Compile Include="Managers\WorldStateManagers\CrateManager.cs" />
     <Compile Include="Managers\WorldStateManagers\DebugManager.cs" />
     <Compile Include="Managers\InGameMenuStateManagers\InGameMenuEventManager.cs" />
@@ -69,13 +68,8 @@
     <Compile Include="Managers\WorldStateManagers\ProjectileManager.cs" />
     <Compile Include="Managers\WorldStateManagers\RespawnManager.cs" />
     <Compile Include="Managers\WorldStateManagers\StarManager.cs" />
-    <Compile Include="Managers\ShipStateManagers\ShipTileManager.cs" />
     <Compile Include="Managers\WorldStateManagers\WorldStateManager.cs" />
     <Compile Include="Models\Animation.cs" />
-    <Compile Include="Models\PathNode.cs" />
-    <Compile Include="Models\SmallMenu.cs" />
-    <Compile Include="Models\SmallMenuOption.cs" />
-    <Compile Include="Sprites\ShipStateSprites\Person.cs" />
     <Compile Include="Sprites\WorldStateSprites\CollidableObject.cs" />
     <Compile Include="Models\Minimap.cs" />
     <Compile Include="Program.cs" />
@@ -89,9 +83,6 @@
     <Compile Include="Sprites\ShipStateSprites\SSSprite.cs" />
     <Compile Include="Sprites\WorldStateSprites\Spaceship.cs" />
     <Compile Include="Sprites\WorldStateSprites\WSSprite.cs" />
-    <Compile Include="Tiles\ShipFloorTile.cs" />
-    <Compile Include="Tiles\Tile.cs" />
-    <Compile Include="Tiles\HoldingTile.cs" />
     <Compile Include="Utilities\Helper.cs" />
     <Compile Include="World\Star.cs" />
   </ItemGroup>

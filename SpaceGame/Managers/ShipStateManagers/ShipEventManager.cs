@@ -100,44 +100,6 @@ namespace SpaceGame.Managers
 
         public void CheckSingleLeftClick(MouseState mouseState)
         {
-            if (mouseState.LeftButton == ButtonState.Pressed)
-            {
-                if (!holdingLeftClick)
-                {
-                    bool somethingClicked = false;
-                    if (LimitsEdgeGame.shipStateManager.activeMenu != null)
-                    {
-                        foreach (var menuOption in LimitsEdgeGame.shipStateManager.activeMenu.menuOptions)
-                        {
-                            if (menuOption.interactionRectangle.Contains(LimitsEdgeGame.mousePosition))
-                            {
-                                menuOption.ClickAction();
-                                somethingClicked = true;
-                            }
-                        }
-                    }
-                    if (!somethingClicked)
-                    {
-                        foreach (var holdingTile in LimitsEdgeGame.shipStateManager.tileManager.holdingTiles)
-                        {
-                            if (holdingTile.interactionRectangle.Contains(LimitsEdgeGame.mousePosition))
-                            {
-                                if (LimitsEdgeGame.shipStateManager.activeMenu == holdingTile.menu)
-                                {
-                                    LimitsEdgeGame.shipStateManager.activeMenu = null;
-                                    continue;
-                                }
-                                somethingClicked = true;
-                                LimitsEdgeGame.shipStateManager.activeMenu = holdingTile.menu;
-                            }
-                        }
-                    }
-                    
-                    if (!somethingClicked) LimitsEdgeGame.shipStateManager.activeMenu = null;
-                }
-                holdingLeftClick = true;
-            }
-            else holdingLeftClick = false;
         }
     }
 }

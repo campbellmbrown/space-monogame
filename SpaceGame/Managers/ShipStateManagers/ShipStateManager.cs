@@ -1,9 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
-using SpaceGame.Managers.ShipStateManagers;
 using SpaceGame.Models;
-using SpaceGame.Tiles;
 using SpaceGame.Utilities;
 using System;
 using System.Collections.Generic;
@@ -16,23 +14,18 @@ namespace SpaceGame.Managers
     public class ShipStateManager
     {
         public ShipEventManager eventManager;
-        public ShipTileManager tileManager;
-        public PeopleManager peopleManager;
-        public SmallMenu activeMenu;
+        protected PlayerManager playerManager;
 
         public ShipStateManager()
         {
-            tileManager = new ShipTileManager(LimitsEdgeGame.textures["ship_display_tiles"]);
             eventManager = new ShipEventManager();
-            peopleManager = new PeopleManager(tileManager);
-
-            LimitsEdgeGame.shipCamera.Position += (tileManager.GetShipSize() + new Vector2(Tile.tileSize)) / 2f;
+            playerManager = LimitsEdgeGame.worldStateManager.playerManager;
+            // LimitsEdgeGame.shipCamera.Position += (tileManager.GetShipSize() + new Vector2(Tile.tileSize)) / 2f;
         }
 
         public void Update(GameTime gameTime)
         {
             eventManager.Update(gameTime);
-            peopleManager.Update(gameTime);
 
             // Prevent flickering by rounding camera position
             LimitsEdgeGame.shipCamera.Position = Helper.RoundVector2(LimitsEdgeGame.shipCamera.Position, 1);
@@ -40,9 +33,12 @@ namespace SpaceGame.Managers
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            tileManager.Draw(spriteBatch);
-            peopleManager.Draw(spriteBatch);
-            if (activeMenu != null) activeMenu.Draw(spriteBatch);
+            int offset = 0;
+            foreach (var item in playerManager.playerShip.heldItems)
+            {
+                spriteBatch.Draw(item.texture, new Vector2(offset, 0), null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                offset += 16;
+            }
         }
     }
 }

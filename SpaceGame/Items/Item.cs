@@ -22,7 +22,7 @@ namespace SpaceGame.Items
         public Vector2 linearDirection { get { return (linearVelocity.Length() == 0) ? Vector2.Zero : Vector2.Normalize(linearVelocity); } }
         protected float angularDirection { get { return Math.Sign(angularVelocity); } }
         protected Vector2 distanceToPlayer { get { return LimitsEdgeGame.worldStateManager.playerManager.playerShip.position - position; } }
-        protected Texture2D texture;
+        public Texture2D texture;
         protected float width { get { return texture.Width; } }
         protected float height { get { return texture.Height; } }
         public Vector2 center { get { return new Vector2(width / 2f, height / 2f); } }
