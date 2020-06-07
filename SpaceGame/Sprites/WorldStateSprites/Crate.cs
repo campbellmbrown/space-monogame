@@ -23,9 +23,9 @@ namespace SpaceGame.Sprites.WorldStateSprites
         public override void BreakAction()
         {
             AddBreakingParticles();
-            for (int i = 0; i < LimitsEdgeGame.r.Next(0, 2); ++i) LimitsEdgeGame.worldStateManager.itemManager.items.Add(new Metal(position, 1, true));
-            for (int i = 0; i < LimitsEdgeGame.r.Next(0, 2); ++i) LimitsEdgeGame.worldStateManager.itemManager.items.Add(new Plants(position, 1, true));
-            for (int i = 0; i < LimitsEdgeGame.r.Next(0, 2); ++i) LimitsEdgeGame.worldStateManager.itemManager.items.Add(new Plastic(position, 1, true));
+            for (int i = 0; i < LimitsEdgeGame.r.Next(0, 2); ++i) LimitsEdgeGame.worldStateManager.itemManager.items.Add(new Metal(position, true));
+            for (int i = 0; i < LimitsEdgeGame.r.Next(0, 2); ++i) LimitsEdgeGame.worldStateManager.itemManager.items.Add(new Plants(position, true));
+            for (int i = 0; i < LimitsEdgeGame.r.Next(0, 2); ++i) LimitsEdgeGame.worldStateManager.itemManager.items.Add(new Plastic(position, true));
             base.BreakAction();
         }
     }

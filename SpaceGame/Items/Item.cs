@@ -13,7 +13,6 @@ namespace SpaceGame.Items
     public class Item
     {
         public Vector2 position;
-        protected int count;
         protected Vector2 linearAcceleration = Vector2.Zero;
         protected Vector2 linearVelocity = Vector2.Zero;
         protected float angularAcceleration = 0f;
@@ -31,11 +30,10 @@ namespace SpaceGame.Items
         protected float maxCollectionSpeed = 350;
         public float linearDragCoefficient = 0.01f;
 
-        public Item(Texture2D texture, Vector2 position, int count, bool randomize)
+        public Item(Texture2D texture, Vector2 position, bool randomize)
         {
             this.position = position;
             this.texture = texture;
-            this.count = count;
             if (randomize)
             {
                 linearVelocity = new Vector2(LimitsEdgeGame.r.Next(-50, 51), LimitsEdgeGame.r.Next(-50, 51));
@@ -48,11 +46,10 @@ namespace SpaceGame.Items
             }
         }
 
-        public Item(Texture2D texture, Vector2 position, int count, Vector2 linearVelocity, float angularVelocity)
+        public Item(Texture2D texture, Vector2 position, Vector2 linearVelocity, float angularVelocity)
         {
             this.position = position;
             this.texture = texture;
-            this.count = count;
             this.linearVelocity = linearVelocity;
             this.angularVelocity = angularVelocity;
         }
@@ -68,12 +65,9 @@ namespace SpaceGame.Items
             spriteBatch.Draw(texture, position, null, Color.White, rotation, center, 1f, SpriteEffects.None, 1f);
         }
 
-        public void DrawPreview(SpriteBatch spriteBatch, Vector2 pPosition, float previewSize, bool bottomMiddle = false)
+        public void DrawPreview(SpriteBatch spriteBatch, Vector2 pPosition, float previewSize)
         {
-            spriteBatch.Draw(texture, pPosition, null, Color.White, 0f,
-                bottomMiddle ? this.bottomMiddle : center, 
-                previewSize / texture.Width, 
-                SpriteEffects.None, 1f);
+            spriteBatch.Draw(texture, pPosition, null, Color.White, 0f, center, previewSize / texture.Width, SpriteEffects.None, 1f);
         }
 
         public void Move(float t)
