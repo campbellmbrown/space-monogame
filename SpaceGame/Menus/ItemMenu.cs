@@ -23,7 +23,7 @@ namespace SpaceGame.Menus
             {
                 for (int j = 0; j < columns; ++j)
                 {
-                    itemHolders.Add(new ItemHolder(menuOffset + new Vector2(i * 24, j * 24)));
+                    itemHolders.Add(new ItemHolder(menuOffset + new Vector2(j * 24, i * 24)));
                 }
             }
         }
