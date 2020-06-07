@@ -17,14 +17,12 @@ namespace SpaceGame.Sprites.WorldStateSprites
     public class PlayerShip : Spaceship
     {
         public float shotDelay = 0.2f;
-        protected int pickupDistance = 5;
+        protected int pickupDistance = 8;
         protected Rectangle pickupRange { get { return new Rectangle((int)position.X - pickupDistance, (int)position.Y - pickupDistance, 2 * pickupDistance, 2 * pickupDistance); } }
-        public List<Item> heldItems;
 
         public PlayerShip(Vector2 position, Texture2D texture, Texture2D wingTexture) 
             : base(position, texture, wingTexture)
         {
-            heldItems = new List<Item>();
         }
 
         public void SetAccelerations(float t)
@@ -99,14 +97,13 @@ namespace SpaceGame.Sprites.WorldStateSprites
             List<Item> itemsInRange = LimitsEdgeGame.worldStateManager.itemManager.GetItemsInRange(pickupRange);
             for (int i = itemsInRange.Count - 1; i >= 0; i--)
             {
-                heldItems.Add(itemsInRange[i]);
+                LimitsEdgeGame.shipStateManager.menuManager.itemMenu.AddItem(itemsInRange[i]);
                 LimitsEdgeGame.worldStateManager.itemManager.items.Remove(itemsInRange[i]);
             }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawRectangle(pickupRange, Color.White);
             base.Draw(spriteBatch);
         }
     }

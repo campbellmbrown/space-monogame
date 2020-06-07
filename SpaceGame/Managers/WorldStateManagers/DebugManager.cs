@@ -74,7 +74,6 @@ namespace SpaceGame.Managers
                 debugMessages[6].value = LimitsEdgeGame.worldStateManager.crateManager.crates.Count.ToString();
                 debugMessages[7].value = LimitsEdgeGame.worldStateManager.projectileManager.projectiles.Count.ToString();
                 debugMessages[8].value = LimitsEdgeGame.worldStateManager.itemManager.items.Count.ToString();
-                debugMessages[9].value = LimitsEdgeGame.worldStateManager.playerManager.playerShip.heldItems.Count.ToString();
 
                 Vector2 offsetPosition = startingPosition;
                 foreach (var debugMessage in debugMessages)

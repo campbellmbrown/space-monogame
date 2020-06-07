@@ -53,6 +53,7 @@
     <Compile Include="Items\Metal.cs" />
     <Compile Include="Items\Plastic.cs" />
     <Compile Include="Managers\AnimationManager.cs" />
+    <Compile Include="Managers\ShipStateManagers\ShipMenuManager.cs" />
     <Compile Include="Managers\WorldStateManagers\CrateManager.cs" />
     <Compile Include="Managers\WorldStateManagers\DebugManager.cs" />
     <Compile Include="Managers\InGameMenuStateManagers\InGameMenuEventManager.cs" />
@@ -69,7 +70,10 @@
     <Compile Include="Managers\WorldStateManagers\RespawnManager.cs" />
     <Compile Include="Managers\WorldStateManagers\StarManager.cs" />
     <Compile Include="Managers\WorldStateManagers\WorldStateManager.cs" />
+    <Compile Include="Menus\ItemMenu.cs" />
+    <Compile Include="Menus\Menu.cs" />
     <Compile Include="Models\Animation.cs" />
+    <Compile Include="Models\ItemHolder.cs" />
     <Compile Include="Sprites\WorldStateSprites\CollidableObject.cs" />
     <Compile Include="Models\Minimap.cs" />
     <Compile Include="Program.cs" />
