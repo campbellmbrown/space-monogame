@@ -28,5 +28,10 @@ namespace SpaceGame.Menus
         {
             spriteBatch.Draw(selectionBarTexture, selectionBarPosition, null, Color.White * opacity, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
+
+        public virtual void Click(Vector2 mousePosition)
+        {
+
+        }
     }
 }

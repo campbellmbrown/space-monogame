@@ -47,5 +47,17 @@ namespace SpaceGame.Menus
                     return;
             }
         }
+
+        public override void Click(Vector2 mousePosition)
+        {
+            foreach (var itemHolder in itemHolders)
+            {
+                if (itemHolder.clickRectangle.Contains(mousePosition))
+                {
+                    itemHolder.ClickAction();
+                }
+            }
+            base.Click(mousePosition);
+        }
     }
 }

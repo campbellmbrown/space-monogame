@@ -31,9 +31,22 @@ namespace SpaceGame.Managers.ShipStateManagers
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            itemMenu.Draw(spriteBatch);
+            switch (menuType)
+            {
+                case ShipMenuType.Items:
+                    itemMenu.Draw(spriteBatch);
+                    break;
+            }
         }
 
-
+        public void Click(Vector2 mousePosition)
+        {
+            switch (menuType)
+            {
+                case ShipMenuType.Items:
+                    itemMenu.Click(mousePosition);
+                    break;
+            }
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace SpaceGame.Managers
 {
     public class CursorManager
     {
-        protected Cursor cursor;
+        public Cursor cursor;
         
         public CursorManager()
         {

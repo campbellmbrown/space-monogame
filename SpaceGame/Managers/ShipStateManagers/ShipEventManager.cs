@@ -100,6 +100,14 @@ namespace SpaceGame.Managers
 
         public void CheckSingleLeftClick(MouseState mouseState)
         {
+            if (mouseState.LeftButton == ButtonState.Pressed)
+            {
+                if (!holdingLeftClick) {
+                    LimitsEdgeGame.shipStateManager.menuManager.Click(LimitsEdgeGame.mousePosition);
+                }
+                holdingLeftClick = true;
+            }
+            else holdingLeftClick = false;
         }
     }
 }
