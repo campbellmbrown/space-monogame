@@ -54,6 +54,7 @@
     <Compile Include="Items\Plastic.cs" />
     <Compile Include="Managers\AnimationManager.cs" />
     <Compile Include="Managers\ShipStateManagers\ShipMenuManager.cs" />
+    <Compile Include="Managers\WorldStateManagers\CloudManager.cs" />
     <Compile Include="Managers\WorldStateManagers\CrateManager.cs" />
     <Compile Include="Managers\WorldStateManagers\DebugManager.cs" />
     <Compile Include="Managers\InGameMenuStateManagers\InGameMenuEventManager.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Sprites\WorldStateSprites\Spaceship.cs" />
     <Compile Include="Sprites\WorldStateSprites\WSSprite.cs" />
     <Compile Include="Utilities\Helper.cs" />
+    <Compile Include="World\Cloud.cs" />
     <Compile Include="World\Star.cs" />
   </ItemGroup>
   <ItemGroup>

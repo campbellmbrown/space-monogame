@@ -24,8 +24,10 @@
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Ships/basic_ship_wings.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Sprites/crate.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/World/asteroid_chunk.png</File>
+    <File>D:/Git Projects/space-monogame/SpaceGame/Content/World/large_cloud_1.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

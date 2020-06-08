@@ -89,6 +89,7 @@ namespace SpaceGame
                 { "crate", Content.Load<Texture2D>("Sprites/crate") },
                 { "lazer", Content.Load<Texture2D>("Projectiles/lazer") },
                 { "asteroid_chunk", Content.Load<Texture2D>("World/asteroid_chunk") },
+                { "large_cloud_1", Content.Load<Texture2D>("World/large_cloud_1") },
                 // Spaceship
                 { "ship_display_tiles", Content.Load<Texture2D>("ShipInterior/ship_display_tiles") },
                 { "item_holder", Content.Load<Texture2D>("ShipInterior/item_holder") },
