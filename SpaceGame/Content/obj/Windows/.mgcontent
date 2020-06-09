@@ -17,6 +17,7 @@
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/GUI/item_slot.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/GUI/selection_bar.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/GUI/selection_bar_dark.png</File>
+    <File>D:/Git Projects/space-monogame/SpaceGame/Content/GUI/selection_bar_dark_highlighted.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Items/metal.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Items/plants.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Items/plastic.png</File>
@@ -28,6 +29,7 @@
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/World/large_cloud_1.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -16,6 +16,7 @@ namespace SpaceGame.Menus
         protected string selectionBarName;
         protected Texture2D selectedTexture;
         protected Texture2D unselectedTexture;
+        protected Texture2D highlightedTexture;
         protected Rectangle selectionRectangle { get { return new Rectangle((int)selectionBarPosition.X, (int)selectionBarPosition.Y, 128, 20); } }
         protected Vector2 selectionBarTextPos;
         protected InventoryType inventoryType;
@@ -26,6 +27,7 @@ namespace SpaceGame.Menus
         {
             selectedTexture = LimitsEdgeGame.textures["selection_bar"];
             unselectedTexture = LimitsEdgeGame.textures["selection_bar_dark"];
+            highlightedTexture = LimitsEdgeGame.textures["selection_bar_dark_highlighted"];
             this.selectionBarPosition = selectionBarPosition;
             this.selectionBarName = selectionBarName;
             this.inventoryType = inventoryType;
@@ -34,7 +36,12 @@ namespace SpaceGame.Menus
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw((selected) ? selectedTexture : unselectedTexture, selectionBarPosition, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            if (selected)
+                spriteBatch.Draw(selectedTexture, selectionBarPosition, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            else if (selectionRectangle.Contains(LimitsEdgeGame.mousePosition))
+                spriteBatch.Draw(highlightedTexture, selectionBarPosition, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            else
+                spriteBatch.Draw(unselectedTexture, selectionBarPosition, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             spriteBatch.DrawString(LimitsEdgeGame.bitmapFonts["game_font_16"], selectionBarName, selectionBarTextPos + Vector2.One, Color.Black);
             spriteBatch.DrawString(LimitsEdgeGame.bitmapFonts["game_font_16"], selectionBarName, selectionBarTextPos, (selected) ? Color.White : Color.LightGray);
         }

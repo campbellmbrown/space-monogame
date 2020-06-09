@@ -100,6 +100,7 @@ namespace SpaceGame
                 // GUI
                 { "selection_bar", Content.Load<Texture2D>("GUI/selection_bar") },
                 { "selection_bar_dark", Content.Load<Texture2D>("GUI/selection_bar_dark") },
+                { "selection_bar_dark_highlighted", Content.Load<Texture2D>("GUI/selection_bar_dark_highlighted") },
                 { "item_slot", Content.Load<Texture2D>("GUI/item_slot") },
             };
 
