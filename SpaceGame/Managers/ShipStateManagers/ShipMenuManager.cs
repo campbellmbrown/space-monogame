@@ -22,11 +22,14 @@ namespace SpaceGame.Managers.ShipStateManagers
 
         protected ShipMenuType menuType;
         public ItemMenu itemMenu;
+        protected Vector2 menuSize;
 
         public ShipMenuManager()
         {
             menuType = ShipMenuType.Items;
             itemMenu = new ItemMenu(Vector2.Zero, LimitsEdgeGame.textures["selection_bar"], true);
+            menuSize = new Vector2(330, 142);
+            LimitsEdgeGame.shipCamera.Position = (-LimitsEdgeGame.screenSize + menuSize) / 2f;
         }
 
         public void Draw(SpriteBatch spriteBatch)
