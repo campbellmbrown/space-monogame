@@ -14,7 +14,6 @@ namespace SpaceGame.Effects
     {
         protected Texture2D texture;
         protected Vector2 position { get { return LimitsEdgeGame.mousePosition; } }
-        protected Vector2 itemPosition { get { return position + new Vector2(texture.Width + itemSize / 2f, texture.Height + itemSize / 2f); } }
         protected float zoom { get { return 3f / LimitsEdgeGame.currentZoom; } }
         protected float itemSize = 16;
         public Item item;
@@ -27,15 +26,17 @@ namespace SpaceGame.Effects
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, null, Color.White, 0f, Vector2.Zero, zoom, SpriteEffects.None, 0f);
             if (LimitsEdgeGame.gameState == GameState.Inventory && itemCount > 0)
             {
-                item.DrawPreview(spriteBatch, itemPosition, itemSize);
+                item.DrawPreview(spriteBatch, position, itemSize);
                 if (itemCount > 1)
                 {
-                    spriteBatch.DrawString(LimitsEdgeGame.bitmapFonts["game_font_16"], itemCount.ToString(), itemPosition + new Vector2(1), Color.Black);
-                    spriteBatch.DrawString(LimitsEdgeGame.bitmapFonts["game_font_16"], itemCount.ToString(), itemPosition, Color.White);
+                    spriteBatch.DrawString(LimitsEdgeGame.bitmapFonts["game_font_16"], itemCount.ToString(), position + Vector2.One, Color.Black);
+                    spriteBatch.DrawString(LimitsEdgeGame.bitmapFonts["game_font_16"], itemCount.ToString(), position, Color.White);
                 }
+            } else
+            {
+                spriteBatch.Draw(texture, position, null, Color.White, 0f, Vector2.Zero, zoom, SpriteEffects.None, 0f);
             }
         }
     }

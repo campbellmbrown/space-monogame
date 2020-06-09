@@ -16,7 +16,7 @@ namespace SpaceGame.Menus
         protected int columns = 8;
         protected List<ItemHolder> itemHolders;
 
-        public ItemMenu(Vector2 selectionBarPosition, Texture2D selectionBarTexture, bool selected) : base(selectionBarPosition, selectionBarTexture, selected)
+        public ItemMenu(Vector2 selectionBarPosition, Texture2D selectionBarTexture, bool selected) : base(selectionBarPosition, selectionBarTexture, "Items", selected)
         {
             itemHolders = new List<ItemHolder>();
             for (int i = 0; i < rows; ++i)
