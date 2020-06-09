@@ -102,6 +102,7 @@ namespace SpaceGame
                 { "selection_bar_dark", Content.Load<Texture2D>("GUI/selection_bar_dark") },
                 { "selection_bar_dark_highlighted", Content.Load<Texture2D>("GUI/selection_bar_dark_highlighted") },
                 { "item_slot", Content.Load<Texture2D>("GUI/item_slot") },
+                { "crew_menu", Content.Load<Texture2D>("GUI/crew_menu") },
             };
 
             animations = new Dictionary<string, Animation>()
@@ -152,8 +153,6 @@ namespace SpaceGame
                     break;
                 case GameState.Inventory:
                     currentCamera = shipCamera;
-                    inventoryStateManager.eventManager.previousScrollValue = Mouse.GetState().ScrollWheelValue;
-                    // shipStateManager.itemHolderManager.ResetItemBouncing();
                     break;
             }
 

@@ -31,7 +31,7 @@ namespace SpaceGame.Managers.InventoryStateManagers
         public InventoryStateManager()
         {
             eventManager = new InventoryEventManager();
-            inventoryType = InventoryType.Crew;
+            inventoryType = InventoryType.Items;
             itemMenu = new ItemMenu(Vector2.Zero);
             crewMenu = new CrewMenu(new Vector2(0, 22));
             menuSize = new Vector2(330, 142);

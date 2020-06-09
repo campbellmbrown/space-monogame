@@ -11,15 +11,18 @@ namespace SpaceGame.Menus
 {
     public class CrewMenu : Menu
     {
+        Texture2D crewMenuTexture;
+
         public CrewMenu(Vector2 selectionBarPosition) : base(selectionBarPosition, "Crew", InventoryType.Crew)
         {
+            crewMenuTexture = LimitsEdgeGame.textures["crew_menu"];
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             if (selected)
             {
-
+                spriteBatch.Draw(crewMenuTexture, menuOffset, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             }
             base.Draw(spriteBatch);
         }
