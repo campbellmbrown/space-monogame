@@ -5,6 +5,7 @@ using MonoGame.Extended;
 using MonoGame.Extended.BitmapFonts;
 using SpaceGame.Effects;
 using SpaceGame.Managers;
+using SpaceGame.Managers.InventoryStateManagers;
 using SpaceGame.Models;
 using SpaceGame.Sprites;
 using SpaceGame.Utilities;
@@ -17,7 +18,7 @@ namespace SpaceGame
     public enum GameState
     {
         World,
-        Spaceship,
+        Inventory,
         InGameMenu
     }
 
@@ -49,7 +50,7 @@ namespace SpaceGame
         // States
         public static GameState gameState;
         public static WorldStateManager worldStateManager;
-        public static ShipStateManager shipStateManager;
+        public static InventoryStateManager inventoryStateManager;
         public static InGameMenuStateManager inGameMenuStateManager;
 
         public LimitsEdgeGame()
@@ -128,7 +129,7 @@ namespace SpaceGame
 
             // Creating state managers
             worldStateManager = new WorldStateManager();
-            shipStateManager = new ShipStateManager();
+            inventoryStateManager = new InventoryStateManager();
             inGameMenuStateManager = new InGameMenuStateManager();
             // Other managers
             cursorManager = new CursorManager();
@@ -147,9 +148,9 @@ namespace SpaceGame
                 case GameState.InGameMenu:
                     currentCamera = inGameMenuCamera;
                     break;
-                case GameState.Spaceship:
+                case GameState.Inventory:
                     currentCamera = shipCamera;
-                    shipStateManager.eventManager.previousScrollValue = Mouse.GetState().ScrollWheelValue;
+                    inventoryStateManager.eventManager.previousScrollValue = Mouse.GetState().ScrollWheelValue;
                     // shipStateManager.itemHolderManager.ResetItemBouncing();
                     break;
             }
@@ -165,8 +166,8 @@ namespace SpaceGame
                 case GameState.World:
                     worldStateManager.Update(gameTime);
                     break;
-                case GameState.Spaceship:
-                    shipStateManager.Update(gameTime);
+                case GameState.Inventory:
+                    inventoryStateManager.Update(gameTime);
                     break;
                 case GameState.InGameMenu:
                     inGameMenuStateManager.Update(gameTime);
@@ -185,8 +186,8 @@ namespace SpaceGame
                 case GameState.World:
                     worldStateManager.Draw(spriteBatch);
                     break;
-                case GameState.Spaceship:
-                    shipStateManager.Draw(spriteBatch);
+                case GameState.Inventory:
+                    inventoryStateManager.Draw(spriteBatch);
                     break;
                 case GameState.InGameMenu:
                     inGameMenuStateManager.Draw(spriteBatch);

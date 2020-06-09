@@ -53,12 +53,12 @@
     <Compile Include="Items\Metal.cs" />
     <Compile Include="Items\Plastic.cs" />
     <Compile Include="Managers\AnimationManager.cs" />
-    <Compile Include="Managers\ShipStateManagers\ShipMenuManager.cs" />
+    <Compile Include="Managers\InventoryStateManagers\InventoryEventManager.cs" />
+    <Compile Include="Managers\InventoryStateManagers\InventoryStateManager.cs" />
     <Compile Include="Managers\WorldStateManagers\CloudManager.cs" />
     <Compile Include="Managers\WorldStateManagers\CrateManager.cs" />
     <Compile Include="Managers\WorldStateManagers\DebugManager.cs" />
     <Compile Include="Managers\InGameMenuStateManagers\InGameMenuEventManager.cs" />
-    <Compile Include="Managers\ShipStateManagers\ShipEventManager.cs" />
     <Compile Include="Managers\WorldStateManagers\WorldEventManager.cs" />
     <Compile Include="Managers\WorldStateManagers\GuiManager.cs" />
     <Compile Include="Managers\CursorManager.cs" />
@@ -66,7 +66,6 @@
     <Compile Include="Managers\WorldStateManagers\ItemManager.cs" />
     <Compile Include="Managers\WorldStateManagers\ParticleManager.cs" />
     <Compile Include="Managers\PlayerManager.cs" />
-    <Compile Include="Managers\ShipStateManagers\ShipStateManager.cs" />
     <Compile Include="Managers\WorldStateManagers\ProjectileManager.cs" />
     <Compile Include="Managers\WorldStateManagers\RespawnManager.cs" />
     <Compile Include="Managers\WorldStateManagers\StarManager.cs" />

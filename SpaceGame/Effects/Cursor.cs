@@ -23,14 +23,12 @@ namespace SpaceGame.Effects
         public Cursor(Texture2D texture)
         {
             this.texture = texture;
-            item = new Metal(Vector2.Zero, true);
-            itemCount = 2;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, position, null, Color.White, 0f, Vector2.Zero, zoom, SpriteEffects.None, 0f);
-            if (LimitsEdgeGame.gameState == GameState.Spaceship && itemCount > 0)
+            if (LimitsEdgeGame.gameState == GameState.Inventory && itemCount > 0)
             {
                 item.DrawPreview(spriteBatch, itemPosition, itemSize);
                 if (itemCount > 1)

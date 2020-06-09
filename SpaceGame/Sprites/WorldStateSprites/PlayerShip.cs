@@ -97,7 +97,7 @@ namespace SpaceGame.Sprites.WorldStateSprites
             List<Item> itemsInRange = LimitsEdgeGame.worldStateManager.itemManager.GetItemsInRange(pickupRange);
             for (int i = itemsInRange.Count - 1; i >= 0; i--)
             {
-                LimitsEdgeGame.shipStateManager.menuManager.itemMenu.AddItem(itemsInRange[i]);
+                LimitsEdgeGame.inventoryStateManager.itemMenu.AddItem(itemsInRange[i]);
                 LimitsEdgeGame.worldStateManager.itemManager.items.Remove(itemsInRange[i]);
             }
         }

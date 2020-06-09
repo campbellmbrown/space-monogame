@@ -45,7 +45,7 @@ namespace SpaceGame.Managers
             {
                 if (!holdingShipInv)
                 {
-                    LimitsEdgeGame.SwitchState(GameState.World, GameState.Spaceship);
+                    LimitsEdgeGame.SwitchState(GameState.World, GameState.Inventory);
                 }
                 holdingShipInv = true;
             }
