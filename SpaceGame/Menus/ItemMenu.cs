@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpaceGame.Items;
+using SpaceGame.Managers.InventoryStateManagers;
 using SpaceGame.Models;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace SpaceGame.Menus
         protected int columns = 8;
         protected List<ItemHolder> itemHolders;
 
-        public ItemMenu(Vector2 selectionBarPosition, Texture2D selectionBarTexture, bool selected) : base(selectionBarPosition, selectionBarTexture, "Items", selected)
+        public ItemMenu(Vector2 selectionBarPosition) : base(selectionBarPosition, "Items", InventoryType.Items)
         {
             itemHolders = new List<ItemHolder>();
             for (int i = 0; i < rows; ++i)
@@ -30,7 +31,10 @@ namespace SpaceGame.Menus
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var itemHolder in itemHolders) itemHolder.Draw(spriteBatch);
+            if (selected)
+            {
+                foreach (var itemHolder in itemHolders) itemHolder.Draw(spriteBatch);
+            }
             base.Draw(spriteBatch);
         }
 
@@ -50,11 +54,14 @@ namespace SpaceGame.Menus
 
         public override void Click(Vector2 mousePosition)
         {
-            foreach (var itemHolder in itemHolders)
+            if (selected)
             {
-                if (itemHolder.clickRectangle.Contains(mousePosition))
+                foreach (var itemHolder in itemHolders)
                 {
-                    itemHolder.ClickAction();
+                    if (itemHolder.clickRectangle.Contains(mousePosition))
+                    {
+                        itemHolder.ClickAction();
+                    }
                 }
             }
             base.Click(mousePosition);

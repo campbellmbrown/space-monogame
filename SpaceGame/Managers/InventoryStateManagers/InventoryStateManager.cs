@@ -10,27 +10,30 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Managers.InventoryStateManagers
 {
+    public enum InventoryType
+    {
+        Items,
+        Crew,
+        Engines,
+        Shields,
+        Weapons
+    }
+
     public class InventoryStateManager
     {
-        public enum ShipMenuType
-        {
-            Items,
-            Crew,
-            Engines,
-            Shields,
-            Weapons
-        }
 
-        protected ShipMenuType menuType;
+        public InventoryType inventoryType;
         public ItemMenu itemMenu;
+        public CrewMenu crewMenu;
         protected Vector2 menuSize;
         public InventoryEventManager eventManager;
 
         public InventoryStateManager()
         {
             eventManager = new InventoryEventManager();
-            menuType = ShipMenuType.Items;
-            itemMenu = new ItemMenu(Vector2.Zero, LimitsEdgeGame.textures["selection_bar"], true);
+            inventoryType = InventoryType.Crew;
+            itemMenu = new ItemMenu(Vector2.Zero);
+            crewMenu = new CrewMenu(new Vector2(0, 22));
             menuSize = new Vector2(330, 142);
             LimitsEdgeGame.shipCamera.Position = (-LimitsEdgeGame.screenSize + menuSize) / 2f;
         }
@@ -43,22 +46,19 @@ namespace SpaceGame.Managers.InventoryStateManagers
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            switch (menuType)
-            {
-                case ShipMenuType.Items:
-                    itemMenu.Draw(spriteBatch);
-                    break;
-            }
+            itemMenu.Draw(spriteBatch);
+            crewMenu.Draw(spriteBatch);
         }
 
         public void Click(Vector2 mousePosition)
         {
-            switch (menuType)
-            {
-                case ShipMenuType.Items:
-                    itemMenu.Click(mousePosition);
-                    break;
-            }
+            itemMenu.Click(mousePosition);
+            crewMenu.Click(mousePosition);
+        }
+
+        public void SwitchInventoryType(InventoryType inventoryType)
+        {
+            this.inventoryType = inventoryType;
         }
     }
 }
