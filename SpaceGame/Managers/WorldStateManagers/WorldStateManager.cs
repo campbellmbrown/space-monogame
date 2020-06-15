@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SpaceGame.Items;
 using SpaceGame.Managers.WorldStateManagers;
 using SpaceGame.Sprites;
+using SpaceGame.Sprites.WorldStateSprites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace SpaceGame.Managers
         public GuiManager guiManager;
         public DebugManager debugManager;
         public PlayerManager playerManager;
+        public StrandedManager strandedManager;
 
         public WorldStateManager()
         {
@@ -33,11 +35,13 @@ namespace SpaceGame.Managers
             cloudManager = new CloudManager();
             itemManager = new ItemManager();
             crateManager = new CrateManager();
+            strandedManager = new StrandedManager();
             guiManager = new GuiManager();
             debugManager = new DebugManager();
             playerManager = new PlayerManager(LimitsEdgeGame.worldCamera);
             crateManager.TopUpCrates();
             cloudManager.TopUpClouds();
+            strandedManager.TopUpStrandeds();
         }
 
         public void Update(GameTime gameTime)
@@ -47,6 +51,7 @@ namespace SpaceGame.Managers
             starManager.Update(gameTime);
             itemManager.Update(gameTime);
             crateManager.Update(gameTime);
+            strandedManager.Update(gameTime);
             particleManager.Update(gameTime);
             cloudManager.Update(gameTime);
             projectileManager.Update(gameTime);
@@ -60,6 +65,7 @@ namespace SpaceGame.Managers
             starManager.Draw(spriteBatch);
             itemManager.Draw(spriteBatch);
             crateManager.Draw(spriteBatch);
+            strandedManager.Draw(spriteBatch);
             particleManager.Draw(spriteBatch);
             projectileManager.Draw(spriteBatch);
             playerManager.Draw(spriteBatch);
