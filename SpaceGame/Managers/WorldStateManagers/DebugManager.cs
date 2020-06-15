@@ -55,7 +55,6 @@ namespace SpaceGame.Managers
                 new DebugMessage { name = "Crate count" },
                 new DebugMessage { name = "Projectile count" },
                 new DebugMessage { name = "Item count" },
-                new DebugMessage { name = "Held items" }
             };
         }
 
