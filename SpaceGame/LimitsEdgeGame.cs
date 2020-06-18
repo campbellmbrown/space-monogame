@@ -108,6 +108,7 @@ namespace SpaceGame
                 { "smoke", new Animation(Content.Load<Texture2D>("Effects/smoke"), 5,  0.2f) },
                 { "small_explosion", new Animation(Content.Load<Texture2D>("Effects/small_explosion"), 7,  0.1f) },
                 { "laser_particle", new Animation(Content.Load<Texture2D>("Effects/laser_particle"), 8,  0.1f) },
+                { "crew", new Animation(Content.Load<Texture2D>("Crew/Crew"), 2, 1f) },
             };
 
             fonts = new Dictionary<string, SpriteFont>()

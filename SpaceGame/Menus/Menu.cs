@@ -46,6 +46,11 @@ namespace SpaceGame.Menus
             spriteBatch.DrawString(LimitsEdgeGame.bitmapFonts["game_font_16"], selectionBarName, selectionBarTextPos, (selected) ? Color.White : Color.LightGray);
         }
 
+        public virtual void Update(GameTime gameTime)
+        {
+
+        }
+
         public virtual void Click(Vector2 mousePosition)
         {
             if (selectionRectangle.Contains(mousePosition))

@@ -41,6 +41,8 @@ namespace SpaceGame.Managers.InventoryStateManagers
         public void Update(GameTime gameTime)
         {
             eventManager.Update(gameTime);
+            itemMenu.Update(gameTime);
+            crewMenu.Update(gameTime);
             // LimitsEdgeGame.shipCamera.Position = Helper.RoundVector2(LimitsEdgeGame.shipCamera.Position, 1);
         }
 
