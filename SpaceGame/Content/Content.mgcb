@@ -148,6 +148,18 @@
 /processorParam:TextureFormat=Color
 /build:GUI/item_slot.png
 
+#begin GUI/label.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GUI/label.png
+
 #begin GUI/selection_bar.png
 /importer:TextureImporter
 /processor:TextureProcessor

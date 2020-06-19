@@ -101,6 +101,7 @@ namespace SpaceGame
                 { "selection_bar_dark_highlighted", Content.Load<Texture2D>("GUI/selection_bar_dark_highlighted") },
                 { "item_slot", Content.Load<Texture2D>("GUI/item_slot") },
                 { "crew_menu", Content.Load<Texture2D>("GUI/crew_menu") },
+                { "label", Content.Load<Texture2D>("GUI/label") }
             };
 
             animations = new Dictionary<string, Animation>()
