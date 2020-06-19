@@ -23,7 +23,8 @@ namespace SpaceGame.Models
         protected int height { get { return animation.frameHeight; } }
         protected Rectangle hoverRectangle { get { return new Rectangle((int)position.X - width / 2, (int)position.Y - height, width, height); } }
         protected Shadow shadow;
-        public string name = "test1 test2";
+        public string name;
+        protected List<string> maleNames = new List<string> { "Liam", "Noah", "William", "James", "Logan" };
 
         public InShipCrew(Animation animation, Vector2 offsetPosition)
         {
@@ -31,6 +32,7 @@ namespace SpaceGame.Models
             animationManager = new AnimationManager(animation, AnimationManager.RotationOrigin.BottomMiddle);
             position = offsetPosition + new Vector2(LimitsEdgeGame.r.Next(0, (int)maxPosition.X), LimitsEdgeGame.r.Next(0, (int)maxPosition.Y));
             shadow = new Shadow(LimitsEdgeGame.textures["shadow_1"], 0.2f);
+            name = maleNames[LimitsEdgeGame.r.Next(0, maleNames.Count)];
         }
 
         public void Update(GameTime gameTime)
