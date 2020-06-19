@@ -35,7 +35,7 @@ namespace SpaceGame.Managers.InventoryStateManagers
             itemMenu = new ItemMenu(Vector2.Zero);
             crewMenu = new CrewMenu(new Vector2(0, 22));
             menuSize = new Vector2(330, 142);
-            LimitsEdgeGame.shipCamera.Position = (-LimitsEdgeGame.screenSize + menuSize) / 2f;
+            LimitsEdgeGame.inventoryCamera.Position = (-LimitsEdgeGame.screenSize + menuSize) / 2f;
         }
 
         public void Update(GameTime gameTime)

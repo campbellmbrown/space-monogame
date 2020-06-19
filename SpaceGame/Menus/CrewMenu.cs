@@ -27,6 +27,7 @@ namespace SpaceGame.Menus
             if (selected)
             {
                 foreach (var crew in inShipCrew) crew.Update(gameTime);
+                inShipCrew = inShipCrew.OrderBy(o => o.position.Y).ToList();
             }
         }
 

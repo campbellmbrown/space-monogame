@@ -30,7 +30,7 @@ namespace SpaceGame
         public static Camera2D currentCamera;
         public static Camera2D worldCamera;
         public static Camera2D inGameMenuCamera;
-        public static Camera2D shipCamera;
+        public static Camera2D inventoryCamera;
 
         public static Random r;
         public static Dictionary<string, Texture2D> textures;
@@ -67,7 +67,7 @@ namespace SpaceGame
             gameState = GameState.World;
             worldCamera = new Camera2D(GraphicsDevice) { Zoom = 2, Position = -screenSize / 2f };
             inGameMenuCamera = new Camera2D(GraphicsDevice) { Zoom = 2, Position = -screenSize / 2f };
-            shipCamera = new Camera2D(GraphicsDevice) { Zoom = 2, Position = -screenSize / 2f };
+            inventoryCamera = new Camera2D(GraphicsDevice) { Zoom = 3, Position = -screenSize / 2f };
             currentCamera = worldCamera;
             IsMouseVisible = false;
             IsFixedTimeStep = true;
@@ -147,7 +147,7 @@ namespace SpaceGame
                     currentCamera = inGameMenuCamera;
                     break;
                 case GameState.Inventory:
-                    currentCamera = shipCamera;
+                    currentCamera = inventoryCamera;
                     break;
             }
 
