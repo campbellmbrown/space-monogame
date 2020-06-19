@@ -5,8 +5,11 @@ using SpaceGame.Managers.InventoryStateManagers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SpaceGame.Models;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using Label = SpaceGame.Models.Label;
 
 namespace SpaceGame.Menus
 {
@@ -22,6 +25,7 @@ namespace SpaceGame.Menus
         protected InventoryType inventoryType;
         public bool selected { get { return inventoryType == LimitsEdgeGame.inventoryStateManager.inventoryType; } }
         protected Vector2 menuOffset = new Vector2(140, 0);
+        protected Label label;
 
         public Menu(Vector2 selectionBarPosition, string selectionBarName, InventoryType inventoryType)
         {
@@ -32,6 +36,7 @@ namespace SpaceGame.Menus
             this.selectionBarName = selectionBarName;
             this.inventoryType = inventoryType;
             selectionBarTextPos = selectionBarPosition + new Vector2((20 - 16) / 2f);
+            label = new Label();
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
@@ -44,6 +49,8 @@ namespace SpaceGame.Menus
                 spriteBatch.Draw(unselectedTexture, selectionBarPosition, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             spriteBatch.DrawString(LimitsEdgeGame.bitmapFonts["game_font_16"], selectionBarName, selectionBarTextPos + Vector2.One, Color.Black);
             spriteBatch.DrawString(LimitsEdgeGame.bitmapFonts["game_font_16"], selectionBarName, selectionBarTextPos, (selected) ? Color.White : Color.LightGray);
+
+            label.Draw(spriteBatch);
         }
 
         public virtual void Update(GameTime gameTime)
@@ -57,6 +64,10 @@ namespace SpaceGame.Menus
             {
                 LimitsEdgeGame.inventoryStateManager.inventoryType = inventoryType;
             }
+        }
+
+        public virtual void Hover(Vector2 mousePosition)
+        {
         }
     }
 }

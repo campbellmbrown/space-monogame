@@ -58,6 +58,12 @@ namespace SpaceGame.Managers.InventoryStateManagers
             crewMenu.Click(mousePosition);
         }
 
+        public void Hover(Vector2 mousePosition)
+        {
+            itemMenu.Hover(mousePosition);
+            crewMenu.Hover(mousePosition);
+        }
+
         public void SwitchInventoryType(InventoryType inventoryType)
         {
             this.inventoryType = inventoryType;

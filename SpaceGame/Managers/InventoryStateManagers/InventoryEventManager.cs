@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
+using SpaceGame.Models;
 using SpaceGame.Utilities;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace SpaceGame.Managers.InventoryStateManagers
             CheckSinglePressKeys(keyboardState);
             CheckHeldKeyPress(keyboardState, t);
             CheckSingleLeftClick(mouseState);
+            LimitsEdgeGame.inventoryStateManager.Hover(LimitsEdgeGame.mousePosition);
         }
 
         public void CheckSinglePressKeys(KeyboardState keyboardState)

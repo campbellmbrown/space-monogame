@@ -77,6 +77,7 @@
     <Compile Include="Models\Animation.cs" />
     <Compile Include="Models\InShipCrew.cs" />
     <Compile Include="Models\ItemHolder.cs" />
+    <Compile Include="Models\Label.cs" />
     <Compile Include="Sprites\WorldStateSprites\CollidableObject.cs" />
     <Compile Include="Models\Minimap.cs" />
     <Compile Include="Program.cs" />

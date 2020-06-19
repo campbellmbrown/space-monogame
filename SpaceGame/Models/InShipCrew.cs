@@ -19,7 +19,11 @@ namespace SpaceGame.Models
         protected AnimationManager animationManager;
         protected Animation animation;
         protected Vector2 maxPosition = new Vector2(174, 126);
+        protected int width { get { return animation.frameWidth; } }
+        protected int height { get { return animation.frameHeight; } }
+        protected Rectangle hoverRectangle { get { return new Rectangle((int)position.X - width / 2, (int)position.Y - height, width, height); } }
         protected Shadow shadow;
+        public string name = "test1 test2";
 
         public InShipCrew(Animation animation, Vector2 offsetPosition)
         {
@@ -39,6 +43,11 @@ namespace SpaceGame.Models
         {
             shadow.Draw(spriteBatch);
             animationManager.Draw(spriteBatch);
+        }
+
+        public bool CheckHover(Vector2 mousePosition)
+        {
+            return (hoverRectangle.Contains(mousePosition));
         }
     }
 }

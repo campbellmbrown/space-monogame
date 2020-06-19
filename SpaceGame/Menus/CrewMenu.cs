@@ -47,5 +47,23 @@ namespace SpaceGame.Menus
             }
             base.Click(mousePosition);
         }
+
+        public override void Hover(Vector2 mousePosition)
+        {
+            if (selected)
+            {
+                label.active = false;
+                foreach (var crew in inShipCrew)
+                {
+                    if (crew.CheckHover(mousePosition))
+                    {
+                        label.Update(LimitsEdgeGame.mousePosition, crew.name);
+                        label.active = true;
+                        break;
+                    }
+                }
+            }
+            base.Hover(mousePosition);
+        }
     }
 }
