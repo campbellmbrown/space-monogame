@@ -11,13 +11,13 @@ namespace SpaceGame.Items
 
     public class Plastic : Item
     {
-        public Plastic(Vector2 position, bool randomize)
-            : base(LimitsEdgeGame.textures["plastic"], position, randomize)
+        public Plastic(Vector2 position, bool randomize = true)
+            : base(LimitsEdgeGame.textures["plastic"], position, "Plastic", randomize)
         {
         }
 
         public Plastic(Vector2 position, Vector2 linearVelocity, float angularVelocity)
-            : base(LimitsEdgeGame.textures["plastic"], position, linearVelocity, angularVelocity)
+            : base(LimitsEdgeGame.textures["plastic"], position, linearVelocity, angularVelocity, "Plastic")
         {
         }
     }

@@ -12,13 +12,13 @@ namespace SpaceGame.Items
     /// </summary>
     public class Metal : Item
     {
-        public Metal(Vector2 position, bool randomize)
-            : base(LimitsEdgeGame.textures["metal"], position, randomize)
+        public Metal(Vector2 position, bool randomize = true)
+            : base(LimitsEdgeGame.textures["metal"], position, "Metal", randomize)
         {
         }
 
         public Metal(Vector2 position, Vector2 linearVelocity, float angularVelocity)
-            : base(LimitsEdgeGame.textures["metal"], position, linearVelocity, angularVelocity)
+            : base(LimitsEdgeGame.textures["metal"], position, linearVelocity, angularVelocity, "Metal")
         {
         }
     }

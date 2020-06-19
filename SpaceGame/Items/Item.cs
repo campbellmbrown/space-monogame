@@ -29,11 +29,13 @@ namespace SpaceGame.Items
         protected float collectionThreshold = 120;
         protected float maxCollectionSpeed = 350;
         public float linearDragCoefficient = 0.01f;
+        public string name;
 
-        public Item(Texture2D texture, Vector2 position, bool randomize)
+        public Item(Texture2D texture, Vector2 position, string name, bool randomize)
         {
             this.position = position;
             this.texture = texture;
+            this.name = name;
             if (randomize)
             {
                 linearVelocity = new Vector2(LimitsEdgeGame.r.Next(-50, 51), LimitsEdgeGame.r.Next(-50, 51));
@@ -46,10 +48,11 @@ namespace SpaceGame.Items
             }
         }
 
-        public Item(Texture2D texture, Vector2 position, Vector2 linearVelocity, float angularVelocity)
+        public Item(Texture2D texture, Vector2 position, Vector2 linearVelocity, float angularVelocity, string name)
         {
             this.position = position;
             this.texture = texture;
+            this.name = name;
             this.linearVelocity = linearVelocity;
             this.angularVelocity = angularVelocity;
         }

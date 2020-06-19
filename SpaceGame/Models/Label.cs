@@ -25,7 +25,7 @@ namespace SpaceGame.Models
         protected Rectangle middleSegmentRect { get { return new Rectangle(segmentWidth, 0, segmentWidth, segmentHeight); } }
         protected Rectangle lastSegmentRect { get { return new Rectangle(2 * segmentWidth, 0, segmentWidth, segmentHeight); } }
         public bool active = false;
-        protected Vector2 textOffset = new Vector2(2, 0);
+        protected Vector2 textOffset = new Vector2(4, 0);
 
         public Label()
         {
@@ -46,10 +46,10 @@ namespace SpaceGame.Models
                 // Draw first segment
                 spriteBatch.Draw(texture, position, firstSegmentRect, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                 // Draw middle segments
-                for (int i = 1; i < segments - 1; ++i)
+                for (int i = 1; i < segments; ++i)
                     spriteBatch.Draw(texture, position + new Vector2(i * segmentWidth, 0), middleSegmentRect, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                 // Draw last segment
-                spriteBatch.Draw(texture, position + new Vector2((segments - 1) * segmentWidth, 0), lastSegmentRect, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(texture, position + new Vector2(segments * segmentWidth, 0), lastSegmentRect, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                 // Draw text
                 spriteBatch.DrawString(font, text, position + textOffset + Vector2.One, Color.Black);
                 spriteBatch.DrawString(font, text, position + textOffset, Color.White);

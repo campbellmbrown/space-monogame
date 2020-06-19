@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.BitmapFonts;
 using SpaceGame.Effects;
 using SpaceGame.Items;
@@ -19,7 +20,7 @@ namespace SpaceGame.Models
         protected Vector2 position;
         protected int itemSize = 16;
         Vector2 center { get { return new Vector2(texture.Width / 2f, texture.Height / 2f); } }
-        public Rectangle clickRectangle { get { return new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height); } }
+        public Rectangle hoverRectangle { get { return new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height); } }
 
         public ItemHolder(Vector2 position)
         {
@@ -91,6 +92,20 @@ namespace SpaceGame.Models
                 cursor.item = null;
                 cursor.itemCount = 0;
             }
+        }
+
+        public bool CheckHover(Vector2 mousePosition)
+        {
+            return hoverRectangle.Contains(mousePosition);
+        }
+
+        public bool CheckItemHover(Vector2 mousePosition)
+        {
+            if (itemCount > 0)
+            {
+                return hoverRectangle.Contains(mousePosition);
+            }
+            return false;
         }
     }
 }

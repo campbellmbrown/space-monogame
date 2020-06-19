@@ -58,13 +58,31 @@ namespace SpaceGame.Menus
             {
                 foreach (var itemHolder in itemHolders)
                 {
-                    if (itemHolder.clickRectangle.Contains(mousePosition))
+                    if (itemHolder.CheckHover(mousePosition))
                     {
                         itemHolder.ClickAction();
                     }
                 }
             }
             base.Click(mousePosition);
+        }
+
+        public override void Hover(Vector2 mousePosition)
+        {
+            if (selected)
+            {
+                label.active = false;
+                foreach (var itemHolder in itemHolders)
+                {
+                    if (itemHolder.CheckItemHover(mousePosition))
+                    {
+                        label.Update(LimitsEdgeGame.mousePosition, itemHolder.item.name);
+                        label.active = true;
+                        break;
+                    }
+                }
+            }
+            base.Hover(mousePosition);
         }
     }
 }
