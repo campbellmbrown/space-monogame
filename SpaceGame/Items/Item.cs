@@ -10,8 +10,49 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Items
 {
+    public struct EquipmentBuff
+    {
+        public EquipmentBuff(EquipmentBuffType equipmentBuffType, float modifier)
+        {
+            this.equipmentBuffType = equipmentBuffType;
+            this.modifier = modifier;
+            _returnString = "";
+        }
+        public EquipmentBuffType equipmentBuffType;
+        public float modifier;
+        private string _returnString;
+        public string buffString 
+        { 
+            get 
+            {
+                switch (equipmentBuffType)
+                {
+                    case EquipmentBuffType.ShipAngularSpeed:
+                        _returnString = "Increases angular speed by " + (modifier * 100).ToString("0.##") + "%";
+                        break;
+                    case EquipmentBuffType.ShipLinearSpeed:
+                        _returnString = "Increases linear speed by " + (modifier * 100).ToString("0.##") + "%";
+                        break;
+                }
+                return _returnString;
+            }
+        }
+    }
+
+    public enum EquipmentBuffType
+    {
+        ShipLinearSpeed,
+        ShipAngularSpeed
+    }
+
     public class Item
     {
+        // Texture properties
+        protected float width { get { return texture.Width; } }
+        protected float height { get { return texture.Height; } }
+        public Vector2 center { get { return new Vector2(width / 2f, height / 2f); } }
+        public Texture2D texture;
+        // World parameters
         public Vector2 position;
         protected Vector2 linearAcceleration = Vector2.Zero;
         protected Vector2 linearVelocity = Vector2.Zero;
@@ -21,17 +62,15 @@ namespace SpaceGame.Items
         public Vector2 linearDirection { get { return (linearVelocity.Length() == 0) ? Vector2.Zero : Vector2.Normalize(linearVelocity); } }
         protected float angularDirection { get { return Math.Sign(angularVelocity); } }
         protected Vector2 distanceToPlayer { get { return LimitsEdgeGame.worldStateManager.playerManager.playerShip.position - position; } }
-        public Texture2D texture;
-        protected float width { get { return texture.Width; } }
-        protected float height { get { return texture.Height; } }
-        public Vector2 center { get { return new Vector2(width / 2f, height / 2f); } }
+        protected float scale { get { return itemSize / texture.Height; } }
         protected Vector2 bottomMiddle { get { return new Vector2(width / 2f, height); } }
         protected float collectionThreshold = 120;
         protected float maxCollectionSpeed = 350;
         protected int itemSize = 16;
-        protected float scale { get { return itemSize / texture.Height; } }
         public float linearDragCoefficient = 0.01f;
+        // Inventory parameters
         public string name;
+        public List<EquipmentBuff> equipmentBuffs = new List<EquipmentBuff>();
 
         public Item(Texture2D texture, Vector2 position, string name, bool randomize)
         {
@@ -90,6 +129,10 @@ namespace SpaceGame.Items
             angularVelocity += angularAcceleration * t;
             position += linearVelocity * t;
             rotation += angularVelocity * t;
+        }
+
+        public virtual void AddEquipmentBuffs()
+        {
         }
     }
 }

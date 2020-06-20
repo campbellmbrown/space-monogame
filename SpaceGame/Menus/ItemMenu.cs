@@ -76,7 +76,10 @@ namespace SpaceGame.Menus
                 {
                     if (itemHolder.CheckItemHover(mousePosition))
                     {
-                        label.Update(LimitsEdgeGame.mousePosition, itemHolder.item.name);
+                        List<string> subtext = new List<string>();
+                        foreach (var equipmentBuff in itemHolder.item.equipmentBuffs)
+                            subtext.Add(equipmentBuff.buffString);
+                        label.Update(LimitsEdgeGame.mousePosition, itemHolder.item.name, subtext);
                         label.active = true;
                         break;
                     }

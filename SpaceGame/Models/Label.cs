@@ -26,6 +26,7 @@ namespace SpaceGame.Models
         protected Rectangle lastSegmentRect { get { return new Rectangle(2 * segmentWidth, 0, segmentWidth, segmentHeight); } }
         public bool active = false;
         protected Vector2 textOffset = new Vector2(4, 0);
+        protected List<string> subtext;
 
         public Label()
         {
@@ -37,6 +38,14 @@ namespace SpaceGame.Models
         {
             this.text = text;
             this.position = position + new Vector2(8);
+            subtext.Clear();
+        }
+
+        public void Update(Vector2 position, string text, List<string> subtext)
+        {
+            this.text = text;
+            this.position = position + new Vector2(8);
+            this.subtext = subtext;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -53,6 +62,12 @@ namespace SpaceGame.Models
                 // Draw text
                 spriteBatch.DrawString(font, text, position + textOffset + Vector2.One, Color.Black);
                 spriteBatch.DrawString(font, text, position + textOffset, Color.White);
+                for (int i = 0; i < subtext.Count; ++i)
+                {
+                    Vector2 subtextOffset = new Vector2(0, (i + 1) * fontSize.Height);
+                    spriteBatch.DrawString(font, subtext[i], position + textOffset + Vector2.One + subtextOffset, Color.Black);
+                    spriteBatch.DrawString(font, subtext[i], position + textOffset + subtextOffset, Color.Cyan);
+                }
             }
         }
     }
