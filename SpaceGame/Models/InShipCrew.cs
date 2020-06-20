@@ -20,6 +20,12 @@ namespace SpaceGame.Models
             Moving,
             Still
         }
+        protected enum MovementDirec
+        {
+            Horizontal,
+            Vertical
+        }
+
         public Vector2 position { get { return _position; } set { animationManager.position = value; _position = value; } }
         protected Vector2 _position;
         protected AnimationManager animationManager;
@@ -39,6 +45,9 @@ namespace SpaceGame.Models
         protected float movementSpeed = 18;
         protected float destinationThreshold = 1;
         protected MovementStatus movementStatus = MovementStatus.Still;
+        protected MovementDirec movementDirec;
+        protected bool horizontalMet = false;
+        protected bool verticalMet = false;
 
         public InShipCrew(Animation animation, Vector2 offsetPosition)
         {
@@ -75,16 +84,52 @@ namespace SpaceGame.Models
                     {
                         currentStillTime = 0;
                         movementStatus = MovementStatus.Moving;
+                        movementDirec = LimitsEdgeGame.r.Next(0, 2) == 0 ? MovementDirec.Horizontal : MovementDirec.Vertical;
                         desiredPosition = GenerateNewPosition();
+                        Console.WriteLine("Set: {0}", desiredPosition);
                     }
                     break;
                 // Moving state
                 case MovementStatus.Moving:
-                    position += movementSpeed * (Vector2.Normalize(desiredPosition - position)) * t;
-                    if ((desiredPosition - position).Length() < destinationThreshold)
+                    if (movementDirec == MovementDirec.Horizontal)
                     {
+                        position += new Vector2(movementSpeed, 0) * Math.Sign(desiredPosition.X - position.X) * t;
+
+                        // Temp
+                        animationManager.Play(LimitsEdgeGame.animations["crew"]);
+
+                        if (Math.Abs(desiredPosition.X - position.X) < destinationThreshold)
+                        {
+                            Console.WriteLine((desiredPosition.X - position.X));
+                            movementDirec = MovementDirec.Vertical;
+                            horizontalMet = true;
+                        }
+                    }
+                    else
+                    {
+                        position += new Vector2(0, movementSpeed) * Math.Sign(desiredPosition.Y - position.Y) * t;
+
+                        // Temp
+                        if (Math.Sign(desiredPosition.Y - position.Y) == 1)
+                            animationManager.Play(LimitsEdgeGame.animations["scientist_1_walk_down"]);
+                        else
+                            animationManager.Play(LimitsEdgeGame.animations["crew"]);
+
+                        if (Math.Abs(desiredPosition.Y - position.Y) < destinationThreshold)
+                        {
+                            Console.WriteLine((desiredPosition.Y - position.Y));
+                            movementDirec = MovementDirec.Horizontal;
+                            verticalMet = true;
+                        }
+                    }
+                    if (verticalMet && horizontalMet)
+                    {
+                        Console.WriteLine("Met: {0}", position);
+                        animationManager.Play(LimitsEdgeGame.animations["crew"]);
                         stillTime = GenerateStillTime();
                         movementStatus = MovementStatus.Still;
+                        horizontalMet = false;
+                        verticalMet = false;
                     }
                     break;
             }
