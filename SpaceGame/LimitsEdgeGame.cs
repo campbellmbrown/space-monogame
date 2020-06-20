@@ -84,14 +84,16 @@ namespace SpaceGame
                 // World
                 { "basic_ship_main", Content.Load<Texture2D>("Ships/basic_ship_main") },
                 { "basic_ship_wings", Content.Load<Texture2D>("Ships/basic_ship_wings") },
-                { "plastic", Content.Load<Texture2D>("Items/plastic") },
-                { "metal", Content.Load<Texture2D>("Items/metal") },
-                { "plants", Content.Load<Texture2D>("Items/plants") },
-                { "crate", Content.Load<Texture2D>("Sprites/crate") },
                 { "stranded_1", Content.Load<Texture2D>("Sprites/stranded_1") },
                 { "lazer", Content.Load<Texture2D>("Projectiles/lazer") },
                 { "asteroid_chunk", Content.Load<Texture2D>("World/asteroid_chunk") },
                 { "large_cloud_1", Content.Load<Texture2D>("World/large_cloud_1") },
+                { "crate", Content.Load<Texture2D>("Sprites/crate") },
+                // Items
+                { "metal", Content.Load<Texture2D>("Items/metal") },
+                { "plants", Content.Load<Texture2D>("Items/plants") },
+                { "plastic", Content.Load<Texture2D>("Items/plastic") },
+                { "ridoxium_gear", Content.Load<Texture2D>("Items/ridoxium_gear") },
                 // General
                 { "arrow_cursor", Content.Load<Texture2D>("Effects/arrow_cursor") },
                 { "shadow_1", Content.Load<Texture2D>("Effects/shadow_1") },

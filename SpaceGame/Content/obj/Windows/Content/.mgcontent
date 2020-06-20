@@ -26,6 +26,7 @@
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Items/metal.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Items/plants.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Items/plastic.png</File>
+    <File>D:/Git Projects/space-monogame/SpaceGame/Content/Items/ridoxium_gear.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Projectiles/lazer.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Ships/basic_ship_main.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Ships/basic_ship_wings.png</File>
@@ -35,6 +36,7 @@
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/World/large_cloud_1.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

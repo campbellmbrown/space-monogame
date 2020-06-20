@@ -7,9 +7,6 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Items
 {
-    /// <summary>
-    /// Metal class - inherits the Item class.
-    /// </summary>
     public class Metal : Item
     {
         public Metal(Vector2 position, bool randomize = true)

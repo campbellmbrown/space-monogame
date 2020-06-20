@@ -26,6 +26,7 @@ namespace SpaceGame.Sprites.WorldStateSprites
             for (int i = 0; i < LimitsEdgeGame.r.Next(0, 2); ++i) LimitsEdgeGame.worldStateManager.itemManager.items.Add(new Metal(position, true));
             for (int i = 0; i < LimitsEdgeGame.r.Next(0, 2); ++i) LimitsEdgeGame.worldStateManager.itemManager.items.Add(new Plants(position, true));
             for (int i = 0; i < LimitsEdgeGame.r.Next(0, 2); ++i) LimitsEdgeGame.worldStateManager.itemManager.items.Add(new Plastic(position, true));
+            for (int i = 0; i < LimitsEdgeGame.r.Next(0, 2); ++i) LimitsEdgeGame.worldStateManager.itemManager.items.Add(new RidoxiumGear(position, true));
             base.BreakAction();
         }
     }
