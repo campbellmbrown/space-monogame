@@ -6,6 +6,7 @@
   <SourceFiles>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Crew/Crew.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Crew/scientist_1_walk_down.png</File>
+    <File>D:/Git Projects/space-monogame/SpaceGame/Content/Crew/scientist_1_walk_up.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Effects/arrow_cursor.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Effects/laser_particle.png</File>
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/Effects/shadow_1.png</File>
@@ -34,6 +35,7 @@
     <File>D:/Git Projects/space-monogame/SpaceGame/Content/World/large_cloud_1.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

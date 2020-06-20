@@ -86,7 +86,6 @@ namespace SpaceGame.Models
                         movementStatus = MovementStatus.Moving;
                         movementDirec = LimitsEdgeGame.r.Next(0, 2) == 0 ? MovementDirec.Horizontal : MovementDirec.Vertical;
                         desiredPosition = GenerateNewPosition();
-                        Console.WriteLine("Set: {0}", desiredPosition);
                     }
                     break;
                 // Moving state
@@ -100,7 +99,6 @@ namespace SpaceGame.Models
 
                         if (Math.Abs(desiredPosition.X - position.X) < destinationThreshold)
                         {
-                            Console.WriteLine((desiredPosition.X - position.X));
                             movementDirec = MovementDirec.Vertical;
                             horizontalMet = true;
                         }
@@ -113,18 +111,16 @@ namespace SpaceGame.Models
                         if (Math.Sign(desiredPosition.Y - position.Y) == 1)
                             animationManager.Play(LimitsEdgeGame.animations["scientist_1_walk_down"]);
                         else
-                            animationManager.Play(LimitsEdgeGame.animations["crew"]);
+                            animationManager.Play(LimitsEdgeGame.animations["scientist_1_walk_up"]);
 
                         if (Math.Abs(desiredPosition.Y - position.Y) < destinationThreshold)
                         {
-                            Console.WriteLine((desiredPosition.Y - position.Y));
                             movementDirec = MovementDirec.Horizontal;
                             verticalMet = true;
                         }
                     }
                     if (verticalMet && horizontalMet)
                     {
-                        Console.WriteLine("Met: {0}", position);
                         animationManager.Play(LimitsEdgeGame.animations["crew"]);
                         stillTime = GenerateStillTime();
                         movementStatus = MovementStatus.Still;
@@ -149,7 +145,7 @@ namespace SpaceGame.Models
         protected float GenerateStillTime()
         {
             // Stands still for between 1 and 20 seconds
-            return LimitsEdgeGame.r.Next(1000, 20000) / 1000;
+            return LimitsEdgeGame.r.Next(1000, 2000) / 1000;
         }
     }
 }
