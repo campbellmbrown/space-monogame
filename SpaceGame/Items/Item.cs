@@ -28,6 +28,8 @@ namespace SpaceGame.Items
         protected Vector2 bottomMiddle { get { return new Vector2(width / 2f, height); } }
         protected float collectionThreshold = 120;
         protected float maxCollectionSpeed = 350;
+        protected int itemSize = 16;
+        protected float scale { get { return itemSize / texture.Height; } }
         public float linearDragCoefficient = 0.01f;
         public string name;
 
@@ -65,7 +67,7 @@ namespace SpaceGame.Items
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, null, Color.White, rotation, center, 1f, SpriteEffects.None, 1f);
+            spriteBatch.Draw(texture, position, null, Color.White, rotation, center, scale, SpriteEffects.None, 1f);
         }
 
         public void DrawPreview(SpriteBatch spriteBatch, Vector2 pPosition, float previewSize)

@@ -145,7 +145,7 @@ namespace SpaceGame.Models
         protected float GenerateStillTime()
         {
             // Stands still for between 1 and 20 seconds
-            return LimitsEdgeGame.r.Next(1000, 2000) / 1000;
+            return LimitsEdgeGame.r.Next(1000, 20000) / 1000;
         }
     }
 }

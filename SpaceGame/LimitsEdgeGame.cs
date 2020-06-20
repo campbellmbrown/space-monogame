@@ -67,7 +67,7 @@ namespace SpaceGame
             gameState = GameState.World;
             worldCamera = new Camera2D(GraphicsDevice) { Zoom = 2, Position = -screenSize / 2f };
             inGameMenuCamera = new Camera2D(GraphicsDevice) { Zoom = 2, Position = -screenSize / 2f };
-            inventoryCamera = new Camera2D(GraphicsDevice) { Zoom = 3, Position = -screenSize / 2f };
+            inventoryCamera = new Camera2D(GraphicsDevice) { Zoom = 2, Position = -screenSize / 2f };
             currentCamera = worldCamera;
             IsMouseVisible = false;
             IsFixedTimeStep = true;
