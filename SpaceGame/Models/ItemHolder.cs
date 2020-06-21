@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.BitmapFonts;
@@ -28,27 +28,6 @@ namespace SpaceGame.Models
             this.position = position;
         }
 
-        public bool AddItemToStack(Item item)
-        {
-            if (this.item != null && item.GetType().Equals(this.item.GetType()))
-            {
-                itemCount++;
-                return true;
-            }
-            else return false;
-        }
-
-        public bool AddItem(Item item)
-        {
-            if (this.item == null)
-            {
-                this.item = item;
-                itemCount = 1;
-                return true;
-            }
-            else return false;
-        }
-
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
@@ -63,34 +42,67 @@ namespace SpaceGame.Models
             }
         }
 
+        // For removing items when in inventory
+        public void RemoveItem()
+        {
+            item = null;
+            itemCount = 0;
+        }
+
+        public bool AddItemToStack(Item item, int itemCount)
+        {
+            if (this.itemCount > 0 && item.GetType().Equals(this.item.GetType()))
+            {
+                this.itemCount += itemCount;
+                return true;
+            }
+            else return false;
+        }
+
+        public void SetItem(Item item, int itemCount)
+        {
+            this.item = item;
+            this.itemCount = itemCount;
+        }
+
+        public bool TryFillEmptySlot(Item item, int itemCount)
+        {
+            if (this.itemCount == 0)
+            {
+                SetItem(item, itemCount);
+                return true;
+            }
+            return false;
+        }
+
         public void ClickAction()
         {
             Cursor cursor = LimitsEdgeGame.cursorManager.cursor;
-            if (itemCount > 0) 
+            if (itemCount > 0) // The item holder has an item
             {
                 if (cursor.itemCount == 0) // Picking up item
                 {
-                    cursor.item = item;
-                    cursor.itemCount = itemCount;
-                    item = null;
-                    itemCount = 0;
+                    cursor.SetItem(item, itemCount);
+                    RemoveItem();
                 } 
+                else if (AddItemToStack(cursor.item, cursor.itemCount)) // Adding item onto stack
+                {
+                    cursor.RemoveItem();
+                }
                 else // Swapping item
                 {
                     Item tempItem = cursor.item;
                     int tempItemCount = cursor.itemCount;
-                    cursor.item = item;
-                    cursor.itemCount = itemCount;
-                    item = tempItem;
-                    itemCount = tempItemCount;
+                    cursor.SetItem(item, itemCount);
+                    SetItem(tempItem, tempItemCount);
+                    //item = tempItem;
+                    //itemCount = tempItemCount;
                 }
             } 
             else if (cursor.itemCount > 0) // Placing item
             {
-                item = cursor.item;
-                itemCount = cursor.itemCount;
-                cursor.item = null;
-                cursor.itemCount = 0;
+                SetItem(cursor.item, cursor.itemCount);
+                cursor.RemoveItem();
             }
         }
 

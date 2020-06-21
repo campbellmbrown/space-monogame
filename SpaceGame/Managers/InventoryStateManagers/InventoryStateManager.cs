@@ -14,9 +14,7 @@ namespace SpaceGame.Managers.InventoryStateManagers
     {
         Items,
         Crew,
-        Engines,
-        Shields,
-        Weapons
+        Equipment
     }
 
     public class InventoryStateManager
@@ -25,6 +23,7 @@ namespace SpaceGame.Managers.InventoryStateManagers
         public InventoryType inventoryType;
         public ItemMenu itemMenu;
         public CrewMenu crewMenu;
+        public EquipmentMenu equipmentMenu;
         protected Vector2 menuSize;
         public InventoryEventManager eventManager;
 
@@ -34,15 +33,17 @@ namespace SpaceGame.Managers.InventoryStateManagers
             inventoryType = InventoryType.Items;
             itemMenu = new ItemMenu(Vector2.Zero);
             crewMenu = new CrewMenu(new Vector2(0, 22));
+            equipmentMenu = new EquipmentMenu(new Vector2(0, 44));
             menuSize = new Vector2(330, 142);
             LimitsEdgeGame.inventoryCamera.Position = (-LimitsEdgeGame.screenSize + menuSize) / 2f;
         }
 
         public void Update(GameTime gameTime)
         {
-            eventManager.Update(gameTime);
             itemMenu.Update(gameTime);
             crewMenu.Update(gameTime);
+            equipmentMenu.Update(gameTime);
+            eventManager.Update(gameTime);
             // LimitsEdgeGame.shipCamera.Position = Helper.RoundVector2(LimitsEdgeGame.shipCamera.Position, 1);
         }
 
@@ -50,18 +51,21 @@ namespace SpaceGame.Managers.InventoryStateManagers
         {
             itemMenu.Draw(spriteBatch);
             crewMenu.Draw(spriteBatch);
+            equipmentMenu.Draw(spriteBatch);
         }
 
         public void Click(Vector2 mousePosition)
         {
             itemMenu.Click(mousePosition);
             crewMenu.Click(mousePosition);
+            equipmentMenu.Click(mousePosition);
         }
 
         public void Hover(Vector2 mousePosition)
         {
             itemMenu.Hover(mousePosition);
             crewMenu.Hover(mousePosition);
+            equipmentMenu.Hover(mousePosition);
         }
 
         public void SwitchInventoryType(InventoryType inventoryType)

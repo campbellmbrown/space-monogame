@@ -39,5 +39,17 @@ namespace SpaceGame.Effects
                 spriteBatch.Draw(texture, position, null, Color.White, 0f, Vector2.Zero, zoom, SpriteEffects.None, 0f);
             }
         }
+
+        public void RemoveItem()
+        {
+            item = null;
+            itemCount = 0;
+        }
+
+        public void SetItem(Item item, int itemCount)
+        {
+            this.item = item;
+            this.itemCount = itemCount;
+        }
     }
 }

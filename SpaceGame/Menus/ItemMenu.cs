@@ -38,16 +38,16 @@ namespace SpaceGame.Menus
             base.Draw(spriteBatch);
         }
 
-        public void AddItem(Item item)
+        public void AddItem(Item item, int itemCount)
         {
             foreach (var itemHolder in itemHolders)
             {
-                if (itemHolder.AddItemToStack(item))
+                if (itemHolder.AddItemToStack(item, itemCount))
                     return;
             }
             foreach (var itemHolder in itemHolders)
             {
-                if (itemHolder.AddItem(item))
+                if (itemHolder.TryFillEmptySlot(item, itemCount))
                     return;
             }
         }

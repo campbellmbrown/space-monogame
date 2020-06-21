@@ -73,6 +73,7 @@
     <Compile Include="Managers\WorldStateManagers\StarManager.cs" />
     <Compile Include="Managers\WorldStateManagers\WorldStateManager.cs" />
     <Compile Include="Menus\CrewMenu.cs" />
+    <Compile Include="Menus\EquipmentMenu.cs" />
     <Compile Include="Menus\ItemMenu.cs" />
     <Compile Include="Menus\Menu.cs" />
     <Compile Include="Models\Animation.cs" />
