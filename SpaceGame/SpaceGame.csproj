@@ -77,6 +77,7 @@
     <Compile Include="Menus\ItemMenu.cs" />
     <Compile Include="Menus\Menu.cs" />
     <Compile Include="Models\Animation.cs" />
+    <Compile Include="Models\EquipmentHolder.cs" />
     <Compile Include="Models\InShipCrew.cs" />
     <Compile Include="Models\ItemHolder.cs" />
     <Compile Include="Models\Label.cs" />

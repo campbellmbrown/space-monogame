@@ -22,13 +22,15 @@ namespace SpaceGame.Models
         Vector2 center { get { return new Vector2(texture.Width / 2f, texture.Height / 2f); } }
         public Rectangle hoverRectangle { get { return new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height); } }
 
+        // Constructor
         public ItemHolder(Vector2 position)
         {
             texture = LimitsEdgeGame.textures["item_slot"];
             this.position = position;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        // Draw method
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             if (itemCount > 0)
@@ -42,13 +44,14 @@ namespace SpaceGame.Models
             }
         }
 
-        // For removing items when in inventory
+        // For removing items
         public void RemoveItem()
         {
             item = null;
             itemCount = 0;
         }
 
+        // For adding items to a stack of already existing items
         public bool AddItemToStack(Item item, int itemCount)
         {
             if (this.itemCount > 0 && item.GetType().Equals(this.item.GetType()))
@@ -59,12 +62,14 @@ namespace SpaceGame.Models
             else return false;
         }
 
+        // Sets the item in the item holder
         public void SetItem(Item item, int itemCount)
         {
             this.item = item;
             this.itemCount = itemCount;
         }
 
+        // Attempt to place item in slot, will only place if empty
         public bool TryFillEmptySlot(Item item, int itemCount)
         {
             if (this.itemCount == 0)
@@ -106,16 +111,18 @@ namespace SpaceGame.Models
             }
         }
 
+        // For cursor clicking
         public bool CheckHover(Vector2 mousePosition)
         {
             return hoverRectangle.Contains(mousePosition);
         }
 
+        // For label displaying
         public bool CheckItemHover(Vector2 mousePosition)
         {
             if (itemCount > 0)
             {
-                return hoverRectangle.Contains(mousePosition);
+                return CheckHover(mousePosition);
             }
             return false;
         }

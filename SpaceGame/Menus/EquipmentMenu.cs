@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using SpaceGame.Managers.InventoryStateManagers;
 using SpaceGame.Models;
 using System;
@@ -12,25 +13,46 @@ namespace SpaceGame.Menus
 {
     public class EquipmentMenu : Menu
     {
-        protected List<ItemHolder> itemHolders;
+        protected List<EquipmentHolder> kinematicEquipmentHolders;
+        protected List<EquipmentHolder> defenseEquipmentHolders;
+        protected List<EquipmentHolder> attackEquipmentHolders;
+        protected List<EquipmentHolder> reputationEquipmentHolders;
+        protected List<EquipmentHolder> cosmeticsEquipmentHolders;
+        protected List<EquipmentHolder> familiarsEquipmentHolders;
+        protected int spaceBetweenHolders = 24;
 
         public EquipmentMenu(Vector2 selectionBarPosition) : base(selectionBarPosition, "Equipment", InventoryType.Equipment)
         {
-            itemHolders = new List<ItemHolder>();
-            for (int i = 0; i < 4; ++i)
-            {
-                for (int j = 0; j < 2; ++j)
-                {
-                    itemHolders.Add(new ItemHolder(menuOffset + new Vector2(j * 24, i * 24)));
-                }
-            }
+            kinematicEquipmentHolders = new List<EquipmentHolder>();
+            defenseEquipmentHolders = new List<EquipmentHolder>();
+            attackEquipmentHolders = new List<EquipmentHolder>();
+            reputationEquipmentHolders = new List<EquipmentHolder>();
+            cosmeticsEquipmentHolders = new List<EquipmentHolder>();
+            familiarsEquipmentHolders = new List<EquipmentHolder>();
+            CreateRow(kinematicEquipmentHolders, EquipmentType.Kinematics, 2, 0);
+            CreateRow(defenseEquipmentHolders, EquipmentType.Defense, 2, spaceBetweenHolders);
+            CreateRow(attackEquipmentHolders, EquipmentType.Attack, 2, 2 * spaceBetweenHolders);
+            CreateRow(reputationEquipmentHolders, EquipmentType.Reputation, 2, 3 * spaceBetweenHolders);
+            CreateRow(cosmeticsEquipmentHolders, EquipmentType.Cosmetics, 2, 4 * spaceBetweenHolders);
+            CreateRow(familiarsEquipmentHolders, EquipmentType.Familiars, 2, 5 * spaceBetweenHolders);
+        }
+
+        public void CreateRow(List<EquipmentHolder> equipmentList, EquipmentType equipmentType, int columns, int verticalDisplacement)
+        {
+            for (int i = 0; i < columns; ++i)
+                equipmentList.Add(new EquipmentHolder(menuOffset + new Vector2(i * spaceBetweenHolders, verticalDisplacement), equipmentType));
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             if (selected)
             {
-                foreach (var itemHolder in itemHolders) itemHolder.Draw(spriteBatch);
+                foreach (var holder in kinematicEquipmentHolders) holder.Draw(spriteBatch);
+                foreach (var holder in defenseEquipmentHolders) holder.Draw(spriteBatch);
+                foreach (var holder in attackEquipmentHolders) holder.Draw(spriteBatch);
+                foreach (var holder in reputationEquipmentHolders) holder.Draw(spriteBatch);
+                foreach (var holder in cosmeticsEquipmentHolders) holder.Draw(spriteBatch);
+                foreach (var holder in familiarsEquipmentHolders) holder.Draw(spriteBatch);
             }
             base.Draw(spriteBatch);
         }
@@ -39,15 +61,21 @@ namespace SpaceGame.Menus
         {
             if (selected)
             {
-                foreach (var itemHolder in itemHolders)
-                {
-                    if (itemHolder.CheckHover(mousePosition))
-                    {
-                        itemHolder.ClickAction();
-                    }
-                }
+                SubClick(kinematicEquipmentHolders, mousePosition);
+                SubClick(defenseEquipmentHolders, mousePosition);
+                SubClick(attackEquipmentHolders, mousePosition);
+                SubClick(reputationEquipmentHolders, mousePosition);
+                SubClick(cosmeticsEquipmentHolders, mousePosition);
+                SubClick(familiarsEquipmentHolders, mousePosition);
             }
             base.Click(mousePosition);
+        }
+
+        public void SubClick(List<EquipmentHolder> equipmentList, Vector2 mousePosition)
+        {
+            foreach (var equipment in equipmentList)
+                if (equipment.CheckHover(mousePosition))
+                    equipment.ClickAction();
         }
 
         public override void Hover(Vector2 mousePosition)
@@ -55,20 +83,33 @@ namespace SpaceGame.Menus
             if (selected)
             {
                 label.active = false;
-                foreach (var itemHolder in itemHolders)
-                {
-                    if (itemHolder.CheckItemHover(mousePosition))
-                    {
-                        List<string> subtext = new List<string>();
-                        foreach (var equipmentBuff in itemHolder.item.equipmentBuffs)
-                            subtext.Add(equipmentBuff.buffString);
-                        label.Update(LimitsEdgeGame.mousePosition, itemHolder.item.name, subtext);
-                        label.active = true;
-                        break;
-                    }
-                }
+                SubHover(kinematicEquipmentHolders, mousePosition);
+                if (!label.active) SubHover(defenseEquipmentHolders, mousePosition);
+                if (!label.active) SubHover(attackEquipmentHolders, mousePosition);
+                if (!label.active) SubHover(reputationEquipmentHolders, mousePosition);
+                if (!label.active) SubHover(cosmeticsEquipmentHolders, mousePosition);
+                if (!label.active) SubHover(familiarsEquipmentHolders, mousePosition);
             }
             base.Hover(mousePosition);
+        }
+
+        public void SubHover(List<EquipmentHolder> equipmentList, Vector2 mousePosition)
+        {
+            foreach (var equipment in equipmentList)
+            {
+                // If the mouse is hovering over the equipment holder
+                if (equipment.CheckItemHover(mousePosition))
+                {
+                    // Form the subtext list
+                    List<string> subtext = new List<string>();
+                    foreach (var equipmentBuff in equipment.item.equipmentBuffs)
+                        subtext.Add(equipmentBuff.buffString);
+                    // Update the menu label
+                    label.Update(LimitsEdgeGame.mousePosition, equipment.item.name, subtext);
+                    label.active = true;
+                    break;
+                }
+            }
         }
     }
 }
