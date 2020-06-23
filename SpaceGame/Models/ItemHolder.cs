@@ -80,7 +80,7 @@ namespace SpaceGame.Models
             return false;
         }
 
-        public void ClickAction()
+        public virtual void ClickAction()
         {
             Cursor cursor = LimitsEdgeGame.cursorManager.cursor;
             if (itemCount > 0) // The item holder has an item

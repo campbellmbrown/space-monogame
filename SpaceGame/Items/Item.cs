@@ -10,41 +10,6 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Items
 {
-    public struct EquipmentBuff
-    {
-        public EquipmentBuff(EquipmentBuffType equipmentBuffType, float modifier)
-        {
-            this.equipmentBuffType = equipmentBuffType;
-            this.modifier = modifier;
-            _returnString = "";
-        }
-        public EquipmentBuffType equipmentBuffType;
-        public float modifier;
-        private string _returnString;
-        public string buffString 
-        { 
-            get 
-            {
-                switch (equipmentBuffType)
-                {
-                    case EquipmentBuffType.ShipAngularSpeed:
-                        _returnString = "Increases angular speed by " + (modifier * 100).ToString("0.##") + "%";
-                        break;
-                    case EquipmentBuffType.ShipLinearSpeed:
-                        _returnString = "Increases linear speed by " + (modifier * 100).ToString("0.##") + "%";
-                        break;
-                }
-                return _returnString;
-            }
-        }
-    }
-
-    public enum EquipmentBuffType
-    {
-        ShipLinearSpeed,
-        ShipAngularSpeed
-    }
-
     public class Item
     {
         // Texture properties
@@ -70,7 +35,7 @@ namespace SpaceGame.Items
         public float linearDragCoefficient = 0.01f;
         // Inventory parameters
         public string name;
-        public List<EquipmentBuff> equipmentBuffs = new List<EquipmentBuff>();
+        public List<string> subtext;
 
         public Item(Texture2D texture, Vector2 position, string name, bool randomize)
         {
@@ -87,6 +52,7 @@ namespace SpaceGame.Items
                 linearVelocity = Vector2.Zero;
                 angularVelocity = 0f;
             }
+            subtext = new List<string>();
         }
 
         public Item(Texture2D texture, Vector2 position, Vector2 linearVelocity, float angularVelocity, string name)
@@ -129,10 +95,6 @@ namespace SpaceGame.Items
             angularVelocity += angularAcceleration * t;
             position += linearVelocity * t;
             rotation += angularVelocity * t;
-        }
-
-        public virtual void AddEquipmentBuffs()
-        {
         }
     }
 }

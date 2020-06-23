@@ -73,9 +73,9 @@ namespace SpaceGame.Menus
 
         public void SubClick(List<EquipmentHolder> equipmentList, Vector2 mousePosition)
         {
-            foreach (var equipment in equipmentList)
-                if (equipment.CheckHover(mousePosition))
-                    equipment.ClickAction();
+            foreach (var equipmentHolder in equipmentList)
+                if (equipmentHolder.CheckHover(mousePosition))
+                    equipmentHolder.ClickAction();
         }
 
         public override void Hover(Vector2 mousePosition)
@@ -100,12 +100,8 @@ namespace SpaceGame.Menus
                 // If the mouse is hovering over the equipment holder
                 if (equipment.CheckItemHover(mousePosition))
                 {
-                    // Form the subtext list
-                    List<string> subtext = new List<string>();
-                    foreach (var equipmentBuff in equipment.item.equipmentBuffs)
-                        subtext.Add(equipmentBuff.buffString);
                     // Update the menu label
-                    label.Update(LimitsEdgeGame.mousePosition, equipment.item.name, subtext);
+                    label.Update(LimitsEdgeGame.mousePosition, equipment.item.name, equipment.item.subtext);
                     label.active = true;
                     break;
                 }

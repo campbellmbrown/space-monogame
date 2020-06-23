@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SpaceGame.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Items
 {
-    public class RidoxiumGear : Item
+    public class RidoxiumGear : Equipment
     {
         public RidoxiumGear(Vector2 position, bool randomize = true)
             : base(LimitsEdgeGame.textures["ridoxium_gear"], position, "Ridoxium Gear", randomize)
@@ -23,7 +24,8 @@ namespace SpaceGame.Items
 
         public override void AddEquipmentBuffs()
         {
-            equipmentBuffs.Add(new EquipmentBuff(EquipmentBuffType.ShipLinearSpeed, 0.1f));
+            equipmentType = EquipmentType.Kinematics;
+            equipmentBuffs.Add(new Buff(BuffType.ShipLinearSpeed, 0.1f));
             base.AddEquipmentBuffs();
         }
     }

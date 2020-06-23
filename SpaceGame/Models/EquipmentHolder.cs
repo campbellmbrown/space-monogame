@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpaceGame.Effects;
+using SpaceGame.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +41,15 @@ namespace SpaceGame.Models
             if (itemCount == 0)
             {
                 spriteBatch.Draw(iconTexture, position, iconTextureRect, Color.White * iconOpacity);
+            }
+        }
+
+        public override void ClickAction()
+        {
+            Cursor cursor = LimitsEdgeGame.cursorManager.cursor;
+            if (cursor.item is Equipment || cursor.itemCount == 0)
+            {
+                base.ClickAction();
             }
         }
     }

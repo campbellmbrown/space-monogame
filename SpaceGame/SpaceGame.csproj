@@ -47,6 +47,7 @@
     <Compile Include="Effects\Shadow.cs" />
     <Compile Include="Effects\SmallExplosion.cs" />
     <Compile Include="Effects\Smoke.cs" />
+    <Compile Include="Items\Equipment.cs" />
     <Compile Include="Items\RidoxiumGear.cs" />
     <Compile Include="LimitsEdgeGame.cs" />
     <Compile Include="Items\Item.cs" />
