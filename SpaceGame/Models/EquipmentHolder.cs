@@ -47,9 +47,13 @@ namespace SpaceGame.Models
         public override void ClickAction()
         {
             Cursor cursor = LimitsEdgeGame.cursorManager.cursor;
-            if (cursor.item is Equipment || cursor.itemCount == 0)
-            {
+            if (cursor.itemCount == 0)
                 base.ClickAction();
+            else if (cursor.item is Equipment)
+            {
+                Equipment heldEquipment = (Equipment)cursor.item;
+                if (heldEquipment.equipmentType == equipmentType)
+                    base.ClickAction();
             }
         }
     }
