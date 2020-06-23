@@ -25,7 +25,7 @@ namespace SpaceGame.Items
         public override void AddEquipmentBuffs()
         {
             equipmentType = EquipmentType.Kinematics;
-            equipmentBuffs.Add(new Buff(BuffType.ShipLinearSpeed, 0.1f));
+            equipmentBuffs.Add(new Buff(BuffType.ShipLinearSpeed, 0.1f, new Color(59, 186, 213), new Color(19, 60, 68)));
             base.AddEquipmentBuffs();
         }
     }

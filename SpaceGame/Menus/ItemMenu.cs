@@ -76,7 +76,7 @@ namespace SpaceGame.Menus
                 {
                     if (itemHolder.CheckItemHover(mousePosition))
                     {
-                        label.Update(LimitsEdgeGame.mousePosition, itemHolder.item.name, itemHolder.item.subtext);
+                        label.Update(LimitsEdgeGame.mousePosition, itemHolder.item.name, itemHolder.item.subtexts);
                         label.active = true;
                         break;
                     }

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
 using MonoGame.Extended.BitmapFonts;
+using SpaceGame.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace SpaceGame.Items
         public float linearDragCoefficient = 0.01f;
         // Inventory parameters
         public string name;
-        public List<string> subtext;
+        public List<Subtext> subtexts;
 
         public Item(Texture2D texture, Vector2 position, string name, bool randomize)
         {
@@ -52,7 +53,7 @@ namespace SpaceGame.Items
                 linearVelocity = Vector2.Zero;
                 angularVelocity = 0f;
             }
-            subtext = new List<string>();
+            subtexts = new List<Subtext>();
         }
 
         public Item(Texture2D texture, Vector2 position, Vector2 linearVelocity, float angularVelocity, string name)
@@ -62,6 +63,7 @@ namespace SpaceGame.Items
             this.name = name;
             this.linearVelocity = linearVelocity;
             this.angularVelocity = angularVelocity;
+            subtexts = new List<Subtext>();
         }
 
         public void Update(GameTime gameTime)

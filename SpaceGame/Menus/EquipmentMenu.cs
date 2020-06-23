@@ -101,7 +101,7 @@ namespace SpaceGame.Menus
                 if (equipment.CheckItemHover(mousePosition))
                 {
                     // Update the menu label
-                    label.Update(LimitsEdgeGame.mousePosition, equipment.item.name, equipment.item.subtext);
+                    label.Update(LimitsEdgeGame.mousePosition, equipment.item.name, equipment.item.subtexts);
                     label.active = true;
                     break;
                 }

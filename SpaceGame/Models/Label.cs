@@ -11,6 +11,20 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.Models
 {
+    public struct Subtext
+    {
+        public Subtext(string text, Color color, Color backgroundColor)
+        {
+            this.text = text;
+            this.color = color;
+            this.backgroundColor = backgroundColor;
+        }
+
+        public string text;
+        public Color color;
+        public Color backgroundColor;
+    }
+
     public class Label
     {
         protected Texture2D texture;
@@ -23,9 +37,9 @@ namespace SpaceGame.Models
             get 
             {
                 int size = (int)fontSize.Width;
-                foreach (var subtxt in subtext)
+                foreach (var subtext in subtexts)
                 {
-                    int subtextSize = (int)font.MeasureString(subtxt).Width;
+                    int subtextSize = (int)font.MeasureString(subtext.text).Width;
                     if (subtextSize > size)
                         size = subtextSize;
                 }
@@ -58,32 +72,30 @@ namespace SpaceGame.Models
         protected float opacity = 1f;
         public bool active = false;
         protected Vector2 textOffset = new Vector2(edgeThickness);
-        protected List<string> subtext;
+        protected List<Subtext> subtexts;
         // Colors
         protected Color mainTextColor = new Color(255, 255, 255); // White
-        protected Color subtextColor = new Color(59, 186, 213); // Blue
         protected Color mainTextShadowColor = new Color(48, 48, 48); // Grey
-        protected Color subtextShadowColor = new Color(19, 60, 68); // Dark grey
 
         public Label()
         {
             texture = LimitsEdgeGame.textures["label"];
             font = LimitsEdgeGame.bitmapFonts["game_font_16"];
-            subtext = new List<string>();
+            subtexts = new List<Subtext>();
         }
 
         public void Update(Vector2 position, string text)
         {
             this.text = text;
             this.position = position + new Vector2(8);
-            subtext.Clear();
+            subtexts.Clear();
         }
 
-        public void Update(Vector2 position, string text, List<string> subtext)
+        public void Update(Vector2 position, string text, List<Subtext> subtexts)
         {
             this.text = text;
             this.position = position + new Vector2(8);
-            this.subtext = subtext;
+            this.subtexts = subtexts;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -92,17 +104,17 @@ namespace SpaceGame.Models
             {
                 DrawTop(spriteBatch);
                 DrawMiddle(spriteBatch, 0);
-                for (int i = 0; i < subtext.Count; ++i)
+                for (int i = 0; i < subtexts.Count; ++i)
                     DrawMiddle(spriteBatch, i + 1);
-                DrawBottom(spriteBatch, subtext.Count);
+                DrawBottom(spriteBatch, subtexts.Count);
                 // Draw text
                 spriteBatch.DrawString(font, text, position + textOffset + Vector2.One, mainTextShadowColor);
                 spriteBatch.DrawString(font, text, position + textOffset, mainTextColor);
-                for (int i = 0; i < subtext.Count; ++i)
+                for (int i = 0; i < subtexts.Count; ++i)
                 {
                     Vector2 subtextOffset = new Vector2(0, (i + 1) * middleSize);
-                    spriteBatch.DrawString(font, subtext[i], position + textOffset + Vector2.One + subtextOffset, subtextShadowColor);
-                    spriteBatch.DrawString(font, subtext[i], position + textOffset + subtextOffset, subtextColor);
+                    spriteBatch.DrawString(font, subtexts[i].text, position + textOffset + Vector2.One + subtextOffset, subtexts[i].backgroundColor);
+                    spriteBatch.DrawString(font, subtexts[i].text, position + textOffset + subtextOffset, subtexts[i].color);
                 }
             }
         }

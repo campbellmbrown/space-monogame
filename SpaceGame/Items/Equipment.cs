@@ -11,16 +11,21 @@ namespace SpaceGame.Items
 {
     public struct Buff
     {
-        public Buff(BuffType buffType, float modifier)
+        public Buff(BuffType buffType, float modifier, Color color, Color backgroundColor)
         {
             this.buffType = buffType;
             this.modifier = modifier;
             _returnString = "";
+            this.color = color;
+            this.backgroundColor = backgroundColor;
         }
         public BuffType buffType;
         public float modifier;
         private string _returnString;
-        public string buffString
+        private Color color;
+        private Color backgroundColor;
+        public Subtext subtext { get { return new Subtext(buffString, color, backgroundColor); } }
+        private string buffString
         {
             get
             {
@@ -62,7 +67,7 @@ namespace SpaceGame.Items
         public virtual void AddEquipmentBuffs()
         {
             foreach (var equipmentBuff in equipmentBuffs)
-                subtext.Add(equipmentBuff.buffString);
+                subtexts.Add(equipmentBuff.subtext);
         }
     }
 }
