@@ -93,6 +93,7 @@ namespace SpaceGame
                 { "metal", Content.Load<Texture2D>("Items/metal") },
                 { "plants", Content.Load<Texture2D>("Items/plants") },
                 { "plastic", Content.Load<Texture2D>("Items/plastic") },
+                { "asteroid_rock", Content.Load<Texture2D>("Items/asteroid_rock") },
                 { "ridoxium_gear", Content.Load<Texture2D>("Items/ridoxium_gear") },
                 // General
                 { "arrow_cursor", Content.Load<Texture2D>("Effects/arrow_cursor") },
