@@ -13,7 +13,7 @@ namespace SpaceGame.Managers.WorldStateManagers
     {
         public List<Stranded> strandeds;
         protected RespawnManager respawnManager;
-        protected float maxStrandeds = 2;
+        protected float maxStrandeds = 0;
 
         public StrandedManager()
         {

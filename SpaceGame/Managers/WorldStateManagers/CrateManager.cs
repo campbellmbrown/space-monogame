@@ -31,7 +31,7 @@ namespace SpaceGame.Managers
                 crates[i].Update(gameTime);
                 if (respawnManager.OutOfBounds(crates[i].position))
                 {
-                    crates.RemoveAt(i);
+                    RemoveCrate(i);
                 }
             }
             TopUpCrates();
@@ -62,7 +62,7 @@ namespace SpaceGame.Managers
                     if (crates[i].DepleteHealth(damage))
                     {
                         crates[i].BreakAction();
-                        crates.RemoveAt(i);
+                        RemoveCrate(i);
                     }
                     AddSmallExplosion(crateCollision, crateLinearVelocity);
                     return true;
@@ -76,6 +76,11 @@ namespace SpaceGame.Managers
             Vector2 explosionPosition = Helper.RandomPosInRectangle(rectangle);
             for (int i = 0; i < 3; ++i) LimitsEdgeGame.worldStateManager.particleManager.particles.Add(new Smoke(explosionPosition, true));
             LimitsEdgeGame.worldStateManager.particleManager.particles.Add(new SmallExplosion(explosionPosition, false) { linearVelocity = linearVelocity });
+        }
+
+        public void RemoveCrate(int i)
+        {
+            crates.RemoveAt(i);
         }
     }
 }
