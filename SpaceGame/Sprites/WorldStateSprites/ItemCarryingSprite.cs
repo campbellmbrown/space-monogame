@@ -15,7 +15,6 @@ namespace SpaceGame.Sprites.WorldStateSprites
     public class ItemCarryingSprite : MovingSprite
     {
         private List<Item> _items;
-        protected int breakingPieces = 5;
 
         public ItemCarryingSprite(Vector2 position, Texture2D texture) : base(position, texture)
         {
@@ -35,7 +34,7 @@ namespace SpaceGame.Sprites.WorldStateSprites
             }
         }
 
-        public virtual void AddBreakingParticles()
+        public virtual void AddBreakingParticles(int breakingPieces)
         {
             if (breakingPieces <= 0) return;
             for (int i = 1 - breakingPieces; i < breakingPieces + 1; i+=2)

@@ -57,6 +57,7 @@
     <Compile Include="Managers\AnimationManager.cs" />
     <Compile Include="Managers\InventoryStateManagers\InventoryEventManager.cs" />
     <Compile Include="Managers\InventoryStateManagers\InventoryStateManager.cs" />
+    <Compile Include="Managers\WorldStateManagers\AsteroidManager.cs" />
     <Compile Include="Managers\WorldStateManagers\CloudManager.cs" />
     <Compile Include="Managers\WorldStateManagers\CrateManager.cs" />
     <Compile Include="Managers\WorldStateManagers\DebugManager.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Models\InShipCrew.cs" />
     <Compile Include="Models\ItemHolder.cs" />
     <Compile Include="Models\Label.cs" />
+    <Compile Include="Sprites\WorldStateSprites\Asteroid.cs" />
     <Compile Include="Sprites\WorldStateSprites\CollidableObject.cs" />
     <Compile Include="Models\Minimap.cs" />
     <Compile Include="Program.cs" />

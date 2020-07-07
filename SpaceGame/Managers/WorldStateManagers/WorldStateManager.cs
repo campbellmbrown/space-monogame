@@ -21,6 +21,7 @@ namespace SpaceGame.Managers
         public CloudManager cloudManager;
         public ItemManager itemManager;
         public CrateManager crateManager;
+        public AsteroidManager asteroidManager;
         public GuiManager guiManager;
         public DebugManager debugManager;
         public PlayerManager playerManager;
@@ -35,11 +36,13 @@ namespace SpaceGame.Managers
             cloudManager = new CloudManager();
             itemManager = new ItemManager();
             crateManager = new CrateManager();
+            asteroidManager = new AsteroidManager();
             strandedManager = new StrandedManager();
             guiManager = new GuiManager();
             debugManager = new DebugManager();
             playerManager = new PlayerManager(LimitsEdgeGame.worldCamera);
             crateManager.TopUpCrates();
+            asteroidManager.TopUpAsteroids();
             cloudManager.TopUpClouds();
             strandedManager.TopUpStrandeds();
         }
@@ -51,6 +54,7 @@ namespace SpaceGame.Managers
             starManager.Update(gameTime);
             itemManager.Update(gameTime);
             crateManager.Update(gameTime);
+            asteroidManager.Update(gameTime);
             strandedManager.Update(gameTime);
             particleManager.Update(gameTime);
             cloudManager.Update(gameTime);
@@ -65,6 +69,7 @@ namespace SpaceGame.Managers
             starManager.Draw(spriteBatch);
             itemManager.Draw(spriteBatch);
             crateManager.Draw(spriteBatch);
+            asteroidManager.Draw(spriteBatch);
             strandedManager.Draw(spriteBatch);
             particleManager.Draw(spriteBatch);
             projectileManager.Draw(spriteBatch);

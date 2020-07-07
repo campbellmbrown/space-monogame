@@ -30,6 +30,7 @@ namespace SpaceGame.Managers
                     continue;
                 }
                 bool collided = LimitsEdgeGame.worldStateManager.crateManager.CheckCollision(projectiles[i].collisionRectangle, projectiles[i].explosionVelocity, projectiles[i].damage);
+                collided |= LimitsEdgeGame.worldStateManager.asteroidManager.CheckCollision(projectiles[i].collisionRectangle, projectiles[i].explosionVelocity, projectiles[i].damage);
                 if (collided)
                 {
                     projectiles.Remove(projectiles[i]);
