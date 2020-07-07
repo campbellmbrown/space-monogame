@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended;
 using SpaceGame.Models.WorldStateSprites;
 using SpaceGame.Utilities;
 using System;
@@ -13,11 +14,13 @@ namespace SpaceGame.Sprites.WorldStateSprites
     public class MovingSprite : CollidableObject
     {
         protected Vector2 linearAcceleration;
+        protected Vector2 sidewaysAcceleration;
         protected Vector2 linearFrictionAcceleration;
         protected float angularAcceleration;
         protected float angularFrictionAcceleration;
         protected float linearThrust = 0f;
         protected float angularThrust = 0f;
+        protected float sidewaysThrust = 0f;
         public Vector2 facing { get { return new Vector2((float)Math.Cos(rotation - Math.PI / 2), (float)Math.Sin(rotation - Math.PI / 2f)); } }
         public Vector2 direction { get { return (linearVelocity.Length() == 0) ? Vector2.Zero : Vector2.Normalize(linearVelocity); } }
         protected int spinningDirection { get { return Math.Sign(angularVelocity); } }
@@ -45,8 +48,9 @@ namespace SpaceGame.Sprites.WorldStateSprites
         {
             // Linear acceleration
             linearAcceleration = linearThrust * facing / mass;
+            sidewaysAcceleration = sidewaysThrust * facing.Rotate((float)Math.PI / 2);
             linearFrictionAcceleration = (linearThrust == 0) ? -linearDragCoefficient * (float)Math.Pow(linearVelocity.Length(), 2) * direction / mass : Vector2.Zero;
-            Vector2 totalLinearAcceleration = linearAcceleration + linearFrictionAcceleration;
+            Vector2 totalLinearAcceleration = linearAcceleration + linearFrictionAcceleration + sidewaysAcceleration;
 
             // Angular acceleration
             angularAcceleration = angularThrust / mass;

@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
+using MonoGame.Extended.BitmapFonts;
+using MonoGame.Extended.Sprites;
 using SpaceGame.Effects;
 using SpaceGame.Items;
 using SpaceGame.Projectiles;
@@ -19,22 +21,50 @@ namespace SpaceGame.Sprites.WorldStateSprites
         public float shotDelay = 0.2f;
         protected int pickupDistance = 8;
         protected Rectangle pickupRange { get { return new Rectangle((int)position.X - pickupDistance, (int)position.Y - pickupDistance, 2 * pickupDistance, 2 * pickupDistance); } }
+        public MovingSprite lockOnSprite;
+        public float lockOnRange = 240;
+        public bool lockOn = false;
+        public float lockOnDistance;
 
         public PlayerShip(Vector2 position, Texture2D texture, Texture2D wingTexture) 
             : base(position, texture, wingTexture)
         {
         }
 
+        float prevDistanceError = 0;
+        float prevAngleError = 0;
+
         public void SetAccelerations(float t)
         {
             KeyboardState keyboardState = Keyboard.GetState();
 
+            linearThrust = 0f;
+            angularThrust = 0f;
+            sidewaysThrust = 0f;
             if (keyboardState.IsKeyDown(Keys.A)) MoveAntiClockwise();
             else if (keyboardState.IsKeyDown(Keys.D)) MoveClockwise();
-            else angularThrust = 0f;
             if (keyboardState.IsKeyDown(Keys.W)) MoveForward(t);
             else if (keyboardState.IsKeyDown(Keys.S)) MoveBackward(t);
-            else linearThrust = 0f;
+
+            // Used to angle the ship to the object when lock-on is active
+            if (lockOn && lockOnSprite != null)
+            {
+                // Distance between locked on sprite and ship
+                Vector2 relativePos = lockOnSprite.position - position;
+                // Angular velocity correction
+                float angleError = (float)(Math.Atan2(relativePos.X, -relativePos.Y) - rotation);
+                if (angleError > (float)Math.PI)
+                    angleError = angleError - 2*(float)Math.PI;
+                else if (angleError < -(float)Math.PI)
+                    angleError = angleError + 2*(float)Math.PI;
+                angularThrust = angleError * 50000 + (angleError - prevAngleError) * 10000 / t;
+                prevAngleError = angleError;
+                // Linear velocity correction
+                float distanceError = relativePos.Length() - lockOnDistance;
+                linearThrust = distanceError * 50000 + (distanceError - prevDistanceError) * 10000 / t;
+                sidewaysThrust = angularVelocity * 1000;
+                prevDistanceError = distanceError;
+            }
         }
 
         public void MoveClockwise()
@@ -90,6 +120,10 @@ namespace SpaceGame.Sprites.WorldStateSprites
             if (linearThrust != 0) AddSmoke(t);
             PickupItems();
             base.Update(gameTime);
+            if (lockOnSprite != null && (lockOnSprite.position - position).Length() >= lockOnRange || !LimitsEdgeGame.worldStateManager.crateManager.crates.Contains(lockOnSprite))
+            {
+                lockOnSprite = null;
+            }
         }
 
         protected void PickupItems()
@@ -104,7 +138,24 @@ namespace SpaceGame.Sprites.WorldStateSprites
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            if (lockOnSprite != null) spriteBatch.DrawLine(position, lockOnSprite.position, Color.White);
+            spriteBatch.DrawCircle(position, lockOnRange, 30, Color.White * 0.1f);
             base.Draw(spriteBatch);
+        }
+
+        public void SetLockOnSprite(MovingSprite sprite)
+        {
+            lockOnSprite = sprite;
+        }
+
+        public void RemoveLockOnSprite()
+        {
+            lockOnSprite = null;
+        }
+
+        public void SetLockOn(bool condition)
+        {
+            lockOn = condition;
         }
     }
 }
