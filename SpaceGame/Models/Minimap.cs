@@ -32,6 +32,7 @@ namespace SpaceGame.Models
         protected Color outsideRectangleColor = Color.White;
         protected Color insideRectangleColor = new Color(100, 100, 100);
         protected Color crateColor = new Color(100, 255, 255);
+        protected Color asteroidColor = new Color(255, 100, 255);
 
         public Minimap() { }
 
@@ -45,6 +46,12 @@ namespace SpaceGame.Models
                 Vector2 mapPosition = center + crate.relativeToPlayer / scale;
                 if (outsideRectangle.Contains(new Point2(mapPosition.X, mapPosition.Y))) 
                     spriteBatch.DrawPoint(mapPosition, crateColor, objectSize);
+            }
+            foreach (var asteroid in LimitsEdgeGame.worldStateManager.asteroidManager.asteroids)
+            {
+                Vector2 mapPosition = center + asteroid.relativeToPlayer / scale;
+                if (outsideRectangle.Contains(new Point2(mapPosition.X, mapPosition.Y)))
+                    spriteBatch.DrawPoint(mapPosition, asteroidColor, objectSize);
             }
         }
     }
