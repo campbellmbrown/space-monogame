@@ -68,14 +68,7 @@ namespace SpaceGame.Managers
             {
                 if (!holdingSwitchLockOn)
                 {
-                    foreach (var crate in LimitsEdgeGame.worldStateManager.crateManager.crates)
-                    {
-                        if (playerShip.lockOnSprite != crate && (crate.position - playerShip.position).Length() < playerShip.lockOnRange)
-                        {
-                            playerShip.SetLockOnSprite(crate);
-                            break;
-                        }
-                    }
+                    TryLockOn(playerShip);
                 }
                 holdingSwitchLockOn = true;
             }
@@ -109,6 +102,26 @@ namespace SpaceGame.Managers
             if (keyboardState.IsKeyDown(Keys.R))
             {
                 playerShip.SetLockOn(true);
+            }
+        }
+
+        protected void TryLockOn(PlayerShip playerShip)
+        {
+            foreach (var crate in LimitsEdgeGame.worldStateManager.crateManager.crates)
+            {
+                if (playerShip.lockOnSprite != crate && (crate.position - playerShip.position).Length() < playerShip.lockOnRange)
+                {
+                    playerShip.SetLockOnSprite(crate);
+                    return;
+                }
+            }
+            foreach (var asteroid in LimitsEdgeGame.worldStateManager.asteroidManager.asteroids)
+            {
+                if (playerShip.lockOnSprite != asteroid && (asteroid.position - playerShip.position).Length() < playerShip.lockOnRange)
+                {
+                    playerShip.SetLockOnSprite(asteroid);
+                    return;
+                }
             }
         }
     }

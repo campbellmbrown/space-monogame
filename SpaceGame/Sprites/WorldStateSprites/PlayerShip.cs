@@ -120,7 +120,11 @@ namespace SpaceGame.Sprites.WorldStateSprites
             if (linearThrust != 0) AddSmoke(t);
             PickupItems();
             base.Update(gameTime);
-            if (lockOnSprite != null && (lockOnSprite.position - position).Length() >= lockOnRange || !LimitsEdgeGame.worldStateManager.crateManager.crates.Contains(lockOnSprite))
+            if (lockOnSprite != null && 
+                (lockOnSprite.position - position).Length() >= lockOnRange 
+                || 
+                (!LimitsEdgeGame.worldStateManager.crateManager.crates.Contains(lockOnSprite) &&
+                !LimitsEdgeGame.worldStateManager.asteroidManager.asteroids.Contains(lockOnSprite)))
             {
                 lockOnSprite = null;
             }
